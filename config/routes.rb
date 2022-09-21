@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  resources :comments
   resources :beers
   devise_for :users
   root to: "pages#home"
