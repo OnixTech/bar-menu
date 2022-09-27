@@ -1,2 +1,12 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<div class="container">
+  <div>
+    <% if user_signed_in? %>
+        <div class="title"><h1>Welcome <%= current_user.email %> to Resto</h1></div>
+        <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
+    <% else %>
+        <div class="title"><h1>Welcome to Resto</h1></div>
+        <p>Please <%= link_to "log in", new_user_session_path, class: "btn standart-button" %> or <%= link_to "sign up", new_user_registration_path, class: "btn standart-button" %> to work in your menu</p>
+    <% end %>
+  </div>
+</div>
+
