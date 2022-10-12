@@ -1,0 +1,7 @@
+<h1>Index company</h1>
+
+<% @company.reverse_each do |company| %>
+  <ul class = "home-company-list">
+  <li><%= company.name %></li>
+  </ul>
+<% end %>
