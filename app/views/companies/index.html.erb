@@ -1,0 +1,14 @@
+<div><h1>Index company</h1></div>
+<div>
+<p>LIST COMPANIES</p>
+<ul>
+  <% @company.each do |company| %>
+    <% if current_user == company.user  %>
+    <li><%= company.name %></li>
+    <% end %>
+  <% end %>
+</ul>
+</div>
+<div>
+<%= link_to "New", new_company_path, class: "btn btn-link" %>
+</div>
