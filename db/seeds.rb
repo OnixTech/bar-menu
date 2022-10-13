@@ -5,17 +5,21 @@
 #
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
+roles = [
+  {
+    name: "master",
+    description: "App owner"
+  },
+  {
+    name: "manager",
+    description: "Manager of the bar or restaurant who is allow to make changes on the menu"
+  }
+]
+
 if Role.count  < 1
-  Role.create([
-    {
-      name:"master",
-      description:"App owner"
-    },
-    {
-      name:"manager",
-      description:"Manager of the bar or restaurant who is allow to make changes on the menu"
-    }
-  ])
+  roles.each do |role|
+    Role.create(role)
+  end
 end
 
 if User.count < 1
@@ -29,7 +33,7 @@ end
 
 if Company.count < 1
   company = Company.new(
-    :name => "La Pocilga", 
+    :name => "La Pocilga",
     :city => "Berlin",
     :suburb => "Weddin",
     :street => "Koloniestrasse",
