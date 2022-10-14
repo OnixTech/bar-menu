@@ -5,6 +5,9 @@ class CompaniesController < ApplicationController
   end
 
   def show
+    @company = Company.find(params[:id])
+    authorize @company
+    @menus = Menu.where(company_id: @company.id)
   end
 
   def new
@@ -50,6 +53,5 @@ class CompaniesController < ApplicationController
 
   def set_companies
     @company = Company.find(params[:id])
-    
   end
 end

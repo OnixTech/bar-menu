@@ -4,7 +4,7 @@
 <ul>
   <% @company.each do |company| %>
     <% if current_user == company.user  %>
-    <li><%= company.name %></li>
+    <li><%= link_to "#{company.name}", company_path(company) %></li>
     <% end %>
   <% end %>
 </ul>
