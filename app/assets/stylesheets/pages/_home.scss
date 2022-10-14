@@ -1,1 +1,9 @@
 // Specific CSS for your home-page
+.h-title{
+  display: flex;
+  justify-content: center;
+  
+  h1 {
+    color: green;
+    }
+}

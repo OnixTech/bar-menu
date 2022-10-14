@@ -1,0 +1,14 @@
+<h1>company show</h1>
+<ul>
+  <li>Name: <%= @company.name %></li>
+</ul>
+<h3>Menus</h3>
+<%= if @menu.count > 0 %>
+  <% @menu.each do |menu|  %>
+    <ul>
+      <li><%= link_to "#{menu.title}", menu_path %></li>
+    </ul>
+  <% end  %>
+<% else %>
+  <p>No menus yet</p>
+<% end %>
