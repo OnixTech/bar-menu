@@ -1,9 +1,17 @@
 // Specific CSS for your home-page
-.h-title{
-  display: flex;
+.h-container{
+  height: 300px;
   justify-content: center;
-  
-  h1 {
-    color: green;
+
+  .h-content {
+    height: 30%;
+    h3 {
+      display: flex;
+      justify-content: center;
     }
+    p {
+      display: flex;
+      justify-content: center;
+    }
+  }
 }

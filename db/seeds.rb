@@ -43,3 +43,12 @@ if Company.count < 1
   )
   company.save!
 end
+
+if Menu.count < 1
+  menu = Menu.new(
+    :title => "Menu",
+    :subtitle => "Drinks",
+    :company_id => 1
+  )
+  menu.save!
+end

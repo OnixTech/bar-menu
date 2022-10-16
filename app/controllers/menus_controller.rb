@@ -1,6 +1,7 @@
 class MenusController < ApplicationController
 
     def show
+      @menu = Company.find(params[:id])
     end
 
     def new
