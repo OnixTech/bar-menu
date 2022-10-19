@@ -52,3 +52,11 @@ if Menu.count < 1
   )
   menu.save!
 end
+
+item = Item.new(
+  :name => "Cuba Libre",
+  :description => "coca cola, run",
+  :price => 6,
+  :menu_id => 1
+)
+item.save!

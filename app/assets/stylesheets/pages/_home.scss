@@ -1,17 +1,20 @@
 // Specific CSS for your home-page
 .h-container{
-  height: 300px;
-  justify-content: center;
-
-  .h-content {
-    height: 30%;
-    h3 {
-      display: flex;
-      justify-content: center;
-    }
-    p {
-      display: flex;
-      justify-content: center;
-    }
+  height: 100%;
+  background: url("table.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  h3{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+  }
+  p{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
   }
 }

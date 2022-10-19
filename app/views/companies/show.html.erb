@@ -1,11 +1,46 @@
-<h1>company show</h1>
-<ul>
-  <li>Name: <%= @company.name %></li>
-</ul>
-<h3>Menus</h3>
-  <% @menus.each do |menu|  %>
-    <ul>
-      <li><%= link_to "#{menu.subtitle}","#" %></li>
-    </ul>
+<div class = "c-sw-title col-md-6 col-lg-4 col-xl-3">
+  <% if @companies.count > 0 %>
+    <% @companies.each do |company| %>
+      <h1><%= @company.name %></h1>
+    <% end %>
   <% end %>
+</div>
+<br>
+<div class = "row">
+<div class = "col-xs-12 col-sm-8 col-md-6 col-lg-4 col-xl-3">
+  <h2>Company details:</h2>
+</div>
+<div class = "col-xs-12 col-sm-8 col-md-6 col-lg-4 col-xl-3">
+  <h2>Company details:</h2>
+</div>
+<div class = "col-xs-12 col-sm-8 col-md-6 col-lg-4 col-xl-3">
+  <h2>Company details:</h2>
+</div>
+<div class = "col-xs-12 col-sm-8 col-md-6 col-lg-4 col-xl-3">
+  <h2>Company details:</h2>
+</div>
+<div class = "col-xs-12 col-sm-8 col-md-6 col-lg-4 col-xl-3">
+  <h2>Company details:</h2>
+</div>
+<div class = "col-xs-12 col-sm-8 col-md-6 col-lg-4 col-xl-3">
+  <h2>Company details:</h2>
+</div>
+</div>
+
+<br>
+<div class = "c-sw-information">
+  <ul>
+    <li>Name: <%= @company.city %></li>
+    <li>Suburb: <%= @company.suburb %></li>
+    <li>Street: <%= @company.street %></li>
+    <li>Number: <%= @company.number %></li>
+    <li>Post: <%= @company.post %></li>
+  </ul>
+</div>
+<h3>Menus</h3>
+<% @menus.each do |menu|  %>
+  <ul>
+    <li><%= link_to "#{menu.subtitle}", menu_path(menu.id) %></li>
+  </ul>
+<% end %>
 
