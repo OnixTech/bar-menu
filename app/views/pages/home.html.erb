@@ -1,6 +1,10 @@
 <div class="h-container">
-<%= render "banner" %>
-<h3>Green and fast solution to have a great menu and also easy to actualice</h3>   
-<p>Please <%= link_to " log in ", new_user_session_path %> or <%= link_to " sign up ", new_user_registration_path %> to work in your menu</p>
+<div class = "h-content">
+<h1>WELCOME</h1>
+<div class = "h-btns-div">
+  <%= button_to " Login ", new_user_session_path, class: "h-btn" %>
+  <%= button_to " Sign up ", new_user_registration_path, class:"h-btn", method: :get %>
+</div>
+</div>
 </div>
 

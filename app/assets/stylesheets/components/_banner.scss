@@ -4,8 +4,12 @@
   background-color: rgb(95, 93, 93);
   opacity: 70%;
   display: flex;
-  justify-content: center;
   h1 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+    color: white;
     opacity: 100%;
   }
 }
