@@ -8,5 +8,12 @@
 
 // Your CSS partials
 @import "components/index";
+@import "components/banner";
 @import "pages/index";
 @import "pages/home";
+@import "pages/menushow";
+@import "components/button";
+
+body, html{
+    height: 100%;
+}

@@ -1,0 +1,7 @@
+<h3>Menu show</h3>
+<%= @menu.subtitle %>
+<% @items.each do |item|  %>
+<ul>
+<li><%="#{item.name} $#{item.price}"%><br><%= item.description %></li>
+</ul>
+<% end %>
