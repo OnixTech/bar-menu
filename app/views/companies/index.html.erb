@@ -1,14 +1,17 @@
 <div><h1>Index company</h1></div>
 <div>
-<p>LIST COMPANIES</p>
-<ul>
-  <% @company.each do |company| %>
-    <% if current_user == company.user  %>
-    <li><%= link_to "#{company.name}", company_path(company) %></li>
+  <p>LIST COMPANIES</p>
+  <ul>
+    <% @company.each do |company| %>
+      <% if current_user == company.user  %>
+      <li><%= link_to "#{company.name}", company_path(company) %></li>
+      <% end %>
     <% end %>
-  <% end %>
-</ul>
+  </ul>
 </div>
-<div>
-<%= link_to "New", new_company_path, class: "btn btn-link" %>
-</div>
+<% if current_user.role.name == "master"  %>
+  <div>
+    <%= button_to "New", new_company_path, class: "h-btn" %>
+  </div>
+<% end %>
+

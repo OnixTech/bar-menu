@@ -1,0 +1,16 @@
+.m-container{
+    height:  100%;
+}
+
+.m-cards{
+    height: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.m-card{
+    height: 30px;
+    width: 180px;
+    margin: 2px;
+    background-color: grey;
+}

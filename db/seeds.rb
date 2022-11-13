@@ -26,9 +26,16 @@ if User.count < 1
   master = User.new(
     :email => "a@mail.com",
     :password => "a@mail.com",
-    :role_id => 2
+    :role_id => 1
   )
   master.save!
+  
+  manager = User.new(
+    :email => "b@mail.com",
+    :password => "b@mail.com",
+    :role_id => 2
+  )
+  manager.save!
 end
 
 if Company.count < 1
@@ -51,6 +58,20 @@ if Menu.count < 1
     :company_id => 1
   )
   menu.save!
+
+  menu2 = Menu.new(
+    :title => "Menu",
+    :subtitle => "Snacks",
+    :company_id => 1
+  )
+  menu2.save!
+
+  menu3 = Menu.new(
+    :title => "Menu",
+    :subtitle => "Pastas",
+    :company_id => 1
+  )
+  menu3.save!
 end
 
 item = Item.new(
