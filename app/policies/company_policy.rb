@@ -10,11 +10,15 @@ class CompanyPolicy < ApplicationPolicy
     true
   end
 
-  def new?
-    create?
+  def create?
+    record.user == user
   end
 
-  def create?
-    true
+  def update?
+    record.user == user
+  end
+
+  def destroy?
+    record.user == user
   end
 end
