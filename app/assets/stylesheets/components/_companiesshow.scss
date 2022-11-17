@@ -1,0 +1,26 @@
+.sh-container{
+  height:  60%;
+  background-color:white;
+  font-family: 'Edu TAS Beginner', cursive;
+  font-family: 'Ubuntu Condensed', sans-serif;
+  h1, h3 {
+    margin-top: 20px;
+    text-align: center;
+    color: black;
+  }
+}
+
+.sh-cards{
+  justify-content: center;
+  padding: 10vh;
+}
+
+.sh-card{
+  height: 30px;
+  text-align: center;
+}
+
+.sh-link{
+  text-decoration: inherit;
+  color: black;
+}
