@@ -4,12 +4,12 @@
 @import "config/bootstrap_variables";
 
 // External libraries
-
+@import url('https://fonts.googleapis.com/css2?family=Edu+TAS+Beginner&family=Ubuntu+Condensed&display=swap');
 
 // Your CSS partials
 @import "components/index";
 @import "components/banner";
-@import "components/menu";
+@import "components/companiesshow";
 @import "pages/index";
 @import "pages/home";
 @import "pages/menushow";
