@@ -1,26 +1,45 @@
 .sh-container{
-  height:  60%;
-  background-color:white;
+  height:  100%;
+  background-color:rgb(194, 202, 181);
   font-family: 'Edu TAS Beginner', cursive;
   font-family: 'Ubuntu Condensed', sans-serif;
-  h1, h3 {
+  h1, h2 {
     margin-top: 20px;
     text-align: center;
     color: black;
   }
 }
 
+.row {
+  margin-left:0!important;
+  margin-right:0!important;
+}
+
+.sh-searchform{
+  padding: 10px;
+  margin: 2vh;
+  text-align: center;
+}
+
+input {
+  width: 80%;
+  max-height: 20px;
+}
+
 .sh-cards{
   justify-content: center;
-  padding: 10vh;
+  padding: 2vh;
 }
 
 .sh-card{
   height: 30px;
-  text-align: center;
+  text-align: inherit;
+  margin: 10px;
 }
 
 .sh-link{
   text-decoration: inherit;
+  font-size: 25px;
   color: black;
 }
+
