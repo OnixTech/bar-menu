@@ -11,6 +11,12 @@
 </div>
 <% if current_user.role.name == "master"  %>
   <div>
+    <% @users.each do |user| %>
+      <%= user.email %><br/>
+      <%= user.role.name %><br/>
+    <% end %>
+  </div>
+  <div>
     <%= button_to "New", new_company_path, class: "h-btn" %>
   </div>
 <% end %>
