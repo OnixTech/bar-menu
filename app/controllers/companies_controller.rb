@@ -2,6 +2,10 @@ class CompaniesController < ApplicationController
 
   def index
     @company = policy_scope(Company)
+    if current_user.role.name == "master"
+      @users = User.all
+      @companies = Company.all
+    end
   end
 
   def show
