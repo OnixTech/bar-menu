@@ -9,7 +9,8 @@
 <div class = "sh-cards row">
 <% @menus.each do |menu|  %>
 <div class="sh-card col-sm-6 col-md-4 col-xl-2">
-  <%= link_to "#{menu.subtitle}", menu_path(menu.id), :class => "sh-link" %>
+  <%= link_to "#{menu.subtitle}", "#", :class => "sh-link" %>
+  <p>&#10095;</p>
 </div>
 <% end %>
 </div>
