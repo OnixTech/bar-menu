@@ -27,6 +27,27 @@ input {
   box-shadow: 0 4px 8px 0 rgb(0, 0, 0.2);
 }
 
+.sh-suggestions{
+  width: 80%;
+  margin: 0;
+  padding: 0;
+  position: relative;
+  left: 10%;
+}
+
+.sh-suggestions li {
+  background: white;
+  list-style: none;
+  border-bottom: 1px solid grey;
+  border-bottom: 0 0 10px rgba($color: #000000, $alpha: 0.14);
+  margin: 0;
+  padding: 4px;
+  transition: background 0.2s;
+  display: flex;
+  justify-content: space-between;
+  text-transform: capitalize;
+}
+
 .sh-cards{
   justify-content: center;
   padding: 2vh;
