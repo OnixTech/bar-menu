@@ -17,6 +17,7 @@ class CompaniesController < ApplicationController
     authorize @company
     @companies = Company.where(user_id: current_user)
     @menus = Menu.where(company_id: @company.id)
+    @items = Item.all
   end
 
   def new

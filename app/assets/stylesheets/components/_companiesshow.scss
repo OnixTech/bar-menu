@@ -41,7 +41,7 @@ input {
   border-bottom: 1px solid grey;
   border-bottom: 0 0 10px rgba($color: #000000, $alpha: 0.14);
   margin: 0;
-  padding: 4px;
+  padding: 1px;
   transition: background 0.2s;
   display: flex;
   justify-content: space-between;
@@ -50,30 +50,38 @@ input {
 
 .sh-cards{
   justify-content: center;
-  padding: 2vh;
 }
 
 .sh-card{
-  height: 30px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  a {
-    width: 50%;
-    text-align: center;
-    margin: inherit!important;
-  }
-  p {
-    text-align: left;
-    margin: inherit!important;
-  }
+  margin: 5px;
+  border: solid 1px lightgrey;
 }
 
-.sh-card:active{
-  p {
-    rotate: 90deg;
-    transition: 100ms;
+.sh-section{
+  width: 200px;
+  a{
+    height: 30px;
+    color: inherit;
+    text-decoration: inherit;
+    font-size: 22px;
   }
+
+}
+
+.sh-items-li{
+  width: 100%;
+  display: inline;
+  .sh-item-name {
+    width: 100%;
+    text-align: center;
+    display: flex;
+    justify-content: space-between;
+    font-size: 15px;
+  }
+  p {
+    font-size: 12px;
+  }
+
 }
 
 .sh-link{
