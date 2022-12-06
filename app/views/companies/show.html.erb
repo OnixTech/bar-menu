@@ -1,22 +1,46 @@
 <div class = "sh-container">
-<h1><%= @company.name %></h1>
-<h2> Menu </h2>
-<div>
-  <form class="sh-searchform">
-    <input type="text" class="search" placeholder=" SEARCH: 'Pasta/Cuba Libre/Eggs'">
-    <ul class = "sh-suggestions">
-      <li>filter for component</li>
-      <li>or a plate, drink, etc</li>
-    </ul>
-  </form>
+  <h1><%= @company.name %></h1>
+  <h2> Menu </h2><br>
+  <div class="sh-searchform">
+    <input type="text" name="search" autocomplete=”off” id="sh-input"
+    onkeyup=”myFunction()” placeholder="Search">
+  </div><br>
+  <div class = "sh-cards row" id="wrapper">
+    <% @menus.each do |menu|  %>
+      <div class="sh-card col-sm-6 col-md-4 col-xl-2" id="li">
+        <div class="sh-section" id="a">
+          <a href="#"><strong><%= menu.subtitle %></strong></a>
+          <div class="sh-items" id="a">
+              <% @items.each do |item|  %>
+                <% if item.menu_id == menu.id %>
+                  <div class="sh-items-li">
+                    <div class="sh-item-name">
+                      <div><strong><%= item.name %></div><div>$<%= item.price %></strong></div>
+                    </div>
+                    <p><%= item.description %></p>
+                  </div>
+                <% end %>
+              <% end %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
 </div>
-<div class = "sh-cards row">
-<% @menus.each do |menu|  %>
-<div class="sh-card col-sm-6 col-md-4 col-xl-2">
-  <%= link_to "#{menu.subtitle}", "#", :class => "sh-link" %>
-  <p>&#10095;</p>
-</div>
-<% end %>
-</div>
-</div>
-
+<script>
+  function myFunction() {
+    let userInput, listedNameId, listedName, a;    
+    userInput = document.getElementById('sh-input'); 
+          //input value
+      listedNameId = document.getElementById("wrapper"); 
+      listedName = listedNameId.getElementsByTagName('li');                                          
+        for (let i = 0; i < listedName.length; i++) {
+      a = listedName[i].getElementsById("a")[0];  
+        //iterating to get the name from the a tag
+  if (a.innerHTML.userInput > -1) {
+              listedName[i].style.display = "";
+          } else {
+              listedName[i].style.display = "none";
+    }
+  }}
+</script>

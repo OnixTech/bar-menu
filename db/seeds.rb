@@ -76,8 +76,24 @@ end
 
 item = Item.new(
   :name => "Cuba Libre",
-  :description => "coca cola, run",
+  :description => "4cl Run and CocaCola",
   :price => 6,
   :menu_id => 1
 )
 item.save!
+
+item1 = Item.new(
+  :name => "Fries",
+  :description => "Fries potatoes",
+  :price => 6,
+  :menu_id => 2
+)
+item1.save!
+
+item2 = Item.new(
+  :name => "Tallarines Alfredo",
+  :description => "Home-made tallarines with white sauce and alfredo cheese",
+  :price => 6,
+  :menu_id => 3
+)
+item2.save!
