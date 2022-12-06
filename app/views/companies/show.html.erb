@@ -8,8 +8,7 @@
   <div class = "sh-cards row" id="wrapper">
     <% @menus.each do |menu|  %>
       <div class="sh-card col-sm-6 col-md-4 col-xl-2" id="li">
-        <div class="sh-section" id="a">
-          <a href="#"><strong><%= menu.subtitle %></strong></a>
+          <p><strong><%= menu.subtitle %></strong></p>
           <div class="sh-items" id="a">
               <% @items.each do |item|  %>
                 <% if item.menu_id == menu.id %>
@@ -21,7 +20,6 @@
                   </div>
                 <% end %>
               <% end %>
-          </div>
         </div>
       </div>
     <% end %>
