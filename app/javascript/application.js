@@ -2,4 +2,4 @@
 import "@hotwired/turbo-rails"
 import "./controllers"
 import "bootstrap"
-import "./controllers/sh-searchbar"
+import "controllers/sh-searchbar"
