@@ -11,7 +11,11 @@ class CompanyPolicy < ApplicationPolicy
   end
 
   def create?
-    record.user == user
+    user.present?
+  end
+
+  def new?
+    create?
   end
 
   def update?

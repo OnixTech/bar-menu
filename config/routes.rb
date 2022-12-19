@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   end
   
   resources :companies
+  post '/companies/new' => 'companies#new'
   resources :menus, only: [:show, :create, :edit, :destroy]
   resources :items, only: [:new, :edit, :destroy]
   
