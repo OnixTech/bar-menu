@@ -22,4 +22,4 @@ function searchbar() {
         listedProduct[i].style.display = "none";
       }
     }
-  }
+}
