@@ -9,11 +9,7 @@ class CompaniesController < ApplicationController
   end
 
   def show
-    if current_user
-      @company = Company.find(current_user.id)
-    else
-      @company = Company.find(params[:id])
-    end
+    @company = Company.find(params[:id])
     authorize @company
     @companies = Company.where(user_id: current_user)
     @menus = Menu.where(company_id: @company.id)
