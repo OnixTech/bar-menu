@@ -1,3 +1,4 @@
+
 function searchbar() {
     let userInput, listedProductsId, userInputCapitalized, listedProduct;    
     
