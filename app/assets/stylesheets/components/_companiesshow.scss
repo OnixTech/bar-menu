@@ -31,7 +31,8 @@
 }
 
 input {
-  width: 80%;
+  width: 95%!important;
+  max-width: 700px!important;
   max-height: 30px;
   box-shadow: 0 4px 8px 0 rgb(0, 0, 0.2);
 }
@@ -43,7 +44,8 @@ input {
 .sh-card{
   margin: 5px;
   border: solid 1px lightgrey;
-  width: 200px;
+  width: 300px!important;
+  max-width: 95%!important;
   p{
     height: 30px;
     font-size: 22px;
