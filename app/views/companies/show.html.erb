@@ -13,7 +13,7 @@
               <% @items.each do |item|  %>
                 <% if item.menu_id == menu.id %>
                   <div class="sh-items-li">
-                    <div class="sh-item-name">
+                    <div class="sh-items-name">
                       <p><strong><%= item.name %></p><p>$<%= item.price %></strong></p>
                     </div>
                     <p><%= item.description %></p>
@@ -21,9 +21,11 @@
                 <% end %>
               <% end %>
         </div>
+        <%= button_to "+", "#", class: "sh-btn-new" %>
       </div>
     <% end %>
   </div>
 </div>
 
 <%= javascript_include_tag "packs/sh-searchbar" %>
+
