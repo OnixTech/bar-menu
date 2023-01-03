@@ -64,10 +64,10 @@ input {
     font-size: 15px;
   }
   p {
+    height: 16px;
     font-size: 12px;
-    height: 15px;
+    margin-bottom: 0px;
   }
-
 }
 
 .sh-link{
@@ -76,3 +76,7 @@ input {
   color: black;
 }
 
+.sh-div-btn-set-item{
+  display: flex;
+  justify-content: left;
+}

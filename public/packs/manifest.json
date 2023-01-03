@@ -1,0 +1,14 @@
+{
+  "entrypoints": {
+    "sh-searchbar": {
+      "js": [
+        "/packs/js/sh-searchbar-4b07d4397e19e9f8ba4a.js"
+      ],
+      "js.map": [
+        "/packs/js/sh-searchbar-4b07d4397e19e9f8ba4a.js.map"
+      ]
+    }
+  },
+  "sh-searchbar.js": "/packs/js/sh-searchbar-4b07d4397e19e9f8ba4a.js",
+  "sh-searchbar.js.map": "/packs/js/sh-searchbar-4b07d4397e19e9f8ba4a.js.map"
+}
