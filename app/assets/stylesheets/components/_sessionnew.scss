@@ -1,6 +1,22 @@
 .ssn-new-container{
   height:  100%;
   background-color:white;
-  font-family: 'Edu TAS Beginner', cursive;
-  font-family: 'Ubuntu Condensed', sans-serif;
+  font-family: $grl-font;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
+
+.ssn-new-form-inputs{
+    display: inline;
+    input{
+        width: 300px;
+        height: 30px;
+    }
+    .ssn-new-remember{
+      input{
+        width: 20px;
+        height: 20px;
+      }
+    }
+} 
