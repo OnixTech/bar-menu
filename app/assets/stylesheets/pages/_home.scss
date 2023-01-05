@@ -4,12 +4,11 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background: url("cabinet.jpg");
+  background: url("table2.jpg");
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
   padding: 0%;
-
 }
 .h-content{
   height: 150px;
@@ -18,7 +17,7 @@
   align-items: center;
   justify-content: center;
   background-color: black;
-  opacity: 70%;
+  opacity: 80%;
   border-radius: 65px;
   padding: 3%;
 }
@@ -28,7 +27,7 @@ h1{
   justify-content: center;
   color: white;
   margin: auto;
-  opacity: 80%;
+  //opacity: 80%;
 }
 .h-btns-div{
 display: flex;

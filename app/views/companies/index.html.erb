@@ -1,34 +1,48 @@
-<div><h1>Index company</h1></div>
-<div>
-  <p>LIST COMPANIES</p>
-  <ul>
+<div class="cmp-index-container">
+  <h3>INDEX</h3>
+  <br>
+  <h5>COMPANIES:</h5>
+  <hr>
+  <div class="cmp-index-cards">
     <% @company.each do |company| %>
       <% if current_user == company.user  %>
-      <li><%= link_to "#{company.name}", company_path(company) %></li>
+        <a href="<%= company_path(company) %>">
+          <div class="cmp-index-card">
+            <h4><%= company.name %></h4>
+            <div class="cmp-index-card-address">
+              <p><%= company.street %> <%= company.number %>, <%= company.post %> <%= company.city %></p>
+            </div>
+          </div>
+        </a>
       <% end %>
     <% end %>
-  </ul>
-<div>
-  <%= link_to "New", new_company_path, class: "h-btn" %>
-</div>
-<br>
-</div>
-<% if current_user.role.name == "master"  %>
+    <a href="<%= new_company_path %>">
+      <div class="cmp-index-card cmp-index-card-add">
+        <h4>ADD</h4>
+      </div>
+    </a>
+  </div>
+  <hr>
   <div>
-    <p>Users:</p>
-    <% @users.each do |user| %>
-      <% if user != current_user %>
-        <ul>
-          <li><%= user.email %> - <%= user.role.name %> - <%= user.active %></li>
-          <% @company.each do |company| %>
-            <% if company.user == user %>
-              <%= company.name %>
-            <% end %>
+    <% if current_user.role.name == "master"  %>
+      <div class="cmp-index-users-list">
+        <p>Users:</p>
+        <% @users.each do |user| %>
+          <% if user != current_user %>
+            <ul>
+              <li><%= user.email %> - <%= user.role.name %> - <%= user.active %></li>
+              <% @company.each do |company| %>
+                <% if company.user == user %>
+                  <%= company.name %>
+                <% end %>
+              <% end %>
+              <br>
+            </ul>
           <% end %>
-          <br>
-        </ul>
-      <% end %>
+        <% end %>
+      </div>
     <% end %>
   </div>
-<% end %>
+  <div></div>
+</div>
 
