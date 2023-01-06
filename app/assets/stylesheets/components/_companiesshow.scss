@@ -45,6 +45,7 @@
   border: solid 1px lightgrey;
   width: 300px!important;
   max-width: 95%!important;
+  min-height: 160px;
   p{
     height: 30px;
     font-size: 22px;
@@ -65,7 +66,7 @@
   p {
     height: 16px;
     font-size: 12px;
-    margin-bottom: 0px;
+    margin-bottom: 5px;
   }
 }
 
@@ -80,7 +81,7 @@
   justify-content: left;
 }
 
-.sh-div-btn-new{
+.sh-div-btn-add{
   display: flex;
   justify-content: center;
 }

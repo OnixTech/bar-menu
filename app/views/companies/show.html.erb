@@ -12,26 +12,30 @@
         <div class="sh-items">
           <% @items.each do |item|  %>
             <% if item.menu_id == menu.id %>
-              <div class="sh-items-li">
+              <div class='sh-items-li-<%= item.id %> sh-items-li'>
                 <div class="sh-items-name">
                   <p><strong><%= item.name %></p><p>$<%= item.price %></strong></p>
                 </div>
                 <p><%= item.description %></p>
-                <div class="sh-div-btn-set-item">
-                  <button class="sh-btn-set-item">EDIT</button>
-                  <button class="sh-btn-set-item">DELETE</button>
-                </div>
+                <% if current_user == @company.user %>
+                  <div class="sh-div-btn-set-item">
+                    <button class="sh-btn-set-item" onclick="editItem(this)" data-id=<%= item.id %>>EDIT</button>
+                    <button class="sh-btn-set-item">DELETE</button>
+                  </div>
+                <% end %>
               </div>
             <% end %>
           <% end %>
         </div>
-        <div class="sh-div-btn-new">
-          <button class="sh-btn-new"> ADD </button>
-        </div>        
+          <% if current_user == @company.user %>
+            <div class="sh-div-btn-add">
+              <button class="sh-btn-add"> ADD </button>
+            </div> 
+          <% end %>       
       </div>
     <% end %>
   </div>
 </div>
 
 <%= javascript_include_tag "packs/sh-searchbar" %>
-
+<%= javascript_include_tag "packs/sh-edit-item" %>
