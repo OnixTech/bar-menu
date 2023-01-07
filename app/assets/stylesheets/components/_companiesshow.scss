@@ -63,10 +63,14 @@
     justify-content: space-between;
     font-size: 15px;
   }
-  p {
+  p,.sh-input-name,.sh-input-price,.sh-input-description{
     height: 16px;
     font-size: 12px;
     margin-bottom: 5px;
+  }
+  .sh-input-price{
+    width: 40px;
+    text-align: end;
   }
 }
 
