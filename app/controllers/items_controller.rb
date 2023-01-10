@@ -22,12 +22,11 @@ class ItemsController < ApplicationController
     end
     
     def update
-      if @item = Item.update(item_params)
-        redirect_to @menu
-      else
-        redirect_to :edit
-        authorize @item
-      end
+      authorize @item
+      @item = Item.find(params[:id])
+      @item.update(item_params)
+      redirect_to company_path(current_user)
+      
     end
       
     def destroy
@@ -39,7 +38,7 @@ class ItemsController < ApplicationController
     private
     
     def item_params
-      item.require(:item).permit(:name)
+      params.require(:item).permit(:name,:price,:description)
     end
     
     def set_items

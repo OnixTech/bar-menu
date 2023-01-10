@@ -8,8 +8,8 @@ Rails.application.routes.draw do
   
   resources :companies
   post '/companies/new' => 'companies#new'
-  resources :menus, only: [:show, :create, :edit, :destroy]
-  resources :items, only: [:new, :edit, :destroy]
+  resources :menus
+  resources :items
   
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
