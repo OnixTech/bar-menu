@@ -25,7 +25,7 @@
                 </div>
                 <div class="sh-item-toggle-<%= item.id %>">
                   <div class="sh-items-name-price">
-                    <p class="sh-item-<%= item.id %>"><strong><%= item.name %></p><p class="sh-item-<%= item.id %>">$<%= item.price %></strong></p>
+                    <p class="sh-item-<%= item.id %>"><strong><%= item.name %></p><p class="sh-item-<%= item.id %>">$<%= '%.2f' % item.price %></strong></p>
                   </div>
                   <p class="sh-item-<%= item.id %>"><%= item.description %></p>
                 </div>

@@ -24,8 +24,8 @@ class ItemsController < ApplicationController
     def update
       @item = Item.find(params[:id])
       @item.update(item_params)
-      #redirect_to @menu
-      #authorize @item
+      redirect_to company_path(current_user)
+      authorize @item
     end
       
     def destroy
