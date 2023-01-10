@@ -26,6 +26,7 @@ if User.count < 1
   master = User.new(
     :email => "a@mail.com",
     :password => "a@mail.com",
+    :active => true,
     :role_id => 1
   )
   master.save!

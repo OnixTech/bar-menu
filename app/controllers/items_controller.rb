@@ -22,10 +22,11 @@ class ItemsController < ApplicationController
     end
     
     def update
+      authorize @item
       @item = Item.find(params[:id])
       @item.update(item_params)
       redirect_to company_path(current_user)
-      authorize @item
+      
     end
       
     def destroy
