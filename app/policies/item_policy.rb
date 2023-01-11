@@ -8,12 +8,12 @@ class ItemPolicy < ApplicationPolicy
      end
   end
   
-  def initializa(user, item)
-    @user = user
+  def initialize(current_user, item)
+    @current_user = current_user
     @item = item
   end  
 
   def update?
-    @user.present? && @user.active?
+    @current_user == @item.menu.company.user && @current_user.active || current_user.role == "master" && current_user.active
   end
 end
