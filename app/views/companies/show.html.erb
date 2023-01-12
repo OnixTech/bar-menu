@@ -1,6 +1,6 @@
 <div class = "sh-container">
-  <h1><%= @company.name %></h1>
-  <h2> Menu </h2><br>
+  <h1><%= @company.name.upcase %></h1>
+  <h2> MENU </h2><br>
   <div class="sh-searchform">
     <input type="text" name="search" autocomplete=”off” id="sh-input"
     onkeyup="searchbar()" placeholder="Search">
@@ -8,32 +8,39 @@
   <div class = "sh-cards row" id="wrapper">
     <% @menus.each do |menu|  %>
       <div class="sh-card col-sm-6 col-md-4 col-xl-2 list">
-        <p><strong><%= menu.subtitle %></strong></p>
+        <p><strong><%= menu.subtitle.upcase %></strong></p>
         <div class="sh-items">
           <% @items.each do |item|  %>
             <% if item.menu_id == menu.id %>
               <div class='sh-items-li'>
-                <div class="sh-form-toggle-<%= item.id %>" style="display: none;">
+                <div class="sh-form-toggle-<%= item.id %> sh-form-inputs" style="display: none;">
                   <%= simple_form_for(item) do |f| %>
-                    <div class="sh-items-name-price">
-                      <%= f.text_area :name, size: "30x16", class:"sh-input-name sh-input-#{item.id} sh-item-#{item.id} sh-item-input-#{item.id}", placeholder: item.name, label: false%>
-                      <%= f.text_area :price, size: "15x16", class:"sh-input-price sh-input-#{item.id} sh-item-#{item.id} sh-item-input-#{item.id}", placeholder: item.price, label: false%>
+                    <div class="sh-inputs-name-price">
+                      <div class="sh-input-name">
+                      <%= f.text_field :name, placeholder: item.name, label: false%>
+                      </div>
+                      <div class="sh-input-price">
+                      <%= f.text_field :price, placeholder: item.price, label: false%>
+                      </div>
                     </div>
-                    <%= f.text_area :description, size: "40x16", class:"sh-input-description sh-input-#{item.id} sh-item-#{item.id} sh-item-input-#{item.id}", placeholder: item.description, label: false%>
-                    <%= f.submit "UPDATE",class:"sh-btn-set-item sh-btn-save-#{item.id}" %>
+                    <div class="sh-input-description">
+                      <%= f.text_field :description, size: "40x16", placeholder: item.description, label: false%>
+                    </div>
+                    <%= f.submit "UPDATE",class:"sh-btn-set-item" %>
                   <% end %>
                 </div>
                 <div class="sh-item-toggle-<%= item.id %>">
                   <div class="sh-items-name-price">
-                    <p class="sh-item-<%= item.id %>"><strong><%= item.name %></p><p class="sh-item-<%= item.id %>">$<%= '%.2f' % item.price %></strong></p>
+                    <p class="sh-item-<%= item.id %>"><strong><%= item.name.upcase %></p><p class="sh-item-<%= item.id %>">$<%= '%.2f' % item.price %></strong></p>
                   </div>
-                  <p class="sh-item-<%= item.id %>"><%= item.description %></p>
+                  <div class="sh-items-description">
+                    <p class="sh-item-<%= item.id %>"><%= item.description %></p>
+                   </div>
                 </div>
                 <% if current_user == @company.user %>
                   <div class="sh-div-btn-set-item">
                     <button class="sh-btn-set-item sh-btn-edit-<%= item.id %>" onclick="editItem(this)" data-id=<%= item.id %>>EDIT</button>
-                    <button class="sh-btn-set-item sh-btn-save-<%= item.id %>" onclick="saveItem(this)" remote="true" style="display: none;" data-id=<%= item.id %>>SAVE!</button>
-                    <button class="sh-btn-set-item">DELETE</button>
+                    <button class="sh-btn-set-item sh-btn-delete-<%= item.id %>">DELETE</button>
                   </div>
                 <% end %>
               </div>
