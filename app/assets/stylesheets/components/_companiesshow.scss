@@ -64,29 +64,51 @@
     justify-content: space-between;
     font-size: 15px;
   }
+  .sh-items-description{
+    font-family: $description-font;
+    height: fit-content;
+  }
+  p{
+    font-size: 12px;
+    margin-bottom: 2px;
+  }
+}
+
+.sh-form-inputs{
+  width: 100%;
   .sh-inputs-name-price{
+    font-size: 12px;
+    margin-bottom: 4px;
     display: flex;
-    justify-content: space-between;
+    .sh-input-name{
+      width: 80%;
+      input{
+        width: 100%;
+      }
+    }
+    .sh-input-price{
+      width: 20%;
+      text-align: end;
+      input{
+        width: 100%;
+        text-align: end;
+      }
+    }
+  }
+  .sh-input-description{
+    width: 100%;
+    font-size: 12px;
+    margin-bottom: 5px;
     input{
       width: 100%;
     }
   }
-  .sh-items-description{
-    font-family: $description-font;
-    height: fit-content;
+  .sh-input-btns{
+    display: flex;
+    justify-content: center;
+  }
+}
 
-  }
-  p,.sh-input-name,.sh-input-price,.sh-input-description{
-    font-size: 12px!important;
-    margin-bottom: 2px!important;
-  }
-}
-sh.sh-input-price{
-  input{
-    width: 100%;
-    height: fit-content;
-  }
-}
 
 .sh-link{
   text-decoration: inherit;
@@ -103,6 +125,6 @@ sh.sh-input-price{
 
 .sh-div-btn-add{
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
   margin-bottom: 8px;
 }

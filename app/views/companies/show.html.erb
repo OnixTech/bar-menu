@@ -17,16 +17,19 @@
                   <%= simple_form_for(item) do |f| %>
                     <div class="sh-inputs-name-price">
                       <div class="sh-input-name">
-                      <%= f.text_field :name, placeholder: item.name, label: false%>
+                        <%= f.text_field :name, placeholder: "#{item.name}", value:"", label: false %>
                       </div>
                       <div class="sh-input-price">
-                      <%= f.text_field :price, placeholder: item.price, label: false%>
+                        <%= f.text_field :price, placeholder: "#{item.price}", value:"", label: false%>
                       </div>
                     </div>
                     <div class="sh-input-description">
-                      <%= f.text_field :description, size: "40x16", placeholder: item.description, label: false%>
+                      <%= f.text_field :description, placeholder: "#{item.description}", value:"", label: false%>
                     </div>
-                    <%= f.submit "UPDATE",class:"sh-btn-set-item" %>
+                    <div class="sh-input-btns">
+                      <%= f.submit "UPDATE",class:"sh-btn-set-item" %>
+                      <%= f.submit "RESET", type:"reset", class:"sh-btn-set-item" %>
+                    </div>
                   <% end %>
                 </div>
                 <div class="sh-item-toggle-<%= item.id %>">
@@ -35,14 +38,14 @@
                   </div>
                   <div class="sh-items-description">
                     <p class="sh-item-<%= item.id %>"><%= item.description %></p>
-                   </div>
+                  </div>
                 </div>
-                <% if current_user == @company.user %>
-                  <div class="sh-div-btn-set-item">
+                <div class="sh-div-btn-set-item">
+                  <% if current_user == @company.user %>
                     <button class="sh-btn-set-item sh-btn-edit-<%= item.id %>" onclick="editItem(this)" data-id=<%= item.id %>>EDIT</button>
                     <button class="sh-btn-set-item sh-btn-delete-<%= item.id %>">DELETE</button>
-                  </div>
-                <% end %>
+                  <% end %>
+                </div>
               </div>
             <% end %>
           <% end %>
