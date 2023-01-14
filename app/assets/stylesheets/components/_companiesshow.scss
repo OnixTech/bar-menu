@@ -82,16 +82,26 @@
     display: flex;
     .sh-input-name{
       width: 80%;
+      display: flex;
+      justify-content: center;
+      margin: 1px;
       input{
         width: 100%;
+        border: solid 1px lightgray;
+        border-right: 0px;
       }
     }
     .sh-input-price{
       width: 20%;
       text-align: end;
+      display: flex;
+      justify-content: center;
+      margin: 1px;
       input{
         width: 100%;
         text-align: end;
+        border: solid 1px lightgray;
+        border-right: 0px;
       }
     }
   }
@@ -99,13 +109,22 @@
     width: 100%;
     font-size: 12px;
     margin-bottom: 5px;
+    display: flex;
+    justify-content: center;
     input{
       width: 100%;
+      border: solid 1px lightgray;
+      border-right: 0px;
     }
   }
   .sh-input-btns{
     display: flex;
     justify-content: center;
+  }
+  button{
+    border: solid 1px lightgray;
+    border-left: 0px;
+    background-color: white;
   }
 }
 

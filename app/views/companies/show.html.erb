@@ -17,14 +17,17 @@
                   <%= simple_form_for(item) do |f| %>
                     <div class="sh-inputs-name-price">
                       <div class="sh-input-name">
-                        <%= f.text_field :name, class: "sh-input-name-#{item.id}", placeholder: "#{item.name}", onclick: "nameInput(#{item.id})", label: false %>
+                        <%= f.text_field :name, class: "sh-input-name-#{item.id}", placeholder: "#{item.name}", label: false %>
+                        <button  onclick="nameInput(<%= item.id %>); return false" return false>X</button>
                       </div>
                       <div class="sh-input-price">
-                        <%= f.text_field :price, class: "sh-input-price-#{item.id}", placeholder: "#{item.price}", onclick: "priceInput(#{item.id})", label: false%>
+                        <%= f.text_field :price, class: "sh-input-price-#{item.id}", placeholder: "#{item.price}", label: false%>
+                        <button  onclick="priceInput(<%= item.id %>); return false">X</button>
                       </div>
                     </div>
                     <div class="sh-input-description">
-                      <%= f.text_field :description, class: "sh-input-description-#{item.id}", placeholder: "#{item.description}", onclick: "descriptionInput(#{item.id})", label: false%>
+                      <%= f.text_field :description, class: "sh-input-description-#{item.id}", placeholder: "#{item.description}", label: false%>
+                      <button  onclick="descriptionInput(<%= item.id %>); return false">X</button>
                     </div>
                     <div class="sh-input-btns">
                       <%= f.submit "UPDATE",class:"sh-btn-set-item" %>
