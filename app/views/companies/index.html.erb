@@ -6,21 +6,31 @@
   <div class="cmp-index-cards row">
     <% @company.each do |company| %>
       <% if current_user == company.user  %>
-        <a href="<%= company_path(company) %>"class="cmp-index-card col-sm-6 col-md-4 col-xl-1 list">
-          <div>  
-            <h4><%= company.name %></h4>
-            <div class="cmp-index-card-address">
-              <p><%= company.street %> <%= company.number %>, <%= company.post %> <%= company.city %></p>
-            </div>   
+        <div class="cmp-index-card-btns col-sm-6 col-md-4 col-xl-1 list">
+          <a href="<%= company_path(company) %>"class="cmp-index-card">
+            <div class="cmp-index-card-content">
+              <div class="cmp-index-card-tittle"> 
+                <h4><%= company.name.upcase %></h4>
+              </div>
+              <div class="cmp-index-card-address">
+                <p><%= company.street %> <%= company.number %>, <%= company.post %> <%= company.city %></p>
+              </div>   
+            </div>
+          </a>
+          <div class="cmp-index-card-set-btns">
+          <button class="cmp-index-card-edit-btn">EDIT</button>
+          <button class="cmp-index-card-delete-btn">DELETE</button>
           </div>
-        </a>
+        </div>
       <% end %>
     <% end %>
-    <a href="<%= new_company_path %>"  class="cmp-index-card cmp-index-card-add col-sm-6 col-md-4 col-xl-1 list">
-      <div>
+    <div  class="cmp-index-card-btns-add col-sm-6 col-md-4 col-xl-1 list">
+    <a href="<%= new_company_path %>"  class="cmp-index-card col-sm-6 col-md-4 col-xl-1 list">
+      <div class="cmp-index-card-content-add">
         <h4>ADD</h4>
       </div>
-    </a>     
+    </a>
+    </div>    
   </div>
   <hr>
   <div>
