@@ -25,9 +25,7 @@ class ItemsController < ApplicationController
       authorize @item
       @item = Item.find(params[:id])
       @item.update(item_params)
-      @modPrice = 0.00
       redirect_to company_path(current_user)
-      
     end
       
     def destroy
