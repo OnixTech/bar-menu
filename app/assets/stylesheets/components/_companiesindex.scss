@@ -1,7 +1,9 @@
-
 .cmp-index-container{
+  height: 100%;
+  width: 100%;
   display: inline;
   font-family: $grl-font;
+  background-color: #ffc107;
   h3{
     text-align: center;
     margin: 20px;
@@ -12,54 +14,131 @@
   }
 }
 
+.clearfix:after {
+  content: ".";
+  display: block;
+  clear: both;
+  visibility: hidden;
+  line-height: 0;
+  height: 0;
+}
+
+.clearfix {
+  display: inline-block;
+}
+
+html[xmlns] .clearfix {
+  display: block;
+}
+
+* html .clearfix {
+  height: 1%;
+}
+
 .cmp-index-cards{
   display: flex;
   justify-content: center;
   align-items: center;
   a, a:hover{
-    color: inherit;
-    text-decoration: none;
+    color: inherit!important;
+    text-decoration: inherit!important;
+  }
+  .cmp-index-card-btns{
+    display: inline;
     margin: 10px;
+    width: 250px!important;
+    height: 150px!important;
+    box-shadow: 0 4px 8px 0;
+    .cmp-index-card{
+      background-color: #a2a2a2;
+      width: 100%;
+      height: 120px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      .cmp-index-card-content{
+        width: 90%;
+        height: 90%;
+        display: inline;
+        color: white;
+        //border: solid 2px gold;
+        border-radius: 5px;
+        padding: 20px;
+        .cmp-index-card-tittle{
+          text-align: left;
+          h4{
+            font-size: 16px;
+          }
+        }
+        .cmp-index-card-address{
+          text-align: left;
+          p{
+            font-size: 11px;
+          }
+        }
+      }
+    }
+    .cmp-index-card-set-btns{
+      width: 250px!important;
+      height: 30px!important;
+      display: flex;
+      justify-content: center;
+      .cmp-index-card-edit-btn{
+        width: 100%;
+        height: 100%;
+      }
+      .cmp-index-card-delete-btn{
+        width: 100%;
+        height: 100%;
+      }
+    }
   }
-}
-
-.cmp-index-card{
-  position: relative;
-  background-color: $btn-color;
-  width: 120px;
-  height: 120px;
-  border: solid 2px black;
-  border-radius: 8px;
-  text-align: center;
-  h5{
-    margin-top: 10px;
-    font-size: 10px;
-  }
-  .cmp-index-card-address{
-    position: absolute;
-    margin: 2px;
-    bottom: 0px;
-    p{
-      text-align: left;
-      font-size: 10px;
+  .cmp-index-card-btns-add{
+    display: inline;
+    margin: 10px;
+    width: 250px!important;
+    height: 150px!important;
+    box-shadow: 0 4px 8px 0;
+    .cmp-index-card{
+      background-color: #747171;
+      width: 100%;
+      height: 150px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      .cmp-index-card-content-add{
+        width: 90%;
+        height: 90%;
+        //border: solid 2px gold;
+        border-radius: 5px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: white;
+      }
     }
   }
 }
-.cmp-index-card-add{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
 
-.cmp-index-users-list{
+.cmp-index-users-list-container{
   
-  p{
-    text-align: left;
+  .cmp-index-users-list{
+    margin: 20px;
+    p{
+      text-align: left;
+      padding: 10px;
+    }
   }
 }
-
 .cmp-index-btn-lgo{
   display: flex;
   justify-content: end;
-  margin: 50px;
+  .h-btn{
+    margin: 30px;
+  }
+}
+
+.row>*{
+  padding-right: 0px!important;
+  padding-left: 0px!important;
 }

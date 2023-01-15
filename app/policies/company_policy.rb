@@ -6,6 +6,10 @@ class CompanyPolicy < ApplicationPolicy
     end
   end
 
+  def index?
+    user.role == "master"
+  end
+
   def show?
     true
   end
