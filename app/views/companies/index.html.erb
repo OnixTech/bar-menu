@@ -3,10 +3,10 @@
   <br>
   <h5>COMPANIES:</h5>
   <hr>
-  <div class="cmp-index-cards">
+  <div class="cmp-index-cards row">
     <% @company.each do |company| %>
       <% if current_user == company.user  %>
-        <a href="<%= company_path(company) %>">
+        <a href="<%= company_path(company) %>" class="col-sm-3 col-md-2 col-xl-1 list">
           <div class="cmp-index-card">
             <h4><%= company.name %></h4>
             <div class="cmp-index-card-address">
@@ -16,13 +16,13 @@
         </a>
       <% end %>
     <% end %>
-    <a href="<%= new_company_path %>">
-      <div class="cmp-index-card cmp-index-card-add">
-        <h4>ADD</h4>
-      </div>
-    </a>
   </div>
   <hr>
+  <a href="<%= new_company_path %>">
+    <div class="cmp-index-card cmp-index-card-add">
+      <h4>ADD</h4>
+    </div>
+  </a>
   <div>
     <% if current_user.role.name == "master"  %>
       <div class="cmp-index-users-list">
