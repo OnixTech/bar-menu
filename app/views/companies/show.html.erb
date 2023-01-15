@@ -1,10 +1,28 @@
 <div class = "sh-container">
   <h1><%= @company.name.upcase %></h1>
   <h2> MENU </h2><br>
+  <p></p>
   <div class="sh-searchform">
     <input type="text" name="search" autocomplete=”off” id="sh-input"
     onkeyup="searchbar()" placeholder="Search">
   </div><br>
+  <% if current_user == @company.user %>
+    <div class="sh-chage-prices">
+      <div class="sh-input-chage-prices">
+        <p>CHANGE PRICES:</p>
+        <input type="number" class="sh-input-modPrice" placeholder="0.00%" step="0.1" value=<%= @modPrice %> >
+        <p>%</p>
+      </div>
+      <div class="sh-checkbox-chage-prices">
+        <% @menus.each do |menu|  %>
+          <div class="sh-checkbox col-sm-4 col-md-2 col-xl-1 list">
+          <input type="checkbox">
+          <label><%= menu.subtitle %></label>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
   <div class = "sh-cards row" id="wrapper">
     <% @menus.each do |menu|  %>
       <div class="sh-card col-sm-6 col-md-4 col-xl-2 list">

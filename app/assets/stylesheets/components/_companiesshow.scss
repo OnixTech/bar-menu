@@ -36,6 +36,40 @@
   }
 }
 
+.sh-chage-prices{
+  text-align: center;
+}
+
+.sh-input-chage-prices{
+  display: flex;
+  justify-content: center;
+  height: 20px;
+  p{
+    font-size: 18px;
+  }
+  input{
+    width: 53px;
+    height: 20px;
+    margin-left: 5px;
+  }
+}
+
+.sh-checkbox-chage-prices{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: fit-content;
+  input{
+    margin: 10px;
+    margin-right: 2px;
+    width: 15px;
+    height: 15px;
+  }
+  label{
+    margin-right: 10px;
+  }
+}
+
 .sh-cards{
   justify-content: center;
 }
