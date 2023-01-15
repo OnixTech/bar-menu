@@ -1,4 +1,4 @@
-<div class="cmp-index-container">
+<div class="cmp-index-container clearfix">
   <h3>INDEX</h3>
   <br>
   <h5>COMPANIES:</h5>
@@ -6,24 +6,34 @@
   <div class="cmp-index-cards row">
     <% @company.each do |company| %>
       <% if current_user == company.user  %>
-        <a href="<%= company_path(company) %>" class="col-sm-6 col-md-4 col-xl-2 list">
-          <div class="cmp-index-card">
-            <h4><%= company.name %></h4>
-            <div class="cmp-index-card-address">
-              <p><%= company.street %> <%= company.number %>, <%= company.post %> <%= company.city %></p>
+        <div class="cmp-index-card-btns col-sm-6 col-md-4 col-xl-1 list">
+          <a href="<%= company_path(company) %>"class="cmp-index-card">
+            <div class="cmp-index-card-content">
+              <div class="cmp-index-card-tittle"> 
+                <h4><%= company.name.upcase %></h4>
+              </div>
+              <div class="cmp-index-card-address">
+                <p><%= company.street %> <%= company.number %>, <%= company.post %> <%= company.city %></p>
+              </div>   
             </div>
+          </a>
+          <div class="cmp-index-card-set-btns">
+          <button class="cmp-index-card-edit-btn">EDIT</button>
+          <button class="cmp-index-card-delete-btn">DELETE</button>
           </div>
-        </a>
+        </div>
       <% end %>
     <% end %>
+    <div  class="cmp-index-card-btns-add col-sm-6 col-md-4 col-xl-1 list">
+    <a href="<%= new_company_path %>"  class="cmp-index-card col-sm-6 col-md-4 col-xl-1 list">
+      <div class="cmp-index-card-content-add">
+        <h4>ADD</h4>
+      </div>
+    </a>
+    </div>    
   </div>
   <hr>
-  <a href="<%= new_company_path %>">
-    <div class="cmp-index-card cmp-index-card-add">
-      <h4>ADD</h4>
-    </div>
-  </a>
-  <div>
+  <div class="cmp-index-users-list-container">
     <% if current_user.role.name == "master"  %>
       <div class="cmp-index-users-list">
         <p>Users:</p>
@@ -44,7 +54,7 @@
     <% end %>
   </div>
   <div class="cmp-index-btn-lgo">
-  <%= button_to " Log out ",  destroy_user_session_path, class: "h-btn", method: :get %>
+    <%= button_to " Log out ",  destroy_user_session_path, class: "h-btn", method: :get %>
   </div>
 </div>
 
