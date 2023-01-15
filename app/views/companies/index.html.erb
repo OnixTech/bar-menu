@@ -6,7 +6,7 @@
   <div class="cmp-index-cards row">
     <% @company.each do |company| %>
       <% if current_user == company.user  %>
-        <a href="<%= company_path(company) %>" class="col-sm-3 col-md-2 col-xl-1 list">
+        <a href="<%= company_path(company) %>" class="col-sm-6 col-md-4 col-xl-2 list">
           <div class="cmp-index-card">
             <h4><%= company.name %></h4>
             <div class="cmp-index-card-address">
