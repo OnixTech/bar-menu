@@ -1,7 +1,9 @@
-
 .cmp-index-container{
+  height: 100%;
+  width: 100%;
   display: inline;
   font-family: $grl-font;
+  background-color: #ffc107;
   h3{
     text-align: center;
     margin: 20px;
@@ -10,6 +12,27 @@
     text-align: left;
     margin-left: 3vh;
   }
+}
+
+.clearfix:after {
+  content: ".";
+  display: block;
+  clear: both;
+  visibility: hidden;
+  line-height: 0;
+  height: 0;
+}
+
+.clearfix {
+  display: inline-block;
+}
+
+html[xmlns] .clearfix {
+  display: block;
+}
+
+* html .clearfix {
+  height: 1%;
 }
 
 .cmp-index-cards{
@@ -27,7 +50,7 @@
     height: 150px!important;
     box-shadow: 0 4px 8px 0;
     .cmp-index-card{
-      background-color: black;
+      background-color: #a2a2a2;
       width: 100%;
       height: 120px;
       display: flex;
@@ -38,7 +61,7 @@
         height: 90%;
         display: inline;
         color: white;
-        border: solid 2px gold;
+        //border: solid 2px gold;
         border-radius: 5px;
         padding: 20px;
         .cmp-index-card-tittle{
@@ -77,7 +100,7 @@
     height: 150px!important;
     box-shadow: 0 4px 8px 0;
     .cmp-index-card{
-      background-color: black;
+      background-color: #747171;
       width: 100%;
       height: 150px;
       display: flex;
@@ -86,7 +109,7 @@
       .cmp-index-card-content-add{
         width: 90%;
         height: 90%;
-        border: solid 2px gold;
+        //border: solid 2px gold;
         border-radius: 5px;
         display: flex;
         justify-content: center;
@@ -97,16 +120,22 @@
   }
 }
 
-.cmp-index-users-list{
-  p{
-    text-align: left;
+.cmp-index-users-list-container{
+  
+  .cmp-index-users-list{
+    margin: 20px;
+    p{
+      text-align: left;
+      padding: 10px;
+    }
   }
 }
-
 .cmp-index-btn-lgo{
   display: flex;
   justify-content: end;
-  margin: 50px;
+  .h-btn{
+    margin: 30px;
+  }
 }
 
 .row>*{

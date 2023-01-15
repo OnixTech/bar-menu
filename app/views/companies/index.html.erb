@@ -1,4 +1,4 @@
-<div class="cmp-index-container">
+<div class="cmp-index-container clearfix">
   <h3>INDEX</h3>
   <br>
   <h5>COMPANIES:</h5>
@@ -33,7 +33,7 @@
     </div>    
   </div>
   <hr>
-  <div>
+  <div class="cmp-index-users-list-container">
     <% if current_user.role.name == "master"  %>
       <div class="cmp-index-users-list">
         <p>Users:</p>
@@ -54,7 +54,7 @@
     <% end %>
   </div>
   <div class="cmp-index-btn-lgo">
-  <%= button_to " Log out ",  destroy_user_session_path, class: "h-btn", method: :get %>
+    <%= button_to " Log out ",  destroy_user_session_path, class: "h-btn", method: :get %>
   </div>
 </div>
 
