@@ -40,6 +40,9 @@ html[xmlns] .clearfix {
   justify-content: center;
   align-items: center;
   background-color: #ffc107;
+  hr{
+    margin: 20px;
+  }
   a, a:hover{
     color: inherit!important;
     text-decoration: inherit!important;
@@ -48,27 +51,28 @@ html[xmlns] .clearfix {
     display: inline;
     margin: 10px;
     width: 250px!important;
-    height: 150px!important;
+    height: 100px!important;
     box-shadow: 0 4px 8px 0;
     .cmp-index-card{
-      background-color: #a2a2a2;
+      background-color: green;
       width: 100%;
-      height: 120px;
+      height: 100px;
       display: flex;
       justify-content: center;
       align-items: center;
       .cmp-index-card-content{
         width: 90%;
         height: 90%;
+        border: solid 1px white;
         display: inline;
         color: white;
-        //border: solid 2px gold;
         border-radius: 5px;
         padding: 20px;
         .cmp-index-card-tittle{
           text-align: left;
           h4{
             font-size: 16px;
+            margin: 0;
           }
         }
         .cmp-index-card-address{
@@ -81,9 +85,10 @@ html[xmlns] .clearfix {
     }
     .cmp-index-card-set-btns{
       width: 250px!important;
-      height: 30px!important;
+      height: 20px!important;
       display: flex;
       justify-content: center;
+      align-items: center;
       .cmp-index-card-edit-btn{
         width: 100%;
         height: 100%;
@@ -93,39 +98,36 @@ html[xmlns] .clearfix {
         height: 100%;
       }
       button{
-        all:unset;
         text-align: center;
+        font-size: 12px;
         border: solid 1px gray;
         background-color: white;
-      }
-    }
-  }
-  .cmp-index-card-btns-add{
-    display: inline;
-    margin: 10px;
-    width: 250px!important;
-    height: 150px!important;
-    box-shadow: 0 4px 8px 0;
-    .cmp-index-card{
-      background-color: #747171;
-      width: 100%;
-      height: 150px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      .cmp-index-card-content-add{
-        width: 90%;
-        height: 90%;
-        border-radius: 5px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        color: white;
+        box-shadow: 0 4px 8px 0;
       }
     }
   }
 }
-
+.cmp-index-card-btns-add{
+  display: flex;
+  justify-content: center;
+  a, a:hover{
+    color: inherit!important;
+    text-decoration: inherit!important;
+  }
+  .cmp-index-card-content-add{
+    background-color: green;
+    width: 250px;
+    height: 30px;
+    border-radius: 5px;
+    border: solid 2px white;
+    text-align: center;
+    box-shadow: 0 4px 8px 0;
+    p{
+      font-size: 17px;
+      color: white;
+    }
+  }
+}
 .cmp-index-users-list-container{
   background-color: #ffc107;
   .cmp-index-users-list{
@@ -146,9 +148,4 @@ html[xmlns] .clearfix {
 .row>*{
   padding-right: 0px!important;
   padding-left: 0px!important;
-}
-hr{
-  //background-color: #ffc107;
-  //margin: 0!important;
-  color: black!important;
 }
