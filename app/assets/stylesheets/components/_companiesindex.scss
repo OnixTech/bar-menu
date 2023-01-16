@@ -39,6 +39,7 @@ html[xmlns] .clearfix {
   display: flex;
   justify-content: center;
   align-items: center;
+  background-color: #ffc107;
   a, a:hover{
     color: inherit!important;
     text-decoration: inherit!important;
@@ -91,6 +92,12 @@ html[xmlns] .clearfix {
         width: 100%;
         height: 100%;
       }
+      button{
+        all:unset;
+        text-align: center;
+        border: solid 1px gray;
+        background-color: white;
+      }
     }
   }
   .cmp-index-card-btns-add{
@@ -109,7 +116,6 @@ html[xmlns] .clearfix {
       .cmp-index-card-content-add{
         width: 90%;
         height: 90%;
-        //border: solid 2px gold;
         border-radius: 5px;
         display: flex;
         justify-content: center;
@@ -121,18 +127,17 @@ html[xmlns] .clearfix {
 }
 
 .cmp-index-users-list-container{
-  
+  background-color: #ffc107;
   .cmp-index-users-list{
-    margin: 20px;
     p{
       text-align: left;
-      padding: 10px;
     }
   }
 }
 .cmp-index-btn-lgo{
   display: flex;
   justify-content: end;
+  background-color: #ffc107;
   .h-btn{
     margin: 30px;
   }
@@ -141,4 +146,9 @@ html[xmlns] .clearfix {
 .row>*{
   padding-right: 0px!important;
   padding-left: 0px!important;
+}
+hr{
+  //background-color: #ffc107;
+  //margin: 0!important;
+  color: black!important;
 }
