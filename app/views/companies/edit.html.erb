@@ -1,0 +1,18 @@
+<div class="cmp-new-container">
+  <div class="cmp-new-content">
+    <h1>Edit company</h1>
+    <%= simple_form_for(company) do |f| %>
+      <div class="form-inputs cmp-new-form-inputs">
+        <%= f.input :name, class:"form-item"%>
+        <%= f.input :city, class:"form-item" %>
+        <%= f.input :suburb, class:"form-item" %>
+        <%= f.input :street, class:"form-item" %>
+        <%= f.input :number, class:"form-item" %>
+        <%= f.input :post, class:"form-item" %>
+      </div>
+      <div class="form-actions">
+        <%= f.submit class:"New" %>
+      </div>
+    <% end %>
+  </div>
+</div>

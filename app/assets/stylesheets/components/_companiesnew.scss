@@ -1,0 +1,18 @@
+.cmp-new-container{
+    height:  100%;
+    background-color:white;
+    font-family: $grl-font;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    h1{
+      color: black;
+    }
+  }
+.cmp-new-form-inputs{
+    display: inline;
+    input{
+        width: 300px;
+        height: 30px;
+    }
+}
