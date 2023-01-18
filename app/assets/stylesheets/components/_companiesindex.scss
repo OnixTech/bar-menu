@@ -35,7 +35,7 @@ html[xmlns] .clearfix {
   height: 1%;
 }
 .cmp-index-cards{
-  height: 130px;
+  min-height: 130px;
   justify-content: center;
   a, a:hover{
     color: inherit!important;
@@ -43,7 +43,7 @@ html[xmlns] .clearfix {
   }
   .cmp-index-card-btns{
     display: inline;
-    margin: 10px;
+    margin: 20px!important;
     width: 250px!important;
     height: 100px!important;
     box-shadow: 0 4px 8px 0;
