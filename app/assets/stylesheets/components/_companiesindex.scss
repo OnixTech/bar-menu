@@ -3,7 +3,7 @@
   width: 100%;
   display: inline;
   font-family: $grl-font;
-  background-color: #ffc107;
+  background-color: white;
   h3{
     text-align: center;
     margin: 20px;
@@ -34,15 +34,9 @@ html[xmlns] .clearfix {
 * html .clearfix {
   height: 1%;
 }
-
 .cmp-index-cards{
-  display: flex;
+  height: 130px;
   justify-content: center;
-  align-items: center;
-  background-color: #ffc107;
-  hr{
-    margin: 20px;
-  }
   a, a:hover{
     color: inherit!important;
     text-decoration: inherit!important;
@@ -53,21 +47,23 @@ html[xmlns] .clearfix {
     width: 250px!important;
     height: 100px!important;
     box-shadow: 0 4px 8px 0;
+    margin: 5px;
     .cmp-index-card{
-      background-color: green;
       width: 100%;
       height: 100px;
+      border: solid 1px gray;
+      border-bottom: 0px;
       display: flex;
       justify-content: center;
       align-items: center;
       .cmp-index-card-content{
-        width: 90%;
-        height: 90%;
-        border: solid 1px white;
+        width: 80%;
+        height: 80%;
+        border: solid 1px black;
         display: inline;
-        color: white;
+        color: black;
         border-radius: 5px;
-        padding: 20px;
+        padding: 5px;
         .cmp-index-card-tittle{
           text-align: left;
           h4{
@@ -107,30 +103,41 @@ html[xmlns] .clearfix {
     }
   }
 }
+
 .cmp-index-card-btns-add{
+  height: 30px;
   display: flex;
   justify-content: center;
+  margin: 5px;
   a, a:hover{
     color: inherit!important;
     text-decoration: inherit!important;
   }
   .cmp-index-card-content-add{
-    background-color: green;
+    background-color: white;
     width: 250px;
-    height: 30px;
+    height: 100%;
     border-radius: 5px;
-    border: solid 2px white;
-    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     box-shadow: 0 4px 8px 0;
+    margin: 5px;
     p{
+      margin: 5px;
       font-size: 17px;
-      color: white;
+      color: black;
     }
   }
 }
+
 .cmp-index-users-list-container{
-  background-color: #ffc107;
+  background-color: white;
+  display: flex;
+  justify-content: space-around;
+  padding: 5px;
   .cmp-index-users-list{
+    padding: 8px;
     p{
       text-align: left;
     }
@@ -138,10 +145,12 @@ html[xmlns] .clearfix {
 }
 .cmp-index-btn-lgo{
   display: flex;
-  justify-content: end;
-  background-color: #ffc107;
+  justify-content: center;
+  align-items: flex-end;
+  padding: 4px;
   .h-btn{
-    margin: 30px;
+    margin: 10px;
+    box-shadow: 0 3px 6px 0;
   }
 }
 
