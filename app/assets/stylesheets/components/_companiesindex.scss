@@ -94,6 +94,8 @@ html[xmlns] .clearfix {
         height: 100%;
       }
       button{
+        color: inherit!important;
+        text-decoration: inherit!important;
         text-align: center;
         font-size: 12px;
         border: solid 1px gray;
