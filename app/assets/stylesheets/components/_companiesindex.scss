@@ -99,7 +99,7 @@ html[xmlns] .clearfix {
         text-align: center;
         font-size: 12px;
         border: solid 1px gray;
-        background-color: white;
+        background-color: $btn-color;
         box-shadow: 0 4px 8px 0;
       }
     }
@@ -116,7 +116,7 @@ html[xmlns] .clearfix {
     text-decoration: inherit!important;
   }
   .cmp-index-card-content-add{
-    background-color: white;
+    background-color: $btn-color;
     width: 250px;
     height: 100%;
     border-radius: 5px;
