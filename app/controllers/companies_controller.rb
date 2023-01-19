@@ -45,9 +45,9 @@ class CompaniesController < ApplicationController
   end
   
   def destroy
+    authorize @company
     @company.destroy
     redirect_to companies_path
-    authorize @company
   end
 
   private

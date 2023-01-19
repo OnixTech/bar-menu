@@ -20,7 +20,7 @@
           </a>
           <div class="cmp-index-card-set-btns">
             <%= button_to "EDIT", edit_company_path(company), method: :get %>
-            <%= button_to "DELETE" %>
+            <%= button_to "DELETE", company_path(company), method: :delete %>
           </div>
         </div>
       <% end %>

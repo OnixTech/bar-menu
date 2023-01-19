@@ -33,7 +33,7 @@ class CompanyPolicy < ApplicationPolicy
   end
 
   def destroy?
-    record.user == user
+    authorize_user || authorize_master
   end
 
   private
