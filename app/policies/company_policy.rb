@@ -22,8 +22,12 @@ class CompanyPolicy < ApplicationPolicy
     create?
   end
 
+  def edit?
+    @current_user == @company
+  end
+
   def update?
-    record.user == user
+    true
   end
 
   def destroy?

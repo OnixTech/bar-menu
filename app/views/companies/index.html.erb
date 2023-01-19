@@ -4,6 +4,7 @@
   <h5>COMPANIES:</h5>
   <hr>
   <div class="cmp-index-cards row">
+    <% @company = @company.order(:id) %>
     <% @company.each do |company| %>
       <% if current_user == company.user  %>
         <div class="cmp-index-card-btns col-sm-6 col-md-4 col-xl-1 list">
@@ -18,8 +19,8 @@
             </div>
           </a>
           <div class="cmp-index-card-set-btns">
-            <button class="cmp-index-card-edit-btn">EDIT</button>
-            <button class="cmp-index-card-delete-btn">DELETE</button>
+            <%= button_to "EDIT", edit_company_path(company), method: :get %>
+            <%= button_to "DELETE" %>
           </div>
         </div>
       <% end %>

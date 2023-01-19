@@ -1,7 +1,7 @@
 <div class="cmp-new-container">
   <div class="cmp-new-content">
     <h1>Edit company</h1>
-    <%= simple_form_for(company) do |f| %>
+    <%= simple_form_for(@company) do |f| %>
       <div class="form-inputs cmp-new-form-inputs">
         <%= f.input :name, class:"form-item"%>
         <%= f.input :city, class:"form-item" %>
