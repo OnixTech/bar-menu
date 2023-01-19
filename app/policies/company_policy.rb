@@ -1,4 +1,5 @@
 class CompanyPolicy < ApplicationPolicy
+
   class Scope < Scope
     # NOTE: Be explicit about which records you allow access to!
     def resolve
@@ -6,9 +7,10 @@ class CompanyPolicy < ApplicationPolicy
     end
   end
 
-  def index?
-    user.role == "master"
-  end
+  def initialize(current_user, company)
+    @current_user = current_user
+    @company = company
+  end 
 
   def show?
     true
@@ -23,14 +25,29 @@ class CompanyPolicy < ApplicationPolicy
   end
 
   def edit?
-    @current_user == @company
+    authorize_user || authorize_master
   end
 
   def update?
-    true
+    user_active || authorize_master
   end
 
   def destroy?
     record.user == user
   end
+
+  private
+
+  def authorize_user
+    @current_user.id == @company.user_id
+  end
+
+  def authorize_master
+    @current_user.role.name == "master"
+  end
+
+  def user_active
+    @current_user.active?
+  end
+
 end
