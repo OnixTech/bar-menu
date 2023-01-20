@@ -1,15 +1,17 @@
 class CompaniesController < ApplicationController
-
+  before_action :set_companies, only: [:show, :edit, :update, :destroy]
+  
   def index
     @company = policy_scope(Company)
     if current_user.role.name == "master"
       @users = User.all
-      @companies = Company.all
+      @companies = Company.where(user_id: current_user.id)
+    elsif current_user.present?
+      @companies = Company.where(user_id: current_user.id)
     end
   end
 
   def show
-    @company = Company.find(params[:id])
     authorize @company
     @companies = Company.where(user_id: current_user)
     @menus = Menu.where(company_id: @company.id)
@@ -37,18 +39,15 @@ class CompaniesController < ApplicationController
   end
 
   def update
-    if @company = Company.update(company_params)
-      redirect_to @company
-    else
-      redirect_to :edit
     authorize @company
-    end
+    @company.update(company_params)
+    redirect_to companies_path(@company)
   end
   
   def destroy
+    authorize @company
     @company.destroy
     redirect_to companies_path
-    authorize @company
   end
 
   private

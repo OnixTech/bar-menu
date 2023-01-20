@@ -69,6 +69,9 @@
     height: 30px;
     font-size: 22px;
   }
+  .sh-card-content{
+    margin: 4px;
+  }
 }
 
 .sh-items-li{
@@ -84,11 +87,11 @@
   }
   .sh-items-description{
     font-family: $description-font;
-    height: fit-content;
   }
   p{
     font-size: 12px;
     margin-bottom: 2px;
+    height: auto;
   }
 }
 
