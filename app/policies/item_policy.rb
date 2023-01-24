@@ -14,6 +14,11 @@ class ItemPolicy < ApplicationPolicy
   end  
 
   def update?
-    @current_user == @item.menu.company.user && @current_user.active || current_user.role == "master" && current_user.active
+   # @current_user == @item.menu.company.user && @current_user.active || current_user.role == "master" && current_user.active
+   true
+  end
+
+  def create?
+    true
   end
 end

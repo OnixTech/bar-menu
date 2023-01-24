@@ -7,14 +7,10 @@ class ItemsController < ApplicationController
     end
     
     def create
-      @item = Item.new(items_params)
-      @item.menu = @menu.id
-      if @item.save
-        redirect_to company_path(current_user)
-      else
-        render :new
-      end
+      @item = Item.new(item_params)
       authorize @item
+      @item.save!
+      redirect_to company_path(current_user)
     end
     
     def edit
@@ -37,7 +33,7 @@ class ItemsController < ApplicationController
     private
     
     def item_params
-      params.require(:item).permit(:name,:price,:description)
+      params.require(:item).permit(:name,:price,:description,:menu_id)
     end
     
     def set_items

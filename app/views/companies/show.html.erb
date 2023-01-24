@@ -58,32 +58,6 @@
                       </div>
                     <% end %>
                   </div>
-
-                  <div class="sh-new-form-toggle-<%= menu.id %> sh-form-inputs" style="display: none;">
-                    <%= simple_form_for @item, url:items_path, method: :post do |f| %>
-                      <div class="sh-inputs-name-price">
-                        <div class="sh-input-name">
-                          <%= f.text_field :name, class: "sh-new-input-name", placeholder: "name", label: false %>
-                          <button  onclick="nameInput(<%= item.id %>); return false" return false>X</button>
-                        </div>
-                        <div class="sh-input-price">
-                          <%= f.text_field :price, class: "sh-new-input-price", placeholder: "$", label: false%>
-                          <button  onclick="priceInput(<%= item.id %>); return false">X</button>
-                        </div>
-                      </div>
-                      <div class="sh-input-description">
-                        <%= f.text_field :description, class: "sh-new-input-description", placeholder: "description", label: false%>
-                        <button  onclick="descriptionInput(<%= item.id %>); return false">X</button>
-                      </div>
-                      <%= f.input :menu_id, :as => :hidden, input_html: { value:menu.id}, label: false%>
-                      <div class="sh-input-btns">
-                        <%= f.submit "CREATE",class:"sh-btn-set-item" %>
-                        <%= f.submit "RESET", type:"reset", class:"sh-btn-set-item" %>
-                      </div>
-                    <% end %>
-                  </div>
-
-
                   <div class="sh-item-toggle-<%= item.id %>">
                     <div class="sh-items-name-price">
                       <p class="sh-item-<%= item.id %>"><strong><%= item.name.upcase %></p><p class="sh-item-<%= item.id %>">$<%= '%.2f' % item.price %></strong></p>
@@ -98,6 +72,28 @@
                       <button class="sh-btn-set-item sh-btn-delete-<%= item.id %>">DELETE</button>
                     <% end %>
                   </div>
+
+                  <div class="sh-new-form-toggle-<%= menu.id %> sh-form-inputs" style="display: none;">
+                    <%= simple_form_for @item, url:items_path, method: :post do |f| %>
+                      <div class="sh-inputs-name-price">
+                        <div class="sh-input-name">
+                          <%= f.text_field :name, class: "sh-new-input-name", placeholder: "name", label: false %>
+                        </div>
+                        <div class="sh-input-price">
+                          <%= f.text_field :price, class: "sh-new-input-price", placeholder: "$", label: false%>
+                        </div>
+                      </div>
+                      <div class="sh-input-description">
+                        <%= f.text_field :description, class: "sh-new-input-description", placeholder: "description", label: false%>
+                      </div>
+                      <%= f.input :menu_id, :as => :hidden, input_html: { value:menu.id}, label: false%>
+                      <div class="sh-input-btns">
+                        <%= f.submit "CREATE", class:"sh-btn-set-item" %>
+                        <button  onclick="addItem(this)" data-id=<%= menu.id %> class="sh-btn-set-item">CANCEL</button>
+                      </div>
+                    <% end %>
+                  </div>
+
                 </div>
               <% end %>
             <% end %>
