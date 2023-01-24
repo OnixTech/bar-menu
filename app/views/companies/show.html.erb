@@ -89,7 +89,7 @@
                       <%= f.input :menu_id, :as => :hidden, input_html: { value:menu.id}, label: false%>
                       <div class="sh-input-btns">
                         <%= f.submit "CREATE", class:"sh-btn-set-item" %>
-                        <button  onclick="addItem(this)" data-id=<%= menu.id %> class="sh-btn-set-item">CANCEL</button>
+                        <button  onclick="addItem(this)" data-id=<%= menu.id %> class="sh-btn-set-item" type="reset">CANCEL</button>
                       </div>
                     <% end %>
                   </div>
