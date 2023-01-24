@@ -20,6 +20,7 @@ class CompaniesController < ApplicationController
 
   def new
     @company = Company.new
+    @companies = Company.where(user_id: current_user)
     authorize @company
   end
 

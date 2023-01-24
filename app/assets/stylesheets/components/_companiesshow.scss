@@ -56,6 +56,9 @@
 
 .sh-cards{
   justify-content: center;
+  hr{
+    margin: 20px;
+  }
 }
 
 .sh-card{
@@ -66,11 +69,14 @@
   width: 370px!important;
   max-width: 95%!important;
   p{
-    height: 30px;
-    font-size: 22px;
+    font-size: 16px;
   }
   .sh-card-content{
     margin: 4px;
+    h5{
+      text-align: center;
+      color: black;
+    }
   }
 }
 
@@ -167,4 +173,11 @@
   display: flex;
   justify-content: space-around;
   margin-bottom: 8px;
+}
+.sh-div-btn-add-new-section{
+  display: flex;
+  justify-content: center;
+  button{
+    box-shadow: 0 4px 8px 0;
+  }
 }

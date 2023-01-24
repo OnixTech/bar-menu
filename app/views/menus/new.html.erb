@@ -1,0 +1,16 @@
+<div class="cmp-new-container">
+  <div class="cmp-new-content">
+    <h1>New menu section</h1>
+    <%= simple_form_for(@menu) do |f| %>
+      <div class="form-inputs cmp-new-form-inputs">
+        <%= f.input :title, class:"form-item"%>
+        <%= f.input :subtitle, class:"form-item" %>
+        <%= f.hidden_field :company_id, class:"form-item" %>
+      </div>
+      <div class="form-actions">
+        <%= f.submit class:"New" %>
+      </div>
+    <% end %>
+    <%= @menu.company_id %>
+  </div>
+</div>

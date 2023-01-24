@@ -1,5 +1,4 @@
 class MenusController < ApplicationController
-    
 
     def show
       @menu = Menu.find(params[:id])
@@ -9,24 +8,21 @@ class MenusController < ApplicationController
 
     def new
       @menu = Menu.new
+      @menu.company_id = params[:company_id]
       authorize @menu
     end
 
     def create
       @menu = Menu.new(menu_params)
-      @menu.company = @company.id
-      if menu.save
-        redirect_to companies_path(current_user)
-      else
-        render :new
-      end
       authorize @menu
+      @menu.save!
+      redirect_to company_path(current_user)
     end
 
     private
 
     def menu_params
-      params.require(:menu).permit(:name)
+      params.require(:menu).permit(:title, :subtitle, :company_id)
     end
 
     def set_menus

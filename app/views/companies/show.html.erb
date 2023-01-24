@@ -5,8 +5,23 @@
   <div class="sh-searchform">
     <input type="text" name="search" autocomplete=”off” id="sh-input"
     onkeyup="searchbar()" placeholder="Search">
-  </div><br>
+  </div>
+  <br>
   <div class = "sh-cards row" id="wrapper">
+    <% if current_user == @company.user  %>
+      <div class="sh-div-btn-add-new-section">
+        <form action="/menus/new">
+        <input type="hidden" name="company_id" value=<%= @company.id %>>
+        <%= button_to "ADD NEW SECTION", new_menu_path(@company), class:"grl-btn", method: :get %>
+        </form>
+      </div>
+    <% end %>
+    <hr>
+
+
+
+
+
     <% @menus.each do |menu|  %>
       <div class="sh-card col-sm-6 col-md-4 col-xl-2 list">
         <div class="sh-card-content">

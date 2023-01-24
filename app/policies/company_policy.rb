@@ -17,7 +17,7 @@ class CompanyPolicy < ApplicationPolicy
   end
 
   def create?
-    user.present?
+    true#user_active || authorize_master
   end
 
   def new?
