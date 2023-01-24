@@ -69,7 +69,7 @@
                   <div class="sh-div-btn-set-item">
                     <% if current_user == @company.user %>
                       <button class="sh-btn-set-item sh-btn-edit-<%= item.id %>" onclick="editItem(this)" data-id=<%= item.id %>>EDIT</button>
-                      <button class="sh-btn-set-item sh-btn-delete-<%= item.id %>">DELETE</button>
+                      <%= button_to "DELETE", item_path(item), class:"sh-btn-set-item sh-btn-delete-#{item.id}", method: :delete %>
                     <% end %>
                   </div>
 

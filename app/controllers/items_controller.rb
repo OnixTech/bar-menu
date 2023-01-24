@@ -1,10 +1,5 @@
 class ItemsController < ApplicationController
-    before_action :set_items
-
-    def new
-      @company = Company.new
-      authorize @item
-    end
+    before_action :set_items, only: [:update]
     
     def create
       @item = Item.new(item_params)
@@ -12,11 +7,7 @@ class ItemsController < ApplicationController
       @item.save!
       redirect_to company_path(current_user)
     end
-    
-    def edit
-      authorize @item
-    end
-    
+      
     def update
       authorize @item
       @item = Item.find(params[:id])
@@ -25,9 +16,11 @@ class ItemsController < ApplicationController
     end
       
     def destroy
-      @item.destroy
-      redirect_to menu_path
+      set_items
       authorize @item
+      @item.destroy!
+      redirect_to company_path(current_user)
+      
     end
     
     private

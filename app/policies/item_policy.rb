@@ -14,11 +14,29 @@ class ItemPolicy < ApplicationPolicy
   end  
 
   def update?
-   # @current_user == @item.menu.company.user && @current_user.active || current_user.role == "master" && current_user.active
-   true
+    (authorize_user && user_active)|| authorize_master
+
   end
 
   def create?
-    true
+    (authorize_user && user_active) || authorize_master
+  end
+
+  def destroy?
+    (authorize_user && user_active) || authorize_master
+  end
+
+  private
+
+  def authorize_user
+    @current_user == @item.menu.company.user
+  end
+
+  def authorize_master
+    @current_user.role.name == "master"
+  end
+
+  def user_active
+    @current_user.active?
   end
 end
