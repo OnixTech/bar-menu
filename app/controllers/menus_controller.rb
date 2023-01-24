@@ -8,7 +8,6 @@ class MenusController < ApplicationController
 
     def new
       @menu = Menu.new
-      @menu.company_id = params[:company_id]
       authorize @menu
     end
 

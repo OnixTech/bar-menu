@@ -9,23 +9,29 @@
   <br>
   <div class = "sh-cards row" id="wrapper">
     <% if current_user == @company.user  %>
-      <div class="sh-div-btn-add-new-section">
-        <form action="/menus/new">
-        <input type="hidden" name="company_id" value=<%= @company.id %>>
-        <%= button_to "ADD NEW SECTION", new_menu_path(@company), class:"grl-btn", method: :get %>
-        </form>
+      <div class="sh-form-add-new-section">
+        <%= simple_form_for @menu, url:menus_path, method: :post do |f| %>
+          <div class="sh-form-inputs-new-section">
+          <%= button_to "ADD NEW SECTION", class:"sh-btn-set-item"%>
+          <%= f.input :title, :as => :hidden, value:"company:#{@company.id} user:#{current_user.id}" %>
+          <%= f.text_field :subtitle, placeholder:"Title: DRINKS" %>
+          <%= f.input :company_id, :as => :hidden, input_html: { value:@company.id}  %>
+          </div>
+        <% end %>
       </div>
     <% end %>
     <hr>
-
-
-
-
-
     <% @menus.each do |menu|  %>
       <div class="sh-card col-sm-6 col-md-4 col-xl-2 list">
         <div class="sh-card-content">
+          <div class="sh-card-title-delete">
           <p><strong><%= menu.subtitle.upcase %></strong></p>
+          <% if current_user == @company.user  %>
+            <div>
+            <button class="sh-btn-set-item sh-btn-delete-section">DELETE SECTION</button>
+            </div>
+          <% end %>
+          </div>
           <div class="sh-items">
             <% @items.each do |item|  %>
               <% if item.menu_id == menu.id %>
@@ -52,6 +58,32 @@
                       </div>
                     <% end %>
                   </div>
+
+                  <div class="sh-new-form-toggle-<%= menu.id %> sh-form-inputs" style="display: none;">
+                    <%= simple_form_for @item, url:items_path, method: :post do |f| %>
+                      <div class="sh-inputs-name-price">
+                        <div class="sh-input-name">
+                          <%= f.text_field :name, class: "sh-new-input-name", placeholder: "name", label: false %>
+                          <button  onclick="nameInput(<%= item.id %>); return false" return false>X</button>
+                        </div>
+                        <div class="sh-input-price">
+                          <%= f.text_field :price, class: "sh-new-input-price", placeholder: "$", label: false%>
+                          <button  onclick="priceInput(<%= item.id %>); return false">X</button>
+                        </div>
+                      </div>
+                      <div class="sh-input-description">
+                        <%= f.text_field :description, class: "sh-new-input-description", placeholder: "description", label: false%>
+                        <button  onclick="descriptionInput(<%= item.id %>); return false">X</button>
+                      </div>
+                      <%= f.input :menu_id, :as => :hidden, input_html: { value:menu.id}, label: false%>
+                      <div class="sh-input-btns">
+                        <%= f.submit "CREATE",class:"sh-btn-set-item" %>
+                        <%= f.submit "RESET", type:"reset", class:"sh-btn-set-item" %>
+                      </div>
+                    <% end %>
+                  </div>
+
+
                   <div class="sh-item-toggle-<%= item.id %>">
                     <div class="sh-items-name-price">
                       <p class="sh-item-<%= item.id %>"><strong><%= item.name.upcase %></p><p class="sh-item-<%= item.id %>">$<%= '%.2f' % item.price %></strong></p>
@@ -72,7 +104,7 @@
           </div>
             <% if current_user == @company.user %>
               <div class="sh-div-btn-add">
-                <button class="sh-btn-add"> ADD </button>
+                <button class="sh-btn-add" onclick="addItem(this)" data-id=<%= menu.id %>> ADD NEW ITEM </button>
               </div> 
             <% end %>
         </div>      
@@ -83,3 +115,4 @@
 
 <%= javascript_include_tag "packs/sh-searchbar" %>
 <%= javascript_include_tag "packs/sh-edit-item" %>
+<%= javascript_include_tag "packs/sh-add-item" %>

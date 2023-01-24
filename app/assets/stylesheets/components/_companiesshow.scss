@@ -73,10 +73,17 @@
   }
   .sh-card-content{
     margin: 4px;
-    h5{
-      text-align: center;
-      color: black;
+    padding: 4px;
+    .sh-card-title-delete{
+      display: flex;
+      justify-content: space-between;
+      .sh-btn-delete-section{
+        width: 60px;
+        height: 28px;
+        font-size: 9px;
+      }
     }
+
   }
 }
 
@@ -174,10 +181,16 @@
   justify-content: space-around;
   margin-bottom: 8px;
 }
-.sh-div-btn-add-new-section{
+.sh-form-inputs-new-section{
   display: flex;
   justify-content: center;
   button{
-    box-shadow: 0 4px 8px 0;
+    background-color: $btn-color;
+    font-size: 12px;
+    border: solid 1px black;
+    box-shadow: 0 1px 2px 0;
+  }
+  input{
+    box-shadow: 0 1px 2px 0;
   }
 }

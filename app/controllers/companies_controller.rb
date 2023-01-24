@@ -16,6 +16,8 @@ class CompaniesController < ApplicationController
     @companies = Company.where(user_id: current_user)
     @menus = Menu.where(company_id: @company.id)
     @items = Item.all
+    @menu = Menu.new
+    @item = Item.new
   end
 
   def new

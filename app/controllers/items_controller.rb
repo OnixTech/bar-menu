@@ -10,7 +10,7 @@ class ItemsController < ApplicationController
       @item = Item.new(items_params)
       @item.menu = @menu.id
       if @item.save
-        redirect_to menu_path(current_user)
+        redirect_to company_path(current_user)
       else
         render :new
       end
