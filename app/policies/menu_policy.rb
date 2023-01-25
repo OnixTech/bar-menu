@@ -6,23 +6,39 @@ class MenuPolicy < ApplicationPolicy
     end
   end
 
-  def show?
-    true
-  end
+  def initialize(current_user, menu)
+    @current_user = current_user
+    @menu = menu
+  end 
 
-  def new?
-    create?
+  def show?
+    (authorize_user && user_active) || authorize_master
   end
 
   def create?
-    true
-  end
-  
-  def edit?
-    true
+    (authorize_user && user_active) || authorize_master
   end
 
   def update?
-    true
+    (authorize_user && user_active) || authorize_master
   end
+
+  def destroy?
+    (authorize_user && user_active) || authorize_master
+  end
+
+  private
+
+  def authorize_user
+    @current_user == @menu.company.user
+  end
+
+  def authorize_master
+    @current_user.role.name == "master"
+  end
+
+  def user_active
+    @current_user.active?
+  end
+
 end

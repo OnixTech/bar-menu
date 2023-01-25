@@ -28,7 +28,7 @@
           <p><strong><%= menu.subtitle.upcase %></strong></p>
           <% if current_user == @company.user  %>
             <div>
-            <button class="sh-btn-set-item sh-btn-delete-section">DELETE SECTION</button>
+            <%= button_to "DELETE SECTION", menu_path(menu), class:"sh-btn-set-item sh-btn-delete-section", method: :delete %>
             </div>
           <% end %>
           </div>
