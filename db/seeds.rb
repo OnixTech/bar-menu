@@ -41,12 +41,12 @@ end
 
 if Company.count < 1
   company = Company.new(
-    :name => "La Pocilga",
-    :city => "Berlin",
-    :suburb => "Weddin",
-    :street => "Koloniestrasse",
-    :number => "78",
-    :post => "13359",
+    :name => Faker::Restaurant.name,
+    :city => Faker::Address.city,
+    :suburb => Faker::Address.community,
+    :street => Faker::Address.street_name,
+    :number => Faker::Address.building_number.to_i,
+    :post => Faker::Address.zip_code.to_i,
     :user_id => 1
   )
   company.save!
@@ -55,7 +55,7 @@ end
 if Menu.count < 1
   menu = Menu.new(
     :title => "Menu",
-    :subtitle => "Drinks",
+    :subtitle => "Beers",
     :company_id => 1
   )
   menu.save!
@@ -69,32 +69,31 @@ if Menu.count < 1
 
   menu3 = Menu.new(
     :title => "Menu",
-    :subtitle => "Pastas",
+    :subtitle => "Food",
     :company_id => 1
   )
   menu3.save!
 end
 
-item = Item.new(
-  :name => "Cuba Libre",
-  :description => "4cl Run and CocaCola",
-  :price => 6,
-  :menu_id => 1
-)
-item.save!
+puts "Charging items to menu Food"
 
-item1 = Item.new(
-  :name => "Fries",
-  :description => "Fries potatoes",
-  :price => 6,
-  :menu_id => 2
-)
-item1.save!
+7.times do 
+  item = Item.new(name: Faker::Food.dish, description: Faker::Food.description, price: Faker::Number.between(from: 7.0, to: 17.5), menu_id:3 )
+  if item.save!
+    puts "#{item.name} created!"
+  end
+end
 
-item2 = Item.new(
-  :name => "Tallarines Alfredo",
-  :description => "Home-made tallarines with white sauce and alfredo cheese",
-  :price => 6,
-  :menu_id => 3
-)
-item2.save!
+12.times do 
+  item = Item.new(name: Faker::Beer.name, description: Faker::Dessert.flavor, price: Faker::Number.between(from: 5.0, to: 8.5), menu_id:1 )
+  if item.save!
+    puts "#{item.name} created!"
+  end
+end
+
+4.times do 
+  item = Item.new(name: Faker::Dessert.topping, description: Faker::Dessert.flavor, price: Faker::Number.between(from: 1.0, to: 12.5), menu_id:2 )
+  if item.save!
+    puts "#{item.name} created!"
+  end
+end
