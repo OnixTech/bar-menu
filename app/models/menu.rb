@@ -1,4 +1,4 @@
 class Menu < ApplicationRecord
   belongs_to :company
-  has_many :items
+  has_many :items, dependent: :destroy
 end
