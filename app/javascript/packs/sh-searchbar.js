@@ -1,25 +1,32 @@
 
-function searchbar() {
-    let userInput, listedProductsId, userInputCapitalized, listedProduct;    
+function searchbar(){
+  let userInput, listedProductsId, userInputCapitalized, listedProduct;    
+  
+  userInput = document.getElementById('sh-input'); 
+  userInputCapitalized = userInput.value.toUpperCase();      
+  
+  listedProductsId = document.getElementById("wrapper");
+  listedcards = listedProductsId.getElementsByClassName("list");       
+  var c = [].fill(false);
+  for (let i = 0; i < listedcards.length; i++) {
+    taglist = listedcards[i].getElementsByClassName("sh-p-search");   
     
-    userInput = document.getElementById('sh-input'); 
-    userInputCapitalized = userInput.value.toUpperCase();      
-    
-    listedProductsId = document.getElementById("wrapper");
-    listedProduct = listedProductsId.getElementsByClassName("list");        
-    
-    for (let i = 0; i < listedProduct.length; i++) {
-      taglist = listedProduct[i].getElementsByTagName("p");
-      
-      a = taglist[0].innerText.toUpperCase().indexOf(userInputCapitalized)
-      b = taglist[1].innerText.toUpperCase().indexOf(userInputCapitalized)
-      c = taglist[2].innerText.toUpperCase().indexOf(userInputCapitalized)
-      d = taglist[3].innerText.toUpperCase().indexOf(userInputCapitalized)
+    for(let a = 0; a < taglist.length; a++){
+      r = taglist[a].innerText.toUpperCase().indexOf(userInputCapitalized);
 
-      if ( (a > -1) || (b > -1) || (c > -1) || (d > -1)){
-        listedProduct[i].style.display = "";
+      if(r > -1){
+        c[a] = true;
+        taglist[a].style.display = "";
       }else{
-        listedProduct[i].style.display = "none";
+        c[a] = false;
+        taglist[a].style.display = "none";
       }
     }
+    if(c.includes(true)){
+      listedcards[i].style.display = "";
+    }else{
+      listedcards[i].style.display = "none";
+    }
+    c.fill(false);
+  }
 }
