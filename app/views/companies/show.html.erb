@@ -57,7 +57,8 @@
                       </div>
                     <% end %>
                   </div>
-                  <div class="sh-item-toggle-<%= item.id %> sh-p-search">
+                  <div class="sh-p-search">
+                  <div class="sh-item-toggle-<%= item.id %>">
                     <div class="sh-items-name-price">
                       <p class="sh-item-<%= item.id %>"><strong><%= item.name.upcase %></p><p class="sh-item-<%= item.id %>">$<%= '%.2f' % item.price %></strong></p>
                     </div>
@@ -70,6 +71,7 @@
                       <button class="sh-btn-set-item sh-btn-edit-<%= item.id %>" onclick="editItem(this)" data-id=<%= item.id %>>EDIT</button>
                       <%= button_to "DELETE", item_path(item), class:"sh-btn-set-item sh-btn-delete-#{item.id}", method: :delete %>
                     <% end %>
+                  </div>
                   </div>
                 </div>
               <% end %>
@@ -98,7 +100,7 @@
               </div>
               <div class="sh-div-btn-add">
                 <button class="sh-btn-add" onclick="addItem(this)" data-id=<%= menu.id %>> ADD NEW ITEM </button>
-              </div> 
+          </div> 
             <% end %>
         </div>      
       </div>
