@@ -167,6 +167,7 @@
   text-decoration: inherit;
   font-size: 25px;
   color: black;
+  font-weight: normal;
 }
 
 .sh-div-btn-set-item{
@@ -174,12 +175,14 @@
   justify-content: left;
   margin-bottom: 5px;
   margin-top: 3px;
+  font-weight: normal;
 }
 
 .sh-div-btn-add{
   display: flex;
   justify-content: space-around;
   margin-bottom: 8px;
+  font-weight: normal;
 }
 .sh-form-inputs-new-section{
   display: flex;
@@ -187,6 +190,7 @@
   button{
     background-color: $btn-color;
     color: black;
+    font-weight: normal;
     font-size: 12px;
     border: solid 1px lightgray;
     box-shadow: 0 1px 2px 0;
