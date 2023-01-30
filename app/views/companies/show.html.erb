@@ -58,20 +58,20 @@
                     <% end %>
                   </div>
                   <div class="sh-p-search">
-                  <div class="sh-item-toggle-<%= item.id %>">
-                    <div class="sh-items-name-price">
-                      <p class="sh-item-<%= item.id %>"><strong><%= item.name.upcase %></p><p class="sh-item-<%= item.id %>">$<%= '%.2f' % item.price %></strong></p>
+                    <div class="sh-item-toggle-<%= item.id %>">
+                      <div class="sh-items-name-price">
+                        <p class="sh-item-<%= item.id %>"><strong><%= item.name.upcase %></p><p class="sh-item-<%= item.id %>">$<%= '%.2f' % item.price %></strong></p>
+                      </div>
+                      <div class="sh-items-description">
+                        <p class="sh-item-<%= item.id %>"><%= item.description %></p>
+                      </div>
                     </div>
-                    <div class="sh-items-description">
-                      <p class="sh-item-<%= item.id %>"><%= item.description %></p>
+                    <div class="sh-div-btn-set-item">
+                      <% if current_user == @company.user %>
+                        <button class="sh-btn-set-item sh-btn-edit-<%= item.id %>" onclick="editItem(this)" data-id=<%= item.id %>>EDIT</button>
+                        <%= button_to "DELETE", item_path(item), class:"sh-btn-set-item sh-btn-delete-#{item.id}", method: :delete %>
+                      <% end %>
                     </div>
-                  </div>
-                  <div class="sh-div-btn-set-item">
-                    <% if current_user == @company.user %>
-                      <button class="sh-btn-set-item sh-btn-edit-<%= item.id %>" onclick="editItem(this)" data-id=<%= item.id %>>EDIT</button>
-                      <%= button_to "DELETE", item_path(item), class:"sh-btn-set-item sh-btn-delete-#{item.id}", method: :delete %>
-                    <% end %>
-                  </div>
                   </div>
                 </div>
               <% end %>
