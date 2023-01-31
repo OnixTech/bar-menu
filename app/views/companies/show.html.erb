@@ -44,7 +44,7 @@
                           <button  onclick="nameInput(<%= item.id %>); return false" return false>X</button>
                         </div>
                         <div class="sh-input-price">
-                          <%= f.text_field :price, class: "sh-input-price-#{item.id}", placeholder: "#{item.price}", label: false%>
+                          <%= f.text_field :price, type:"number", step:"0.01", class: "sh-input-price-#{item.id}", placeholder: "#{item.price}", label: false%>
                         </div>
                       </div>
                       <div class="sh-input-description">
@@ -60,7 +60,7 @@
                   <div class="sh-p-search">
                     <div class="sh-item-toggle-<%= item.id %>">
                       <div class="sh-items-name-price">
-                        <p class="sh-item-<%= item.id %>"><strong><%= item.name.upcase %></p><p class="sh-item-<%= item.id %>">$<%= '%.2f' % item.price %></strong></p>
+                        <p class="sh-item-<%= item.id %>"><strong><%= item.name.upcase %></p><p class="sh-item-<%= item.id %>">€<%= '%.2f' % item.price %></strong></p>
                       </div>
                       <div class="sh-items-description">
                         <p class="sh-item-<%= item.id %>"><%= item.description %></p>

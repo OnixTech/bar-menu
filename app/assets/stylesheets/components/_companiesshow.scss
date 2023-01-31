@@ -72,7 +72,7 @@
     font-size: 16px;
   }
   .sh-card-content{
-    margin: 4px;
+    margin: 10px;
     padding: 4px;
     .sh-card-title-delete{
       display: flex;
@@ -100,6 +100,9 @@
   }
   .sh-items-description{
     font-family: $description-font;
+    p{
+      font-size: 11px;
+    }
   }
   p{
     font-size: 12px;
@@ -115,7 +118,7 @@
     margin-bottom: 4px;
     display: flex;
     .sh-input-name{
-      width: 80%;
+      width: 110%;
       display: flex;
       justify-content: center;
       margin: 1px;
@@ -133,9 +136,8 @@
       margin: 1px;
       input{
         width: 100%;
-        text-align: end;
+        text-align: start;
         border: solid 1px lightgray;
-        border-right: 0px;
       }
     }
   }
