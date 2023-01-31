@@ -4,4 +4,5 @@
 //= link packs/sh-searchbar.js
 //= link packs/sh-edit-item.js
 //= link packs/sh-add-item.js
+//= link packs/sh-edit-menu.js
 //= require allow_numeric

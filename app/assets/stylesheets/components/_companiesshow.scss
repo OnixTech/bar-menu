@@ -74,13 +74,29 @@
   .sh-card-content{
     margin: 10px;
     padding: 4px;
-    .sh-card-title-delete{
+    .sh-card-title-btns{
       display: flex;
       justify-content: space-between;
-      .sh-btn-delete-section{
-        width: 60px;
+      .sh-card-edit-delete{
         height: 28px;
-        font-size: 9px;
+        display: flex;
+        justify-content: space-between;
+        button{
+          width: 60px;
+          height: 28px;
+          font-size: 9px;
+        }
+      }
+      .sh-card-form-menu{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        .sh-form-title-menu{
+          width: 60px;
+          height: 28px;
+          font-size: 9px;
+          margin-left: 20px;
+        }
       }
     }
 

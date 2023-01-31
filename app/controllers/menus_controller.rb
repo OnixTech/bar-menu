@@ -1,5 +1,5 @@
 class MenusController < ApplicationController
-    before_action :set_menus, only:[:show, :destroy]
+    before_action :set_menus, only:[:show, :destroy, :update]
     
     def show
       authorize @menu
@@ -10,6 +10,12 @@ class MenusController < ApplicationController
       @menu = Menu.new(menu_params)
       authorize @menu
       @menu.save!
+      redirect_to company_path(current_user)
+    end
+
+    def update
+      authorize @menu
+      @menu.update(menu_params)
       redirect_to company_path(current_user)
     end
 

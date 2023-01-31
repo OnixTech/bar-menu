@@ -24,13 +24,30 @@
     <% @menus.each do |menu|  %>
       <div class="sh-card col-sm-6 col-md-4 col-xl-2 list">
         <div class="sh-card-content">
-          <div class="sh-card-title-delete">
-            <p><strong><%= menu.subtitle.upcase %></strong></p>
-            <% if current_user == @company.user  %>
-              <div>
-              <%= button_to "DELETE SECTION", menu_path(menu), class:"sh-btn-set-item sh-btn-delete-section", method: :delete %>
-              </div>
-            <% end %>
+          <div class="sh-card-title-btns">
+            <p class="sh-card-title-toggle-<%= menu.id%>"><strong><%= menu.subtitle.upcase %></strong></p>
+            <div class="sh-input-menu-title-toggle-<%= menu.id%>" style="display: none;">
+              <%= simple_form_for(menu) do |f| %>
+                <div class="sh-card-form-menu">
+                <div>
+                <%= f.text_field :subtitle, placeholder: "#{menu.subtitle.upcase}", label: false, value:"" %>
+                </div>
+                <div>
+                <%= f.submit "UPDATE",class:"sh-btn-set-item sh-btn-edit-section sh-form-title-menu" %>
+                </div>
+                </div>
+              <% end %>
+            </div>
+            <div class="sh-card-edit-delete sh-card-edit-delete-toggle-<%= menu.id%>">
+              <% if current_user == @company.user  %>
+                <div>
+                  <button class="sh-btn-set-item sh-btn-edit-section" onclick="editMenu(this)" data-id=<%= menu.id %>>EDIT</button>                
+                </div>
+                <div>
+                  <%= button_to "DELETE SECTION", menu_path(menu), class:"sh-btn-set-item sh-btn-delete-section", method: :delete %>
+                </div>
+              <% end %>
+            </div>
           </div>
           <div class="sh-items">
             <% @items.each do |item|  %>
@@ -111,3 +128,4 @@
 <%= javascript_include_tag "packs/sh-searchbar" %>
 <%= javascript_include_tag "packs/sh-edit-item" %>
 <%= javascript_include_tag "packs/sh-add-item" %>
+<%= javascript_include_tag "packs/sh-edit-menu" %>
