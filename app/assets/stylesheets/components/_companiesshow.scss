@@ -127,6 +127,44 @@
   }
 }
 
+.sh-div-set-prices{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: solid 1px lightgray;
+  .sh-inputs-set-prices{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    p{
+      all: unset;
+      font-size: 12px;
+    }
+    .sh-input-euro,.sh-input-percent{
+      height: 20px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 5px;
+      input{
+        width: 50px;
+        height: 20px;
+        font-size: 14px;
+      }
+      p{
+        all: unset;
+        font-size: 12px;
+      }
+    }
+    .sh-input-percent{
+      width: auto;
+      input{
+        width: 45px;
+      }
+    }
+  }
+}
+
 .sh-form-inputs{
   width: 100%;
   .sh-inputs-name-price{

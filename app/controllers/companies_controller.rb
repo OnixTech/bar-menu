@@ -16,6 +16,7 @@ class CompaniesController < ApplicationController
     @companies = Company.where(user_id: current_user)
     @menus = Menu.where(company_id: @company.id)
     @items = Item.all
+    #@set_prices = { "euro" => 0.00, "percent" => 0.00 }
     @menu = Menu.new
     @item = Item.new
   end
@@ -61,5 +62,9 @@ class CompaniesController < ApplicationController
 
   def set_companies
     @company = Company.find(params[:id])
+  end
+
+  def set_all_prices
+ 
   end
 end
