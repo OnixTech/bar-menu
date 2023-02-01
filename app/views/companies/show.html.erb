@@ -93,6 +93,7 @@
                 </div>
               <% end %>
             <% end %>
+            <% if current_user == @company.user %>
               <form action="<%= item_path%>" method="PATCH">
                 <div class="sh-div-set-prices">
                   <div class="sh-inputs-set-prices">
@@ -112,6 +113,7 @@
                   </div>
                 </div>
               </form>
+            <% end %>
           </div>
             <% if current_user == @company.user %>
               <div class="sh-new-form-toggle-<%= menu.id %> sh-form-inputs" style="display: none;">
