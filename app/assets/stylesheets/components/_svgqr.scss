@@ -1,0 +1,16 @@
+.qr-container{
+  text-align: center;
+  margin: 5%;
+  .qr-company-name{
+    display: flex;
+    justify-content: center;
+    h1{
+      font-family: $grl-font;
+      color: black;
+    }
+  }
+  .qr-svg{
+  display: flex;
+  justify-content: center;
+  }
+}

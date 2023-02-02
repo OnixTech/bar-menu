@@ -8,16 +8,30 @@
     <% @company.each do |company| %>
       <% if current_user == company.user  %>
         <div class="cmp-index-card-btns col-sm-6 col-md-4 col-xl-1 list">
-          <a href="<%= company_path(company) %>"class="cmp-index-card">
-            <div class="cmp-index-card-content">
+          <div class="cmp-index-card">
+            <a href="<%= company_path(company) %>"class="cmp-index-card-content">
               <div class="cmp-index-card-tittle"> 
                 <h4><%= company.name.upcase %></h4>
               </div>
               <div class="cmp-index-card-address">
                 <p><%= company.street %> <%= company.number %>, <%= company.post %> <%= company.city %></p>
-              </div>   
-            </div>
-          </a>
+              </div>
+            </a> 
+          </div>
+          <div class="cmp-index-card-qr">
+            <% if company.qr_code == nil %>
+              <%= simple_form_for(company) do |f| %>
+                <%= f.hidden_field :qr_code, value:"https://fillo.herokuapp.com#{company_path(company)}"%>
+                <%= f.submit "Generate QR", class:"sh-btn-set-item"%>
+              <% end %>
+            <% else %>
+              <div class="cmp-index-card-svg">
+                <%= link_to company_qr_path(company_id: company.id) do %>
+                  <%= @svg.html_safe %>
+                <% end %>
+              </div>
+            <% end %>
+          </div>
           <div class="cmp-index-card-set-btns">
             <%= button_to "EDIT", edit_company_path(company), method: :get %>
             <%= button_to "DELETE", company_path(company), method: :delete %>

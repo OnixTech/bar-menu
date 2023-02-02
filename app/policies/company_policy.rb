@@ -36,6 +36,11 @@ class CompanyPolicy < ApplicationPolicy
     authorize_user || authorize_master
   end
 
+  def qr?
+    authorize_user || authorize_master
+  end
+
+
   private
 
   def authorize_user

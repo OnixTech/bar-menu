@@ -37,31 +37,33 @@ html[xmlns] .clearfix {
 .cmp-index-cards{
   min-height: 130px;
   justify-content: center;
-  a, a:hover{
-    color: inherit!important;
-    text-decoration: inherit!important;
-  }
   .cmp-index-card-btns{
     display: inline;
+    position: relative;
     margin: 20px!important;
     width: 250px!important;
-    height: 100px!important;
+    height: 160px!important;
     box-shadow: 0 4px 8px 0;
     margin: 5px;
     font-weight: normal;
     .cmp-index-card{
       width: 100%;
-      height: 100px;
+      height: 160px;
+      position: relative;
       border: solid 1px gray;
       border-bottom: 0px;
-      display: flex;
-      justify-content: center;
       align-items: center;
+      a, a:hover{
+        color: inherit!important;
+        text-decoration: inherit!important;
+      }
       .cmp-index-card-content{
         width: 80%;
-        height: 80%;
+        height: 50%;
+        position: absolute;
+        left: 25px;
+        top: 18px;
         border: solid 1px black;
-        display: inline;
         color: black;
         border-radius: 5px;
         padding: 5px;
@@ -78,6 +80,25 @@ html[xmlns] .clearfix {
             font-size: 11px;
           }
         }
+      }
+    }
+    .cmp-index-card-qr{
+      width: auto;
+      height: auto;
+      position: absolute;
+      left: 104px;
+      top: 105px;
+      box-shadow: 0 4px 8px 0;
+      input{
+        width: auto;
+        margin: 10px;
+      }
+      .cmp-index-card-svg{
+        width: 45px;
+        height: 45px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
       }
     }
     .cmp-index-card-set-btns{

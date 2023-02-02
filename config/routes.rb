@@ -6,7 +6,9 @@ Rails.application.routes.draw do
     get '/users/sign_out' => 'devise/sessions#destroy'
   end
   
-  resources :companies
+  resources :companies do
+  get 'qr' => 'companies#qr'
+  end
   post '/companies/new' => 'companies#new'
   resources :menus
   resources :items

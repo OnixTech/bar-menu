@@ -9,6 +9,18 @@ class CompaniesController < ApplicationController
     elsif current_user.present?
       @companies = Company.where(user_id: current_user.id)
     end
+    @company.each do |company|
+      if company.qr_code
+        @qr_code = RQRCode::QRCode.new(company.qr_code)
+        @svg = @qr_code.as_svg(
+          offset: 0,
+          color: '000',
+          shape_rendering: 'crispEdges',
+          module_size: 1,
+          standalone: true
+        )
+      end
+    end
   end
 
   def show
@@ -16,7 +28,6 @@ class CompaniesController < ApplicationController
     @companies = Company.where(user_id: current_user)
     @menus = Menu.where(company_id: @company.id)
     @items = Item.all
-    #@set_prices = { "euro" => 0.00, "percent" => 0.00 }
     @menu = Menu.new
     @item = Item.new
   end
@@ -54,6 +65,19 @@ class CompaniesController < ApplicationController
     redirect_to companies_path
   end
 
+  def qr
+    @company = Company.find(params[:company_id])
+    authorize @company
+    @qr_code = RQRCode::QRCode.new(@company.qr_code)
+    @svg = @qr_code.as_svg(
+      offset: 0,
+      color: '000',
+      shape_rendering: 'crispEdges',
+      module_size: 5,
+      standalone: true
+    )
+  end
+
   private
 
   def company_params
@@ -64,7 +88,4 @@ class CompaniesController < ApplicationController
     @company = Company.find(params[:id])
   end
 
-  def set_all_prices
- 
-  end
 end
