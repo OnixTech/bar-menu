@@ -39,6 +39,10 @@ gem "pundit"
 gem 'faker'
 ########
 gem 'rqrcode'
+########
+gem 'imgkit'
+########
+gem 'wkhtmltoimage-binary'
 # Use Kredis to get higher-level data types in Redis [https://github.com/rails/kredis]
 # gem "kredis"
 
