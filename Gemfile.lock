@@ -122,7 +122,6 @@ GEM
       activesupport (>= 5.0)
     i18n (1.12.0)
       concurrent-ruby (~> 1.0)
-    imgkit (1.6.2)
     io-console (0.5.11)
     irb (1.4.1)
       reline (>= 0.3.0)
@@ -258,7 +257,6 @@ GEM
     websocket-driver (0.7.5)
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.5)
-    wkhtmltoimage-binary (0.12.5)
     xpath (3.2.0)
       nokogiri (~> 1.8)
     zeitwerk (2.6.0)
@@ -277,7 +275,6 @@ DEPENDENCIES
   dotenv-rails
   faker
   font-awesome-sass (~> 6.1)
-  imgkit
   jbuilder
   jsbundling-rails
   pg (~> 1.1)
@@ -294,7 +291,6 @@ DEPENDENCIES
   tzinfo-data
   web-console
   webdrivers
-  wkhtmltoimage-binary
 
 RUBY VERSION
    ruby 3.0.3p157

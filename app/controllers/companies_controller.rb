@@ -76,8 +76,6 @@ class CompaniesController < ApplicationController
       module_size: 5,
       standalone: true
     )
-    @kit = IMGKit.new(@company.qr_code)
-    @kit.to_jpg
   end
 
   private
