@@ -1,4 +1,5 @@
 
+
 function searchbar(){
   let userInput, listedProductsId, userInputCapitalized, listedProduct;    
   
@@ -15,17 +16,15 @@ function searchbar(){
     r = taglist[0].innerText.toUpperCase().indexOf(userInputCapitalized);
     if(r > -1){
       c[i] = true;
-      listedcards[i].style.display = "";
+      listedcards[i].classList.remove("disable");
     }else{
       c[i] = false;
-      listedcards[i].style.display = "none";
+      listedcards[i].classList.add("disable");
     }
   }
-  if(c.includes(true)){
-    c.fill(false);
-  }else{
+  if(!c.includes(true)){
     searchItems(listedcards, userInputCapitalized);
-  }
+  }  
 }
 
 function searchItems(listedcards, userInputCapitalized){
@@ -39,18 +38,18 @@ function searchItems(listedcards, userInputCapitalized){
       r = taglist[a].innerText.toUpperCase().indexOf(userInputCapitalized);
       if(r > -1){
         c[a] = true;
-        taglist[a].style.display = "";
+        taglist[a].classList.add("enable");
+        taglist[a].classList.remove("disable");
       }else{
         c[a] = false;
-        taglist[a].style.display = "none";
-      }
+        taglist[a].classList.add("disable");
+        taglist[a].classList.remove("enable");
+    }
     }
     if(c.includes(true)){
-      listedcards[i].style.display = "";
-    }else{
-      listedcards[i].style.display = "none";
+      listedcards[i].classList.remove("disable");
+      listedcards[i].classList.add("disable");
     }
     c.fill(false);
   }
-
 }
