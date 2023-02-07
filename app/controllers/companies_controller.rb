@@ -27,7 +27,9 @@ class CompaniesController < ApplicationController
     authorize @company
     @companies = Company.where(user_id: current_user)
     @menus = Menu.where(company_id: @company.id)
+    @menus = @menus.sort_by(&:position)
     @items = Item.all
+    @items = @items.sort_by(&:position)
     @menu = Menu.new
     @item = Item.new
   end

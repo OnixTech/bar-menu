@@ -91,6 +91,16 @@
         display: flex;
         justify-content: space-between;
         align-items: center;
+        .sh-card-form-subtitle{
+          input{
+            width: 140px;
+          }
+        }
+        .sh-card-form-position{
+          input{
+            width: 40px;
+          }
+        }
         .sh-form-title-menu{
           width: 60px;
           height: 28px;
@@ -167,6 +177,14 @@
 
 .sh-form-inputs{
   width: 100%;
+  .sh-input-position{
+    input{
+      width: 30px;
+      border: solid 1px lightgray;
+      border-right: 0px;
+      border-radius: 0!important;
+    }
+  }
   .sh-inputs-name-price{
     font-size: 12px;
     margin-bottom: 4px;
@@ -265,6 +283,12 @@
   }
   input{
     box-shadow: 0 1px 2px 0;
+    width: 150px;
+  }
+  .sh-form-input-position{
+    input{
+      width: 40px;
+    }
   }
 }
 

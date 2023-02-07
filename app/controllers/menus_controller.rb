@@ -28,7 +28,7 @@ class MenusController < ApplicationController
     private
 
     def menu_params
-      params.require(:menu).permit(:title, :subtitle, :company_id)
+      params.require(:menu).permit(:title, :subtitle, :company_id, :position)
     end
 
     def set_menus

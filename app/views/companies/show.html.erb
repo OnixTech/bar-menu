@@ -15,6 +15,9 @@
           <%= button_to "ADD NEW SECTION", class:"sh-btn-set-item"%>
           <%= f.input :title, :as => :hidden, value:"Menu" %>
           <%= f.text_field :subtitle, placeholder:"Title: DRINKS" %>
+          <div class="sh-form-input-position">
+            <%= f.text_field :position, placeholder:"#1" %>
+          </div>
           <%= f.input :company_id, :as => :hidden, input_html: { value:@company.id}  %>
           </div>
         <% end %>
@@ -29,8 +32,11 @@
             <div class="sh-input-menu-title-toggle-<%= menu.id%>" style="display: none;">
               <%= simple_form_for(menu) do |f| %>
                 <div class="sh-card-form-menu">
-                <div>
-                <%= f.text_field :subtitle, placeholder: "#{menu.subtitle.upcase}", label: false, value:"" %>
+                <div class="sh-card-form-subtitle">
+                  <%= f.text_field :subtitle, placeholder: "#{menu.subtitle.upcase}", label: false, value:"#{menu.subtitle}" %>
+                </div>
+                <div class="sh-card-form-position">
+                  <%= f.text_field :position, placeholder: "#1", value:"#{ menu.position }", label: false %>
                 </div>
                 <div>
                 <%= f.submit "UPDATE",class:"sh-btn-set-item sh-btn-edit-section sh-form-title-menu" %>
@@ -56,6 +62,9 @@
                   <div class="sh-form-toggle-<%= item.id %> sh-form-inputs" style="display: none;">
                     <%= simple_form_for(item) do |f| %>
                       <div class="sh-inputs-name-price">
+                        <div class="sh-input-position">
+                          <%= f.text_field :position, value:"#{ menu.position }", label: false %>
+                        </div>
                         <div class="sh-input-name">
                           <%= f.text_field :name, class: "sh-input-name-#{item.id}", placeholder: "#{item.name}", label: false %>
                           <button  onclick="nameInput(<%= item.id %>); return false" return false>X</button>
