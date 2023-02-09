@@ -14,7 +14,6 @@ function searchbar(){
 }
 
 function searchItems(listedcards, userInputCapitalized){
-
   var c = [].fill(false);
   for (let i = 0; i < listedcards.length; i++) {
     taglist = listedcards[i].getElementsByClassName("sh-p-search");
@@ -24,11 +23,13 @@ function searchItems(listedcards, userInputCapitalized){
       if(r > -1){
         c[a] = true;
         taglist[a].classList.add("enable");
+        taglist[a].classList.add("paint");    
         taglist[a].classList.remove("disable");
       }else{
         c[a] = false;
         taglist[a].classList.add("disable");
         taglist[a].classList.remove("enable");
+        taglist[a].classList.remove("paint");
       }
     }
     if(c.includes(true)){
@@ -71,6 +72,7 @@ function cleanList(listedcards){
       r = listAll[b];
      r.classList.add("enable");
      r.classList.remove("disable");
+     r.classList.remove("paint");
      console.log(listAll[b]);
     }
   }

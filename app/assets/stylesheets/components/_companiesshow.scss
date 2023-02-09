@@ -122,7 +122,11 @@
     text-align: center;
     display: flex;
     justify-content: space-between;
-    font-size: 15px;
+    font-size: 11px;
+    h5{
+      font-size: 12px;
+      font-weight: 500;
+    }
   }
   .sh-items-description{
     font-family: $description-font;
@@ -298,4 +302,11 @@
 
 .enable{
   display: "";
+}
+
+.paint{
+  h5{
+    background-color: #ffc600;
+    height: 12px;
+  }
 }
