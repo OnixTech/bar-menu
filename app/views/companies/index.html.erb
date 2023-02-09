@@ -11,7 +11,7 @@
           <div class="cmp-index-card">
             <a href="<%= company_path(company) %>"class="cmp-index-card-content">
               <div class="cmp-index-card-tittle"> 
-                <h4><%= company.name.upcase %></h4>
+                <h2><strong><%= company.name.upcase %></strong></h2>
               </div>
               <div class="cmp-index-card-address">
                 <p><%= company.street %> <%= company.number %>, <%= company.post %> <%= company.city %></p>
@@ -25,6 +25,9 @@
                 <%= f.submit "Generate QR", class:"sh-btn-set-item"%>
               <% end %>
             <% else %>
+              <div class="cmp-index-card-text-svg">
+                <p>QR menu for this company:</p>
+              </div>
               <div class="cmp-index-card-svg">
                 <%= link_to company_qr_path(company_id: company.id) do %>
                   <%= @svg.html_safe %>
