@@ -33,15 +33,21 @@
             <% end %>
           </div>
           <div  class="cmp-index-card-sections-checkbx">
-            <p>Visible sections</p>
+            <div  class="cmp-index-card-sections-checkbx-title">
+            <p>VISIBLE SECTIONS</p>
+            </div>
+            <hr>
             <div class="cmp-index-card-sections-checkbx-checkboxes-row">
               <% @menus.each do |menu| %>
-                <div class="cmp-index-card-sections-checkbx-checkboxes-box-name">         
-                  <input type="checkbox" value="<%= menu.visible %>" name="<%= menu.subtitle %>"/>
-                  <label for="<%= menu.subtitle %>"><p><%= menu.subtitle %></p></label>
-                </div>
+                <% if menu.company_id == company.id %>
+                  <div class="cmp-index-card-sections-checkbx-checkboxes-box-name">         
+                    <input type="checkbox" value="<%= menu.visible %>" name="<%= menu.subtitle %>" checked="<%= menu.visible %>"/>
+                    <label for="<%= menu.subtitle %>"><p><%= menu.subtitle %></p></label>
+                  </div>
+                <% end %>
               <% end %>  
             </div>
+            <hr>
             <div class="cmp-index-card-sections-checkbx-checkboxes-submit">
               <input type="submit" value="CONFIRM" class="sh-btn-set-item" />
             </div>

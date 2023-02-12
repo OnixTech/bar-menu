@@ -21,7 +21,8 @@ class CompaniesController < ApplicationController
         )
       end
     end
-    @menus = Menu.where(company_id: @company)
+    @menus = Menu.all
+
   end
 
   def show

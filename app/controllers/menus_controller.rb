@@ -10,19 +10,19 @@ class MenusController < ApplicationController
       @menu = Menu.new(menu_params)
       authorize @menu
       @menu.save!
-      redirect_to company_path(current_user)
+      redirect_to company_path(@menu.company_id)
     end
 
     def update
       authorize @menu
       @menu.update(menu_params)
-      redirect_to company_path(current_user)
+      redirect_to company_path(@menu.company_id)
     end
 
     def destroy
       authorize @menu
       @menu.destroy!
-      redirect_to company_path(current_user)
+      redirect_to company_path(@menu.company_id)
     end
 
     private

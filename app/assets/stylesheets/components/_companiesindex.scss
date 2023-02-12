@@ -39,18 +39,15 @@ html[xmlns] .clearfix {
   justify-content: center;
   .cmp-index-card-btns{
     display: inline;
-    position: relative;
-    margin: 20px!important;
-    width: 250px!important;
+    width: 240px!important;
     height: auto;
     box-shadow: 0 4px 8px 0;
     margin: 5px;
     font-weight: normal;
     .cmp-index-card{
       width: 100%;
-      height: 160px;
-      position: relative;
-      border: solid 1px gray;
+      height: 100px!important;
+      display: inline;
       border-bottom: 0px;
       align-items: center;
       a, a:hover{
@@ -58,37 +55,36 @@ html[xmlns] .clearfix {
         text-decoration: inherit!important;
       }
       .cmp-index-card-content{
-        width: 80%;
-        height: 50%;
-        position: absolute;
-        left: 25px;
-        top: 18px;
-        border: solid 1px black;
+        height: 80px;
         color: black;
-        border-radius: 5px;
-        padding: 5px;
         .cmp-index-card-tittle{
-          text-align: left;
+          text-align: center;
+          height: 30px;
+          margin-top: 20px;
           h4{
+            height: 100%;
             font-size: 16px;
             margin: 0;
           }
         }
         .cmp-index-card-address{
-          text-align: left;
+          text-align: center;
+          height: 30px;
           p{
+            height: 100%;
             font-size: 11px;
+            font-family: $grl-font;
           }
         }
       }
     }
     .cmp-index-card-qr{
-      width: auto;
-      height: auto;
-      position: absolute;
-      left: 104px;
-      top: 105px;
-      box-shadow: 0 4px 8px 0;
+      height: 105px!important;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: auto;
+      padding: 2px;
       input{
         width: auto;
         margin: 10px;
@@ -102,20 +98,23 @@ html[xmlns] .clearfix {
       }
     }
     .cmp-index-card-set-btns{
-      width: 250px!important;
+      width: 100%!important;
       height: 20px!important;
+      position: relative;
+      bottom: 0px;
       display: flex;
       justify-content: center;
       align-items: center;
+      border: solid 1px black;
       button{
-        width: 125px!important;
+        width: 120px!important;
         color: black;
         font-weight: normal;
         text-align: center;
         font-size: 12px;
-        border: solid 1px gray;
+        border: 0px;
         background-color: $btn-color;
-        box-shadow: 0 4px 8px 0;
+        box-shadow: 0 1px 2px 0;
       }
     }
   }
@@ -178,27 +177,49 @@ html[xmlns] .clearfix {
 }
 .cmp-index-card-sections-checkbx{
   width: 95%;
-  height: auto;
+  height: 120!important;
   text-align: center;
-  padding: 3px;
-  margin: 3px;
-  p{
-    font-size: 11px;
-    font-family: $grl-font;
-  }
-  .cmp-index-card-sections-checkbx-checkboxes-row{
-    width: 95%;
-    height: auto;
-    text-align: center;
+  padding: 4px;
+  margin: 6px;
+  box-shadow: 0 0 4px 0;
+  .cmp-index-card-sections-checkbx-title{
     display: flex;
     justify-content: center;
     align-items: center;
+    p{
+    font-size: 11px;
+    font-family: $grl-font;
+    margin: auto;
+    }
+  }
+  .cmp-index-card-sections-checkbx-checkboxes-row{
+    width: 95%;
+    height: 80px!important;
+    overflow-y:  auto;
+    overflow-x: hidden;
+    text-align: start;
+    margin-left: 8px;
     .cmp-index-card-sections-checkbx-checkboxes-box-name{
-    text-align: end;
+      position: relative;
+      label{
+        font-size: 11px;
+        font-family: $grl-font;
+        position: absolute;
+        top: 3px;
+      }
     }
   }
   .cmp-index-card-sections-checkbx-checkboxes-submit{
-    text-align: center;
+    height: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    input{
+      margin: auto;
+      width: 80px;
+    }
   }
-  
+  hr{
+    margin: 1px;
+  }
 }
