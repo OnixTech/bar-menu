@@ -37,7 +37,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_12_160319) do
     t.bigint "menu_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.float "position"
+    t.float "position", default: 0.0
     t.index ["menu_id"], name: "index_items_on_menu_id"
   end
 
@@ -47,7 +47,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_12_160319) do
     t.bigint "company_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "position"
+    t.integer "position", default: 0
     t.boolean "visible", default: true
     t.index ["company_id"], name: "index_menus_on_company_id"
   end

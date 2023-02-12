@@ -85,18 +85,23 @@ html[xmlns] .clearfix {
       align-items: center;
       margin: auto;
       padding: 2px;
-      input{
-        width: auto;
-        margin: 10px;
+      .cmp-index-card-qr-g{
+        width: 88px;
+        height: 34px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        box-shadow: 0 2px 3px 0;
+        border-radius: 3px;
+        input{
+          width: auto;
+          margin: 10px;
+        }
       }
       .cmp-index-card-svg{
         width: 45px;
         height: 45px;
-        border: solid 1px gray;
         box-shadow: 0 2px 3px 0;
-        position: absolute;
-        left: 80px;
-        top: 0px;
         padding: 3px;
       }
     }

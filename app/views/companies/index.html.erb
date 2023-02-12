@@ -11,7 +11,7 @@
           <div class="cmp-index-card">
             <a href="<%= company_path(company) %>"class="cmp-index-card-content">
               <div class="cmp-index-card-tittle"> 
-                <h2><strong><%= company.name.upcase %></strong></h2>
+                <h4><strong><%= company.name.upcase %></strong></h4>
               </div>
               <div class="cmp-index-card-address">
                 <p><%= company.street %> <%= company.number %>, <%= company.post %> <%= company.city %></p>
@@ -22,12 +22,11 @@
             <% if company.qr_code == nil %>
               <%= simple_form_for(company) do |f| %>
                 <%= f.hidden_field :qr_code, value:"https://fillo.herokuapp.com#{company_path(company)}"%>
-                <%= f.submit "Generate QR", class:"sh-btn-set-item"%>
+                <div class="cmp-index-card-qr-g">
+                  <%= f.submit "Generate QR", class:"sh-btn-set-item"%>
+                </div>
               <% end %>
             <% else %>
-              <div class="cmp-index-card-text-svg">
-                <p>QR menu for this company:</p>
-              </div>
               <div class="cmp-index-card-svg">
                 <%= link_to company_qr_path(company_id: company.id) do %>
                   <%= @svg.html_safe %>
