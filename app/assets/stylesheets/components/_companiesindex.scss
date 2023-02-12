@@ -207,25 +207,33 @@ html[xmlns] .clearfix {
     overflow-x: hidden;
     text-align: start;
     margin-left: 8px;
-    .cmp-index-card-sections-checkbx-checkboxes-box-name{
-      position: relative;
-      label{
-        font-size: 11px;
-        font-family: $grl-font;
-        position: absolute;
-        top: 3px;
+    .cmp-index-card-sections-checkbx-checkboxes{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      .cmp-index-card-sections-checkbx-checkboxes-box-name{
+        width: 100px;
+        position: relative;
+        label{
+          height: 15px;
+          font-size: 11px;
+          font-family: $grl-font;
+          position: absolute;
+          top: 3px;
+        }
+      }
+      .cmp-index-card-sections-checkbx-checkboxes-submit{
+        height: 25px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        input{
+          margin: auto;
+          width: 80px;
+        }
       }
     }
-  }
-  .cmp-index-card-sections-checkbx-checkboxes-submit{
-    height: 25px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    input{
-      margin: auto;
-      width: 80px;
-    }
+
   }
   hr{
     margin: 1px;

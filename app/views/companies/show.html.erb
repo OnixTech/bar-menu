@@ -25,132 +25,134 @@
     <% end %>
     <hr>
     <% @menus.each do |menu|  %>
-      <div class="sh-card col-sm-6 col-md-4 col-xl-2 list">
-        <div class="sh-card-content">
-          <div class="sh-card-title-btns">
-            <p class="sh-card-title-toggle-<%= menu.id%> sh-p-search-title"><strong><%= menu.subtitle.upcase %></strong></p>
-            <div class="sh-input-menu-title-toggle-<%= menu.id%>" style="display: none;">
-              <%= simple_form_for(menu) do |f| %>
-                <div class="sh-card-form-menu">
-                <div class="sh-card-form-subtitle">
-                  <%= f.text_field :subtitle, placeholder: "#{menu.subtitle.upcase}", label: false, value:"#{menu.subtitle}" %>
-                </div>
-                <div class="sh-card-form-position">
-                  <%= f.text_field :position, placeholder: "#1", value:"#{ menu.position }", label: false %>
-                </div>
-                <div>
-                <%= f.submit "UPDATE",class:"sh-btn-set-item sh-btn-edit-section sh-form-title-menu" %>
-                </div>
-                </div>
-              <% end %>
-            </div>
-            <div class="sh-card-edit-delete sh-card-edit-delete-toggle-<%= menu.id%>">
-              <% if current_user == @company.user  %>
-                <div>
-                  <button class="sh-btn-set-item sh-btn-edit-section" onclick="editMenu(this)" data-id=<%= menu.id %>>EDIT</button>                
-                </div>
-                <div>
-                  <%= button_to "DELETE SECTION", menu_path(menu), class:"sh-btn-set-item sh-btn-delete-section", method: :delete %>
-                </div>
-              <% end %>
-            </div>
-          </div>
-          <div class="sh-items">
-            <% @items.each do |item|  %>
-              <% if item.menu_id == menu.id %>
-                <div class='sh-items-li'>
-                  <div class="sh-form-toggle-<%= item.id %> sh-form-inputs" style="display: none;">
-                    <%= simple_form_for(item) do |f| %>
-                      <div class="sh-inputs-name-price">
-                        <div class="sh-input-position">
-                          <%= f.text_field :position, value:"#{ menu.position }", label: false %>
-                        </div>
-                        <div class="sh-input-name">
-                          <%= f.text_field :name, class: "sh-input-name-#{item.id}", placeholder: "#{item.name}", label: false %>
-                          <button  onclick="nameInput(<%= item.id %>); return false" return false>X</button>
-                        </div>
-                        <div class="sh-input-price">
-                          <%= f.text_field :price, type:"number", step:"0.01", class: "sh-input-price-#{item.id}", placeholder: "#{item.price}", label: false%>
-                        </div>
-                      </div>
-                      <div class="sh-input-description">
-                        <%= f.text_field :description, class: "sh-input-description-#{item.id}", placeholder: "#{item.description}", label: false%>
-                        <button  onclick="descriptionInput(<%= item.id %>); return false">X</button>
-                      </div>
-                      <div class="sh-input-btns">
-                        <%= f.submit "UPDATE",class:"sh-btn-set-item" %>
-                        <%= f.submit "RESET", type:"reset", class:"sh-btn-set-item" %>
-                      </div>
-                    <% end %>
+      <% if menu.visible? %>
+        <div class="sh-card col-sm-6 col-md-4 col-xl-2 list">
+          <div class="sh-card-content">
+            <div class="sh-card-title-btns">
+              <p class="sh-card-title-toggle-<%= menu.id%> sh-p-search-title"><strong><%= menu.subtitle.upcase %></strong></p>
+              <div class="sh-input-menu-title-toggle-<%= menu.id%>" style="display: none;">
+                <%= simple_form_for(menu) do |f| %>
+                  <div class="sh-card-form-menu">
+                  <div class="sh-card-form-subtitle">
+                    <%= f.text_field :subtitle, placeholder: "#{menu.subtitle.upcase}", label: false, value:"#{menu.subtitle}" %>
                   </div>
-                  <div class="sh-p-search">
-                    <div class="sh-item-toggle-<%= item.id %>">
-                      <div class="sh-items-name-price">
-                        <h5 class="sh-item-<%= item.id %>"><strong><%= item.name.upcase %></h5><h5 class="sh-item-<%= item.id %>">€<%= '%.2f' % item.price %></strong></h5>
-                      </div>
-                      <div class="sh-items-description">
-                        <p class="sh-item-<%= item.id %>"><%= item.description %></p>
-                      </div>
-                    </div>
-                    <div class="sh-div-btn-set-item">
-                      <% if current_user == @company.user %>
-                        <button class="sh-btn-set-item sh-btn-edit-<%= item.id %>" onclick="editItem(this)" data-id=<%= item.id %>>EDIT</button>
-                        <%= button_to "DELETE", item_path(item), class:"sh-btn-set-item sh-btn-delete-#{item.id}", method: :delete %>
-                      <% end %>
-                    </div>
-                  </div>
-                </div>
-              <% end %>
-            <% end %>
-            <% if current_user == @company.user %>
-              <form action="<%= item_path%>" method="PATCH">
-                <div class="sh-div-set-prices">
-                  <div class="sh-inputs-set-prices">
-                    <div>
-                      <p>Change all prices for:</p> 
-                    </div>
-                    <div class="sh-input-euro">
-                      <input type="number" name="euro"  value= "0.00" step="0.01" /><p><strong>€</strong></p> 
-                    </div>
-                    <div class="sh-input-percent">
-                      <input type="number" name="percent" value= "0" step="0.1" /><p><strong>%</strong></p>
-                    </div>
+                  <div class="sh-card-form-position">
+                    <%= f.text_field :position, placeholder: "#1", value:"#{ menu.position }", label: false %>
                   </div>
                   <div>
-                  <input type="hidden" name="menu" value= "<%= menu.id %>" />
-                  <input type="submit" value="SEND" class="sh-btn-set-item" />
+                  <%= f.submit "UPDATE",class:"sh-btn-set-item sh-btn-edit-section sh-form-title-menu" %>
                   </div>
-                </div>
-              </form>
-            <% end %>
-          </div>
-            <% if current_user == @company.user %>
-              <div class="sh-new-form-toggle-<%= menu.id %> sh-form-inputs" style="display: none;">
-                <%= simple_form_for @item, url:items_path, method: :post do |f| %>
-                  <div class="sh-inputs-name-price">
-                    <div class="sh-input-name">
-                      <%= f.text_field :name, class: "sh-new-input-name", placeholder: "name", label: false %>
-                    </div>
-                    <div class="sh-input-price">
-                      <%= f.text_field :price, class: "sh-new-input-price", value: '%.2f' % 0.00, label: false%>
-                    </div>
-                  </div>
-                  <div class="sh-input-description">
-                    <%= f.text_field :description, class: "sh-new-input-description", placeholder: "description", label: false%>
-                  </div>
-                  <%= f.input :menu_id, :as => :hidden, input_html: { value:menu.id}, label: false%>
-                  <div class="sh-input-btns">
-                    <%= f.submit "CREATE", class:"sh-btn-set-item" %>
-                    <button  onclick="addItem(this)" data-id=<%= menu.id %> class="sh-btn-set-item" type="reset">CANCEL</button>
                   </div>
                 <% end %>
               </div>
-              <div class="sh-div-btn-add">
-                <button class="sh-btn-add" onclick="addItem(this)" data-id=<%= menu.id %>> ADD NEW ITEM </button>
-          </div> 
-            <% end %>
-        </div>      
-      </div>
+              <div class="sh-card-edit-delete sh-card-edit-delete-toggle-<%= menu.id%>">
+                <% if current_user == @company.user  %>
+                  <div>
+                    <button class="sh-btn-set-item sh-btn-edit-section" onclick="editMenu(this)" data-id=<%= menu.id %>>EDIT</button>                
+                  </div>
+                  <div>
+                    <%= button_to "DELETE SECTION", menu_path(menu), class:"sh-btn-set-item sh-btn-delete-section", method: :delete %>
+                  </div>
+                <% end %>
+              </div>
+            </div>
+            <div class="sh-items">
+              <% @items.each do |item|  %>
+                <% if item.menu_id == menu.id %>
+                  <div class='sh-items-li'>
+                    <div class="sh-form-toggle-<%= item.id %> sh-form-inputs" style="display: none;">
+                      <%= simple_form_for(item) do |f| %>
+                        <div class="sh-inputs-name-price">
+                          <div class="sh-input-position">
+                            <%= f.text_field :position, value:"#{ menu.position }", label: false %>
+                          </div>
+                          <div class="sh-input-name">
+                            <%= f.text_field :name, class: "sh-input-name-#{item.id}", placeholder: "#{item.name}", label: false %>
+                            <button  onclick="nameInput(<%= item.id %>); return false" return false>X</button>
+                          </div>
+                          <div class="sh-input-price">
+                            <%= f.text_field :price, type:"number", step:"0.01", class: "sh-input-price-#{item.id}", placeholder: "#{item.price}", label: false%>
+                          </div>
+                        </div>
+                        <div class="sh-input-description">
+                          <%= f.text_field :description, class: "sh-input-description-#{item.id}", placeholder: "#{item.description}", label: false%>
+                          <button  onclick="descriptionInput(<%= item.id %>); return false">X</button>
+                        </div>
+                        <div class="sh-input-btns">
+                          <%= f.submit "UPDATE",class:"sh-btn-set-item" %>
+                          <%= f.submit "RESET", type:"reset", class:"sh-btn-set-item" %>
+                        </div>
+                      <% end %>
+                    </div>
+                    <div class="sh-p-search">
+                      <div class="sh-item-toggle-<%= item.id %>">
+                        <div class="sh-items-name-price">
+                          <h5 class="sh-item-<%= item.id %>"><strong><%= item.name.upcase %></h5><h5 class="sh-item-<%= item.id %>">€<%= '%.2f' % item.price %></strong></h5>
+                        </div>
+                        <div class="sh-items-description">
+                          <p class="sh-item-<%= item.id %>"><%= item.description %></p>
+                        </div>
+                      </div>
+                      <div class="sh-div-btn-set-item">
+                        <% if current_user == @company.user %>
+                          <button class="sh-btn-set-item sh-btn-edit-<%= item.id %>" onclick="editItem(this)" data-id=<%= item.id %>>EDIT</button>
+                          <%= button_to "DELETE", item_path(item), class:"sh-btn-set-item sh-btn-delete-#{item.id}", method: :delete %>
+                        <% end %>
+                      </div>
+                    </div>
+                  </div>
+                <% end %>
+              <% end %>
+              <% if current_user == @company.user %>
+                <form action="<%= item_path%>" method="PATCH">
+                  <div class="sh-div-set-prices">
+                    <div class="sh-inputs-set-prices">
+                      <div>
+                        <p>Change all prices for:</p> 
+                      </div>
+                      <div class="sh-input-euro">
+                        <input type="number" name="euro"  value= "0.00" step="0.01" /><p><strong>€</strong></p> 
+                      </div>
+                      <div class="sh-input-percent">
+                        <input type="number" name="percent" value= "0" step="0.1" /><p><strong>%</strong></p>
+                      </div>
+                    </div>
+                    <div>
+                    <input type="hidden" name="menu" value= "<%= menu.id %>" />
+                    <input type="submit" value="SEND" class="sh-btn-set-item" />
+                    </div>
+                  </div>
+                </form>
+              <% end %>
+            </div>
+              <% if current_user == @company.user %>
+                <div class="sh-new-form-toggle-<%= menu.id %> sh-form-inputs" style="display: none;">
+                  <%= simple_form_for @item, url:items_path, method: :post do |f| %>
+                    <div class="sh-inputs-name-price">
+                      <div class="sh-input-name">
+                        <%= f.text_field :name, class: "sh-new-input-name", placeholder: "name", label: false %>
+                      </div>
+                      <div class="sh-input-price">
+                        <%= f.text_field :price, class: "sh-new-input-price", value: '%.2f' % 0.00, label: false%>
+                      </div>
+                    </div>
+                    <div class="sh-input-description">
+                      <%= f.text_field :description, class: "sh-new-input-description", placeholder: "description", label: false%>
+                    </div>
+                    <%= f.input :menu_id, :as => :hidden, input_html: { value:menu.id}, label: false%>
+                    <div class="sh-input-btns">
+                      <%= f.submit "CREATE", class:"sh-btn-set-item" %>
+                      <button  onclick="addItem(this)" data-id=<%= menu.id %> class="sh-btn-set-item" type="reset">CANCEL</button>
+                    </div>
+                  <% end %>
+                </div>
+                <div class="sh-div-btn-add">
+                  <button class="sh-btn-add" onclick="addItem(this)" data-id=<%= menu.id %>> ADD NEW ITEM </button>
+            </div> 
+              <% end %>
+          </div>      
+        </div>
+      <% end %>
     <% end %>
   </div>
 </div>
