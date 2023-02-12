@@ -32,6 +32,20 @@
               </div>
             <% end %>
           </div>
+          <div  class="cmp-index-card-sections-checkbx">
+            <p>Visible sections</p>
+            <div class="cmp-index-card-sections-checkbx-checkboxes-row">
+              <% @menus.each do |menu| %>
+                <div class="cmp-index-card-sections-checkbx-checkboxes-box-name">         
+                  <input type="checkbox" value="<%= menu.visible %>" name="<%= menu.subtitle %>"/>
+                  <label for="<%= menu.subtitle %>"><p><%= menu.subtitle %></p></label>
+                </div>
+              <% end %>  
+            </div>
+            <div class="cmp-index-card-sections-checkbx-checkboxes-submit">
+              <input type="submit" value="CONFIRM" class="sh-btn-set-item" />
+            </div>
+          </div>
           <div class="cmp-index-card-set-btns">
             <%= button_to "EDIT", edit_company_path(company), method: :get %>
             <%= button_to "DELETE", company_path(company), method: :delete %>

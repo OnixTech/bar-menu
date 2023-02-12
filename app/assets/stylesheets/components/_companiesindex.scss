@@ -42,7 +42,7 @@ html[xmlns] .clearfix {
     position: relative;
     margin: 20px!important;
     width: 250px!important;
-    height: 160px!important;
+    height: auto;
     box-shadow: 0 4px 8px 0;
     margin: 5px;
     font-weight: normal;
@@ -176,4 +176,29 @@ html[xmlns] .clearfix {
   padding-right: 0px!important;
   padding-left: 0px!important;
 }
-
+.cmp-index-card-sections-checkbx{
+  width: 95%;
+  height: auto;
+  text-align: center;
+  padding: 3px;
+  margin: 3px;
+  p{
+    font-size: 11px;
+    font-family: $grl-font;
+  }
+  .cmp-index-card-sections-checkbx-checkboxes-row{
+    width: 95%;
+    height: auto;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .cmp-index-card-sections-checkbx-checkboxes-box-name{
+    text-align: end;
+    }
+  }
+  .cmp-index-card-sections-checkbx-checkboxes-submit{
+    text-align: center;
+  }
+  
+}
