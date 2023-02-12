@@ -21,6 +21,8 @@ class CompaniesController < ApplicationController
         )
       end
     end
+    @menus = Menu.all
+
   end
 
   def show
