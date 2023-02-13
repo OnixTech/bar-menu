@@ -27,6 +27,10 @@ class MenuPolicy < ApplicationPolicy
     (authorize_user && user_active) || authorize_master
   end
 
+  def cmUpdate?
+    (authorize_user && user_active) || authorize_master
+  end
+
   private
 
   def authorize_user

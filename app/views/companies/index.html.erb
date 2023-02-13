@@ -39,29 +39,28 @@
             <p>VISIBLE SECTIONS</p>
             </div>
             <hr>
-            <div class="cmp-index-card-sections-checkbx-checkboxes-row">
-              
-              <% @menus.each do |menu| %>
-                <% if menu.company_id == company.id %>
-                    
-                    <form action="<%= menu_path(menu) %>" method="PATCH">
-                      <div class="cmp-index-card-sections-checkbx-checkboxes">
-                        <div class="cmp-index-card-sections-checkbx-checkboxes-box-name">
-                          <input type="checkbox" value="<%= menu.visible %>" name="<%= menu.subtitle %>" checked="<%= menu.visible %>"/>
-                          <input type="hidden" value="<%= menu.id %>" name="menu"/>
-                          <label for="<%= menu.subtitle %>"><p><%= menu.subtitle %></p></label>
+            
+              <div class="cmp-index-card-sections-checkbx-checkboxes-row">
+                <% @menus.each do |menu| %>
+                  <%= simple_form_for menu, :url => menus_cmUpdate_path(menu), :method => :post do |f| %>  
+                    <% if menu.company_id == company.id %>
+                        <div class="cmp-index-card-sections-checkbx-checkboxes">
+                          <div class="cmp-index-card-sections-checkbx-checkboxes-box-name">
+                            <%= f.hidden_field :menu_id, value:menu.id %>
+                            <%= f.check_box :visible, value:menu.visible %>
+                            <label for="<%= menu.subtitle %>"><p><%= menu.subtitle %></p></label>
+                          </div>
+                          <div class="cmp-index-card-sections-checkbx-checkboxes-submit">
+                            <%= f.submit "CONFIRM", class:"sh-btn-set-item" %>
+                          </div>
                         </div>
-                        <div class="cmp-index-card-sections-checkbx-checkboxes-submit">
-                          <input type="submit" value="CONFIRM" class="sh-btn-set-item"/>
-                        </div>
-                      </div>
-                    </form>
-                     
+                    <% end %>
+                  <% end %>
                 <% end %>
-              <% end %>
-                
-            </div>
-            <hr>
+              </div>  
+              <hr>
+
+            
           </div>
           <div class="cmp-index-card-set-btns">
             <%= button_to "EDIT", edit_company_path(company), method: :get %>
@@ -101,6 +100,9 @@
     <div class="cmp-index-btn-lgo">
       <%= button_to " Log out ",  destroy_user_session_path, class: "h-btn", method: :get %>
     </div>
+    <% @menus.each do |menu| %>
+      <%= menu.visible %>
+    <% end %>
   </div>
 </div>
 

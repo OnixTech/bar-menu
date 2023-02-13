@@ -91,15 +91,50 @@
         display: flex;
         justify-content: space-between;
         align-items: center;
+        height: 50px;
+        border: solid 1px lightgray;
         .sh-card-form-subtitle{
+          height: 100%;
+          margin-left: 5px;
+          p{  
+            font-size: 11px;
+            margin: auto;
+          }
           input{
+            height: 20px;
             width: 140px;
+            border: solid 1px gray;
           }
         }
         .sh-card-form-position{
+          height: 100%;
+          p{  
+            font-size: 11px;
+            margin: auto;
+          } 
           input{
-            width: 40px;
+            height: 20px;
+            width: 45px;
+            border: solid 1px gray;
           }
+        }
+        .sh-card-form-visible{
+          height: 100%;
+          width: 60px;
+          text-align: center;
+          p{  
+            font-size: 11px;
+            margin: auto;
+          }
+          input{
+            height: 20px;
+            width: 20px;
+            margin: auto;
+            border: solid 1px gray;
+          }
+        }
+        .sh-card-form-btn-update{
+          width: 89px;
         }
         .sh-form-title-menu{
           width: 60px;
@@ -225,6 +260,7 @@
       }
     }
   }
+
   .sh-input-description{
     width: 100%;
     font-size: 12px;
@@ -250,9 +286,8 @@
     border-left: 0px;
     background-color: white;
   }
+
 }
-
-
 .sh-link{
   text-decoration: inherit;
   font-size: 25px;

@@ -19,16 +19,29 @@ class MenusController < ApplicationController
       redirect_to company_path(@menu.company_id)
     end
 
+    def cmUpdate
+      cm_params
+      @menu = Menu.find(@cm[:menu_id])
+      authorize @menu
+      @menu.update(:visible => @cm[:visible])
+      redirect_to companies_path(current_user)
+    end
+
     def destroy
       authorize @menu
       @menu.destroy!
-      redirect_to company_path(@menu.company_id)
+      redirect_to company_path(current_user)
     end
 
     private
 
     def menu_params
-      params.require(:menu).permit(:title, :subtitle, :company_id, :position)
+      params.require(:menu).permit(:title, :subtitle, :company_id, :position, :visible)
+    end
+
+    def cm_params
+      @cm = params.require(:menu).permit(:visible, :menu_id)
+      
     end
 
     def set_menus

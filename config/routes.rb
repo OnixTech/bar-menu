@@ -11,6 +11,8 @@ Rails.application.routes.draw do
   end
   post '/companies/new' => 'companies#new'
   resources :menus
+  post '/menus/cmUpdate' => 'menus#cmUpdate'
+  
   resources :items
   
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html

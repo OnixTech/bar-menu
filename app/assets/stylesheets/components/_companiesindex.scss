@@ -215,25 +215,25 @@ html[xmlns] .clearfix {
         width: 100px;
         position: relative;
         label{
-          height: 15px;
+          height: 15px!important;
           font-size: 11px;
           font-family: $grl-font;
           position: absolute;
-          top: 3px;
-        }
-      }
-      .cmp-index-card-sections-checkbx-checkboxes-submit{
-        height: 25px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        input{
-          margin: auto;
-          width: 80px;
+          top: 2px;
+          margin-left: 4px;
         }
       }
     }
-
+  }
+  .cmp-index-card-sections-checkbx-checkboxes-submit{
+    height: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    input{
+      margin: auto;
+      width: 80px;
+    }
   }
   hr{
     margin: 1px;

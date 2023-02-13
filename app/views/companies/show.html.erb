@@ -16,7 +16,7 @@
           <%= f.input :title, :as => :hidden, value:"Menu" %>
           <%= f.text_field :subtitle, placeholder:"Title: DRINKS" %>
           <div class="sh-form-input-position">
-            <%= f.text_field :position, placeholder:"#1" %>
+            <%= f.text_field :position %>
           </div>
           <%= f.input :company_id, :as => :hidden, input_html: { value:@company.id}  %>
           </div>
@@ -25,7 +25,7 @@
     <% end %>
     <hr>
     <% @menus.each do |menu|  %>
-      <% if menu.visible? %>
+      <% if menu.visible == true %>
         <div class="sh-card col-sm-6 col-md-4 col-xl-2 list">
           <div class="sh-card-content">
             <div class="sh-card-title-btns">
@@ -33,17 +33,24 @@
               <div class="sh-input-menu-title-toggle-<%= menu.id%>" style="display: none;">
                 <%= simple_form_for(menu) do |f| %>
                   <div class="sh-card-form-menu">
-                  <div class="sh-card-form-subtitle">
-                    <%= f.text_field :subtitle, placeholder: "#{menu.subtitle.upcase}", label: false, value:"#{menu.subtitle}" %>
-                  </div>
-                  <div class="sh-card-form-position">
-                    <%= f.text_field :position, placeholder: "#1", value:"#{ menu.position }", label: false %>
-                  </div>
-                  <div>
-                  <%= f.submit "UPDATE",class:"sh-btn-set-item sh-btn-edit-section sh-form-title-menu" %>
-                  </div>
+                    <div class="sh-card-form-subtitle">
+                      <p>Title</p>
+                      <%= f.text_field :subtitle, value:"#{menu.subtitle}" %>
+                    </div>
+                    <div class="sh-card-form-position">
+                      <p>Position</p>
+                      <%= f.number_field :position, value:"#{ '%.1f' %  menu.position }" %>
+                    </div>
+                    <div class="sh-card-form-visible">
+                      <p>Visible</p>
+                      <%= f.check_box :visible, value:"#{ menu.visible }" %>
+                    </div>
+                    <div class="sh-card-form-btn-update">
+                    <%= f.submit "UPDATE",class:"sh-btn-set-item sh-btn-edit-section sh-form-title-menu" %>
+                    </div>
                   </div>
                 <% end %>
+                <hr>
               </div>
               <div class="sh-card-edit-delete sh-card-edit-delete-toggle-<%= menu.id%>">
                 <% if current_user == @company.user  %>
@@ -136,8 +143,8 @@
                         <%= f.text_field :price, class: "sh-new-input-price", value: '%.2f' % 0.00, label: false%>
                       </div>
                     </div>
-                    <div class="sh-input-description">
-                      <%= f.text_field :description, class: "sh-new-input-description", placeholder: "description", label: false%>
+                    <div class="sh-input-description sh-new-input-description">
+                      <%= f.text_field :description, placeholder: "description", label: false%>
                     </div>
                     <%= f.input :menu_id, :as => :hidden, input_html: { value:menu.id}, label: false%>
                     <div class="sh-input-btns">

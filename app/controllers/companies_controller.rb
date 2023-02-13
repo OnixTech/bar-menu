@@ -21,8 +21,14 @@ class CompaniesController < ApplicationController
         )
       end
     end
-    @menus = Menu.all
-
+    menus = Menu.all
+    @menus = Array.new
+    menus.each do |menu|
+      if menu.company.user == current_user
+        @menus.push(menu)
+      end
+    end
+    @menus.sort_by(&:position)
   end
 
   def show
