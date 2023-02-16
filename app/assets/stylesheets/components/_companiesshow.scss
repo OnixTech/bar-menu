@@ -101,9 +101,10 @@
             margin: auto;
           }
           input{
+            all: unset;
             height: 20px;
             width: 140px;
-            border: solid 1px gray;
+            border: solid 1px lightgray;
           }
         }
         .sh-card-form-position{
@@ -113,9 +114,10 @@
             margin: auto;
           } 
           input{
+            all: unset;
             height: 20px;
             width: 45px;
-            border: solid 1px gray;
+            border: solid 1px lightgray;
           }
         }
         .sh-card-form-visible{
