@@ -44,5 +44,6 @@ class ItemsController < ApplicationController
         item.price = item.price + euro + item.price*(percent/100)
         item.update(:price => item.price)
       end
+      redirect_to company_path(current_user)
     end
 end
