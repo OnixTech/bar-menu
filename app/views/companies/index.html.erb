@@ -99,10 +99,5 @@
     <% end %>
     <div class="cmp-index-btn-lgo">
       <%= button_to " Log out ",  destroy_user_session_path, class: "h-btn", method: :get %>
-    </div>
-    <% @menus.each do |menu| %>
-      <%= menu.visible %>
-    <% end %>
-  </div>
 </div>
 
