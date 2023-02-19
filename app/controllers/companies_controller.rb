@@ -29,6 +29,8 @@ class CompaniesController < ApplicationController
       end
     end
     @menus.sort_by(&:position)
+    @company.sort_by(&:id)
+    @users = User.order(id: :desc)
   end
 
   def show

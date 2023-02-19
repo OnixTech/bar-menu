@@ -12,7 +12,7 @@ Rails.application.routes.draw do
   post '/companies/new' => 'companies#new'
   resources :menus
   post '/menus/cmUpdate' => 'menus#cmUpdate'
-  
+  post '/users/update' => 'users#update'
   resources :items
   
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html

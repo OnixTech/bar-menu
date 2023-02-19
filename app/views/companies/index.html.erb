@@ -86,6 +86,17 @@
           <% if user != current_user %>
             <ul>
               <li><%= user.email %> - <%= user.role.name %> - <%= user.active %></li>
+                <%= simple_form_for user, :url => users_update_path(user), :method => :post do |f| %>  
+                      <div class="cmp-index-card-sections-checkbx-checkboxes">
+                        <div class="cmp-index-card-sections-checkbx-checkboxes-box-name">
+                          <%= f.hidden_field :user_id, value:user.id %>
+                          <%= f.check_box :active, value:user.active %>
+                        </div>
+                        <div class="cmp-index-card-sections-checkbx-checkboxes-submit">
+                          <%= f.submit "CONFIRM", class:"sh-btn-set-item" %>
+                        </div>
+                      </div>
+                <% end %>
               <% @company.each do |company| %>
                 <% if company.user == user %>
                   <%= company.name %>
