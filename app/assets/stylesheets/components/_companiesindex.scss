@@ -59,8 +59,9 @@ html[xmlns] .clearfix {
         color: black;
         .cmp-index-card-tittle{
           text-align: center;
-          height: 30px;
+          height: auto;
           margin-top: 20px;
+          padding: 3px;
           h4{
             height: 100%;
             font-size: 16px;
@@ -158,16 +159,19 @@ html[xmlns] .clearfix {
 .cmp-index-users-list-container{
   background-color: white;
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
   padding: 5px;
+  p{
+    font-size: 11px;
+  }
   .cmp-index-users-list{
     height: 300px;
-    width: 480px;
+    width: 380px;
     padding: 8px;
     overflow-y:  auto;
     overflow-x: hidden;
     p{
-      text-align: left;
+      font-family: $grl-font;
     }
     .cmp-index-users-list-user-box{
       height: 80px;
@@ -175,11 +179,13 @@ html[xmlns] .clearfix {
       justify-content: space-around;
       align-items: center;
       border: solid 1px lightgray;
+      p{
+        font-size: 11px;
+      }
       .cmp-index-users-list-user-inputs{
         display: flex;
         justify-content: center;
         align-items: center;
-        border: solid 1px lightgrey;
         .cmp-index-users-list-user-inputs-sc{
           display: inline;
           padding: 3px;
@@ -187,7 +193,7 @@ html[xmlns] .clearfix {
             height: 18px;
             width: 70px;
             font-size: 11px;
-            margin: 5px;
+            margin: 1px;
           }
           p{  
             font-size: 11px;
@@ -196,29 +202,30 @@ html[xmlns] .clearfix {
           input{
             height: 12px;
             width: 12px;
-            margin: 5px;
-            margin-top: 13px;
+            margin: 1px;
+            margin-top: 3px;
           }
-        }
-        .cmp-index-users-list-user-submit{
-          width: 100px;
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          padding: 3px;
-          input{
-            height: 16px;
-            width: 60px;
+          .cmp-index-users-list-user-submit{
+            width: 70px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 3px;
+            input{
+              height: 16px;
+              width: 60px;
+            }
           }
         }
       }
       .cmp-index-users-list-user-inputs-companies{
         height: 100%!important;
-        width: 100px;
+        width: 150px;
         overflow-y:  auto;
         overflow-x: auto;
         text-align: start;
         display: inline;
+        margin-top: 3px;
         .cmp-index-users-list-user-inputs-companies-name{
           width: auto;
           font-size: 11px;

@@ -85,20 +85,20 @@
           <% if user != current_user %>
             <%= simple_form_for user, :url => users_update_path(user), :method => :post do |f| %>
               <div class="cmp-index-users-list-user-box">
-                <%= user.email %>
+                <p><strong><%= user.email %></strong></p>
                 <div class="cmp-index-users-list-user-inputs">
                   <div class="cmp-index-users-list-user-inputs-sc">
                     <div class="cmp-index-users-list-user-inputs-sc-select">
-                      <%= f.select :role, ["master", "manager", "visitor"], value:user.role %>
+                      <%= f.select :role, ["#{user.role.name}","master", "manager"] %>
                     </div>
                     <div class="cmp-index-users-list-user-inputs-sc-checkbox">
                       <%= f.hidden_field :user_id, value:user.id %>
                       <%= f.check_box :active, id:"active", value:user.active %>
                       <label for="active"><p>Active</p></label>
                     </div>
-                  </div>
-                  <div class="cmp-index-users-list-user-submit">
-                    <%= f.submit "CONFIRM", class:"sh-btn-set-item" %>
+                    <div class="cmp-index-users-list-user-submit">
+                      <%= f.submit "CONFIRM", class:"sh-btn-set-item" %>
+                    </div>
                   </div>
                 </div>
                 <div class="cmp-index-users-list-user-inputs-companies">
@@ -117,6 +117,11 @@
       </div>
       <hr>
     <% end %>
+    <div>
+    <% @users.each do |user|  %>
+      <%= user.role.name  %>
+    <% end %>
+    </div>
     <div class="cmp-index-btn-lgo">
       <%= button_to " Log out ",  destroy_user_session_path, class: "h-btn", method: :get %>
     </div>
