@@ -161,10 +161,71 @@ html[xmlns] .clearfix {
   justify-content: space-around;
   padding: 5px;
   .cmp-index-users-list{
+    height: 300px;
+    width: 480px;
     padding: 8px;
+    overflow-y:  auto;
+    overflow-x: hidden;
     p{
       text-align: left;
     }
+    .cmp-index-users-list-user-box{
+      height: 80px;
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      border: solid 1px lightgray;
+      .cmp-index-users-list-user-inputs{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border: solid 1px lightgrey;
+        .cmp-index-users-list-user-inputs-sc{
+          display: inline;
+          padding: 3px;
+          select{
+            height: 18px;
+            width: 70px;
+            font-size: 11px;
+            margin: 5px;
+          }
+          p{  
+            font-size: 11px;
+            margin: auto;
+          }
+          input{
+            height: 12px;
+            width: 12px;
+            margin: 5px;
+            margin-top: 13px;
+          }
+        }
+        .cmp-index-users-list-user-submit{
+          width: 100px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          padding: 3px;
+          input{
+            height: 16px;
+            width: 60px;
+          }
+        }
+      }
+      .cmp-index-users-list-user-inputs-companies{
+        height: 100%!important;
+        width: 100px;
+        overflow-y:  auto;
+        overflow-x: auto;
+        text-align: start;
+        display: inline;
+        .cmp-index-users-list-user-inputs-companies-name{
+          width: auto;
+          font-size: 11px;
+        }
+      }
+    }
+
   }
 }
 .cmp-index-btn-lgo{
