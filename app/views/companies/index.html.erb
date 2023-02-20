@@ -117,11 +117,6 @@
       </div>
       <hr>
     <% end %>
-    <div>
-    <% @users.each do |user|  %>
-      <%= user.role.name  %>
-    <% end %>
-    </div>
     <div class="cmp-index-btn-lgo">
       <%= button_to " Log out ",  destroy_user_session_path, class: "h-btn", method: :get %>
     </div>
