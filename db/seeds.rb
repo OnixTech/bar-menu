@@ -30,6 +30,14 @@ if User.count < 1
     :role_id => 1
   )
   master.save!
+
+  pfe = User.new(
+    :email => "info@schankhalle-pfefferberg.de",
+    :password => "123456",
+    :active => true,
+    :role_id => 2
+  )
+  pfe.save!
   
   manager = User.new(
     :email => "b@mail.com",
@@ -50,6 +58,17 @@ if Company.count < 1
     :user_id => 1
   )
   company.save!
+
+  restaurant = Company.new(
+    :name => "Pfefferberg",
+    :city => " Berlin",
+    :suburb => "Prenzlauer Berg",
+    :street => "Schönhauser Allee",
+    :number => "176",
+    :post => "10119",
+    :user_id => 2
+  )
+  restaurant.save!
 end
 
 if Menu.count < 1
@@ -76,6 +95,14 @@ if Menu.count < 1
     :position => 3
   )
   menu3.save!
+
+  seasonal = Menu.new(
+    :title => "Saisonale Speisekarte",
+    :subtitle => "Saisonale Speisekarte",
+    :company_id => 2,
+    :position => 1
+  )
+  seasonal.save!
 end
 
 puts "Charging items to menu Food"
@@ -96,6 +123,19 @@ end
 
 4.times do 
   item = Item.new(name: Faker::Dessert.topping, description: Faker::Dessert.flavor, price: '%.2f' % Faker::Number.between(from: 1.0, to: 4),  position: Faker::Number.between(from: 1, to: 4), menu_id:2 )
+  if item.save!
+    puts "#{item.name} created!"
+  end
+end
+
+items = [{:name => "Gemüsegarten", :description  => "Lauwarmer Salat | Roastbeef | Weichkäse", :price  => 16, :position  => 1, :menu_id  => 4},
+  {:name => "Pastinake", :description  => "Crèmesüppchen | Roter Pfeffer", :price  => 9, :position  => 2, :menu_id  => 4},
+  {:name => "Malzrisotto", :description  => "Kräuterseitlinge | Rosenkohl", :price  => 15, :position  => 3, :menu_id  => 4},
+  {:name => "Lammhaxe", :description  => "Wurzelgemüse | Branderburger Kartoffeln", :price  => 24, :position  => 4, :menu_id  => 4},
+  {:name => "Apfelstrudel", :description  => "Vanilleeis", :price  => 12, :position  => 5, :menu_id  => 4}]
+
+items.each do |item|
+  item = Item.new(name: item[:name], description: item[:description], price: item[:price], position: item[:position], menu_id:4 )
   if item.save!
     puts "#{item.name} created!"
   end
