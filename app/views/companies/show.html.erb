@@ -111,7 +111,7 @@
                 <% end %>
               <% end %>
               <% if current_user == @company.user %>
-                <form action="<%= item_path%>" method="PATCH">
+                <form action="<%= items_setPrices_path %>" method="POST">
                   <div class="sh-div-set-prices">
                     <div class="sh-inputs-set-prices">
                       <div>

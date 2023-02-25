@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   resources :menus
   post '/menus/cmUpdate' => 'menus#cmUpdate'
   post '/users/update' => 'users#update'
+  post '/items/setPrices' => 'items#setPrices'
   resources :items
   
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html

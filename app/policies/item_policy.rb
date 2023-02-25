@@ -15,9 +15,12 @@ class ItemPolicy < ApplicationPolicy
 
   def update?
     (authorize_user && user_active)|| authorize_master
-
   end
 
+  def setPrices?
+    true
+  end
+  
   def create?
     (authorize_user && user_active) || authorize_master
   end

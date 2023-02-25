@@ -165,7 +165,8 @@ html[xmlns] .clearfix {
     font-size: 11px;
   }
   .cmp-index-users-list{
-    height: 300px;
+    height: auto;
+    max-height: 300px;
     width: 380px;
     padding: 8px;
     overflow-y:  auto;
