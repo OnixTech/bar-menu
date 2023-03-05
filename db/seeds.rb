@@ -103,6 +103,22 @@ if Menu.count < 1
     :position => 1
   )
   seasonal.save!
+
+  bier = Menu.new(
+    :title => "Craft-Bier",
+    :subtitle => "Craft-Bier",
+    :company_id => 2,
+    :position => 2
+  )
+  bier.save!
+
+  regular = Menu.new(
+    :title => "Hauptmenü",
+    :subtitle => "Hauptmenü",
+    :company_id => 2,
+    :position => 0
+  )
+  regular.save!
 end
 
 puts "Charging items to menu Food"
@@ -136,6 +152,43 @@ items = [{:name => "Gemüsegarten", :description  => "Lauwarmer Salat | Roastbee
 
 items.each do |item|
   item = Item.new(name: item[:name], description: item[:description], price: item[:price], position: item[:position], menu_id:4 )
+  if item.save!
+    puts "#{item.name} created!"
+  end
+end
+
+items2 = [{:name => "Pfefferberg Pils", :description  => "% 0,3l €3.80", :price  => 5.5, :position  => 1, :menu_id  => 5},
+  {:name => "Berliner Schnauze", :description  => "% 0,3l €3.80", :price  => 5.5, :position  => 2, :menu_id  => 5},
+  {:name => "Flower Power", :description  => "% 0,3l €3.80", :price  => 5.5, :position  => 3, :menu_id  => 5},
+  {:name => "Bier der Woche", :description  => "% 0,3l €3.80", :price  => 5.5, :position  => 4, :menu_id  => 5},
+  {:name => "Apfelstrudel", :description  => "% 0,3l €3.80", :price  => 5.5, :position  => 5, :menu_id  => 5}]
+
+items2.each do |item|
+  item = Item.new(name: item[:name], description: item[:description], price: item[:price], position: item[:position], menu_id:5 )
+  if item.save!
+    puts "#{item.name} created!"
+  end
+end
+
+items3 = [{:name => "Schankhalle Pfefferberg", :description  => "Bunte Blattsalate | Eingelegtes Geüse | Geröstete Weißbrotwürfel | Petersiliendressing", :price  => 12.00, :position  => 1, :menu_id  => 6},
+  {:name => "Matjes", :description  => "Salat | Äpfel | Schalotten | Gurken | Senfsaat Meerrettichschaum.", :price  => 16.00, :position  => 3, :menu_id  => 6},
+  {:name => "Ziegenkäse", :description  => "Geftammt | Thymian | Honig | Balsamico-Feigen | Wildkräutersalat.", :price  => 16.00, :position  => 2, :menu_id  => 6},
+  {:name => "Tomate", :description  => "Weißes Crèmesüppchen | Basilikumschaum", :price  => 9.00, :position  => 4, :menu_id  => 6},
+  {:name => "Brauhauspfanne", :description  => "Krosse Blutwurst | Karameilisierte Zwiebeln", :price  => 12.00, :position  => 5, :menu_id  => 6},
+  {:name => "Halbes Brandenburger Grillhähnchen", :description  => "Würzig Mariniert | Paprika-Dip | Schankchips", :price  => 18.00, :position  => 6, :menu_id  => 6},
+  {:name => "Currywurst", :description  => "Havelländer Apfelschwein | Treberbrot", :price  => 9.00, :position  => 7, :menu_id  => 6},
+  {:name => "Treberstullen", :description  => "• Matjestatar | Äpfel | Spreewälder Gurke €9.00\r\n• Blutwurstgröstl | Karamellisierte Zwiebeln €9.00\r\n• Gemüse-Relish | Auberginen | Paprika | Champignons Kapernapfel €8.00", :price  => 9.00, :position  => 8, :menu_id  => 6},
+  {:name => "Kalb", :description  => "Brauhaus Schnitzel | Treberbrotmantel | Kartoffel-Gurkensalat\r\n Preiselbeerkompott\r\n\r\n• Kross gebratene Leber | Apfel | Schmelzzwiebeln\r\nMalzbiersauce | Kartoffelpüree €22.00", :price  => 24.00, :position  => 9, :menu_id  => 6},
+  {:name => "Rind", :description  => "Entrecote vom Grill, 250g | rosmarin-Rotweinsauce\r\nromaneso | Kartoffel-Baumkuchen", :price  => 29.00, :position  => 10, :menu_id  => 6},
+  {:name => "Seesaibling", :description  => "Gebralemes Filet | Estragon-buttersauce | Zucherscholen |\r\nTomatisierte Perigraupen", :price  => 24.00, :position  => 11, :menu_id  => 6},
+  {:name => "Maultaschen", :description  => "Gefüllt mit Spinat & Frischkäse\r\nRöschen & Puree vom Blumenkohl | Belper Kriolle", :price  => 16.00, :position  => 12, :menu_id  => 6},
+  {:name => "Spitzkohl-Perlgraupenroulade", :description  => "Feine Gemüsestreifen | Kräuterrahmsauce", :price  => 25.00, :position  => 13, :menu_id  => 6},
+  {:name => "Käseteller", :description  => "Affineur Kober | Feigensenf | Treberbrot\r\n3 Stück €13.00\r\n 5 Stück €17.00", :price  => 13.00, :position  => 14, :menu_id  => 6},
+  {:name => "Apfelstrudel", :description  => "Vanillesauce | Vanilleeis", :price  => 10.00, :position  => 15, :menu_id  => 6},
+  {:name => "Käsekuchen", :description  => "Erdbeersorbet | Marinierte Erdbeeren", :price  => 10.00, :position  => 16, :menu_id  => 6}]
+
+items3.each do |item|
+  item = Item.new(name: item[:name], description: item[:description], price: item[:price], position: item[:position], menu_id:6 )
   if item.save!
     puts "#{item.name} created!"
   end
