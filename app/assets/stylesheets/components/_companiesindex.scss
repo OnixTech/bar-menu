@@ -288,6 +288,10 @@ html[xmlns] .clearfix {
         align-items: center;
         border-bottom: solid 1px lightgrey;
         padding: 2px;
+        input{
+          width: 15px!important;
+          height: 15px!important;
+        }
         label{
           height: auto!important;
           font-size: 9px;
