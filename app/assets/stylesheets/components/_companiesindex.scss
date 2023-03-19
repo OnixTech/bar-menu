@@ -281,19 +281,24 @@ html[xmlns] .clearfix {
       justify-content: center;
       align-items: center;
       .cmp-index-card-sections-checkbx-checkboxes-box-name{
-        width: 100px;
-        position: relative;
+        width: 115px;
+        height: auto;
+        max-height: none;
+        display: flex;
+        align-items: center;
         border-bottom: solid 1px lightgrey;
         padding: 2px;
         label{
           height: auto!important;
-          font-size: 10px;
-          line-height: 12px;
+          font-size: 9px;
+          line-height: 10px;
           font-family: $grl-font;
-          position: absolute;
           top: 2px;
           margin-left: 4px;
           padding: 3px;
+          p{
+            margin: 0px;
+          }
         }
       }
     }
