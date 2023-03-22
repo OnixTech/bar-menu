@@ -122,21 +122,30 @@
         }
         .sh-card-form-visible{
           height: 100%;
-          width: 60px;
+          width: 35px;
           text-align: center;
           p{  
             font-size: 11px;
             margin: auto;
           }
           input{
-            height: 20px;
-            width: 20px;
+            height: 15px;
+            width: 15px;
             margin: auto;
             border: solid 1px gray;
           }
         }
         .sh-card-form-btn-update{
-          width: 89px;
+          width: 110px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          .sh-btn-edit-section{
+            width: 45px;
+            height: 30px;
+            font-size: 9px;
+            margin: 3px;
+          }
         }
         .sh-form-title-menu{
           width: 60px;
