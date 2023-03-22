@@ -34,6 +34,15 @@ html[xmlns] .clearfix {
 * html .clearfix {
   height: 1%;
 }
+
+.cmp-index-top{
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+}
+
 .cmp-index-cards{
   min-height: 130px;
   justify-content: center;
@@ -66,6 +75,7 @@ html[xmlns] .clearfix {
             height: 100%;
             font-size: 16px;
             margin: 0;
+            color: grey;
           }
         }
         .cmp-index-card-address{
@@ -75,6 +85,7 @@ html[xmlns] .clearfix {
             height: 100%;
             font-size: 11px;
             font-family: $grl-font;
+            color: grey;
           }
         }
       }
@@ -114,7 +125,7 @@ html[xmlns] .clearfix {
       display: flex;
       justify-content: center;
       align-items: center;
-      border: solid 1px black;
+      border: solid 1px lightgrey;
       button{
         width: 120px!important;
         color: black;
@@ -125,33 +136,6 @@ html[xmlns] .clearfix {
         background-color: $btn-color;
         box-shadow: 0 1px 2px 0;
       }
-    }
-  }
-}
-
-.cmp-index-card-btns-add{
-  height: 30px;
-  display: flex;
-  justify-content: center;
-  margin: 5px;
-  a, a:hover{
-    color: inherit!important;
-    text-decoration: inherit!important;
-  }
-  .cmp-index-card-content-add{
-    background-color: $btn-color;
-    width: 250px;
-    height: 100%;
-    border-radius: 5px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    box-shadow: 0 4px 8px 0;
-    margin: 5px;
-    p{
-      margin: 5px;
-      font-size: 17px;
-      color: black;
     }
   }
 }
@@ -242,9 +226,11 @@ html[xmlns] .clearfix {
   align-items: flex-end;
   padding: 4px;
   font-weight: normal;
+  margin: 10px;
   .h-btn{
     margin: 10px;
     box-shadow: 0 3px 6px 0;
+    border: solid 1px grey;
   }
 }
 
@@ -264,9 +250,10 @@ html[xmlns] .clearfix {
     justify-content: center;
     align-items: center;
     p{
-    font-size: 11px;
-    font-family: $grl-font;
-    margin: auto;
+      font-size: 11px;
+      font-family: $grl-font;
+      margin: auto;
+      color: grey;
     }
   }
   .cmp-index-card-sections-checkbx-checkboxes-row{
@@ -315,7 +302,7 @@ html[xmlns] .clearfix {
     align-items: center;
     input{
       margin: auto;
-      width: 80px;
+      width: 70px;
     }
   }
   hr{

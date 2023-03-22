@@ -1,7 +1,13 @@
 <div class="cmp-index-container clearfix">
-  <h3>INDEX</h3>
   <br>
-  <h5>COMPANIES:</h5>
+  <div class="cmp-index-top">
+    <div class="cmp-index-btn-lgo">
+      <%= button_to " LOG OUT ",  destroy_user_session_path, method: :get, class:"cmp-index-btn-lgt" %>
+    </div>
+    <div  class="cmp-index-card-btns-add">
+      <%= button_to " NEW COMPANY ",  new_company_path, method: :get, class:"cmp-index-btn-add" %>
+    </div> 
+  </div>
   <hr>
   <div class="cmp-index-cards row">
     <% @company = @company.order(:id) %>
@@ -67,13 +73,6 @@
       <% end %>
     <% end %>
   </div>
-  <div  class="cmp-index-card-btns-add">
-    <a href="<%= new_company_path %>">
-      <div class="cmp-index-card-content-add">
-        <p>ADD</p>
-      </div>
-    </a>
-  </div> 
   <hr>  
   <div class="cmp-index-users-list-container">
     <% if current_user.role.name == "master"  %>
@@ -117,10 +116,6 @@
       </div>
       <hr>
     <% end %>
-    <div class="cmp-index-btn-lgo">
-      <%= button_to " Log out ",  destroy_user_session_path, class: "h-btn", method: :get %>
-    </div>
-    </div>
   </div>
 </div>
 
