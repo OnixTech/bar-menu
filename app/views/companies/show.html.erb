@@ -5,7 +5,21 @@
     <input type="text" name="search" autocomplete=”off” id="sh-input"
     onkeyup="searchbar()" placeholder="Search">
   </div>
-  <br>
+  <% if current_user == @company.user  %>
+    <div class="sh-form-add-new-section">
+      <%= simple_form_for @menu, url:menus_path, method: :post do |f| %>
+        <div class="sh-form-inputs-new-section">
+        <%= button_to "ADD NEW SECTION", class:"sh-btn-set-item"%>
+        <%= f.input :title, :as => :hidden, value:"Menu" %>
+        <%= f.text_field :subtitle, placeholder:"Title: DRINKS" %>
+        <div class="sh-form-input-position">
+          <%= f.text_field :position %>
+        </div>
+        <%= f.input :company_id, :as => :hidden, input_html: { value:@company.id}  %>
+        </div>
+      <% end %>
+    </div>
+  <% end %>
   <div class = "sh-cards row" id="wrapper">
     <hr>
     <% @menus.each do |menu|  %>
@@ -162,7 +176,7 @@
       </div>
     <% end %>
   </div>
-<% end %>
+  <% end %>
 </div>
 
 <%= javascript_include_tag "packs/sh-searchbar" %>
