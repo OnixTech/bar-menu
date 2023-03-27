@@ -10,26 +10,21 @@
   background-position: center;
   padding: 0%;
 }
-.h-content{
-  height: 150px;
-  width: 280px;
-  display: grid;
-  align-items: center;
-  justify-content: center;
+.h-btns-txt{
+  width: 350px;
+  height: auto;
+  color: white;
   background-color: black;
   opacity: 80%;
   border-radius: 65px;
-  padding: 3%;
-}
-h1{
-  display: block;
-  align-items: center;
-  justify-content: center;
-  color: white;
-  margin: auto;
-  //opacity: 80%;
-}
-.h-btns-div{
-display: flex;
-justify-content: center;
+  padding: 50px;
+  margin-top: 5px;
+  h3{
+    text-align: center;
+  }
+  .h-btns-div{
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 5px;
+  }
 }
