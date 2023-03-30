@@ -46,6 +46,7 @@
             </div>
             <hr>
             <div class="cmp-index-card-sections-checkbx-checkboxes-row">
+              <% @menus = @menus.sort_by(&:position) %>
               <% @menus.each do |menu| %>
                 <%= simple_form_for menu, :url => menus_cmUpdate_path(menu), :method => :post do |f| %>  
                   <% if menu.company_id == company.id %>
