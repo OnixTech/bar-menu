@@ -10,7 +10,7 @@
   </div>
   <hr>
   <div class="cmp-index-cards row">
-    <% @company = @company.order(:id) %>
+    <% @company = @company.sort_by(&:id) %>
     <% @company.each do |company| %>
       <% if current_user == company.user  %>
         <div class="cmp-index-card-btns col-sm-6 col-md-4 col-xl-1 list">
