@@ -5,7 +5,7 @@
     <input type="text" name="search" autocomplete=”off” id="sh-input"
     onkeyup="searchbar()" placeholder="Search">
   </div>
-  <% if current_user == @company.user  %>
+  <% if (current_user == @company.user) || (current_user.role_id == 1) %>
     <div class="sh-form-add-new-section">
       <%= simple_form_for @menu, url:menus_path, method: :post do |f| %>
         <div class="sh-form-inputs-new-section">
@@ -52,7 +52,7 @@
                 <hr>
               </div>
               <div class="sh-card-edit-delete sh-card-edit-delete-toggle-<%= menu.id%>">
-                <% if current_user == @company.user  %>
+                <% if (current_user == @company.user) || (current_user.role_id == 1)  %>
                   <div>
                     <button class="sh-btn-set-item sh-btn-edit-section" onclick="editMenu(this)" data-id=<%= menu.id %>>EDIT</button>                
                   </div>
@@ -101,7 +101,7 @@
                         </div>
                       </div>
                       <div class="sh-div-btn-set-item">
-                        <% if current_user == @company.user %>
+                        <% if (current_user == @company.user) || (current_user.role_id == 1) %>
                           <button class="sh-btn-set-item sh-btn-edit-<%= item.id %>" onclick="editItem(this)" data-id=<%= item.id %>>EDIT</button>
                           <%= button_to "DELETE", item_path(item), class:"sh-btn-set-item sh-btn-delete-#{item.id}", method: :delete %>
                         <% end %>
@@ -110,7 +110,7 @@
                   </div>
                 <% end %>
               <% end %>
-              <% if current_user == @company.user %>
+              <% if (current_user == @company.user) || (current_user.role_id == 1) %>
                 <form action="<%= items_setPrices_path %>" method="POST">
                   <div class="sh-div-set-prices">
                     <div class="sh-inputs-set-prices">
@@ -132,7 +132,7 @@
                 </form>
               <% end %>
             </div>
-              <% if current_user == @company.user %>
+              <% if (current_user == @company.user) || (current_user.role_id == 1) %>
                 <div class="sh-new-form-toggle-<%= menu.id %> sh-form-inputs" style="display: none;">
                   <%= simple_form_for @item, url:items_path, method: :post do |f| %>
                     <div class="sh-inputs-name-price">
@@ -162,7 +162,7 @@
       <% end %>
     <% end %>
   </div>
-  <% if current_user == @company.user  %>
+  <% if (current_user == @company.user) || (current_user.role_id == 1)  %>
   <div class="sh-form-add-new-section">
     <%= simple_form_for @menu, url:menus_path, method: :post do |f| %>
       <div class="sh-form-inputs-new-section">
