@@ -1,13 +1,6 @@
 <div class="cmp-index-container clearfix">
   <br>
-  <div class="cmp-index-top">
-    <div class="cmp-index-btn-lgo">
-      <%= button_to " LOG OUT ",  destroy_user_session_path, method: :get, class:"cmp-index-btn-lgt" %>
-    </div>
-    <div  class="cmp-index-card-btns-add">
-      <%= button_to " NEW COMPANY ",  new_company_path, method: :get, class:"cmp-index-btn-add" %>
-    </div> 
-  </div>
+  <%= render partial: "index-navbar" %>
   <hr>
   <div class="cmp-index-cards row">
     <% @company = @company.sort_by(&:id) %>
@@ -74,49 +67,7 @@
       <% end %>
     <% end %>
   </div>
-  <hr>  
-  <div class="cmp-index-users-list-container">
-    <% if current_user.role.name == "master"  %>
-      <div>
-      <p>Users:</p>
-      <hr>
-      <div class="cmp-index-users-list">
-        <% @users.each do |user| %>
-          <% if user != current_user %>
-            <%= simple_form_for user, :url => users_update_path(user), :method => :post do |f| %>
-              <div class="cmp-index-users-list-user-box">
-                <p><strong><%= user.email %></strong></p>
-                <div class="cmp-index-users-list-user-inputs">
-                  <div class="cmp-index-users-list-user-inputs-sc">
-                    <div class="cmp-index-users-list-user-inputs-sc-select">
-                      <%= f.select :role, ["#{user.role.name}","master", "manager"] %>
-                    </div>
-                    <div class="cmp-index-users-list-user-inputs-sc-checkbox">
-                      <%= f.hidden_field :user_id, value:user.id %>
-                      <%= f.check_box :active, id:"active", value:user.active %>
-                      <label for="active"><p>Active</p></label>
-                    </div>
-                    <div class="cmp-index-users-list-user-submit">
-                      <%= f.submit "CONFIRM", class:"sh-btn-set-item" %>
-                    </div>
-                  </div>
-                </div>
-                <div class="cmp-index-users-list-user-inputs-companies">
-                  <% @company.each do |company| %>
-                    <% if company.user == user %>
-                      <div class="cmp-index-users-list-user-inputs-companies-name">
-                        <li><%= company.name %></li>
-                      </div>
-                    <% end %>
-                  <% end %>
-                </div>
-              </div>
-            <% end %><br>
-          <% end %>
-        <% end %>
-      </div>
-      <hr>
-    <% end %>
-  </div>
+  <hr>
+  <%= render partial: "index-users-list" %>
 </div>
 
