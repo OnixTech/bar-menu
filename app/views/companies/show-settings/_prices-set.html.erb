@@ -1,0 +1,23 @@
+<% if current_user.present? %>
+<% if (current_user == @company.user) || (current_user.role_id == 1) %>
+    <form action="<%= items_setPrices_path %>" method="POST">
+    <div class="sh-div-set-prices">
+        <div class="sh-inputs-set-prices">
+        <div>
+            <p>Change all prices for:</p> 
+        </div>
+        <div class="sh-input-euro">
+            <input type="number" name="euro"  value= "0.00" step="0.01" /><p><strong>€</strong></p> 
+        </div>
+        <div class="sh-input-percent">
+            <input type="number" name="percent" value= "0" step="0.1" /><p><strong>%</strong></p>
+        </div>
+        </div>
+        <div>
+        <input type="hidden" name="menu" value= "<%= menu.id %>" />
+        <input type="submit" value="SEND" class="sh-btn-set-item" />
+        </div>
+    </div>
+    </form>
+<% end %>
+<% end %>

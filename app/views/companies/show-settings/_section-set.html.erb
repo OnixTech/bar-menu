@@ -1,0 +1,38 @@
+<div class="sh-card-title-btns">
+    <p class="sh-card-title-toggle-<%= menu.id%> sh-p-search-title"><strong><%= menu.subtitle.upcase %></strong></p>
+    <div class="sh-input-menu-title-toggle-<%= menu.id%>" style="display: none;">
+    <%= simple_form_for(menu) do |f| %>
+        <div class="sh-card-form-menu">
+        <div class="sh-card-form-subtitle">
+            <p>Title</p>
+            <%= f.text_field :subtitle, value:"#{menu.subtitle}" %>
+        </div>
+        <div class="sh-card-form-position">
+            <p>Position</p>
+            <%= f.number_field :position, value:"#{ '%.1f' %  menu.position }" %>
+        </div>
+        <div class="sh-card-form-visible">
+            <p>Visible</p>
+            <%= f.check_box :visible, value:"#{ menu.visible }" %>
+        </div>
+        <div class="sh-card-form-btn-update">
+            <%= f.submit "UPDATE",class:"sh-btn-set-item sh-btn-edit-section sh-form-title-menu" %>
+            <button class="sh-btn-set-item sh-btn-edit-section" type="reset" onclick="editMenu(this)" data-id=<%= menu.id %>>CANCEL</button> 
+        </div>
+        </div>
+    <% end %>
+    <hr>
+    </div>
+    <div class="sh-card-edit-delete sh-card-edit-delete-toggle-<%= menu.id%>">
+    <% if current_user.present? %>
+      <% if (current_user == @company.user) || (current_user.role_id == 1)  %>
+        <div>
+          <button class="sh-btn-set-item sh-btn-edit-section" onclick="editMenu(this)" data-id=<%= menu.id %>>EDIT</button>                
+        </div>
+        <div>
+          <%= button_to "DELETE SECTION", menu_path(menu), class:"sh-btn-set-item sh-btn-delete-section", method: :delete %>
+        </div>
+      <% end %>
+    <% end %>
+    </div>
+</div>
