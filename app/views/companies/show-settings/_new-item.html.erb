@@ -1,0 +1,27 @@
+<% if current_user.present? %>
+<% if (current_user == @company.user) || (current_user.role_id == 1) %>
+    <div class="sh-new-form-toggle-<%= menu.id %> sh-form-inputs" style="display: none;">
+    <%= simple_form_for @item, url:items_path, method: :post do |f| %>
+        <div class="sh-inputs-name-price">
+        <div class="sh-input-name">
+            <%= f.text_field :name, class: "sh-new-input-name", placeholder: "name", label: false %>
+        </div>
+        <div class="sh-input-price">
+            <%= f.text_field :price, class: "sh-new-input-price", value: '%.2f' % 0.00, label: false%>
+        </div>
+        </div>
+        <div class="sh-input-description sh-new-input-description">
+        <%= f.text_field :description, placeholder: "description", label: false%>
+        </div>
+        <%= f.input :menu_id, :as => :hidden, input_html: { value:menu.id}, label: false%>
+        <div class="sh-input-btns">
+        <%= f.submit "CREATE", class:"sh-btn-set-item" %>
+        <button  onclick="addItem(this)" data-id=<%= menu.id %> class="sh-btn-set-item" type="reset">CANCEL</button>
+        </div>
+    <% end %>
+    </div>
+    <div class="sh-div-btn-add">
+    <button class="sh-btn-add" onclick="addItem(this)" data-id=<%= menu.id %>> ADD NEW ITEM </button>
+    </div> 
+<% end %>
+<% end %>

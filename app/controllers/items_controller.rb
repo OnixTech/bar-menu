@@ -5,7 +5,7 @@ class ItemsController < ApplicationController
       @item = Item.new(item_params)
       authorize @item
       @item.save!
-      redirect_to company_path(current_user)
+      redirect_to company_path(@item.menu.company_id)
     end
       
     def update
