@@ -7,7 +7,7 @@
             <%= f.text_field :name, class: "sh-new-input-name", placeholder: "name", label: false %>
         </div>
         <div class="sh-input-price">
-            <%= f.text_field :price, class: "sh-new-input-price", value: '%.2f' % 0.00, label: false%>
+            <%= f.text_field :price, type:"number", step:"0.01", class: "sh-new-input-price", value: '%.2f' % 0.00, label: false%>
         </div>
         </div>
         <div class="sh-input-description sh-new-input-description">

@@ -2,7 +2,7 @@
   <%= simple_form_for(item) do |f| %>
     <div class="sh-inputs-name-price">
         <div class="sh-input-position">
-        <%= f.text_field :position, value:"#{ item.position }", label: false %>
+        <%= f.text_field :position, type:"number", step:"1.0", value:"#{ item.position }", label: false %>
         </div>
         <div class="sh-input-name">
         <%= f.text_field :name, class: "sh-input-name-#{item.id}", placeholder: "#{item.name}", label: false %>
