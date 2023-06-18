@@ -26,7 +26,7 @@
                     <div class="sh-p-search">
                       <div class="sh-item-toggle-<%= item.id %>">
                         <div class="sh-items-name-price">
-                          <h5 class="sh-item-<%= item.id %>"><strong><%= item.name.upcase %></h5><h5 class="sh-item-<%= item.id %>">€<%= '%.2f' % item.price %></strong></h5>
+                          <h5 class="sh-item-<%= item.id %>"><strong><a href="#" data-name="<%= item.name %>" data-price="<%= item.price %>" onclick="basketItems(event, this)"><%= item.name.upcase %></h5></a><h5 class="sh-item-<%= item.id %>">€<%= '%.2f' % item.price %></strong></h5>
                         </div>
                         <div class="sh-items-description">
                           <p class="sh-item-<%= item.id %>"><%= item.description.gsub(/\n/, '<br>').html_safe %></p>
@@ -59,3 +59,4 @@
 <%= javascript_include_tag "packs/sh-edit-item" %>
 <%= javascript_include_tag "packs/sh-add-item" %>
 <%= javascript_include_tag "packs/sh-edit-menu" %>
+<%= javascript_include_tag "packs/sh-basket" %>

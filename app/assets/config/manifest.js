@@ -5,4 +5,5 @@
 //= link packs/sh-edit-item.js
 //= link packs/sh-add-item.js
 //= link packs/sh-edit-menu.js
+//= link packs/sh-basket.js
 //= require allow_numeric
