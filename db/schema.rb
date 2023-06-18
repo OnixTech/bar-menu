@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_02_12_160319) do
+ActiveRecord::Schema[7.0].define(version: 2023_06_17_111615) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -25,6 +25,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_12_160319) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "qr_code"
+    t.boolean "basket", default: false
     t.index ["user_id"], name: "index_companies_on_user_id"
   end
 

@@ -1,6 +1,11 @@
 <div class = "sh-container">
-  <h1> Speisekarte </h1>
-  <p></p>
+  <div class="sh-nav">
+    <h1> Speisekarte </h1>
+  </div>
+  <% if @company.basket == false %>
+    <div class="sh-nav-basket">
+    </div>
+  <% end %>
   <div class="sh-searchform">
     <input type="text" name="search" autocomplete=”off” id="sh-input"
     onkeyup="searchbar()" placeholder="Search">

@@ -1,0 +1,24 @@
+.sh-nav{
+  height: 70px;
+  margin-bottom: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+  h1{
+    height: 100%;
+    text-align: center;
+    margin: auto;
+  }
+}
+
+.sh-nav-basket{
+  height: 45px;
+  width: 45px;
+  position: fixed;
+  top: 30px;
+  right: 60px;
+  margin: auto;
+  background: url("icons/Basket.png");
+  background-size: cover;
+}
