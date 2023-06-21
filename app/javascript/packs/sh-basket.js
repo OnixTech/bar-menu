@@ -4,6 +4,9 @@ function basketItems(event, element){
 
     const itemName= element.getAttribute('data-name');
     const itemPrice = parseInt(element.getAttribute('data-price'), 10);
+
+
+    
   
     const item = {
         name: itemName,
