@@ -4,8 +4,10 @@
     <h1> Speisekarte </h1>
   </div>
   <% if @company.basket == false %>
-    <div class="sh-nav-basket">
-    </div>
+    <a href="#" onclick="toggle(); return false">
+      <div class="sh-nav-basket">
+      </div>
+    </a>
   <% end %>
   <div class="sh-searchform">
     <input type="text" name="search" autocomplete=”off” id="sh-input"
@@ -61,3 +63,4 @@
 <%= javascript_include_tag "packs/sh-add-item" %>
 <%= javascript_include_tag "packs/sh-edit-menu" %>
 <%= javascript_include_tag "packs/sh-basket" %>
+<%= javascript_include_tag "packs/sh-basket-open" %>
