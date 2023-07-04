@@ -10,6 +10,7 @@
     transform: translate(-50%, -50%);
     padding: 24px;
     z-index: 9999;
+    font-family: $grl-font;
     .sh-basket-note-tittle{
         a {
             all: unset;
@@ -27,6 +28,12 @@
     .a{
         text-decoration: none;
     }
+    hr{
+        margin: 1px
+    }
+    p{
+        margin: 5px;
+    }
 }
 .overlay {
     position: fixed;
@@ -37,4 +44,14 @@
     height: 100%;
     background-color: rgba(0, 0, 0, 0.5); 
     z-index: 9998;
+}
+#basket-container{
+    height: 350px!important;
+    overflow: auto;
+    ul{
+        padding-left: 1rem;
+    }
+    li{
+        font-size: 12px;
+    }
 }

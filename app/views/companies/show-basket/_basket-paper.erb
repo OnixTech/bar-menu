@@ -4,16 +4,10 @@
       <a href="#" onclick="toggle(); return false"><p>X</p></a><h5>Order</h5>
     </div>
     <hr>
-    <div>
-    <input type="hidden" id="my-object" value="<%= raw @myObject.to_json %>">
-    <% if @myObject.present? %>
-    <% @myObject.each do |item| %>
-      <h3><%= item.name %></h3></p>
-      <p><%= item.price %></p>
-    <% end %>
-    <% end %>
+    <div id="basket-container">
+      <ul id="basket-items-list"></ul>
     </div>
     <hr>
-      <h3></h3>
-    </div>
+    <p>Total: <span id="basket-total"></span></p>
+  </div>
   <div class="overlay"></div>
