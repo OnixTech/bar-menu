@@ -173,6 +173,9 @@
       font-size: 12px;
       font-weight: 500;
     }
+    a{
+      all: unset;
+    }
   }
   .sh-items-description{
     font-family: $description-font;

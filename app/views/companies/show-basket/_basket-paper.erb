@@ -4,9 +4,16 @@
       <a href="#" onclick="toggle(); return false"><p>X</p></a><h5>Order</h5>
     </div>
     <hr>
-      
-
-      <p></p> <p></p>
+    <div>
+    <input type="hidden" id="my-object" value="<%= raw @myObject.to_json %>">
+    <% if @myObject.present? %>
+    <% @myObject.each do |item| %>
+      <h3><%= item.name %></h3></p>
+      <p><%= item.price %></p>
+    <% end %>
+    <% end %>
+    </div>
+    <hr>
       <h3></h3>
     </div>
   <div class="overlay"></div>
