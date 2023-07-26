@@ -21,9 +21,22 @@
             right: 10px;
             top: 3px;
         }
-        h5{
-            margin: 3px;
-        }        
+        .sh-basket-table{
+            display: flex;
+            justify-content: left;
+            align-items: center;
+            h5{
+                margin: 3px;
+            }
+            input{
+                height: 19px;
+                width: 50px;
+                margin: 5px;
+                font-size: 10px;
+                background-color: #f7e8e8;
+                border: 1px whitesmoke;
+            }
+        } 
     }
     .a{
         text-decoration: none;
@@ -33,6 +46,16 @@
     }
     p{
         margin: 5px;
+    }
+    .sh-basket-total{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        .sh-basket-total-send{
+            height: 25px;
+            width: 30x;
+            border: 1px gray;
+        }
     }
 }
 .overlay {

@@ -164,14 +164,15 @@
   display: inline;
   .sh-items-name-price{
     width: 100%;
-    height: 16px;
-    text-align: center;
+    height: auto;
+    text-align: start;
     display: flex;
     justify-content: space-between;
     font-size: 11px;
     h5{
-      font-size: 12px;
+      font-size: 11px;
       font-weight: 500;
+      margin-bottom: unset;
     }
     a{
       all: unset;
@@ -179,14 +180,17 @@
   }
   .sh-items-description{
     //font-family: $description-font;
+    width: 80%;
+    margin-top: unset;
     p{
-      font-size: 11px;
+      font-size: 10px;
     }
   }
   p{
     font-size: 12px;
     margin-bottom: 2px;
     height: auto;
+    line-height: 1.1em;
   }
 }
 
