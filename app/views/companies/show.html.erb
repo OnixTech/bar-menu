@@ -3,7 +3,7 @@
   <div class="sh-nav">
     <h1> Speisekarte </h1>
   </div>
-  <% if @company.basket == true %>
+  <% if @company.basket == false %>
     <a href="#" onclick="toggle(); return false">
       <div class="sh-nav-basket">
       </div>
@@ -36,7 +36,7 @@
                         </div>
                       </div>
                       <div class="sh-div-btn-set-item">
-                        <% if @company.basket == true %>
+                        <% if @company.basket == false %>
                           <div class="sh-div-item-basket-img">
                           </div>  
                           <div class="sh-div-item-basket-quantity">
