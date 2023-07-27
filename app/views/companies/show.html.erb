@@ -36,6 +36,15 @@
                         </div>
                       </div>
                       <div class="sh-div-btn-set-item">
+                        <% if @company.basket == true %>
+                          <div class="sh-div-item-basket-img">
+                          </div>  
+                          <div class="sh-div-item-basket-quantity">
+                            <p><span id="sh-div-item-basket-quantity-number-<%= item.id %>"></span></p>
+                          </div>
+                          <button class="sh-btn-basket-item" data-id="<%= item.id %>" data-name="<%= item.name %>" data-price="<%= item.price %>" onclick="basketItems(event, this, true)">+</button>
+                          <button class="sh-btn-basket-item" data-id="<%= item.id %>" data-name="<%= item.name %>" data-price="<%= item.price %>" onclick="basketItems(event, this, false)">-</button>
+                        <% end %>
                         <% if current_user.present? %>
                           <% if (current_user == @company.user) || (current_user.role_id == 1) %>
                             <button class="sh-btn-set-item sh-btn-edit-<%= item.id %>" onclick="editItem(this)" data-id=<%= item.id %>>EDIT</button>

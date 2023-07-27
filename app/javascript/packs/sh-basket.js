@@ -1,5 +1,5 @@
 
-function basketItems(event, element){
+function basketItems(event, element, operator){
     event.preventDefault();
     const itemId = element.getAttribute('data-id');
     const itemName = element.getAttribute('data-name');
@@ -10,25 +10,47 @@ function basketItems(event, element){
         name: itemName,
         price: itemPrice
     };
-    acumulator(item);
+    acumulator(item, operator);
 }
 
 const basket = {
     items: [],
     total: 0
 };
-function acumulator(item){
+function acumulator(item, operator){
     
     const existingItem = basket.items.find((basketItem) => basketItem.id === item.id);
 
-    if (existingItem) {
-        existingItem.quantity += 1;
-      } else {
-        basket.items.push(item);
+    if(operator === true){
+        if (existingItem){
+            existingItem.quantity += 1;
+        } else {
+            basket.items.push(item);
+        }
+    }else{
+        if(existingItem){
+            if (existingItem.quantity > 0){
+                existingItem.quantity -= 1;
+                if (existingItem.quantity === 0){
+                    let index =  basket.items.indexOf(existingItem);
+                    basket.items.splice(index,1);
+                }
+            }
+        }
+        
     }
-    basket.total += item.price;
-    updateView()
+    CalculateTotal()
+    updateView(item)
     view(basket);
+}
+
+function CalculateTotal(){
+    basket.total = 0;
+    if (basket.items){
+      basket.items.forEach(function(item) {
+        basket.total += item.price * item.quantity;
+      });
+    }
 }
 
 function view(basket){
@@ -38,10 +60,11 @@ function view(basket){
 
 }
 
-function updateView() {
+function updateView(item) {
     var itemsList = document.getElementById('basket-items-list');
     var totalElement = document.getElementById('basket-total');
-
+    var quantityNumber = document.getElementById("sh-div-item-basket-quantity-number-" + item.id);
+    var itemQuantity = basket.items.find((basketItem) => basketItem.id === item.id);
     // Clear existing items
     itemsList.innerHTML = '';
 
@@ -54,4 +77,10 @@ function updateView() {
 
     // Update total
     totalElement.textContent = basket.total.toFixed(2);
+    if(itemQuantity){
+      quantityNumber.textContent = itemQuantity.quantity;
+    }else{
+        quantityNumber.textContent = "";
+    }
+    
   }

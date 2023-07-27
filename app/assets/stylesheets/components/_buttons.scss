@@ -54,6 +54,22 @@
   box-shadow: 0 1px 2px 0;
 }
 
+.sh-btn-basket-item{
+  width: 20px;
+  height: 15px;
+  background-color: white;
+  border: solid 2px lightgray;
+  border-radius: 3px;
+  font-size: 10px;
+  color: black;
+  font-weight: normal;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 12px;
+  box-shadow: 0 1px 2px 0;
+}
+
 .cmp-index-btn-lgt, .cmp-index-btn-add{
   all: unset;
   font-size: 12px;
