@@ -39,7 +39,7 @@
                         <% if @company.basket == false %>
                           <div class="sh-div-item-basket-img">
                           </div>  
-                          <div class="sh-div-item-basket-quantity">
+                          <div class="sh-div-item-basket-quantity" id="quantityDiv">
                             <p><span id="sh-div-item-basket-quantity-number-<%= item.id %>"></span></p>
                           </div>
                           <button class="sh-btn-basket-item" data-id="<%= item.id %>" data-name="<%= item.name %>" data-price="<%= item.price %>" onclick="basketItems(event, this, true)">+</button>

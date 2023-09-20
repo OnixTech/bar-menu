@@ -64,6 +64,7 @@ function updateView(item) {
     var itemsList = document.getElementById('basket-items-list');
     var totalElement = document.getElementById('basket-total');
     var quantityNumber = document.getElementById("sh-div-item-basket-quantity-number-" + item.id);
+    var quantityDiv = document.getElementById("quantityDiv");
     var itemQuantity = basket.items.find((basketItem) => basketItem.id === item.id);
     // Clear existing items
     itemsList.innerHTML = '';
@@ -79,8 +80,11 @@ function updateView(item) {
     totalElement.textContent = basket.total.toFixed(2);
     if(itemQuantity){
       quantityNumber.textContent = itemQuantity.quantity;
+      quantityDiv.style.backgroundColor = "red";
     }else{
         quantityNumber.textContent = "";
+        quantityDiv.style.backgroundColor = "white";
+        
     }
     
   }

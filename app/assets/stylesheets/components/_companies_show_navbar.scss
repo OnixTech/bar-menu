@@ -32,7 +32,12 @@
 .sh-div-item-basket-quantity{
   height: 16px;
   width: 16px;
-  color: rgb(158, 11, 11);
+  color: white;
   margin-right: 5px;
   text-align: center;
+  border-radius: 50%;
+  p{
+    margin-top: 1px;
+    font-size: 11px;
+  }
 }
