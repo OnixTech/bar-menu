@@ -14,6 +14,7 @@ function basketItems(event, element, operator){
 }
 
 const basket = {
+    table: "",
     items: [],
     total: 0
 };
@@ -87,16 +88,36 @@ function updateView(item) {
         
     }
     
-  }
+}
 
-  function sendOrder(basket) {
+function sendOrder(){
+    var inputTable = document.getElementById('sh-basket-table');
+
+    basket.table = inputTable.value
+
+    if (basket.table.length){ 
+        request(basket)
+    }else {
+        alert('Table field is empty.');
+    }
+}
+
+function request(basket) {
+
     const jsonData = JSON.stringify(basket);
     const serverUrl = 'https://second-server-url.com/api/endpoint';
+
     fetch(serverUrl, {
         method: 'POST',
         headers: {
-          'Content-Type': 'application/json',
+        'Content-Type': 'application/json',
         },
         body: jsonData,
-      })
-  }
+    })
+    .then(response => {
+        if (!response.ok) {
+        throw new Error('Network response was not ok');
+        }
+        return response.json();
+    })
+}
