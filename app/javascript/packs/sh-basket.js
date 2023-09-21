@@ -64,7 +64,7 @@ function updateView(item) {
     var itemsList = document.getElementById('basket-items-list');
     var totalElement = document.getElementById('basket-total');
     var quantityNumber = document.getElementById("sh-div-item-basket-quantity-number-" + item.id);
-    var quantityDiv = document.getElementById("quantityDiv");
+    var quantityDiv = document.getElementById("quantityDiv" + item.id);
     var itemQuantity = basket.items.find((basketItem) => basketItem.id === item.id);
     // Clear existing items
     itemsList.innerHTML = '';
@@ -87,4 +87,16 @@ function updateView(item) {
         
     }
     
+  }
+
+  function sendOrder(basket) {
+    const jsonData = JSON.stringify(basket);
+    const serverUrl = 'https://second-server-url.com/api/endpoint';
+    fetch(serverUrl, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: jsonData,
+      })
   }
