@@ -14,6 +14,7 @@ function basketItems(event, element, operator){
 }
 
 const basket = {
+    table: "",
     items: [],
     total: 0
 };
@@ -64,7 +65,7 @@ function updateView(item) {
     var itemsList = document.getElementById('basket-items-list');
     var totalElement = document.getElementById('basket-total');
     var quantityNumber = document.getElementById("sh-div-item-basket-quantity-number-" + item.id);
-    var quantityDiv = document.getElementById("quantityDiv");
+    var quantityDiv = document.getElementById("quantityDiv" + item.id);
     var itemQuantity = basket.items.find((basketItem) => basketItem.id === item.id);
     // Clear existing items
     itemsList.innerHTML = '';
@@ -87,4 +88,31 @@ function updateView(item) {
         
     }
     
-  }
+}
+
+function sendOrder(){
+    var inputTable = document.getElementById('sh-basket-table');
+
+    basket.table = inputTable.value
+
+    if (basket.table.length){ 
+        request(basket)
+    }else {
+        alert('Table field is empty.');
+    }
+}
+
+function request(basket) {
+
+    const jsonData = JSON.stringify(basket);
+    const serverUrl = 'http://127.0.0.1:3001/bsktresqto';
+    const csrfToken = document.querySelector("meta[name='csrf-token']").getAttribute("content");
+    fetch(serverUrl, {
+        method: 'POST',
+        headers: {
+        'Content-Type': 'application/json',
+        'X-CSRF-Token': csrfToken,
+        },
+        body: jsonData,
+    })
+}

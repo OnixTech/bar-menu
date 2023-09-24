@@ -4,7 +4,7 @@
       <a href="#" onclick="toggle(); return false"><p>X</p></a>
       <div class="sh-basket-table">
         <h5>Table n#:</h5>
-        <input type="text">
+        <input type="text" id="sh-basket-table">
       </div>
     </div>
     <hr>
@@ -15,7 +15,7 @@
     <div class="sh-basket-total">
       <p>Total: <span id="basket-total"></span></p>
       <div class="sh-basket-total-send">
-          
+        <button class="sh-btn-set-item" onclick="sendOrder(); return false">SEND</button>
       </div>
     </div>
   </div>

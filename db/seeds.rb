@@ -66,6 +66,7 @@ if Company.count < 1
     :street => "Schönhauser Allee",
     :number => "176",
     :post => "10119",
+    :basket => true,
     :user_id => 2
   )
   restaurant.save!
