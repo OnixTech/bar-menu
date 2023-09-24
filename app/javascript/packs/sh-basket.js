@@ -105,19 +105,14 @@ function sendOrder(){
 function request(basket) {
 
     const jsonData = JSON.stringify(basket);
-    const serverUrl = 'https://second-server-url.com/api/endpoint';
-
+    const serverUrl = 'http://127.0.0.1:3001/bsktresqto';
+    const csrfToken = document.querySelector("meta[name='csrf-token']").getAttribute("content");
     fetch(serverUrl, {
         method: 'POST',
         headers: {
         'Content-Type': 'application/json',
+        'X-CSRF-Token': csrfToken,
         },
         body: jsonData,
-    })
-    .then(response => {
-        if (!response.ok) {
-        throw new Error('Network response was not ok');
-        }
-        return response.json();
     })
 }

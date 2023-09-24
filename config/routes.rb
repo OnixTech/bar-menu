@@ -15,9 +15,5 @@ Rails.application.routes.draw do
   post '/users/update' => 'users#update'
   post '/items/setPrices' => 'items#setPrices'
   resources :items
-  
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
-
-  # Defines the root path route ("/")
-
+  post '/bsktresqto', to: 'deliveries#grequest'
 end
