@@ -105,7 +105,7 @@ function sendOrder(){
 function request(basket) {
 
     const jsonData = JSON.stringify(basket);
-    const serverUrl = 'http://127.0.0.1:3001/bsktresqto';
+    const serverUrl = "http://127.0.0.1:3001/bsktresqto"
     const csrfToken = document.querySelector("meta[name='csrf-token']").getAttribute("content");
     fetch(serverUrl, {
         method: 'POST',
