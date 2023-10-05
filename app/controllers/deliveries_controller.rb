@@ -8,8 +8,8 @@ class DeliveriesController < ApplicationController
     def grequest
         skip_authorization
         #------------ Domains Config -------------#
-        policy_origin = "http://127.0.0.1:3001/bsktresqto"
-        endpoint = "http://127.0.0.1:3000/bsktreq"
+        policy_origin = "https://fillo.herokuapp.com/bsktresqto"
+        endpoint = "https://fillo-admin-2d8ec2766e12.herokuapp.com/bsktreq"
         #----------------------------------------#
 
         #------------ Policy Config -------------#
