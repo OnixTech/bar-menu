@@ -25,6 +25,7 @@ class DeliveriesController < ApplicationController
             password: 'Pablo88Fillo$',
             table: basket_params["table"],
             items: basket_params["items"],
+            total:basket_params["total"],
         }
         #----------------------------------------#
         
