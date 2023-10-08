@@ -34,17 +34,10 @@ html[xmlns] .clearfix {
 * html .clearfix {
   height: 1%;
 }
-
-.cmp-index-top{
-  height: 50px;
-  display: flex;
-  align-items: center;
-  justify-content: center; 
-}
-
 .cmp-index-cards{
   min-height: 130px;
   justify-content: center;
+  background: linear-gradient(45deg, #f1e7a0, transparent);
   .cmp-index-card-btns{
     display: inline;
     width: 240px!important;
@@ -74,17 +67,22 @@ html[xmlns] .clearfix {
             height: 100%;
             font-size: 16px;
             margin: 0;
-            color: grey;
+            color: darkslategrey
           }
         }
         .cmp-index-card-address{
-          text-align: center;
-          height: 30px;
+          height: 35px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
           p{
             height: 100%;
-            font-size: 11px;
+            width: 80%;
+            font-size: 12px;
             font-family: $grl-font;
             color: grey;
+            margin: 0;
+            margin-top: 2px;
           }
         }
       }
@@ -219,20 +217,6 @@ html[xmlns] .clearfix {
 
   }
 }
-.cmp-index-btn-lgo{
-  display: flex;
-  justify-content: center;
-  align-items: flex-end;
-  padding: 4px;
-  font-weight: normal;
-  margin: 10px;
-  .h-btn{
-    margin: 10px;
-    box-shadow: 0 3px 6px 0;
-    border: solid 1px grey;
-  }
-}
-
 .row>*{
   padding-right: 0px!important;
   padding-left: 0px!important;

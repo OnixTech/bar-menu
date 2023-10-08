@@ -1,0 +1,30 @@
+
+.cmp-index-navbar{
+  height: 60px;
+  display: flex;
+  justify-content: space-between;
+  background: linear-gradient(45deg, #f1e7a0, transparent);
+  box-shadow: 0 0 6px 0;
+  align-items: center;
+  .cmp-index-navbar-cont{
+    height: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center; 
+    .cmp-index-navbar-btn{
+      display: flex;
+      justify-content: center;
+      align-items: flex-end;
+      padding: 0px;
+      margin: 3px;
+    }
+    .h-btn{
+      height: auto;
+      width: 115px;
+      margin: 1px;
+      background-color: orange;
+      box-shadow: 0 1px 3px 0;
+
+    }
+  }
+}

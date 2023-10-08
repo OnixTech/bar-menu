@@ -1,7 +1,5 @@
 <div class="cmp-index-container clearfix">
-  <br>
   <%= render partial: "index-navbar" %>
-  <hr>
   <div class="cmp-index-cards row">
     <% @company = @company.sort_by(&:id) %>
     <% @company.each do |company| %>
