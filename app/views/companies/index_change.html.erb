@@ -1,0 +1,65 @@
+  <div class="cmp-index-cards row">
+    <% @company = @company.sort_by(&:id) %>
+    <% @company.each do |company| %>
+      <% if current_user == company.user  %>
+        <div class="cmp-index-card-btns col-sm-6 col-md-4 col-xl-1 list">
+          <div class="cmp-index-card">
+            <a href="<%= company_path(company) %>"class="cmp-index-card-content">
+              <div class="cmp-index-card-tittle"> 
+                <h4><strong><%= company.name.upcase %></strong></h4>
+              </div>
+              <div class="cmp-index-card-address">
+                <p><%= company.street %> <%= company.number %>, <%= company.post %> <%= company.city %></p>
+              </div>
+            </a> 
+          </div>
+          <div class="cmp-index-card-qr">
+            <% if company.qr_code == nil %>
+              <%= simple_form_for(company) do |f| %>
+                <%= f.hidden_field :qr_code, value:"https://fillo.herokuapp.com#{company_path(company)}"%>
+                <div class="cmp-index-card-qr-g">
+                  <%= f.submit "Generate QR", class:"sh-btn-set-item"%>
+                </div>
+              <% end %>
+            <% else %>
+              <div class="cmp-index-card-svg">
+                <%= link_to company_qr_path(company_id: company.id) do %>
+                  <%= @svg.html_safe %>
+                <% end %>
+              </div>
+            <% end %>
+          </div>
+          <div class="cmp-index-card-sections-checkbx">
+            <div class="cmp-index-card-sections-checkbx-title">
+            <p>VISIBLE SECTIONS</p>
+            </div>
+            <hr>
+            <div class="cmp-index-card-sections-checkbx-checkboxes-row">
+              <% @menus = @menus.sort_by(&:position) %>
+              <% @menus.each do |menu| %>
+                <%= simple_form_for menu, :url => menus_cmUpdate_path(menu), :method => :post do |f| %>  
+                  <% if menu.company_id == company.id %>
+                      <div class="cmp-index-card-sections-checkbx-checkboxes">
+                        <div class="cmp-index-card-sections-checkbx-checkboxes-box-name">
+                          <%= f.hidden_field :menu_id, value:menu.id %>
+                          <%= f.check_box :visible, value:menu.visible %>
+                          <label for="<%= menu.subtitle %>"><p><%= menu.subtitle %></p></label>
+                        </div>
+                        <div class="cmp-index-card-sections-checkbx-checkboxes-submit">
+                          <%= f.submit "CONFIRM", class:"sh-btn-set-item" %>
+                        </div>
+                      </div>
+                  <% end %>
+                <% end %>
+              <% end %>
+            </div>  
+            <hr>
+          </div>
+          <div class="cmp-index-card-set-btns">
+            <%= button_to "EDIT", edit_company_path(company), method: :get %>
+            <%= button_to "DELETE", company_path(company), method: :delete %>
+          </div>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
