@@ -12,6 +12,7 @@
     align-items: center;
     justify-content: center; 
     .cmp-index-navbar-btn{
+      height: auto;
       display: flex;
       justify-content: center;
       align-items: flex-end;
@@ -19,11 +20,15 @@
       margin: 3px;
     }
     .h-btn{
-      height: auto;
-      width: 115px;
+      height: 20px;
+      width: 80px;
       margin: 1px;
       background-color: orange;
-      box-shadow: 0 1px 3px 0;
+      text-align: center;
+      box-shadow: 0 1px 3px 0 grey;
+      color: black;
+      font-size: 10px;
+      border-radius: 7%;
 
     }
   }
