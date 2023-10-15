@@ -3,13 +3,11 @@
   width: 100%;
   display: inline;
   font-family: $grl-font;
-  h3{
-    text-align: center;
-    margin: 20px;
-  }
-  h5{
-    text-align: left;
-    margin-left: 3vh;
+  .cmp-index-container-cont{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2px;
   }
 }
 
@@ -33,6 +31,33 @@ html[xmlns] .clearfix {
 * html .clearfix {
   height: 1%;
 }
+//****************************************
+
+.cmp-index-content{
+  width: auto;
+  display: flex;
+  justify-content: center;
+  border: solid 1px lightgrey;
+  margin: 5px;
+  .cmp-index-cont-sides{
+    border: solid 1px lightgrey;
+    height: 300px;
+    width: 300px;
+    border-radius: 5%;
+    padding: 2px;
+    margin: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 4px 6px 0;
+  }
+}
+.cmp-index-card-sections-checkbx-checkboxes-row{
+  display: "";
+}
+
+
+//****************************************
 .cmp-index-cards{
   min-height: 130px;
   justify-content: center;

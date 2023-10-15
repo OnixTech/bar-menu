@@ -1,6 +1,15 @@
 <div class="cmp-index-container clearfix">
-  <%= render partial: "index-navbar" %>
+  <%= render partial: "companies/render-companies-index/index-navbar" %>
+  <div class="cmp-index-container-cont">
+    <div class="cmp-index-content">
+      <div class="cmp-index-cont-sides leftcontainer">
+          <%= render partial: "companies/render-companies-index/companies-index-cont-left"%>
+      </div>
+      <div class="cmp-index-cont-sides">
+        <%= render partial: "companies/render-companies-index/companies-index-cont-right",  locals: {company: @company} %>
+      </div>
+    </div>
+  </div>
   <hr>
   <%= render partial: "index-users-list" %>
 </div>
-

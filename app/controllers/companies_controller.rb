@@ -1,5 +1,5 @@
 class CompaniesController < ApplicationController
-  before_action :set_companies, only: [:show, :edit, :update, :destroy]
+  before_action :set_companies, only: [:show, :edit, :update, :destroy, :indexMenuList]
   
   def index
     @company = policy_scope(Company)
