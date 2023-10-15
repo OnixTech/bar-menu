@@ -42,7 +42,7 @@ class DeliveriesController < ApplicationController
         body: basket.to_json,
         headers: {
             'Content-Type' => 'application/json',
-        }
+        } 
         )
         #----------------------------------------#
     end
