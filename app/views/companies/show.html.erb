@@ -1,4 +1,4 @@
-<%= render partial: "companies/show-basket/basket-paper" %>
+<%= render partial: "companies/show-basket/basket-paper", locals: {company: @company} %>
 <div class = "sh-container">
   <div class="sh-nav">
     <h1> Speisekarte </h1>
@@ -42,8 +42,8 @@
                           <div class="sh-div-item-basket-quantity" id="quantityDiv<%= item.id %>">
                             <p><span id="sh-div-item-basket-quantity-number-<%= item.id %>"></span></p>
                           </div>
-                          <button class="sh-btn-basket-item" data-id="<%= item.id %>" data-name="<%= item.name %>" data-price="<%= item.price %>" onclick="basketItems(event, this, true)">+</button>
-                          <button class="sh-btn-basket-item" data-id="<%= item.id %>" data-name="<%= item.name %>" data-price="<%= item.price %>" onclick="basketItems(event, this, false)">-</button>
+                          <button class="sh-btn-basket-item" data-id="<%= item.id %>" data-name="<%= item.name %>" data-price="<%= item.price %>" data-station="<%= item.station %>" onclick="basketItems(event, this, true)">+</button>
+                          <button class="sh-btn-basket-item" data-id="<%= item.id %>" data-name="<%= item.name %>" data-price="<%= item.price %>" data-station="<%= item.station %>" onclick="basketItems(event, this, false)">-</button>
                         <% end %>
                         <% if current_user.present? %>
                           <% if (current_user == @company.user) || (current_user.role_id == 1) %>

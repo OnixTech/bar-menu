@@ -11,11 +11,9 @@ class DeliveriesController < ApplicationController
         if Rails.env.production?
           policy_origin = "https://fillo.herokuapp.com/bsktresqto"
           endpoint = "https://fillo-admin-2d8ec2766e12.herokuapp.com/bsktreq"
-          puts "production"
         else
           policy_origin = "http://127.0.0.1:3001/bsktresqto"
           endpoint = "http://127.0.0.1:3000/bsktreq"
-          puts "development"
         end
         #----------------------------------------#
 
@@ -30,6 +28,7 @@ class DeliveriesController < ApplicationController
         basket = {
             email: 'pablo@fillo.com',
             password: 'Pablo88Fillo$',
+            station_id: 1,
             table: basket_params["table"],
             items: basket_params["items"],
             total:basket_params["total"],

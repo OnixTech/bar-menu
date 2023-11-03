@@ -4,16 +4,19 @@ function basketItems(event, element, operator){
     const itemId = element.getAttribute('data-id');
     const itemName = element.getAttribute('data-name');
     const itemPrice = parseFloat(element.getAttribute('data-price'), 10.00);
+    const itemStation = element.getAttribute('data-station');
     const item = {
         id: itemId,        
         quantity: 1,
         name: itemName,
-        price: itemPrice
+        price: itemPrice,
+        station: itemStation
     };
     acumulator(item, operator);
 }
 
 const basket = {
+    company: "",
     table: "",
     items: [],
     total: 0
@@ -42,7 +45,6 @@ function acumulator(item, operator){
     }
     CalculateTotal()
     updateView(item)
-    view(basket);
 }
 
 function CalculateTotal(){
@@ -54,30 +56,23 @@ function CalculateTotal(){
     }
 }
 
-function view(basket){
-
-    myObject = basket;
-    console.log(myObject);
-
-}
-
 function updateView(item) {
     var itemsList = document.getElementById('basket-items-list');
     var totalElement = document.getElementById('basket-total');
     var quantityNumber = document.getElementById("sh-div-item-basket-quantity-number-" + item.id);
     var quantityDiv = document.getElementById("quantityDiv" + item.id);
     var itemQuantity = basket.items.find((basketItem) => basketItem.id === item.id);
-    // Clear existing items
+
     itemsList.innerHTML = '';
 
-    // Iterate through basket items and create list elements
+
     basket.items.forEach(function(item) {
       var listItem = document.createElement('li');
       listItem.textContent = item.quantity+'x ' + item.name +" €"+ item.price;
       itemsList.appendChild(listItem);
     });
 
-    // Update total
+
     totalElement.textContent = basket.total.toFixed(2);
     if(itemQuantity){
       quantityNumber.textContent = itemQuantity.quantity;
@@ -91,10 +86,13 @@ function updateView(item) {
 }
 
 function sendOrder(){
-    var inputTable = document.getElementById('sh-basket-table');
-
+    var element = document.getElementById('table-data');
+    var inputTable = element.querySelector('#table-number');
+    var companyName = element.getAttribute('data');
+    
     basket.table = inputTable.value
-
+    basket.company = companyName
+    console.log(basket);
     if (basket.table.length){ 
         request(basket)
     }else {
@@ -116,4 +114,11 @@ function request(basket) {
         },
         body: jsonData,
     })
+    .then(response => {
+        if (response.status === 200) {
+          alert("Success!");
+        } else {
+          alert("Error!");
+        }
+      })
 }
