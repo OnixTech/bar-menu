@@ -52,7 +52,7 @@ end
 
 if Company.count < 1
   company = Company.new(
-    :name => Faker::Restaurant.name,
+    :name => "Loco Loco",
     :city => Faker::Address.city,
     :suburb => Faker::Address.community,
     :street => Faker::Address.street_name,

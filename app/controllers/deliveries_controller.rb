@@ -28,7 +28,7 @@ class DeliveriesController < ApplicationController
         basket = {
             email: 'pablo@fillo.com',
             password: 'Pablo88Fillo$',
-            station_id: 1,
+            company: basket_params["company"],
             table: basket_params["table"],
             items: basket_params["items"],
             total:basket_params["total"],
