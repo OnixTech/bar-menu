@@ -38,3 +38,24 @@
       <% end %>
     <% end %>
   </div>
+
+        <div class="cmp-index-cont-sides">
+        <%= render partial: "companies/render-companies-index/companies-index-cont-right",  locals: {company: @company} %>
+      </div>
+    <div class="cmp-index-card-sections-checkbx-checkboxes-row">
+      <% @menus = @menus.sort_by(&:position) %>
+      <% @menus.each do |menu| %>
+        <%= simple_form_for menu, :url => menus_cmUpdate_path(menu), :method => :post do |f| %>  
+          <div class="cmp-index-card-sections-checkbx-checkboxes">
+            <div class="cmp-index-card-sections-checkbx-checkboxes-box-name">
+              <%= f.hidden_field :menu_id, value:menu.id %>
+              <%= f.check_box :visible, value:menu.visible %>
+              <label for="<%= menu.subtitle %>"><p><%= menu.subtitle %></p></label>
+            </div>
+            <div class="cmp-index-card-sections-checkbx-checkboxes-submit">
+              <%= f.submit "CONFIRM", class:"sh-btn-set-item" %>
+            </div>
+          </div>
+        <% end %>
+      <% end %>
+    </div> 

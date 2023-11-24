@@ -1,26 +1,45 @@
 <div class="cmp-index-cont-container">
   <div class="cmp-index-card-sections-checkbx">
     <div class="cmp-index-card-sections-checkbx-title">
-      <p>VISIBLE SECTIONS</p>
+      <p>Companies</p>
     </div>
     <hr>
-    <div class="cmp-index-card-sections-checkbx-checkboxes-row">
-      <% @menus = @menus.sort_by(&:position) %>
-      <% @menus.each do |menu| %>
-        <%= simple_form_for menu, :url => menus_cmUpdate_path(menu), :method => :post do |f| %>  
-              <div class="cmp-index-card-sections-checkbx-checkboxes">
-                <div class="cmp-index-card-sections-checkbx-checkboxes-box-name">
-                  <%= f.hidden_field :menu_id, value:menu.id %>
-                  <%= f.check_box :visible, value:menu.visible %>
-                  <label for="<%= menu.subtitle %>"><p><%= menu.subtitle %></p></label>
-                </div>
-                <div class="cmp-index-card-sections-checkbx-checkboxes-submit">
-                  <%= f.submit "CONFIRM", class:"sh-btn-set-item" %>
-                </div>
-              </div>
-        <% end %>
+    <div class="cmp-index-card-comp-list-row">
+      <% @companies.each do |company| %>
+        <div class="cmp-index-card-comp-list">
+          <div class="cmp-index-card-comp-list-box-name">
+            <div class="cmp-index-card-comp-list-name">
+              <%= link_to "#{company.name}", company_path(company) %>
+              <%= link_to "Menu", company_path(company) %>
+            </div>
+            <div class="cmp-index-card-comp-list-addres">
+              <p><%= company.street %> <%= company.number %></p>
+            </div>
+          </div>
+        </div>
       <% end %>
-    </div>  
+    </div>
     <hr>
+  </div>
+  <div class="cmp-index-card-sections-company-content">
+    <p>Name: <%= @company[0]["name"] %></p>
+    <p>address: <%= @company[0]["street"] %> <%= @company[0]["number"] %> <%= @company[0]["post"] %> <%= @company[0]["city"] %></p>
+    <div class="cmp-index-card-qr">
+      <p>QR:</p>
+      <% if @company[0]["qr_code"] == nil %>
+        <%= simple_form_for(@company[0]) do |f| %>
+          <%= f.hidden_field :qr_code, value:"https://fillo.herokuapp.com#{company_path(@company[0])}"%>
+          <div class="cmp-index-card-qr-g">
+            <%= f.submit "Generate QR", class:"sh-btn-set-item"%>
+          </div>
+        <% end %>
+      <% else %>
+        <div class="cmp-index-card-svg">
+          <%= link_to company_qr_path(company_id: @company[0]["id"]) do %>
+            <%= @svg.html_safe %>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
   </div>
 </div>

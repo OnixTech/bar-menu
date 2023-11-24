@@ -3,10 +3,7 @@
   <div class="cmp-index-container-cont">
     <div class="cmp-index-content">
       <div class="cmp-index-cont-sides leftcontainer">
-          <%= render partial: "companies/render-companies-index/companies-index-cont-left"%>
-      </div>
-      <div class="cmp-index-cont-sides">
-        <%= render partial: "companies/render-companies-index/companies-index-cont-right",  locals: {company: @company} %>
+          <%= render partial: "companies/render-companies-index/companies-index-cont-left", locals: {companies: @companies} %>
       </div>
     </div>
   </div>

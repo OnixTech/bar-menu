@@ -263,42 +263,66 @@ html[xmlns] .clearfix {
       color: grey;
     }
   }
-  .cmp-index-card-sections-checkbx-checkboxes-row{
+  .cmp-index-card-comp-list-row{
     width: 95%;
     height: 84px!important;
-    overflow-y:  auto;
+    overflow-y:  scroll;
     overflow-x: hidden;
     text-align: start;
     margin-left: 8px;
-    .cmp-index-card-sections-checkbx-checkboxes{
+    .cmp-index-card-comp-list{
       display: flex;
       justify-content: center;
       align-items: center;
-      .cmp-index-card-sections-checkbx-checkboxes-box-name{
-        width: 115px;
+      .cmp-index-card-comp-list-box-name{
+        width: 100%;
         height: auto;
         max-height: none;
-        display: flex;
-        align-items: center;
+        display: inline;
         border-bottom: solid 1px lightgrey;
         padding: 2px;
-        input{
-          width: 15px!important;
-          height: 15px!important;
-        }
-        label{
-          height: auto!important;
-          width: 95px!important;
-          font-size: 9px;
-          line-height: 10px;
-          font-family: $grl-font;
-          top: 2px;
-          margin-left: 4px;
-          padding: 3px;
-          p{
-            margin: 0px;
+        .cmp-index-card-comp-list-name{
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          width: 100%;
+          a{
+          text-decoration: none;
+          font-size: 11px;
+          margin: 2px;
+          margin-right: 5px;        
           }
         }
+        .cmp-index-card-comp-list-addres{
+          display: flex;
+          align-items: center;
+          justify-content: left;
+          width: 100%;
+          p{
+            font-size: 10px;
+            text-align: center;
+            margin: 0px;
+            color: rgb(138, 137, 137);
+          }
+        }
+
+        // input{
+        //   width: 15px!important;
+        //   height: 15px!important;
+        // }
+        // label{
+        //   height: auto!important;
+        //   width: 95px!important;
+        //   font-size: 9px;
+        //   line-height: 10px;
+        //   font-family: $grl-font;
+        //   top: 2px;
+        //   margin-left: 4px;
+        //   padding: 3px;
+        //   p{
+        //     margin: 0px;
+        //   }
+        //}
       }
     }
   }
@@ -315,4 +339,15 @@ html[xmlns] .clearfix {
   hr{
     margin: 1px;
   }
+}
+.cmp-index-card-sections-company-content{
+  width: 95%!important;
+  height: auto;
+  display: -ms-inline-grid;
+  align-items: center;
+  justify-content: left;
+  font-size: 11px;
+  padding: 4px;
+  margin: 6px;
+  box-shadow: 0 0 4px 0;
 }
