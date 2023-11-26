@@ -32,12 +32,21 @@ html[xmlns] .clearfix {
   height: 1%;
 }
 //****************************************
-
+.cmp-index-cont-container{
+  height: 90%;
+  width: 90%;
+  border: solid 1px lightgrey;
+  border-radius: 5%;
+  .cmp-index-cont-right-box{
+    height: 60px;
+    border: solid 1px lightgrey;
+    box-shadow: 0 0 2px 0;
+  }
+}
 .cmp-index-content{
   width: auto;
   display: flex;
   justify-content: center;
-  border: solid 1px lightgrey;
   margin: 5px;
   .cmp-index-cont-sides{
     border: solid 1px lightgrey;
@@ -58,106 +67,49 @@ html[xmlns] .clearfix {
 
 
 //****************************************
-.cmp-index-cards{
-  min-height: 130px;
-  justify-content: center;
-  background: linear-gradient(45deg, #f1e7a0, transparent);
-  .cmp-index-card-btns{
-    display: inline;
-    width: 240px!important;
-    height: auto;
-    box-shadow: 0 4px 8px 0;
-    margin: 5px;
-    font-weight: normal;
-    .cmp-index-card{
-      width: 100%;
-      height: 100px!important;
-      display: inline;
-      border-bottom: 0px;
-      align-items: center;
-      a, a:hover{
-        color: inherit!important;
-        text-decoration: inherit!important;
-      }
-      .cmp-index-card-content{
-        height: 80px;
-        color: black;
-        .cmp-index-card-tittle{
-          text-align: center;
-          height: auto;
-          margin-top: 20px;
-          padding: 3px;
-          h4{
-            height: 100%;
-            font-size: 16px;
-            margin: 0;
-            color: darkslategrey
-          }
-        }
-        .cmp-index-card-address{
-          height: 35px;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          p{
-            height: 100%;
-            width: 80%;
-            font-size: 12px;
-            font-family: $grl-font;
-            color: grey;
-            margin: 0;
-            margin-top: 2px;
-          }
-        }
-      }
+.cmp-index-card-sections-company-content{
+  width: 95%!important;
+  height: 58%!important;
+  display: list-item;
+  font-size: 11px;
+  padding: 4px;
+  box-shadow: 0 0 4px 0;
+  color: rgb(138, 137, 137);
+  overflow-y: scroll;
+  margin: 6px;
+  p{ 
+    margin: 1px;
+  }
+  .cmp-index-card-qr{
+    height: 50px;
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    .cmp-index-card-qr-p{
+      width: 30%;
     }
-    .cmp-index-card-qr{
-      height: 105px!important;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      margin: auto;
-      padding: 2px;
-      .cmp-index-card-qr-g{
-        width: 88px;
-        height: 34px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        box-shadow: 0 2px 3px 0;
-        border-radius: 3px;
-        input{
-          width: auto;
-          margin: 10px;
-        }
-      }
-      .cmp-index-card-svg{
-        width: 45px;
-        height: 45px;
-        box-shadow: 0 2px 3px 0;
-        padding: 3px;
-      }
+    .cmp-index-card-qr-btn-img{
+      width: 50%;
     }
-    .cmp-index-card-set-btns{
-      width: 100%!important;
-      height: 20px!important;
-      position: relative;
-      bottom: 0px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      border: solid 1px lightgrey;
-      button{
-        width: 120px!important;
-        color: black;
-        font-weight: normal;
-        text-align: center;
-        font-size: 12px;
-        border: 0px;
-        background-color: $btn-color;
-        box-shadow: 0 1px 2px 0;
-      }
+  }
+  .cmp-index-card-qr-g{
+    width: 88px;
+    height: 34px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 2px 3px 0;
+    border-radius: 3px;
+    input{
+      width: auto;
+      margin: 10px;
     }
+  }
+  .cmp-index-card-svg{
+    width: 45px;
+    height: 45px;
+    box-shadow: 0 2px 3px 0;
+    padding: 3px;
   }
 }
 
@@ -247,7 +199,7 @@ html[xmlns] .clearfix {
 }
 .cmp-index-card-sections-checkbx{
   width: 95%;
-  height: 120!important;
+  height: 35%!important;
   text-align: center;
   padding: 4px;
   margin: 6px;
@@ -265,7 +217,7 @@ html[xmlns] .clearfix {
   }
   .cmp-index-card-comp-list-row{
     width: 95%;
-    height: 84px!important;
+    max-height: 75%!important;
     overflow-y:  scroll;
     overflow-x: hidden;
     text-align: start;
@@ -305,24 +257,6 @@ html[xmlns] .clearfix {
             color: rgb(138, 137, 137);
           }
         }
-
-        // input{
-        //   width: 15px!important;
-        //   height: 15px!important;
-        // }
-        // label{
-        //   height: auto!important;
-        //   width: 95px!important;
-        //   font-size: 9px;
-        //   line-height: 10px;
-        //   font-family: $grl-font;
-        //   top: 2px;
-        //   margin-left: 4px;
-        //   padding: 3px;
-        //   p{
-        //     margin: 0px;
-        //   }
-        //}
       }
     }
   }
@@ -339,15 +273,4 @@ html[xmlns] .clearfix {
   hr{
     margin: 1px;
   }
-}
-.cmp-index-card-sections-company-content{
-  width: 95%!important;
-  height: auto;
-  display: -ms-inline-grid;
-  align-items: center;
-  justify-content: left;
-  font-size: 11px;
-  padding: 4px;
-  margin: 6px;
-  box-shadow: 0 0 4px 0;
 }

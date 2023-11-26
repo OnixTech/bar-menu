@@ -25,21 +25,25 @@
     <p>Name: <%= @company[0]["name"] %></p>
     <p>address: <%= @company[0]["street"] %> <%= @company[0]["number"] %> <%= @company[0]["post"] %> <%= @company[0]["city"] %></p>
     <div class="cmp-index-card-qr">
-      <p>QR:</p>
-      <% if @company[0]["qr_code"] == nil %>
-        <%= simple_form_for(@company[0]) do |f| %>
-          <%= f.hidden_field :qr_code, value:"https://fillo.herokuapp.com#{company_path(@company[0])}"%>
-          <div class="cmp-index-card-qr-g">
-            <%= f.submit "Generate QR", class:"sh-btn-set-item"%>
+      <div class="cmp-index-card-qr-p">
+        <p>QR:</p>
+      </div>
+      <div class="cmp-index-card-qr-btn-img">
+        <% if @company[0]["qr_code"] == nil %>
+          <%= simple_form_for(@company[0]) do |f| %>
+            <%= f.hidden_field :qr_code, value:"https://fillo.herokuapp.com#{company_path(@company[0])}"%>
+            <div class="cmp-index-card-qr-g">
+              <%= f.submit "Generate QR", class:"sh-btn-set-item"%>
+            </div>
+          <% end %>
+        <% else %>
+          <div class="cmp-index-card-svg">
+            <%= link_to company_qr_path(company_id: @company[0]["id"]) do %>
+              <%= @svg.html_safe %>
+            <% end %>
           </div>
         <% end %>
-      <% else %>
-        <div class="cmp-index-card-svg">
-          <%= link_to company_qr_path(company_id: @company[0]["id"]) do %>
-            <%= @svg.html_safe %>
-          <% end %>
-        </div>
-      <% end %>
+      </div>
     </div>
   </div>
 </div>
