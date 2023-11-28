@@ -80,6 +80,12 @@ html[xmlns] .clearfix {
   p{ 
     margin: 1px;
   }
+  .cmp-index-card-basket{
+    width: 60px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
   .cmp-index-card-qr{
     height: 50px;
     display: flex;
@@ -110,6 +116,11 @@ html[xmlns] .clearfix {
     height: 45px;
     box-shadow: 0 2px 3px 0;
     padding: 3px;
+  }
+  .cmp-index-card-edit{
+    display: flex;
+    justify-content: end;
+    padding: 5px;
   }
 }
 
@@ -238,12 +249,6 @@ html[xmlns] .clearfix {
           align-items: center;
           justify-content: space-between;
           width: 100%;
-          a{
-          text-decoration: none;
-          font-size: 11px;
-          margin: 2px;
-          margin-right: 5px;        
-          }
         }
         .cmp-index-card-comp-list-addres{
           display: flex;
