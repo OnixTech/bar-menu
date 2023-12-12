@@ -3,7 +3,7 @@
   <div class="sh-nav">
     <h1> Speisekarte </h1>
   </div>
-  <% if @company.basket == false %>
+  <% if @company.basket %>
     <a href="#" onclick="toggle(); return false">
       <div class="sh-nav-basket">
       </div>
@@ -38,7 +38,7 @@
                       <div class="sh-div-btn-set-item">
                         <% if @company.basket == false %>
                           <div class="sh-div-item-basket-img">
-                          </div>  
+                          </div>
                           <div class="sh-div-item-basket-quantity" id="quantityDiv<%= item.id %>">
                             <p><span id="sh-div-item-basket-quantity-number-<%= item.id %>"></span></p>
                           </div>
@@ -59,7 +59,7 @@
               <%= render partial: "companies/show-settings/prices-set", locals: {menu: menu} %>
             </div>
             <%= render partial: "companies/show-settings/new-item", locals: {menu: menu} %>
-          </div>      
+          </div>
         </div>
       <% end %>
     <% end %>

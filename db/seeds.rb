@@ -41,7 +41,7 @@ if User.count < 1
     :role_id => 2
   )
   pfe.save!
-  
+
   manager = User.new(
     :email => "b@mail.com",
     :password => "b@mail.com",
@@ -58,6 +58,7 @@ if Company.count < 1
     :street => Faker::Address.street_name,
     :number => Faker::Address.building_number.to_i,
     :post => Faker::Address.zip_code.to_i,
+    :basket => true,
     :user_id => 1
   )
   company.save!
@@ -127,21 +128,21 @@ end
 
 puts "Charging items to menu Food"
 
-7.times do 
+7.times do
   item = Item.new(name: Faker::Food.dish, description: Faker::Food.description, price: '%.2f' % Faker::Number.between(from: 7.0, to: 17.5), position: Faker::Number.between(from: 1, to: 7), menu_id:3 )
   if item.save!
     puts "#{item.name} created!"
   end
 end
 
-12.times do 
+12.times do
   item = Item.new(name: Faker::Beer.name, description: Faker::Dessert.flavor, price: '%.2f' % Faker::Number.between(from: 5.0, to: 8.5), position: Faker::Number.between(from: 1, to: 12), menu_id:1 )
   if item.save!
     puts "#{item.name} created!"
   end
 end
 
-4.times do 
+4.times do
   item = Item.new(name: Faker::Dessert.topping, description: Faker::Dessert.flavor, price: '%.2f' % Faker::Number.between(from: 1.0, to: 4),  position: Faker::Number.between(from: 1, to: 4), menu_id:2 )
   if item.save!
     puts "#{item.name} created!"

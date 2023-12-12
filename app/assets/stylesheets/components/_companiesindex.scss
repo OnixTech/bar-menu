@@ -5,6 +5,7 @@
   font-family: $grl-font;
   .cmp-index-container-cont{
     display: flex;
+    background-color: lightgray;
     justify-content: center;
     align-items: center;
     padding: 2px;
@@ -53,6 +54,7 @@ html[xmlns] .clearfix {
     height: 300px;
     width: 300px;
     border-radius: 5%;
+    background-color: snow;
     padding: 2px;
     margin: 10px;
     display: flex;
@@ -71,13 +73,15 @@ html[xmlns] .clearfix {
   width: 95%!important;
   height: 58%!important;
   display: list-item;
+  background-color: ghostwhite;
+  border-radius: 5px;
   font-size: 11px;
   padding: 4px;
   box-shadow: 0 0 4px 0;
   color: rgb(138, 137, 137);
-  overflow-y: scroll;
+  overflow-y: auto;
   margin: 6px;
-  p{ 
+  p{
     margin: 1px;
   }
   .cmp-index-card-basket{
@@ -121,6 +125,7 @@ html[xmlns] .clearfix {
     display: flex;
     justify-content: end;
     padding: 5px;
+    margin: 10px 10px 0 0;
   }
 }
 
@@ -164,7 +169,7 @@ html[xmlns] .clearfix {
             font-size: 11px;
             margin: 1px;
           }
-          p{  
+          p{
             font-size: 11px;
             margin: auto;
           }
@@ -211,6 +216,8 @@ html[xmlns] .clearfix {
 .cmp-index-card-sections-checkbx{
   width: 95%;
   height: 35%!important;
+  background-color: ghostwhite;
+  border-radius: 5px;
   text-align: center;
   padding: 4px;
   margin: 6px;
@@ -227,12 +234,11 @@ html[xmlns] .clearfix {
     }
   }
   .cmp-index-card-comp-list-row{
-    width: 95%;
+    width: 100%;
     max-height: 75%!important;
-    overflow-y:  scroll;
+    overflow-y:  auto;
     overflow-x: hidden;
     text-align: start;
-    margin-left: 8px;
     .cmp-index-card-comp-list{
       display: flex;
       justify-content: center;

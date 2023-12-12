@@ -8,3 +8,4 @@
 //= link packs/sh-basket.js
 //= link packs/sh-basket-open.js
 //= require allow_numeric
+//= link application.js

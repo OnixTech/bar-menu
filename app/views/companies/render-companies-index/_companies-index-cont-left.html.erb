@@ -13,7 +13,6 @@
               <%= link_to "Menu", company_path(company), class:"btn-cheto" %>
             </div>
             <div class="cmp-index-card-comp-list-addres">
-              <p><%= company.street %> <%= company.number %></p>
             </div>
           </div>
         </div>
@@ -29,7 +28,7 @@
       <p>address: <%= @company[0]["street"] %> <%= @company[0]["number"] %> <%= @company[0]["post"] %> <%= @company[0]["city"] %></p>
     </div>
     <div class="cmp-index-card-basket">
-      <p>Basket: </p><div class="cmp-index-card-basket-checkbox"><%= check_box_tag 'check_box', 1,  @company[0]["basket"] %></div>
+      <p>Basket: </p><div class="cmp-index-card-basket-checkbox"><%= check_box_tag 'check_box', 1,  @company[0]["basket"], disabled: true %></div>
     </div>
     <div class="cmp-index-card-qr">
       <div class="cmp-index-card-qr-p">
