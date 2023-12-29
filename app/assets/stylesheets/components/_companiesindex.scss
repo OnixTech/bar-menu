@@ -36,6 +36,8 @@ html[xmlns] .clearfix {
 .cmp-index-cont-container{
   height: 90%;
   width: 90%;
+  display: flex;
+  flex-direction: column;
   border: solid 1px lightgrey;
   border-radius: 5%;
   .cmp-index-cont-right-box{
@@ -84,6 +86,17 @@ html[xmlns] .clearfix {
   p{
     margin: 1px;
   }
+  .cmp-index-card-sections-information-title{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    p{
+      font-size: 11px;
+      font-family: $grl-font;
+      margin: auto;
+      color: grey;
+    }
+  }
   .cmp-index-card-basket{
     width: 60px;
     display: flex;
@@ -120,6 +133,12 @@ html[xmlns] .clearfix {
     height: 45px;
     box-shadow: 0 2px 3px 0;
     padding: 3px;
+  }
+  .cmp-index-card-sections-checkbx-checkboxes-row{
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(60px, 1fr));
+    justify-content: center;
+    align-items: center;
   }
   .cmp-index-card-edit{
     display: flex;
@@ -214,14 +233,16 @@ html[xmlns] .clearfix {
   padding-left: 0px!important;
 }
 .cmp-index-card-sections-checkbx{
+  flex: 1;
   width: 95%;
-  height: 35%!important;
+  height: auto;
+  max-height: 35%!important;
   background-color: ghostwhite;
   border-radius: 5px;
   text-align: center;
   padding: 4px;
   margin: 6px;
-  box-shadow: 0 0 4px 0;
+  box-shadow: 0 0 2px 0;
   .cmp-index-card-sections-checkbx-title{
     display: flex;
     justify-content: center;
@@ -248,7 +269,7 @@ html[xmlns] .clearfix {
         height: auto;
         max-height: none;
         display: inline;
-        border-bottom: solid 1px lightgrey;
+        //border-bottom: solid 1px lightgrey;
         padding: 2px;
         .cmp-index-card-comp-list-name{
           display: flex;

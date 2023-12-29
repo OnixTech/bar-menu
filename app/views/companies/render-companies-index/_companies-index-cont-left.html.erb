@@ -9,7 +9,7 @@
         <div class="cmp-index-card-comp-list">
           <div class="cmp-index-card-comp-list-box-name">
             <div class="cmp-index-card-comp-list-name">
-              <%= link_to "#{company.name}", company_path(company), class:"btn-cheto" %>
+              <%= link_to "#{company.name}", "#",class:"btn-cheto", data: { company: company.to_json, menus: @menus.to_json }, onclick: 'toggle(this); return false;'%>
               <%= link_to "Menu", company_path(company), class:"btn-cheto" %>
             </div>
             <div class="cmp-index-card-comp-list-addres">
@@ -20,19 +20,22 @@
     </div>
     <hr>
   </div>
-  <div class="cmp-index-card-sections-company-content">
-    <div>
-      <p>Name: <%= @company[0]["name"] %></p>
+  <div class="cmp-index-card-sections-company-content" id="cmp-index-cmp-show">
+    <div class="cmp-index-card-sections-information-title">
+      <p>Information</p>
     </div>
     <div>
-      <p>address: <%= @company[0]["street"] %> <%= @company[0]["number"] %> <%= @company[0]["post"] %> <%= @company[0]["city"] %></p>
+      <p><strong>Name:</strong>  <span id="company-name"></span></p>
+    </div>
+    <div>
+      <p><strong>address:</strong> <span id="company-address"></span></p>
     </div>
     <div class="cmp-index-card-basket">
-      <p>Basket: </p><div class="cmp-index-card-basket-checkbox"><%= check_box_tag 'check_box', 1,  @company[0]["basket"], disabled: true %></div>
+      <p><strong>Basket </strong> </p><div class="cmp-index-card-basket-checkbox"><%= check_box_tag 'check_box', 1,  @company[0]["basket"], disabled: true %></div>
     </div>
     <div class="cmp-index-card-qr">
       <div class="cmp-index-card-qr-p">
-        <p>QR:</p>
+        <strong><p>QR:</p></strong>
       </div>
       <div class="cmp-index-card-qr-btn-img">
         <% if @company[0]["qr_code"] == nil %>
@@ -49,6 +52,24 @@
             <% end %>
           </div>
         <% end %>
+      </div>
+    </div>
+    <div class="cmp-index-card-sections-checkbx-checkboxes-row">
+      <% @menus = @menus.sort_by(&:position) %>
+      <% @menus.each do |menu| %>
+      <div class="cmp-index-card-sections-checkbx-checkboxes">
+        <%= simple_form_for menu, :url => menus_cmUpdate_path(menu), :method => :post do |f| %>
+            <div class="cmp-index-card-sections-checkbx-checkboxes-box-name">
+              <%= f.hidden_field :menu_id, value:menu.id %>
+              <%= f.check_box :visible, value:menu.visible %>
+              <label for="<%= menu.subtitle %>"><p><%= menu.subtitle %></p></label>
+            </div>
+            <div class="cmp-index-card-sections-checkbx-checkboxes-submit">
+              <%= f.submit "CONFIRM", class:"sh-btn-set-item" %>
+            </div>
+
+        <% end %>
+      <% end %>
       </div>
     </div>
     <div class="cmp-index-card-edit">

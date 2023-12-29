@@ -9,7 +9,7 @@ class MenuPolicy < ApplicationPolicy
   def initialize(current_user, menu)
     @current_user = current_user
     @menu = menu
-  end 
+  end
 
   def show?
     (authorize_user && user_active) || authorize_master

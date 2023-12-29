@@ -9,3 +9,4 @@
 //= link packs/sh-basket-open.js
 //= require allow_numeric
 //= link application.js
+ //= link packs/idx-cmp-show.js

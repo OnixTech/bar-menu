@@ -1,17 +1,19 @@
 <% if current_user.present? %>
-<% if (current_user == @company.user) || (current_user.role_id == 1) %>
+  <% if (current_user == @company.user) || (current_user.role_id == 1) %>
     <div class="sh-form-add-new-section">
-    <%= simple_form_for @menu, url:menus_path, method: :post do |f| %>
+      <%= simple_form_for @menu, url:menus_path, method: :post do |f| %>
         <div class="sh-form-inputs-new-section">
-        <%= button_to "ADD NEW SECTION", class:"sh-btn-set-item"%>
-        <%= f.input :title, :as => :hidden, value:"Menu" %>
-        <%= f.text_field :subtitle, placeholder:"Title: DRINKS" %>
-        <div class="sh-form-input-position">
-        <%= f.text_field :position %>
+          <%#= button_to "ADD NEW SECTION", class:"sh-btn-set-item"%>
+          <%= f.button :submit, "ADD NEW SECTION", class:"sh-btn-add-section btn-section" %>
+          <%= f.input :title, :as => :hidden, value:"Menu" %>
+          <%= f.text_field :subtitle, placeholder:"Title: DRINKS" %>
+          <div class="sh-form-input-position">
+          <%= f.text_field :position %>
+          </div>
+          <%= f.input :company_id, :as => :hidden, input_html: { value:@company.id}  %>
+
         </div>
-        <%= f.input :company_id, :as => :hidden, input_html: { value:@company.id}  %>
-        </div>
-    <% end %>
+      <% end %>
     </div>
-<% end %>
+  <% end %>
 <% end %>
