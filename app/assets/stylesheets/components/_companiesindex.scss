@@ -5,6 +5,7 @@
   font-family: $grl-font;
   .cmp-index-container-cont{
     display: flex;
+    height: 80%;
     background-color: lightgray;
     justify-content: center;
     align-items: center;
@@ -131,6 +132,9 @@ html[xmlns] .clearfix {
     height: 45px;
     box-shadow: 0 2px 3px 0;
     padding: 3px;
+  }
+  .cmp-index-card-vs-sections{
+    margin: 10px 0 5px 0;
   }
   .cmp-index-card-sections-checkbx-checkboxes-row{
     display: flex;
