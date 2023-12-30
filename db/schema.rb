@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_11_03_121828) do
+ActiveRecord::Schema[7.0].define(version: 2023_12_30_202718) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -40,6 +40,17 @@ ActiveRecord::Schema[7.0].define(version: 2023_11_03_121828) do
     t.datetime "updated_at", null: false
     t.float "position", default: 0.0
     t.string "station", default: "main station"
+    t.string "op_a"
+    t.string "op_b"
+    t.string "op_c"
+    t.string "op_d"
+    t.string "op_e"
+    t.float "price_a", default: 0.0
+    t.float "price_b", default: 0.0
+    t.float "price_c", default: 0.0
+    t.float "price_d", default: 0.0
+    t.float "price_e", default: 0.0
+    t.boolean "price_io", default: false
     t.index ["menu_id"], name: "index_items_on_menu_id"
   end
 
