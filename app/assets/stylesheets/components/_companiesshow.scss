@@ -96,7 +96,7 @@
         .sh-card-form-subtitle{
           height: 100%;
           margin-left: 5px;
-          p{  
+          p{
             font-size: 11px;
             margin: auto;
           }
@@ -109,10 +109,10 @@
         }
         .sh-card-form-position{
           height: 100%;
-          p{  
+          p{
             font-size: 11px;
             margin: auto;
-          } 
+          }
           input{
             all: unset;
             height: 20px;
@@ -124,7 +124,7 @@
           height: 100%;
           width: 35px;
           text-align: center;
-          p{  
+          p{
             font-size: 11px;
             margin: auto;
           }
@@ -330,13 +330,15 @@
 .sh-form-inputs-new-section{
   display: flex;
   justify-content: center;
-  button{
+  align-items: center;
+  .btn-nw-section{
+    width: auto;
     background-color: $btn-color;
     color: black;
-    font-weight: normal;
-    font-size: 12px;
+    font-size: 9px;
     border: solid 1px lightgray;
     box-shadow: 0 1px 2px 0;
+    margin: 5px;
   }
   input{
     box-shadow: 0 1px 2px 0;
@@ -345,6 +347,9 @@
   .sh-form-input-position{
     input{
       width: 40px;
+    }
+    label{
+      color: rgb(175, 175, 175);
     }
   }
 }
