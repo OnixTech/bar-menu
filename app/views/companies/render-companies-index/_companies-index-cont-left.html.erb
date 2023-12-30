@@ -57,16 +57,7 @@
     <div class="cmp-index-card-vs-sections">
       <p><strong>Visible menu sections:</strong></p>
     </div>
-    <div class="cmp-index-card-sections-checkbx-checkboxes-row">
-      <% @menus = @menus.sort_by(&:position) %>
-      <% @menus.each do |menu| %>
-        <div class="cmp-index-card-sections-checkbx-checkboxes">
-          <div class="cmp-index-card-sections-checkbx-checkboxes-box-name">
-            <%= check_box_tag 'check_box', 1,  menu.visible, disabled: true %>
-            <label for="<%= menu.subtitle %>"><p><%= menu.subtitle %></p></label>
-          </div>
-        </div>
-      <% end %>
+    <div class="cmp-index-card-sections-checkbx-checkboxes-row" id="checkboxes">
     </div>
     <div class="cmp-index-card-edit">
       <%= link_to "Edit", edit_company_path(@company[0]), class:"btn-cheto" %>
