@@ -87,9 +87,7 @@ html[xmlns] .clearfix {
     margin: 1px;
   }
   .cmp-index-card-sections-information-title{
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    text-align: center;
     p{
       font-size: 11px;
       font-family: $grl-font;
@@ -109,7 +107,7 @@ html[xmlns] .clearfix {
     justify-content: left;
     align-items: center;
     .cmp-index-card-qr-p{
-      width: 30%;
+      width: 40%;
     }
     .cmp-index-card-qr-btn-img{
       width: 50%;
@@ -135,10 +133,17 @@ html[xmlns] .clearfix {
     padding: 3px;
   }
   .cmp-index-card-sections-checkbx-checkboxes-row{
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(60px, 1fr));
-    justify-content: center;
-    align-items: center;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    .cmp-index-card-sections-checkbx-checkboxes{
+      flex: 1 0 calc(25% - 20px);
+      margin: 3px;
+      padding: 5px;
+      background-color: #3498db;
+      color: #ffffff;
+      box-sizing: border-box;
+    }
   }
   .cmp-index-card-edit{
     display: flex;
@@ -244,9 +249,7 @@ html[xmlns] .clearfix {
   margin: 6px;
   box-shadow: 0 0 2px 0;
   .cmp-index-card-sections-checkbx-title{
-    display: flex;
-    justify-content: center;
-    align-items: center;
+text-align: center;
     p{
       font-size: 11px;
       font-family: $grl-font;

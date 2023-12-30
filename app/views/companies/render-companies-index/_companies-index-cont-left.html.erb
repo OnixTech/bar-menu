@@ -28,7 +28,7 @@
       <p><strong>Name:</strong>  <span id="company-name"></span></p>
     </div>
     <div>
-      <p><strong>address:</strong> <span id="company-address"></span></p>
+      <p><strong>Address:</strong> <span id="company-address"></span></p>
     </div>
     <div class="cmp-index-card-basket">
       <p><strong>Basket </strong> </p><div class="cmp-index-card-basket-checkbox"><%= check_box_tag 'check_box', 1,  @company[0]["basket"], disabled: true %></div>
@@ -54,23 +54,19 @@
         <% end %>
       </div>
     </div>
+    <div class="cmp-index-card-vs-sections">
+      <p><strong>Visible menu sections:</strong></p>
+    </div>
     <div class="cmp-index-card-sections-checkbx-checkboxes-row">
       <% @menus = @menus.sort_by(&:position) %>
       <% @menus.each do |menu| %>
-      <div class="cmp-index-card-sections-checkbx-checkboxes">
-        <%= simple_form_for menu, :url => menus_cmUpdate_path(menu), :method => :post do |f| %>
-            <div class="cmp-index-card-sections-checkbx-checkboxes-box-name">
-              <%= f.hidden_field :menu_id, value:menu.id %>
-              <%= f.check_box :visible, value:menu.visible %>
-              <label for="<%= menu.subtitle %>"><p><%= menu.subtitle %></p></label>
-            </div>
-            <div class="cmp-index-card-sections-checkbx-checkboxes-submit">
-              <%= f.submit "CONFIRM", class:"sh-btn-set-item" %>
-            </div>
-
-        <% end %>
+        <div class="cmp-index-card-sections-checkbx-checkboxes">
+          <div class="cmp-index-card-sections-checkbx-checkboxes-box-name">
+            <%= check_box_tag 'check_box', 1,  menu.visible, disabled: true %>
+            <label for="<%= menu.subtitle %>"><p><%= menu.subtitle %></p></label>
+          </div>
+        </div>
       <% end %>
-      </div>
     </div>
     <div class="cmp-index-card-edit">
       <%= link_to "Edit", edit_company_path(@company[0]), class:"btn-cheto" %>

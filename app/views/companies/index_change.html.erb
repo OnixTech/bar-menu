@@ -5,13 +5,13 @@
         <div class="cmp-index-card-btns col-sm-6 col-md-4 col-xl-1 list">
           <div class="cmp-index-card">
             <a href="<%= company_path(company) %>"class="cmp-index-card-content">
-              <div class="cmp-index-card-tittle"> 
+              <div class="cmp-index-card-tittle">
                 <h4><strong><%= company.name.upcase %></strong></h4>
               </div>
               <div class="cmp-index-card-address">
                 <p><%= company.street %> <%= company.number %>, <%= company.post %> <%= company.city %></p>
               </div>
-            </a> 
+            </a>
           </div>
           <div class="cmp-index-card-qr">
             <% if company.qr_code == nil %>
@@ -45,7 +45,7 @@
     <div class="cmp-index-card-sections-checkbx-checkboxes-row">
       <% @menus = @menus.sort_by(&:position) %>
       <% @menus.each do |menu| %>
-        <%= simple_form_for menu, :url => menus_cmUpdate_path(menu), :method => :post do |f| %>  
+        <%= simple_form_for menu, :url => menus_cmUpdate_path(menu), :method => :post do |f| %>
           <div class="cmp-index-card-sections-checkbx-checkboxes">
             <div class="cmp-index-card-sections-checkbx-checkboxes-box-name">
               <%= f.hidden_field :menu_id, value:menu.id %>
@@ -58,4 +58,22 @@
           </div>
         <% end %>
       <% end %>
-    </div> 
+    </div>
+
+  <div class="cmp-index-card-sections-checkbx-checkboxes-row">
+      <% @menus = @menus.sort_by(&:position) %>
+      <% @menus.each do |menu| %>
+        <div class="cmp-index-card-sections-checkbx-checkboxes">
+          <%= simple_form_for menu, :url => menus_cmUpdate_path(menu), :method => :post do |f| %>
+            <div class="cmp-index-card-sections-checkbx-checkboxes-box-name">
+              <%= f.hidden_field :menu_id, value:menu.id %>
+              <%= f.check_box :visible, value:menu.visible %>
+              <label for="<%= menu.subtitle %>"><p><%= menu.subtitle %></p></label>
+            </div>
+            <div class="cmp-index-card-sections-checkbx-checkboxes-submit">
+              <%= f.submit "UPDATE", class:"sh-btn-set-item" %>
+            </div>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
