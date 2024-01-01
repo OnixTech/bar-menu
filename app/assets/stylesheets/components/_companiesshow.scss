@@ -177,6 +177,32 @@
     a{
       all: unset;
     }
+    .sh-items-input-option{
+      display: flex;
+      justify-content: left;
+      align-items: center;
+      .sh-items-input{
+        width: 20px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        input{
+          margin: auto;
+        }
+      }
+      .sh-items-option{
+        width: 280px;
+      }
+    }
+    .sh-items-option-price{
+      width: 40px;
+      display: flex;
+      justify-content: left;
+      align-items: center;
+    }
+  }
+  .option{
+    margin: 7px 0px 7px 0px ;
   }
   .sh-items-description{
     //font-family: $description-font;
@@ -234,23 +260,30 @@
 
 .sh-form-inputs{
   width: 100%;
-  .sh-input-position{
-    input{
-      width: 40px;
-      border: solid 1px lightgray;
-      border-right: 0px;
-      border-radius: 0!important;
+  .sh-form-title{
+    p{
+      font-size: 12px;
     }
   }
   .sh-inputs-name-price{
     font-size: 12px;
-    margin-bottom: 4px;
     display: flex;
+    .sh-input-position{
+      display: flex;
+      justify-content: center;
+      margin: 1px 0 0px 0;
+      input{
+        width: 40px;
+        border: solid 1px lightgray;
+        border-right: 0px;
+        border-radius: 0!important;
+      }
+    }
     .sh-input-name{
       width: 110%;
       display: flex;
       justify-content: center;
-      margin: 1px;
+      margin: 1px 0 0px 0;
       input{
         width: 100%;
         border: solid 1px lightgray;
@@ -266,7 +299,7 @@
       text-align: end;
       display: flex;
       justify-content: center;
-      margin: 1px;
+      margin: 1px 0 0px 0;
       input[type=number]::-webkit-inner-spin-button {
         opacity: 1
       }
@@ -274,6 +307,7 @@
         width: 100%;
         text-align: start;
         border: solid 1px lightgray;
+        border-left: 0;
         border-radius: 0!important;
       }
     }
@@ -282,16 +316,26 @@
   .sh-input-description{
     width: 100%;
     font-size: 12px;
-    margin-bottom: 5px;
     display: flex;
-    justify-content: center;
-    textarea{
+    justify-content: left;
+    input{
       width: 100%;
       border: solid 1px lightgray;
+      border-top: 0;
+      border-right: 0;
       border-radius: 0!important;
     }
     button{
+      border: solid 1px lightgray;
+      border-top: 0;
       border-left: 0;
+    }
+  }
+  .sh-new-input-description{
+    textarea{
+      width: 100%;
+      border: solid 1px lightgray;
+      border-top: 0;
     }
   }
   .sh-input-btns{

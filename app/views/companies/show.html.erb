@@ -34,6 +34,86 @@
                         <div class="sh-items-description">
                           <p class="sh-item-<%= item.id %>"><%= item.description.gsub(/\n/, '<br>').html_safe %></p>
                         </div>
+
+                        <% if item.op_a %>
+                          <div class="sh-items-name-price option">
+                            <div class="sh-items-input-option">
+                              <div class="sh-items-input">
+                                <%= check_box_tag 'check_box', 1,  item.price_io %>
+                              </div>
+                              <div class="sh-items-option">
+                                <h5 class="sh-item-<%= item.id %>"><a href="#" data-id="<%= item.id %>" data-name="<%= item.op_a %>" data-price="<%= item.price_a %>" onclick="basketItems(event, this)"><%= item.op_a.upcase %></h5></a>
+                              </div>
+                            </div>
+                            <div class="sh-items-option-price">
+                              <h5 class="sh-item-<%= item.id %>">€<%= '%.2f' % item.price_a %></h5>
+                            </div>
+                          </div>
+                        <% end %>
+
+                        <% if item.op_b %>
+                          <div class="sh-items-name-price option">
+                            <div class="sh-items-input-option">
+                              <div class="sh-items-input">
+                                <%= check_box_tag 'check_box', 1,  item.price_io %>
+                              </div>
+                              <div class="sh-items-option">
+                                <h5 class="sh-item-<%= item.id %>"><a href="#" data-id="<%= item.id %>" data-name="<%= item.op_b %>" data-price="<%= item.price_b %>" onclick="basketItems(event, this)"><%= item.op_b.upcase %></h5></a>
+                              </div>
+                            </div>
+                            <div class="sh-items-option-price">
+                              <h5 class="sh-item-<%= item.id %>">€<%= '%.2f' % item.price_b %></h5>
+                            </div>
+                          </div>
+                        <% end %>
+
+                        <% if item.op_c %>
+                          <div class="sh-items-name-price option">
+                            <div class="sh-items-input-option">
+                              <div class="sh-items-input">
+                                <%= check_box_tag 'check_box', 1,  item.price_io %>
+                              </div>
+                              <div class="sh-items-option">
+                                <h5 class="sh-item-<%= item.id %>"><a href="#" data-id="<%= item.id %>" data-name="<%= item.op_c %>" data-price="<%= item.price_c %>" onclick="basketItems(event, this)"><%= item.op_c.upcase %></h5></a>
+                              </div>
+                            </div>
+                            <div class="sh-items-option-price">
+                              <h5 class="sh-item-<%= item.id %>">€<%= '%.2f' % item.price_c %></h5>
+                            </div>
+                          </div>
+                        <% end %>
+
+                        <% if item.op_d %>
+                          <div class="sh-items-name-price option">
+                            <div class="sh-items-input-option">
+                              <div class="sh-items-input">
+                                <%= check_box_tag 'check_box', 1,  item.price_io %>
+                              </div>
+                              <div class="sh-items-option">
+                                <h5 class="sh-item-<%= item.id %>"><a href="#" data-id="<%= item.id %>" data-name="<%= item.op_d %>" data-price="<%= item.price_d %>" onclick="basketItems(event, this)"><%= item.op_d.upcase %></h5></a>
+                              </div>
+                            </div>
+                            <div class="sh-items-option-price">
+                              <h5 class="sh-item-<%= item.id %>">€<%= '%.2f' % item.price_d %></h5>
+                            </div>
+                          </div>
+                        <% end %>
+
+                        <% if item.op_e %>
+                          <div class="sh-items-name-price option">
+                            <div class="sh-items-input-option">
+                              <div class="sh-items-input">
+                                <%= check_box_tag 'check_box', 1,  item.price_io %>
+                              </div>
+                              <div class="sh-items-option">
+                                <h5 class="sh-item-<%= item.id %>"><a href="#" data-id="<%= item.id %>" data-name="<%= item.op_e %>" data-price="<%= item.price_e %>" onclick="basketItems(event, this)"><%= item.op_e.upcase %></h5></a>
+                              </div>
+                            </div>
+                            <div class="sh-items-option-price">
+                              <h5 class="sh-item-<%= item.id %>">€<%= '%.2f' % item.price_e %></h5>
+                            </div>
+                          </div>
+                        <% end %>
                       </div>
                       <div class="sh-div-btn-set-item">
                         <% if @company.basket %>

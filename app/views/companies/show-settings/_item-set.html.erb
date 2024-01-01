@@ -13,7 +13,7 @@
       </div>
     </div>
     <div class="sh-input-description">
-      <%= f.text_field :description, class: "sh-input-description-#{item.id}", placeholder: "#{item.description}", label: false%>
+      <%= f.text_field :description, class: "sh-input-description-#{item.id}", placeholder: "#{item.description}", label: false, rows: 2 %>
       <button  onclick="descriptionInput(<%= item.id %>); return false">X</button>
     </div>
     <div class="sh-input-btns">
