@@ -35,7 +35,7 @@
                           <p class="sh-item-<%= item.id %>"><%= item.description.gsub(/\n/, '<br>').html_safe %></p>
                         </div>
 
-                        <% if item.op_a %>
+                        <% if item.op_a && item.op_a != "" %>
                           <div class="sh-items-name-price option">
                             <div class="sh-items-input-option">
                               <div class="sh-items-input">
@@ -51,7 +51,7 @@
                           </div>
                         <% end %>
 
-                        <% if item.op_b %>
+                        <% if item.op_b && item.op_b != "" %>
                           <div class="sh-items-name-price option">
                             <div class="sh-items-input-option">
                               <div class="sh-items-input">
@@ -67,7 +67,7 @@
                           </div>
                         <% end %>
 
-                        <% if item.op_c %>
+                        <% if item.op_c && item.op_c != "" %>
                           <div class="sh-items-name-price option">
                             <div class="sh-items-input-option">
                               <div class="sh-items-input">
@@ -83,7 +83,7 @@
                           </div>
                         <% end %>
 
-                        <% if item.op_d %>
+                        <% if item.op_d && item.op_d != "" %>
                           <div class="sh-items-name-price option">
                             <div class="sh-items-input-option">
                               <div class="sh-items-input">
@@ -99,7 +99,7 @@
                           </div>
                         <% end %>
 
-                        <% if item.op_e %>
+                        <% if item.op_e && item.op_e != "" %>
                           <div class="sh-items-name-price option">
                             <div class="sh-items-input-option">
                               <div class="sh-items-input">
