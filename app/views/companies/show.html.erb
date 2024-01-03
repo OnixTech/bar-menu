@@ -122,7 +122,7 @@
                           <div class="sh-div-item-basket-quantity" id="quantityDiv<%= item.id %>">
                             <p><span id="sh-div-item-basket-quantity-number-<%= item.id %>"></span></p>
                           </div>
-                          <button class="sh-btn-basket-item" data-id="<%= item.id %>" data-name="<%= item.name %>" data-price="<%= item.price %>" data-station="<%= item.station %>" onclick="basketItems(event, this, true)">+</button>
+                          <button class="sh-btn-basket-item" data-id="<%= item.id %>" data-name="<%= item.name %>" data-price="<%= item.price %>" data-item="<%= item %>"data-station="<%= item.station %>" onclick="basketItems(event, this, true)">+</button>
                           <button class="sh-btn-basket-item" data-id="<%= item.id %>" data-name="<%= item.name %>" data-price="<%= item.price %>" data-station="<%= item.station %>" onclick="basketItems(event, this, false)">-</button>
                         <% end %>
                         <% if current_user.present? %>

@@ -5,8 +5,12 @@ function basketItems(event, element, operator){
     const itemName = element.getAttribute('data-name');
     const itemPrice = parseFloat(element.getAttribute('data-price'), 10.00);
     const itemStation = element.getAttribute('data-station');
+    const itemt = element.getAttribute('data-item');
+
+    console.log(itemt);
+
     const item = {
-        id: itemId,        
+        id: itemId,
         quantity: 1,
         name: itemName,
         price: itemPrice,
@@ -22,7 +26,7 @@ const basket = {
     total: 0
 };
 function acumulator(item, operator){
-    
+
     const existingItem = basket.items.find((basketItem) => basketItem.id === item.id);
 
     if(operator === true){
@@ -41,7 +45,7 @@ function acumulator(item, operator){
                 }
             }
         }
-        
+
     }
     CalculateTotal()
     updateView(item)
@@ -80,20 +84,20 @@ function updateView(item) {
     }else{
         quantityNumber.textContent = "";
         quantityDiv.style.backgroundColor = "white";
-        
+
     }
-    
+
 }
 
 function sendOrder(){
     var element = document.getElementById('table-data');
     var inputTable = element.querySelector('#table-number');
     var companyName = element.getAttribute('data');
-    
+
     basket.table = inputTable.value
     basket.company = companyName
     console.log(basket);
-    if (basket.table.length){ 
+    if (basket.table.length){
         request(basket)
     }else {
         alert('Table field is empty.');
