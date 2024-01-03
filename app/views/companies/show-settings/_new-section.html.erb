@@ -6,10 +6,10 @@
           <%= f.button :submit, "ADD NEW SECTION", class:"btn-nw-section" %>
           <%= f.input :title, :as => :hidden, value:"Menu" %>
           <%= f.text_field :subtitle, placeholder:"Title" %>
-          <div class="sh-form-input-position">
-            <%= f.text_field :position %>
+
+            <%= f.text_field :position, class: "position-input" %>
             <label for="position">Position</label>
-          </div>
+          
           <%= f.input :company_id, :as => :hidden, input_html: { value:@company.id}  %>
         </div>
       <% end %>
