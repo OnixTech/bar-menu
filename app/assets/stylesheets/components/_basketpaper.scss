@@ -8,7 +8,7 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  padding: 24px;
+  padding: 15px;
   z-index: 9999;
   font-family: $grl-font;
   .sh-basket-note-tittle{
@@ -79,11 +79,20 @@
     font-size: 12px;
   }
   .basket-list-item{
-    display:flex;
-    justify-content: center;
-    align-items: first baseline;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
     .box{
-      margin: 4px;
+      width: 77%;
+      margin: 1px 2px 1px 2px;
+    }
+    .box:first-child{
+      width: 10%;
+      margin: 1px;
+    }
+    .box:last-child {
+      width: 13%;
+      margin: 1px;
     }
   }
 }
