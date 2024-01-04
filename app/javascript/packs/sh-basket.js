@@ -1,21 +1,37 @@
 
 function basketItems(event, element, operator){
     event.preventDefault();
-    const itemId = element.getAttribute('data-id');
-    const itemName = element.getAttribute('data-name');
-    const itemPrice = parseFloat(element.getAttribute('data-price'), 10.00);
-    const itemStation = element.getAttribute('data-station');
-    const itemt = element.getAttribute('data-item');
-
-    console.log(itemt);
-
+    const itemJson = element.getAttribute('data-item');
+    const itemObject = JSON.parse(itemJson);
     const item = {
-        id: itemId,
+        id: itemObject.id,
         quantity: 1,
-        name: itemName,
-        price: itemPrice,
-        station: itemStation
+        name: itemObject.name,
+        price: itemObject.price,
+        station: itemObject.station
     };
+    var name = "";
+    const checkboxes = [...document.getElementsByClassName("options-checkboxes-" + item.id)];
+    const prices = [...document.getElementsByClassName("options-prices-" + item.id)];
+
+    if( itemObject.price_io ){
+      checkboxes.forEach(function(checkbox) {
+        if(checkbox.checked){
+          item.name = item.name + " " + itemObject[`op_${checkbox.id}`];
+          item.price = (itemObject[`price_${checkbox.id}`]);
+        }
+      });
+    }else{
+      checkboxes.forEach(function(checkbox) {
+        if(checkbox.checked){
+          name += itemObject[`op_${checkbox.id}`] + "\n";
+          item.price += (itemObject[`price_${checkbox.id}`]);
+        }
+      });
+      item.name += " + " + name;
+      console.log(item.name);
+    }
+
     acumulator(item, operator);
 }
 
@@ -30,7 +46,7 @@ function acumulator(item, operator){
     const existingItem = basket.items.find((basketItem) => basketItem.id === item.id);
 
     if(operator === true){
-        if (existingItem){
+        if (existingItem && existingItem.name == item.name){
             existingItem.quantity += 1;
         } else {
             basket.items.push(item);

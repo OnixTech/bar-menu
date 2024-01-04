@@ -34,12 +34,12 @@
                         <div class="sh-items-description">
                           <p class="sh-item-<%= item.id %>"><%= item.description.gsub(/\n/, '<br>').html_safe %></p>
                         </div>
-
+                          <%# ITEM OPTIONS A B C D E %>
                         <% if item.op_a && item.op_a != "" %>
                           <div class="sh-items-name-price option">
                             <div class="sh-items-input-option">
                               <div class="sh-items-input">
-                                <%= check_box_tag 'check_box', 1,  item.price_io %>
+                                <%= check_box_tag 'check_box', 1, false, id: "a", class:"options-checkboxes-#{item.id}" %>
                               </div>
                               <div class="sh-items-option">
                                 <h5 class="sh-item-<%= item.id %>"><a href="#" data-id="<%= item.id %>" data-name="<%= item.op_a %>" data-price="<%= item.price_a %>" onclick="basketItems(event, this)"><%= item.op_a.upcase %></h5></a>
@@ -55,7 +55,7 @@
                           <div class="sh-items-name-price option">
                             <div class="sh-items-input-option">
                               <div class="sh-items-input">
-                                <%= check_box_tag 'check_box', 1,  item.price_io %>
+                                <%= check_box_tag 'check_box', 1, false, id: "b", class:"options-checkboxes-#{item.id}" %>
                               </div>
                               <div class="sh-items-option">
                                 <h5 class="sh-item-<%= item.id %>"><a href="#" data-id="<%= item.id %>" data-name="<%= item.op_b %>" data-price="<%= item.price_b %>" onclick="basketItems(event, this)"><%= item.op_b.upcase %></h5></a>
@@ -71,7 +71,7 @@
                           <div class="sh-items-name-price option">
                             <div class="sh-items-input-option">
                               <div class="sh-items-input">
-                                <%= check_box_tag 'check_box', 1,  item.price_io %>
+                                <%= check_box_tag 'check_box', 1, false, id:"c", class:"options-checkboxes-#{item.id}" %>
                               </div>
                               <div class="sh-items-option">
                                 <h5 class="sh-item-<%= item.id %>"><a href="#" data-id="<%= item.id %>" data-name="<%= item.op_c %>" data-price="<%= item.price_c %>" onclick="basketItems(event, this)"><%= item.op_c.upcase %></h5></a>
@@ -87,7 +87,7 @@
                           <div class="sh-items-name-price option">
                             <div class="sh-items-input-option">
                               <div class="sh-items-input">
-                                <%= check_box_tag 'check_box', 1,  item.price_io %>
+                                <%= check_box_tag 'check_box', 1, false, id:"d", class:"options-checkboxes-#{item.id}" %>
                               </div>
                               <div class="sh-items-option">
                                 <h5 class="sh-item-<%= item.id %>"><a href="#" data-id="<%= item.id %>" data-name="<%= item.op_d %>" data-price="<%= item.price_d %>" onclick="basketItems(event, this)"><%= item.op_d.upcase %></h5></a>
@@ -103,7 +103,7 @@
                           <div class="sh-items-name-price option">
                             <div class="sh-items-input-option">
                               <div class="sh-items-input">
-                                <%= check_box_tag 'check_box', 1,  item.price_io %>
+                                <%= check_box_tag 'check_box', 1, false, id:"e", class:"options-checkboxes-#{item.id}" %>
                               </div>
                               <div class="sh-items-option">
                                 <h5 class="sh-item-<%= item.id %>"><a href="#" data-id="<%= item.id %>" data-name="<%= item.op_e %>" data-price="<%= item.price_e %>" onclick="basketItems(event, this)"><%= item.op_e.upcase %></h5></a>
@@ -114,6 +114,7 @@
                             </div>
                           </div>
                         <% end %>
+                        <%# ITEM OPTIONS A B C D E %>
                       </div>
                       <div class="sh-div-btn-set-item">
                         <% if @company.basket %>
@@ -122,8 +123,8 @@
                           <div class="sh-div-item-basket-quantity" id="quantityDiv<%= item.id %>">
                             <p><span id="sh-div-item-basket-quantity-number-<%= item.id %>"></span></p>
                           </div>
-                          <button class="sh-btn-basket-item" data-id="<%= item.id %>" data-name="<%= item.name %>" data-price="<%= item.price %>" data-item="<%= item %>"data-station="<%= item.station %>" onclick="basketItems(event, this, true)">+</button>
-                          <button class="sh-btn-basket-item" data-id="<%= item.id %>" data-name="<%= item.name %>" data-price="<%= item.price %>" data-station="<%= item.station %>" onclick="basketItems(event, this, false)">-</button>
+                          <button class="sh-btn-basket-item" data-id="<%= item.id %>" data-item="<%= item.to_json %>" onclick="basketItems(event, this, true)" >+</button>
+                          <button class="sh-btn-basket-item" data-id="<%= item.id %>" data-item="<%= item.to_json %>" onclick="basketItems(event, this, false)" >-</button>
                         <% end %>
                         <% if current_user.present? %>
                           <% if (current_user == @company.user) || (current_user.role_id == 1) %>
