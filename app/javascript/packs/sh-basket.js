@@ -18,19 +18,21 @@ function basketItems(event, element, operator){
       checkboxes.forEach(function(checkbox) {
         if(checkbox.checked){
           item.name = item.name + " " + itemObject[`op_${checkbox.id}`];
-          item.price = (itemObject[`price_${checkbox.id}`]);
+          item.price = itemObject[`price_${checkbox.id}`];
         }
       });
     }else{
       checkboxes.forEach(function(checkbox) {
         if(checkbox.checked){
-          name += itemObject[`op_${checkbox.id}`] + "\n";
-          item.price += (itemObject[`price_${checkbox.id}`]);
+          name += "\n " + itemObject[`op_${checkbox.id}`];
+          item.price += itemObject[`price_${checkbox.id}`];
         }
       });
-      item.name += " + " + name;
+      item.name += name;
+      item.price = item.price.toFixed(2);
       console.log(item.name);
     }
+
 
     acumulator(item, operator);
 }
@@ -88,8 +90,34 @@ function updateView(item) {
 
     basket.items.forEach(function(item) {
       var listItem = document.createElement('li');
-      listItem.textContent = item.quantity+'x ' + item.name +" €"+ item.price;
+
+      var itemDiv = document.createElement("div");
+      itemDiv.classList.add('basket-list-item');
+
+      var quantitySpan = document.createElement('div');
+      quantitySpan.textContent = item.quantity+ 'x ';
+      quantitySpan.classList.add('box');
+
+      var nameSpan = document.createElement('div');
+      nameSpan.textContent = item.name;
+      nameSpan.classList.add('box');
+
+      var priceSpan = document.createElement('div');
+      priceSpan.textContent = item.price;
+      priceSpan.classList.add('box');
+
+      itemDiv.appendChild(quantitySpan);
+      itemDiv.appendChild(nameSpan);
+      itemDiv.appendChild(priceSpan);
+
+      // Append the item div to the list item
+      listItem.appendChild(itemDiv);
+
       itemsList.appendChild(listItem);
+      //itemDiv.appendChild()
+
+      //listItem.textContent = item.quantity+'x ' + item.name +" "+ item.price;
+      //itemsList.appendChild(listItem);
     });
 
 

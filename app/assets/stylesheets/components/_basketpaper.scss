@@ -1,81 +1,89 @@
 .sh-basket-note {
-    background: #fafafa;
-    display: none;
-    box-shadow: 0 0 10px rgba(0,0,0,0.3), 0 0 300px 25px rgba(222,198,122,0.7) inset;
-    width: 300px;
-    height: 450px;
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    padding: 24px;
-    z-index: 9999;
-    font-family: $grl-font;
-    .sh-basket-note-tittle{
-        a {
-            all: unset;
-            cursor: pointer;
-          }
-        p{
-            position: absolute;
-            right: 10px;
-            top: 3px;
-        }
-        .sh-basket-table{
-            display: flex;
-            justify-content: left;
-            align-items: center;
-            h5{
-                margin: 3px;
-            }
-            input{
-                height: 19px;
-                width: 50px;
-                margin: 5px;
-                font-size: 10px;
-                background-color: #f7e8e8;
-                border: 1px whitesmoke;
-            }
-        } 
-    }
-    .a{
-        text-decoration: none;
-    }
-    hr{
-        margin: 1px
+  background: #fafafa;
+  display: none;
+  box-shadow: 0 0 10px rgba(0,0,0,0.3), 0 0 300px 25px rgba(222,198,122,0.7) inset;
+  width: 300px;
+  height: 450px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 24px;
+  z-index: 9999;
+  font-family: $grl-font;
+  .sh-basket-note-tittle{
+    a{
+      all: unset;
+      cursor: pointer;
     }
     p{
+      position: absolute;
+      right: 10px;
+      top: 3px;
+    }
+    .sh-basket-table{
+      display: flex;
+      justify-content: left;
+      align-items: center;
+      h5{
+        margin: 3px;
+      }
+      input{
+        height: 19px;
+        width: 50px;
         margin: 5px;
+        font-size: 10px;
+        background-color: #f7e8e8;
+        border: 1px whitesmoke;
+      }
     }
-    .sh-basket-total{
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        .sh-basket-total-send{
-            height: 25px;
-            width: 30x;
-            border: 1px gray;
-            padding: 2px;
-        }
+  }
+  .a{
+    text-decoration: none;
+  }
+  hr{
+    margin: 1px
+  }
+  p{
+    margin: 5px;
+  }
+  .sh-basket-total{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    .sh-basket-total-send{
+      height: 25px;
+      width: 30x;
+      border: 1px gray;
+      padding: 2px;
     }
+  }
 }
 .overlay {
-    position: fixed;
-    display: none;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5); 
-    z-index: 9998;
+  position: fixed;
+  display: none;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 9998;
 }
 #basket-container{
-    height: 350px!important;
-    overflow: auto;
-    ul{
-        padding-left: 1rem;
+  height: 350px!important;
+  overflow: auto;
+  ul{
+    padding-left: 1rem;
+  }
+  li{
+    font-size: 12px;
+  }
+  .basket-list-item{
+    display:flex;
+    justify-content: center;
+    align-items: first baseline;
+    .box{
+      margin: 4px;
     }
-    li{
-        font-size: 12px;
-    }
+  }
 }
