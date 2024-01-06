@@ -17,18 +17,21 @@ function basketItems(event, element, operator){
     if( itemObject.price_io ){
       checkboxes.forEach(function(checkbox) {
         if(checkbox.checked){
-          item.name = item.name + " " + itemObject[`op_${checkbox.id}`];
+          item.name = "<strong>" + item.name + "</strong>" + " " + itemObject[`op_${checkbox.id}`];
           item.price = itemObject[`price_${checkbox.id}`];
         }
       });
     }else{
       checkboxes.forEach(function(checkbox) {
+        console.log(checkbox.checked);
         if(checkbox.checked){
-          name += "\n " + itemObject[`op_${checkbox.id}`];
+          name += "\n" + "<li style='font-size: 11px;'>" + itemObject[`op_${checkbox.id}`] + "</li>";
           item.price += itemObject[`price_${checkbox.id}`];
         }
       });
-      item.name += name;
+
+      var stringName = "<ul>" + name.replace(/\n/g, ""); + "</ul>"
+      item.name = "<strong>" + item.name + "</strong>" + stringName;
       item.price = item.price.toFixed(2);
       console.log(item.name);
     }
@@ -99,7 +102,7 @@ function updateView(item) {
       quantitySpan.classList.add('box');
 
       var nameSpan = document.createElement('div');
-      nameSpan.textContent = item.name;
+      nameSpan.innerHTML = item.name;
       nameSpan.classList.add('box');
 
       var priceSpan = document.createElement('div');
