@@ -1,3 +1,10 @@
+const basket = {
+  company: "",
+  table: "",
+  items: [],
+  total: 0,
+  acc: []
+};
 
 function basketItems(event, element, operator){
     event.preventDefault();
@@ -33,43 +40,44 @@ function basketItems(event, element, operator){
       var stringName = "<ul>" + name.replace(/\n/g, ""); + "</ul>"
       item.name = "<strong>" + item.name + "</strong>" + stringName;
       item.price = item.price.toFixed(2);
-      console.log(item.name);
     }
 
 
     acumulator(item, operator);
 }
 
-const basket = {
-    company: "",
-    table: "",
-    items: [],
-    total: 0
-};
 function acumulator(item, operator){
 
-    const existingItem = basket.items.find((basketItem) => basketItem.id === item.id);
+  const existingItem = basket.items.find((basketItem) => basketItem.id === item.id);
 
-    if(operator === true){
-        if (existingItem && existingItem.name == item.name){
-            existingItem.quantity += 1;
-        } else {
-            basket.items.push(item);
-        }
-    }else{
-        if(existingItem){
-            if (existingItem.quantity > 0){
-                existingItem.quantity -= 1;
-                if (existingItem.quantity === 0){
-                    let index =  basket.items.indexOf(existingItem);
-                    basket.items.splice(index,1);
-                }
-            }
-        }
-
+  if(operator === true){
+    if (basket.acc[item.id] === undefined){
+      basket.acc[item.id] = 1;
+      console.log(basket.acc[item.id]);
+    }else {
+      basket.acc[item.id]++;
     }
-    CalculateTotal()
-    updateView(item)
+    if (existingItem && existingItem.name == item.name){
+      existingItem.quantity += 1;
+    }else {
+      basket.items.push(item);
+    }
+  }else{
+    if(existingItem){
+      if (existingItem.quantity > 0){
+        existingItem.quantity -= 1;
+        if (existingItem.quantity === 0){
+          let index =  basket.items.indexOf(existingItem);
+          basket.items.splice(index,1);
+        }
+      }
+    }
+    if (basket.acc[item.id] > 0 ){
+      basket.acc[item.id]--;
+    }
+  }
+  CalculateTotal()
+  updateView(item)
 }
 
 function CalculateTotal(){
@@ -82,58 +90,49 @@ function CalculateTotal(){
 }
 
 function updateView(item) {
-    var itemsList = document.getElementById('basket-items-list');
-    var totalElement = document.getElementById('basket-total');
-    var quantityNumber = document.getElementById("sh-div-item-basket-quantity-number-" + item.id);
-    var quantityDiv = document.getElementById("quantityDiv" + item.id);
-    var itemQuantity = basket.items.find((basketItem) => basketItem.id === item.id);
+  var itemsList = document.getElementById('basket-items-list');
+  var totalElement = document.getElementById('basket-total');
+  var quantityNumber = document.getElementById("sh-div-item-basket-quantity-number-" + item.id);
+  var quantityDiv = document.getElementById("quantityDiv" + item.id);
+  var itemQuantity = basket.items.find((basketItem) => basketItem.id === item.id);
+  itemsList.innerHTML = '';
 
-    itemsList.innerHTML = '';
+  basket.items.forEach(function(item) {
+    var listItem = document.createElement('li');
 
+    var itemDiv = document.createElement("div");
+    itemDiv.classList.add('basket-list-item');
 
-    basket.items.forEach(function(item) {
-      var listItem = document.createElement('li');
+    var quantitySpan = document.createElement('div');
+    quantitySpan.textContent = item.quantity+ 'x ';
+    quantitySpan.classList.add('box');
 
-      var itemDiv = document.createElement("div");
-      itemDiv.classList.add('basket-list-item');
+    var nameSpan = document.createElement('div');
+    nameSpan.innerHTML = item.name;
+    nameSpan.classList.add('box');
 
-      var quantitySpan = document.createElement('div');
-      quantitySpan.textContent = item.quantity+ 'x ';
-      quantitySpan.classList.add('box');
+    var priceSpan = document.createElement('div');
+    priceSpan.textContent = item.price;
+    priceSpan.classList.add('box');
 
-      var nameSpan = document.createElement('div');
-      nameSpan.innerHTML = item.name;
-      nameSpan.classList.add('box');
+    itemDiv.appendChild(quantitySpan);
+    itemDiv.appendChild(nameSpan);
+    itemDiv.appendChild(priceSpan);
 
-      var priceSpan = document.createElement('div');
-      priceSpan.textContent = item.price;
-      priceSpan.classList.add('box');
+    listItem.appendChild(itemDiv);
 
-      itemDiv.appendChild(quantitySpan);
-      itemDiv.appendChild(nameSpan);
-      itemDiv.appendChild(priceSpan);
+    itemsList.appendChild(listItem);
+  });
 
-      // Append the item div to the list item
-      listItem.appendChild(itemDiv);
+  totalElement.textContent = basket.total.toFixed(2);
+  if(itemQuantity){
+    quantityNumber.textContent = basket.acc[item.id];
+    quantityDiv.style.backgroundColor = "red";
+  }else{
+    quantityNumber.textContent = "";
+    quantityDiv.style.backgroundColor = "white";
 
-      itemsList.appendChild(listItem);
-      //itemDiv.appendChild()
-
-      //listItem.textContent = item.quantity+'x ' + item.name +" "+ item.price;
-      //itemsList.appendChild(listItem);
-    });
-
-
-    totalElement.textContent = basket.total.toFixed(2);
-    if(itemQuantity){
-      quantityNumber.textContent = itemQuantity.quantity;
-      quantityDiv.style.backgroundColor = "red";
-    }else{
-        quantityNumber.textContent = "";
-        quantityDiv.style.backgroundColor = "white";
-
-    }
-
+  }
 }
 
 function sendOrder(){
@@ -152,24 +151,24 @@ function sendOrder(){
 }
 
 function request(basket) {
-    const jsonData = JSON.stringify(basket);
-    const serverUrl = (railsEnvironment === 'production')
-        ? "https://fillo.herokuapp.com/bsktresqto"
-        : "http://127.0.0.1:3001/bsktresqto";
-    const csrfToken = document.querySelector("meta[name='csrf-token']").getAttribute("content");
-    fetch(serverUrl, {
-        method: 'POST',
-        headers: {
-        'Content-Type': 'application/json',
-        'X-CSRF-Token': csrfToken,
-        },
-        body: jsonData,
-    })
-    .then(response => {
-        if (response.status === 200) {
-          alert("Success!");
-        } else {
-          alert("Error!");
-        }
-      })
+  const jsonData = JSON.stringify(basket);
+  const serverUrl = (railsEnvironment === 'production')
+    ? "https://fillo.herokuapp.com/bsktresqto"
+    : "http://127.0.0.1:3001/bsktresqto";
+  const csrfToken = document.querySelector("meta[name='csrf-token']").getAttribute("content");
+  fetch(serverUrl, {
+    method: 'POST',
+    headers: {
+    'Content-Type': 'application/json',
+    'X-CSRF-Token': csrfToken,
+    },
+    body: jsonData,
+  })
+  .then(response => {
+    if (response.status === 200) {
+      alert("Success!");
+    } else {
+      alert("Error!");
+    }
+  })
 }
