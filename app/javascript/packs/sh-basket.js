@@ -25,7 +25,7 @@ function basketItems(event, element, operator){
   if( itemObject.price_io ){
     const countTrueVal = checkboxes.filter((element) => element.checked === true);
     if (countTrueVal.length > 1){
-      alert(`For ${item.name} you can choose only one option to add to the basket per time`)
+      alert(`Only one option to add to the basket per time`)
       checkboxReset(checkboxes);
       return;
     }
