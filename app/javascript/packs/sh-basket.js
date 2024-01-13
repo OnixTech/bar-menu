@@ -27,7 +27,7 @@ function basketItems(event, element, operator){
     const countTrueVal = checkboxes.filter((element) => element.checked === true);
     if (countTrueVal.length > 1){
       alert(`For ${item.name} you can choose only one option to add to the basket per time`)
-      cleanCheckBoxes(checkboxes);
+      checkboxReset(checkboxes);
       return;
     }
     checkboxes.forEach(function(checkbox) {
@@ -48,7 +48,7 @@ function basketItems(event, element, operator){
     var stringName = "<ul>" + name.replace(/\n/g, ""); + "</ul>"
     item.name = "<strong>" + item.name + "</strong>" + stringName;
   }
-  cleanCheckBoxes(checkboxes);
+  checkboxReset(checkboxes);
   acumulator(item, operator);
 }
 
@@ -190,7 +190,7 @@ function request(basket) {
   })
 }
 
-function cleanCheckBoxes(checkboxes){
+function checkboxReset(checkboxes){
   checkboxes.forEach(function(checkbox) {
     checkbox.checked = false;
   });
