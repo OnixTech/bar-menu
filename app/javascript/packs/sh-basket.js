@@ -14,7 +14,7 @@ function basketItems(event, element, operator){
   const item = {
     id: itemObject.id,
     quantity: 1,
-    name: itemObject.name,
+    name: "<strong>" + itemObject.name + "</strong>",
     price: itemObject.price,
     station: itemObject.station
   };
@@ -23,7 +23,6 @@ function basketItems(event, element, operator){
   const prices = [...document.getElementsByClassName("options-prices-" + item.id)];
 
   if( itemObject.price_io ){
-
     const countTrueVal = checkboxes.filter((element) => element.checked === true);
     if (countTrueVal.length > 1){
       alert(`For ${item.name} you can choose only one option to add to the basket per time`)
@@ -32,13 +31,12 @@ function basketItems(event, element, operator){
     }
     checkboxes.forEach(function(checkbox) {
       if(checkbox.checked){
-        item.name = "<strong>" + item.name + "</strong>" + " " + itemObject[`op_${checkbox.id}`];
+        item.name = item.name + " " + itemObject[`op_${checkbox.id}`];
         item.price = itemObject[`price_${checkbox.id}`];
       }
     });
 
   }else{
-
     checkboxes.forEach(function(checkbox){
       if(checkbox.checked){
         name += "\n" + "<li style='font-size: 11px;'>" + itemObject[`op_${checkbox.id}`] + "</li>";
@@ -46,7 +44,7 @@ function basketItems(event, element, operator){
       }
     });
     var stringName = "<ul>" + name.replace(/\n/g, ""); + "</ul>"
-    item.name = "<strong>" + item.name + "</strong>" + stringName;
+    item.name = item.name + stringName;
   }
   checkboxReset(checkboxes);
   acumulator(item, operator);
@@ -130,7 +128,12 @@ function updateView(item) {
     nameSpan.classList.add('box');
 
     var priceSpan = document.createElement('div');
-    priceSpan.textContent = item.price;
+    priceSpan.textContent = item.price.toLocaleString('de-DE', {
+      style: 'currency',
+      currency: 'EUR',
+      minimumFractionDigits: 2,
+      maximumFractionDigits: 2,
+    });
     priceSpan.classList.add('box');
 
     itemDiv.appendChild(quantitySpan);
@@ -149,7 +152,6 @@ function updateView(item) {
   }else{
     quantityNumber.textContent = "";
     quantityDiv.style.backgroundColor = "white";
-
   }
 }
 
