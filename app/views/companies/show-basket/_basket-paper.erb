@@ -1,22 +1,21 @@
-
-  <div class="sh-basket-note">
-    <div class="sh-basket-note-tittle">
-      <a href="#" onclick="toggle(); return false"><p>X</p></a>
-      <div class="sh-basket-table" id="table-data" data="<%= company.name %>">
-        <h5>Table n#:</h5>
-        <input type="text" id="table-number">
-      </div>
-    </div>
-    <hr>
-    <div id="basket-container">
-      <ul id="basket-items-list"></ul>
-    </div>
-    <hr>
-    <div class="sh-basket-total">
-      <p>Total: <span id="basket-total"></span></p>
-      <div class="sh-basket-total-send">
-        <button class="sh-btn-set-item" onclick="sendOrder(); return false">SEND</button>
-      </div>
+<div class="sh-basket-note">
+  <div class="sh-basket-note-tittle">
+    <a href="#" onclick="toggle(); return false"><p>X</p></a>
+    <div class="sh-basket-table" id="table-data" data="<%= company.name %>">
+      <h5>Table n#:</h5>
+      <input type="text" id="table-number">
     </div>
   </div>
-  <div class="overlay"></div>
+  <hr>
+  <div id="basket-container">
+    <ul id="basket-items-list"></ul>
+  </div>
+  <hr>
+  <div class="sh-basket-total">
+    <p>Total: <span id="basket-total"></span></p>
+    <div class="sh-basket-total-send">
+      <button class="sh-btn-set-item" onclick="sendOrder(); return false">SEND</button>
+    </div>
+  </div>
+</div>
+<div class="overlay"></div>

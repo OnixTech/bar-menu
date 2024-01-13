@@ -1,11 +1,11 @@
 
 
 function searchbar(){
-  let userInput, listedProductsId, userInputCapitalized, listedProduct;    
-  
-  userInput = document.getElementById('sh-input'); 
-  userInputCapitalized = userInput.value.toUpperCase();      
-  
+  let userInput, listedProductsId, userInputCapitalized, listedProduct;
+
+  userInput = document.getElementById('sh-input');
+  userInputCapitalized = userInput.value.toUpperCase();
+
   listedProductsId = document.getElementById("wrapper");
   listedcards = listedProductsId.getElementsByClassName("list");
 
@@ -23,7 +23,7 @@ function searchItems(listedcards, userInputCapitalized){
       if(r > -1){
         c[a] = true;
         taglist[a].classList.add("enable");
-        taglist[a].classList.add("paint");    
+        taglist[a].classList.add("paint");
         taglist[a].classList.remove("disable");
       }else{
         c[a] = false;
@@ -42,10 +42,10 @@ function searchItems(listedcards, userInputCapitalized){
 
 function searchMenu(listedcards, userInputCapitalized){
   var c = [].fill(false);
-  
+
   for (let i = 0; i < listedcards.length; i++) {
     taglist = listedcards[i].getElementsByClassName("sh-p-search-title");
-    
+
     r = taglist[0].innerText.toUpperCase().indexOf(userInputCapitalized);
     if(r > -1){
       c[i] = true;
@@ -64,16 +64,15 @@ function searchMenu(listedcards, userInputCapitalized){
 }
 
 function cleanList(listedcards){
- 
+
   for (let a = 0; a < listedcards.length; a++) {
     listAll = listedcards[a].getElementsByClassName("sh-p-search");
-    
+
     for (let b = 0; b < listAll.length; b++){
       r = listAll[b];
      r.classList.add("enable");
      r.classList.remove("disable");
      r.classList.remove("paint");
-     console.log(listAll[b]);
     }
   }
 }

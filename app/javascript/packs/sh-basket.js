@@ -7,53 +7,57 @@ const basket = {
 };
 
 function basketItems(event, element, operator){
-    event.preventDefault();
-    const itemJson = element.getAttribute('data-item');
-    const itemObject = JSON.parse(itemJson);
-    const item = {
-        id: itemObject.id,
-        quantity: 1,
-        name: itemObject.name,
-        price: itemObject.price,
-        station: itemObject.station
-    };
-    var name = "";
-    const checkboxes = [...document.getElementsByClassName("options-checkboxes-" + item.id)];
-    const prices = [...document.getElementsByClassName("options-prices-" + item.id)];
 
-    if( itemObject.price_io ){
-      checkboxes.forEach(function(checkbox) {
-        if(checkbox.checked){
-          item.name = "<strong>" + item.name + "</strong>" + " " + itemObject[`op_${checkbox.id}`];
-          item.price = itemObject[`price_${checkbox.id}`];
-        }
-      });
-    }else{
-      checkboxes.forEach(function(checkbox) {
-        console.log(checkbox.checked);
-        if(checkbox.checked){
-          name += "\n" + "<li style='font-size: 11px;'>" + itemObject[`op_${checkbox.id}`] + "</li>";
-          item.price += itemObject[`price_${checkbox.id}`];
-        }
-      });
+  event.preventDefault();
+  const itemJson = element.getAttribute('data-item');
+  const itemObject = JSON.parse(itemJson);
+  const item = {
+    id: itemObject.id,
+    quantity: 1,
+    name: itemObject.name,
+    price: itemObject.price,
+    station: itemObject.station
+  };
+  var name = "";
+  const checkboxes = [...document.getElementsByClassName("options-checkboxes-" + item.id)];
+  const prices = [...document.getElementsByClassName("options-prices-" + item.id)];
 
-      var stringName = "<ul>" + name.replace(/\n/g, ""); + "</ul>"
-      item.name = "<strong>" + item.name + "</strong>" + stringName;
-      item.price = item.price.toFixed(2);
+  if( itemObject.price_io ){
+
+    const countTrueVal = checkboxes.filter((element) => element.checked === true);
+    if (countTrueVal.length > 1){
+      alert(`For ${item.name} you can choose only one option to add to the basket per time`)
+      cleanCheckBoxes(checkboxes);
+      return;
     }
+    checkboxes.forEach(function(checkbox) {
+      if(checkbox.checked){
+        item.name = "<strong>" + item.name + "</strong>" + " " + itemObject[`op_${checkbox.id}`];
+        item.price = itemObject[`price_${checkbox.id}`];
+      }
+    });
 
+  }else{
 
-    acumulator(item, operator);
+    checkboxes.forEach(function(checkbox){
+      if(checkbox.checked){
+        name += "\n" + "<li style='font-size: 11px;'>" + itemObject[`op_${checkbox.id}`] + "</li>";
+        item.price += itemObject[`price_${checkbox.id}`];
+      }
+    });
+    var stringName = "<ul>" + name.replace(/\n/g, ""); + "</ul>"
+    item.name = "<strong>" + item.name + "</strong>" + stringName;
+  }
+  cleanCheckBoxes(checkboxes);
+  acumulator(item, operator);
 }
 
 function acumulator(item, operator){
 
   const existingItem = basket.items.find((basketItem) => basketItem.id === item.id);
-
   if(operator === true){
     if (basket.acc[item.id] === undefined){
       basket.acc[item.id] = 1;
-      console.log(basket.acc[item.id]);
     }else {
       basket.acc[item.id]++;
     }
@@ -81,12 +85,18 @@ function acumulator(item, operator){
 }
 
 function CalculateTotal(){
-    basket.total = 0;
-    if (basket.items){
-      basket.items.forEach(function(item) {
-        basket.total += item.price * item.quantity;
-      });
-    }
+  basket.total = 0;
+  if (basket.items){
+    basket.items.forEach(function(item) {
+      basket.total += item.price * item.quantity;
+    });
+  }
+  basket.total =  basket.total.toLocaleString('de-DE', {
+    style: 'currency',
+    currency: 'EUR',
+    minimumFractionDigits: 2,
+    maximumFractionDigits: 2,
+  });
 }
 
 function updateView(item) {
@@ -106,6 +116,14 @@ function updateView(item) {
     var quantitySpan = document.createElement('div');
     quantitySpan.textContent = item.quantity+ 'x ';
     quantitySpan.classList.add('box');
+    var deleteBtn = document.createElement('button');
+    deleteBtn.textContent = '-';
+    deleteBtn.classList.add('sh-btn-basket-item');
+    deleteBtn.setAttribute('data-id', `${item.id}`);
+    deleteBtn.setAttribute('data-item', JSON.stringify(item));
+    deleteBtn.setAttribute('onclick', 'basketItems(event, this, false)');
+
+    quantitySpan.appendChild(deleteBtn);
 
     var nameSpan = document.createElement('div');
     nameSpan.innerHTML = item.name;
@@ -124,7 +142,7 @@ function updateView(item) {
     itemsList.appendChild(listItem);
   });
 
-  totalElement.textContent = basket.total.toFixed(2);
+  totalElement.textContent = basket.total;
   if(itemQuantity){
     quantityNumber.textContent = basket.acc[item.id];
     quantityDiv.style.backgroundColor = "red";
@@ -142,11 +160,10 @@ function sendOrder(){
 
     basket.table = inputTable.value
     basket.company = companyName
-    console.log(basket);
     if (basket.table.length){
-        request(basket)
+      request(basket)
     }else {
-        alert('Table field is empty.');
+      alert('Table field is empty.');
     }
 }
 
@@ -165,10 +182,16 @@ function request(basket) {
     body: jsonData,
   })
   .then(response => {
-    if (response.status === 200) {
+    if (response.status === 200){
       alert("Success!");
     } else {
       alert("Error!");
     }
   })
+}
+
+function cleanCheckBoxes(checkboxes){
+  checkboxes.forEach(function(checkbox) {
+    checkbox.checked = false;
+  });
 }
