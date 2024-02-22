@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_12_30_202718) do
+ActiveRecord::Schema[7.0].define(version: 2024_02_22_194554) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -40,17 +40,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_12_30_202718) do
     t.datetime "updated_at", null: false
     t.float "position", default: 0.0
     t.string "station", default: "main station"
-    t.string "op_a"
-    t.string "op_b"
-    t.string "op_c"
-    t.string "op_d"
-    t.string "op_e"
-    t.float "price_a", default: 0.0
-    t.float "price_b", default: 0.0
-    t.float "price_c", default: 0.0
-    t.float "price_d", default: 0.0
-    t.float "price_e", default: 0.0
-    t.boolean "price_io", default: false
     t.index ["menu_id"], name: "index_items_on_menu_id"
   end
 
@@ -65,11 +54,50 @@ ActiveRecord::Schema[7.0].define(version: 2023_12_30_202718) do
     t.index ["company_id"], name: "index_menus_on_company_id"
   end
 
+  create_table "order_histories", force: :cascade do |t|
+    t.bigint "order_id", null: false
+    t.string "content"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["order_id"], name: "index_order_histories_on_order_id"
+  end
+
+  create_table "order_items", force: :cascade do |t|
+    t.integer "quantity"
+    t.bigint "item_id", null: false
+    t.bigint "subitem_id", null: false
+    t.bigint "order_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["item_id"], name: "index_order_items_on_item_id"
+    t.index ["order_id"], name: "index_order_items_on_order_id"
+    t.index ["subitem_id"], name: "index_order_items_on_subitem_id"
+  end
+
+  create_table "orders", force: :cascade do |t|
+    t.string "table"
+    t.integer "numerference"
+    t.float "total"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "roles", force: :cascade do |t|
     t.string "name"
     t.string "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "subitems", force: :cascade do |t|
+    t.string "name"
+    t.string "description"
+    t.float "price"
+    t.boolean "sumitem"
+    t.bigint "item_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["item_id"], name: "index_subitems_on_item_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -90,5 +118,10 @@ ActiveRecord::Schema[7.0].define(version: 2023_12_30_202718) do
   add_foreign_key "companies", "users"
   add_foreign_key "items", "menus"
   add_foreign_key "menus", "companies"
+  add_foreign_key "order_histories", "orders"
+  add_foreign_key "order_items", "items"
+  add_foreign_key "order_items", "orders"
+  add_foreign_key "order_items", "subitems"
+  add_foreign_key "subitems", "items"
   add_foreign_key "users", "roles"
 end
