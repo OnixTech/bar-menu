@@ -76,6 +76,26 @@ if Company.count < 1
   restaurant.save!
 end
 
+if Station.count < 1
+  station = Station.new(
+    :name => "bar",
+    :company_id => 1
+  )
+  station.save!
+
+  station = Station.new(
+    :name => "Kitchen",
+    :company_id => 1
+  )
+  station.save!
+
+  station = Station.new(
+    :name => "main station",
+    :company_id => 2
+  )
+  station.save!
+end
+
 if Menu.count < 1
   menu = Menu.new(
     :title => "Menu",
