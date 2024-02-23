@@ -34,10 +34,9 @@
                         <div class="sh-items-description">
                           <p class="sh-item-<%= item.id %>"><%= item.description.gsub(/\n/, '<br>').html_safe %></p>
                         </div>
-                          <%# ITEM OPTIONS A B C D E %>
+                        <%# SUBITEM OPTIONS %>
                         <% @subitems.each do |subitem| %>
                           <% if subitem.item_id == item.id %>
-
                             <div class="sh-items-name-price option">
                               <div class="sh-items-input-option">
                                 <div class="sh-items-input">
@@ -51,10 +50,9 @@
                                 <h5 class="sh-item-<%= item.id %>">€<%= '%.2f' % subitem.price %></h5>
                               </div>
                             </div>
-
                           <% end %>
                         <% end %>
-                        <%# ITEM OPTIONS A B C D E %>
+                        <%# SUBITEM OPTIONS %>
                       </div>
                       <div class="sh-div-btn-set-item">
                         <% if @company.basket %>
