@@ -35,7 +35,25 @@
                           <p class="sh-item-<%= item.id %>"><%= item.description.gsub(/\n/, '<br>').html_safe %></p>
                         </div>
                           <%# ITEM OPTIONS A B C D E %>
+                        <% @subitems.each do |subitem| %>
+                          <% if subitem.item_id == item.id %>
 
+                            <div class="sh-items-name-price option">
+                              <div class="sh-items-input-option">
+                                <div class="sh-items-input">
+                                  <%= check_box_tag 'check_box', 1, false, id: "a", class:"options-checkboxes-#{item.id}" %>
+                                </div>
+                                <div class="sh-items-option">
+                                  <h5 class="sh-item-<%= item.id %>"><%= subitem.description %></h5>
+                                </div>
+                              </div>
+                              <div class="sh-items-option-price">
+                                <h5 class="sh-item-<%= item.id %>">€<%= '%.2f' % subitem.price %></h5>
+                              </div>
+                            </div>
+
+                          <% end %>
+                        <% end %>
                         <%# ITEM OPTIONS A B C D E %>
                       </div>
                       <div class="sh-div-btn-set-item">

@@ -160,6 +160,10 @@ end
   if item.save!
     puts "#{item.name} created!"
   end
+  subitem = Subitem.new(name: "small", description: "0.3l", price: 3.80, sumitem: false, item_id: item.id)
+  if subitem.save!
+    puts "#{subitem.name} created!"
+  end
 end
 
 4.times do

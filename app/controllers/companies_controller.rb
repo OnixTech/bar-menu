@@ -39,6 +39,7 @@ class CompaniesController < ApplicationController
     @menus = @menus.sort_by(&:position)
     @items = Item.all
     @items = @items.sort_by(&:position)
+    @subitems = Subitem.all
     @menu = Menu.new
     @item = Item.new
   end
