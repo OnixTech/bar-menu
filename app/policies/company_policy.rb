@@ -1,19 +1,18 @@
 class CompanyPolicy < ApplicationPolicy
-
   class Scope < Scope
     def resolve
-        if user.role == "master"
-          scope.all
-        else 
-          scope.where(user: user)
-        end 
+      if user.role == "master"
+        scope.all
+      else
+        scope.where(user: user)
+      end
     end
   end
- 
+
   def initialize(current_user, company)
     @current_user = current_user
     @company = company
-  end 
+  end
 
   def show?
     true

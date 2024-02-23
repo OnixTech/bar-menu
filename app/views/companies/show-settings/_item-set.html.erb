@@ -17,52 +17,7 @@
       <button  onclick="descriptionInput(<%= item.id %>); return false">X</button>
     </div>
 <%#                   ITEM OPTIONS A B C D E                        %>
-    <div class="sh-inputs-name-price">
-      <div class="sh-input-name">
-          <%= f.text_field :op_a, class: "sh-new-input-name", placeholder: "option 1", label: false %>
-      </div>
-      <div class="sh-input-price">
-        <%= f.text_field :price_a, type:"number", step:"0.01", value:"#{ item.price_a }", class: "sh-new-input-price", label: false%>
-      </div>
-    </div>
-    <div class="sh-inputs-name-price">
-      <div class="sh-input-name">
-          <%= f.text_field :op_b, class: "sh-new-input-name", placeholder: "option 2", label: false %>
-      </div>
-      <div class="sh-input-price">
-        <%= f.text_field :price_b, type:"number", step:"0.01", value:"#{ item.price_b }", class: "sh-new-input-price", label: false%>
-      </div>
-    </div>
-    <div class="sh-inputs-name-price">
-      <div class="sh-input-name">
-          <%= f.text_field :op_c, class: "sh-new-input-name", placeholder: "option 3", label: false %>
-      </div>
-      <div class="sh-input-price">
-        <%= f.text_field :price_c, type:"number", step:"0.01", value:"#{ item.price_c }", class: "sh-new-input-price", label: false%>
-      </div>
-    </div>
-    <div class="sh-inputs-name-price">
-      <div class="sh-input-name">
-          <%= f.text_field :op_d, class: "sh-new-input-name", placeholder: "option 4", label: false %>
-      </div>
-      <div class="sh-input-price">
-        <%= f.text_field :price_d, type:"number", step:"0.01", value:"#{ item.price_d }", class: "sh-new-input-price", label: false%>
-      </div>
-    </div>
-    <div class="sh-inputs-name-price">
-      <div class="sh-input-name">
-          <%= f.text_field :op_e, class: "sh-new-input-name", placeholder: "option 5", label: false %>
-      </div>
-      <div class="sh-input-price">
-        <%= f.text_field :price_e, type:"number", step:"0.01", value:"#{ item.price_d }", class: "sh-new-input-price", label: false%>
-      </div>
-    </div>
-    <div class="sh-inputs-name-price">
-      <div>
-        <%= f.check_box :price_io, class: "sh-new-input-name", label: false %>
-        <%= f.label :price_io, "Change the main price for the option price" %>
-      </div>
-    </div>
+
 <%#                   ITEM OPTIONS A B C D E                        %>
     <div class="sh-input-btns">
       <%= f.submit "UPDATE",class:"sh-btn-set-item" %>

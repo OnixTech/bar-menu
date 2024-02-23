@@ -1,6 +1,5 @@
 class CompaniesController < ApplicationController
   before_action :set_companies, only: [:show, :edit, :update, :destroy, :indexMenuList]
-  
   def index
     @company = policy_scope(Company)
     if current_user.role.name == "master"
@@ -70,7 +69,7 @@ class CompaniesController < ApplicationController
     @company.update(company_params)
     redirect_to companies_path(@company)
   end
-  
+
   def destroy
     authorize @company
     @company.destroy
