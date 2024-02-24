@@ -20,47 +20,49 @@
     </div>
     <hr>
   </div>
-  <div class="cmp-index-card-sections-company-content" id="cmp-index-cmp-show">
-    <div class="cmp-index-card-sections-information-title">
-      <p>Information</p>
-    </div>
-    <div>
-      <p><strong>Name:</strong>  <span id="company-name"></span></p>
-    </div>
-    <div>
-      <p><strong>Address:</strong> <span id="company-address"></span></p>
-    </div>
-    <div class="cmp-index-card-basket">
-      <p><strong>Basket </strong> </p><div class="cmp-index-card-basket-checkbox"><%= check_box_tag 'check_box', 1,  @company[0]["basket"], disabled: true %></div>
-    </div>
-    <div class="cmp-index-card-qr">
-      <div class="cmp-index-card-qr-p">
-        <strong><p>QR:</p></strong>
+  <% if @company[0] %>
+    <div class="cmp-index-card-sections-company-content" id="cmp-index-cmp-show">
+      <div class="cmp-index-card-sections-information-title">
+        <p>Information</p>
       </div>
-      <div class="cmp-index-card-qr-btn-img">
-        <% if @company[0]["qr_code"] == nil %>
-          <%= simple_form_for(@company[0]) do |f| %>
-            <%= f.hidden_field :qr_code, value:"https://fillo.herokuapp.com#{company_path(@company[0])}"%>
-            <div class="cmp-index-card-qr-g">
-              <%= f.submit "Generate QR", class:"sh-btn-set-item"%>
+      <div>
+        <p><strong>Name:</strong>  <span id="company-name"></span></p>
+      </div>
+      <div>
+        <p><strong>Address:</strong> <span id="company-address"></span></p>
+      </div>
+      <div class="cmp-index-card-basket">
+        <p><strong>Basket </strong> </p><div class="cmp-index-card-basket-checkbox"><%= check_box_tag 'check_box', 1,  @company[0]["basket"], disabled: true %></div>
+      </div>
+      <div class="cmp-index-card-qr">
+        <div class="cmp-index-card-qr-p">
+          <strong><p>QR:</p></strong>
+        </div>
+        <div class="cmp-index-card-qr-btn-img">
+          <% if @company[0]["qr_code"] == nil %>
+            <%= simple_form_for(@company[0]) do |f| %>
+              <%= f.hidden_field :qr_code, value:"https://fillo.herokuapp.com#{company_path(@company[0])}"%>
+              <div class="cmp-index-card-qr-g">
+                <%= f.submit "Generate QR", class:"sh-btn-set-item"%>
+              </div>
+            <% end %>
+          <% else %>
+            <div class="cmp-index-card-svg">
+              <%= link_to company_qr_path(company_id: @company[0]["id"]) do %>
+                <%= @svg.html_safe %>
+              <% end %>
             </div>
           <% end %>
-        <% else %>
-          <div class="cmp-index-card-svg">
-            <%= link_to company_qr_path(company_id: @company[0]["id"]) do %>
-              <%= @svg.html_safe %>
-            <% end %>
-          </div>
-        <% end %>
+        </div>
+      </div>
+      <div class="cmp-index-card-vs-sections">
+        <p><strong>Visible menu sections:</strong></p>
+      </div>
+      <div class="cmp-index-card-sections-checkbx-checkboxes-row" id="checkboxes">
+      </div>
+      <div class="cmp-index-card-edit">
+        <%= link_to "Edit", edit_company_path(@company[0]), class:"btn-cheto" %>
       </div>
     </div>
-    <div class="cmp-index-card-vs-sections">
-      <p><strong>Visible menu sections:</strong></p>
-    </div>
-    <div class="cmp-index-card-sections-checkbx-checkboxes-row" id="checkboxes">
-    </div>
-    <div class="cmp-index-card-edit">
-      <%= link_to "Edit", edit_company_path(@company[0]), class:"btn-cheto" %>
-    </div>
-  </div>
+  <% end %>
 </div>
