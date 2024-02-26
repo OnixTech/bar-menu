@@ -13,7 +13,7 @@
       </div>
     </div>
     <div class="sh-input-description">
-      <%= f.text_field :description, class: "sh-input-description-#{item.id}", placeholder: "#{item.description}", label: false, rows: 2 %>
+      <%= f.text_area :description, class: "sh-input-description-#{item.id}", placeholder: "#{item.description}", label: false, rows: 2 %>
       <button  onclick="descriptionInput(<%= item.id %>); return false">X</button>
     </div>
 <%#                   ITEM OPTIONS A B C D E                        %>
@@ -21,7 +21,7 @@
       <% if subitem.item_id == item.id %>
           <div class="sh-inputs-name-price">
             <div class="sh-input-name">
-              <%= f.text_field :name, class: "sh-input-name-#{subitem.id}", placeholder: "#{subitem.name}", label: false %>
+              <%= f.text_field :name, class: "sh-input-name-#{subitem.id}", placeholder: "#{subitem.description}", label: false %>
               <button  onclick="nameInput(<%= subitem.id %>); return false" return false>X</button>
             </div>
             <div class="sh-input-price">
