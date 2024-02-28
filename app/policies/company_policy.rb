@@ -19,7 +19,7 @@ class CompanyPolicy < ApplicationPolicy
   end
 
   def create?
-    true#user_active || authorize_master
+    true # user_active || authorize_master
   end
 
   def new?
@@ -42,7 +42,6 @@ class CompanyPolicy < ApplicationPolicy
     authorize_user || authorize_master
   end
 
-
   private
 
   def authorize_user
@@ -56,5 +55,4 @@ class CompanyPolicy < ApplicationPolicy
   def user_active
     @current_user.active?
   end
-
 end

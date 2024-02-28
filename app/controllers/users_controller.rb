@@ -15,9 +15,6 @@ class UsersController < ApplicationController
       @user[:role] = 1
     elsif @user[:role] == "manager"
       @user[:role] = 2
-    elsif @user[:role] == "visitor"
-      @user[:role] = 2
     end
   end
-
 end

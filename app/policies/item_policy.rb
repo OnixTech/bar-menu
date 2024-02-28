@@ -1,17 +1,15 @@
 class ItemPolicy < ApplicationPolicy
   attr_reader :user, :item
-
   class Scope < Scope
-    # NOTE: Be explicit about which records you allow access to!
-     def resolve
-       scope.all
-     end
+    def resolve
+      scope.all
+    end
   end
-  
+
   def initialize(current_user, item)
     @current_user = current_user
     @item = item
-  end  
+  end
 
   def update?
     (authorize_user && user_active)|| authorize_master
@@ -20,7 +18,7 @@ class ItemPolicy < ApplicationPolicy
   def setPrices?
     true
   end
-  
+
   def create?
     (authorize_user && user_active) || authorize_master
   end
