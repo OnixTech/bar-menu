@@ -16,4 +16,5 @@ Rails.application.routes.draw do
   resources :items
   post '/bsktresqto', to: 'deliveries#grequest'
   resources :stations
+  resources :subitems, only: %i[create update destroy]
 end
