@@ -1,13 +1,13 @@
 class StationPolicy < ApplicationPolicy
   class Scope < Scope
     def resolve
-      scope.all
+      if user.companies.present?
+        company_ids = user.companies.pluck(:id)
+        scope.where(company_id: company_ids)
+      else
+        scope.none
+      end
     end
-  end
-
-  def initialize(current_user, station)
-    @current_user = current_user
-    @station = station
   end
 
   def show?

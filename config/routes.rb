@@ -7,6 +7,7 @@ Rails.application.routes.draw do
 
   resources :companies do
     get 'qr' => 'companies#qr'
+    resources :stations
   end
   post '/companies/new' => 'companies#new'
   resources :menus
@@ -15,6 +16,5 @@ Rails.application.routes.draw do
   post '/items/setPrices' => 'items#setPrices'
   resources :items
   post '/bsktresqto', to: 'deliveries#grequest'
-  resources :stations
   resources :subitems, only: %i[create update destroy]
 end

@@ -7,7 +7,6 @@
 #   Character.create(name: "Luke", movie: movies.first)
 require 'faker'
 
-
 roles = [
   {
     name: "master",

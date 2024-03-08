@@ -2,7 +2,7 @@ class StationsController < ApplicationController
   before_action :set_stations, only: [:show, :destroy, :update]
 
   def index
-    @station = policy_scope(Station)
+    @stations = policy_scope(Station)
   end
 
   def show
