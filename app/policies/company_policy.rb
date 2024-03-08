@@ -31,7 +31,7 @@ class CompanyPolicy < ApplicationPolicy
   end
 
   def update?
-    user_active || authorize_master
+    true # user_active || authorize_master
   end
 
   def destroy?
