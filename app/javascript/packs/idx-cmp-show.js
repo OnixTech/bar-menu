@@ -15,15 +15,17 @@ function toggle(data){
   companyStations.innerHTML = "";
 
   stations.forEach(station => {
-    var link = document.createElement("a");
-    link.href = window.location.href +`/${company.id}/stations/${station.id}`;
-    link.textContent = `${station.name} `;
-    link.style.textDecoration = "none";
-    link.style.height = "10px";
-    link.style.border = "solid lightgrey 1px";
-    link.style.margin = "3px";
-    link.style.padding = "2px";
-    companyStations.appendChild(link);
+    if (company.id === station.company_id){
+      var link = document.createElement("a");
+      link.href = window.location.href +`/${company.id}/stations/${station.id}`;
+      link.textContent = `${station.name} `;
+      link.style.textDecoration = "none";
+      link.style.height = "10px";
+      link.style.border = "solid lightgrey 1px";
+      link.style.margin = "3px";
+      link.style.padding = "2px";
+      companyStations.appendChild(link);
+    }
   })
 
   menus.forEach(menu => {

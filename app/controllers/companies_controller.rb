@@ -52,7 +52,7 @@ class CompaniesController < ApplicationController
     @company = Company.new(company_params)
     @company.user = current_user
     if @company.save
-      redirect_to companies_path(current_user)
+      redirect_to companies_path
     else
       render :new
     end
@@ -66,7 +66,7 @@ class CompaniesController < ApplicationController
   def update
     authorize @company
     @company.update(company_params)
-    redirect_to companies_path(@company)
+    redirect_to companies_path
   end
 
   def destroy
@@ -97,5 +97,4 @@ class CompaniesController < ApplicationController
   def set_companies
     @company = Company.find(params[:id])
   end
-
 end

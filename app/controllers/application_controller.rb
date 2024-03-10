@@ -14,11 +14,11 @@ class ApplicationController < ActionController::Base
   #   redirect_to(root_path)
   # end
 
-  def after_sign_in_path_for(user)
+  def after_sign_in_path_for(_user)
     companies_path
   end
 
-  def after_sign_up_path_for(user)
+  def after_sign_up_path_for(_user)
     companies_path
   end
 
