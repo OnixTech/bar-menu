@@ -9,7 +9,7 @@
         <div class="cmp-index-card-comp-list">
           <div class="cmp-index-card-comp-list-box-name">
             <div class="cmp-index-card-comp-list-name">
-              <%= link_to "#{company.name}", "#",class:"btn-cheto", data: { company: company.to_json, menus: @menus.to_json }, onclick: 'toggle(this); return false;'%>
+              <%= link_to "#{company.name}", "#",class:"btn-cheto", data: { company: company.to_json, menus: @menus.to_json, stations: @stations.to_json }, onclick: 'toggle(this); return false;'%>
               <%= link_to "Menu", company_path(company), class:"btn-cheto" %>
             </div>
             <div class="cmp-index-card-comp-list-addres">
@@ -33,6 +33,9 @@
       </div>
       <div class="cmp-index-card-basket">
         <p><strong>Basket </strong> </p><div class="cmp-index-card-basket-checkbox"><%= check_box_tag 'check_box', 1,  @company[0]["basket"], disabled: true %></div>
+      </div>
+      <div>
+        <p><strong>Stations:</strong> <span id="company-stations"></span></p>
       </div>
       <div class="cmp-index-card-qr">
         <div class="cmp-index-card-qr-p">

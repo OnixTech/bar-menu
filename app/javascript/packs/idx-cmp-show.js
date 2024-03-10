@@ -1,20 +1,33 @@
 function toggle(data){
-  // Retrieve the JSON string from the data attribute
   const companyJson = data.getAttribute('data-company');
   const menusJson = data.getAttribute('data-menus');
-  // Parse the JSON string to get the object
+  const stationsJson = data.getAttribute('data-stations');
+
   const company = JSON.parse(companyJson);
-  const menus = JSON.parse(menusJson)
+  const menus = JSON.parse(menusJson);
+  const stations = JSON.parse(stationsJson);
   document.getElementById('company-name').innerText = company.name;
   document.getElementById('company-address').innerText = `${company.street} ${company.number} ${company.post} ${company.city}`;
 
   var arrayContainer = document.getElementById('checkboxes');
-
+  var companyStations = document.getElementById('company-stations');
   arrayContainer.innerHTML = '';
+  companyStations.innerHTML = "";
+
+  stations.forEach(station => {
+    var link = document.createElement("a");
+    link.href = window.location.href +`/${company.id}/stations/${station.id}`;
+    link.textContent = `${station.name} `;
+    link.style.textDecoration = "none";
+    link.style.height = "10px";
+    link.style.border = "solid lightgrey 1px";
+    link.style.margin = "3px";
+    link.style.padding = "2px";
+    companyStations.appendChild(link);
+  })
 
   menus.forEach(menu => {
-
-    if(company["id"] === menu["company_id"]){
+    if(company.id === menu["company_id"]){
       var div = document.createElement('div');
       div.classList.add('cmp-index-card-sections-checkbx-checkboxes');
       // Create a checkbox

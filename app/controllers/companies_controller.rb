@@ -1,5 +1,5 @@
 class CompaniesController < ApplicationController
-  before_action :set_companies, only: [:show, :edit, :update, :destroy, :indexMenuList]
+  before_action :set_companies, only: %i[show edit update destroy indexMenuList]
   def index
     @company = policy_scope(Company)
     if current_user.role.name == "master"
@@ -20,13 +20,11 @@ class CompaniesController < ApplicationController
         )
       end
     end
-    menus = Menu.all
-    @menus = Array.new
-    menus.each do |menu|
-      if menu.company.user == current_user
-        @menus.push(menu)
-      end
-    end
+
+    company_ids = current_user.companies.pluck(:id)
+    @menus = Menu.where(company_id: company_ids)
+    @stations = Station.where(company_id: company_ids)
+
     @menus.sort_by(&:position)
     @company.sort_by(&:id)
     @users = User.order(id: :desc)
