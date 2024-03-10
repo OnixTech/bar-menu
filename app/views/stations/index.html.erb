@@ -1,4 +1,4 @@
-<%= render partial: "shared/navbar" %>
+<%= render partial: "shared/navbar", locals: {btnN: "NEW STATION", btnE: "EDIT STATION", btnL: "LOG OUT" }  %>
 <h1>INDEX</h1>
 <% @stations.each do |station| %>
   <div><%= station.name %></div>
