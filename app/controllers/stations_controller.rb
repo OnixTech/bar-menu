@@ -1,5 +1,5 @@
 class StationsController < ApplicationController
-  before_action :set_stations, only: %i[show destroy update]
+  before_action :set_stations, only: %i[show destroy edit update]
 
   def index
     @stations = policy_scope(Station)
@@ -14,6 +14,10 @@ class StationsController < ApplicationController
     authorize @station
     @station.save!
     redirect_to station_path(@station.company_id)
+  end
+
+  def edit
+    authorize @station
   end
 
   def update

@@ -23,7 +23,7 @@ class StationPolicy < ApplicationPolicy
   end
 
   def edit?
-    authorize_user || authorize_master
+    update?
   end
 
   def update?

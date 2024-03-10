@@ -1,1 +1,13 @@
-<h1>SHOW</h1>
+<%= render partial: "shared/navbar", locals: {btnN: "NEW STATION", btnE: "EDIT STATION", btnL: "LOG OUT" } %>
+<div class="stn-sw-container">
+  <div class="stn-sw-ctn-title">
+    <h2><%= @station.name %></h2>
+  </div>
+  <div class="stn-sw-orders">
+    <%= render partial: 'orders'%>
+  </div>
+  <div>
+    <%= link_to "Back to index", companies_path %>
+  </div>
+</div>
+<div data-controller="websocket-order" data-stationid="<%= @station.id %>"></div>
