@@ -42,8 +42,8 @@ if User.count < 1
   pfe.save!
 
   manager = User.new(
-    email: "b@mail.com",
-    password: "b@mail.com",
+    email: 'pablo@puente.com',
+    password: 'Pablo24bar-menu',
     role_id: 2
   )
   manager.save!

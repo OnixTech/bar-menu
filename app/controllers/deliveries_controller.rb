@@ -22,8 +22,8 @@ class DeliveriesController < ApplicationController
     #------------ Object Config -------------#
     basket_params = JSON.parse(request.body.read)
     basket = {
-      email: 'pablo@fillo.com',
-      password: 'Pablo88Fillo$',
+      email: 'pablo@puente.com',
+      password: 'Pablo24bar-menu',
       company: basket_params["company"],
       table: basket_params["table"],
       items: basket_params["items"],
