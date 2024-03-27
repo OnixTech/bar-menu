@@ -21,6 +21,14 @@ class DeliveriesController < ApplicationController
     response.headers['Content-Security-Policy'] = csp_policy
     #------------ Object Config -------------#
     basket_params = JSON.parse(request.body.read)
+    order = {
+      email: 'pablo@puente.com',
+      password: 'Pablo24bar-menu',
+      company: basket_params["company"],
+      table: basket_params["table"],
+      items: basket_params["items"],
+      total: basket_params["total"]
+    }
     basket = {
       email: 'pablo@puente.com',
       password: 'Pablo24bar-menu',
@@ -29,13 +37,5 @@ class DeliveriesController < ApplicationController
       items: basket_params["items"],
       total: basket_params["total"]
     }
-    #------------ POST Request -------------#
-    response = HTTParty.post(
-      endpoint,
-      body: basket.to_json,
-      headers: {
-        'Content-Type' => 'application/json'
-      }
-    )
   end
 end

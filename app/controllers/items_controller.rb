@@ -1,5 +1,5 @@
 class ItemsController < ApplicationController
-  before_action :set_items, only: [:update, :destroy]
+  before_action :set_items, only: %i[update destroy]
 
   def create
     @item = Item.new(item_params)

@@ -156,17 +156,18 @@ function updateView(item) {
 }
 
 function sendOrder(){
-    var element = document.getElementById('table-data');
-    var inputTable = element.querySelector('#table-number');
-    var companyName = element.getAttribute('data');
+  var element = document.getElementById('table-data');
+  var inputTable = element.querySelector('#table-number');
+  var companyName = element.getAttribute('data');
 
-    basket.table = inputTable.value
-    basket.company = companyName
-    if (basket.table.length){
-      request(basket)
-    }else {
-      alert('Table field is empty.');
-    }
+  basket.table = inputTable.value
+  basket.company = companyName
+  console.log(basket.items);
+  if (basket.table.length){
+    request(basket)
+  }else {
+    alert('Table field is empty.');
+  }
 }
 
 function request(basket) {
@@ -178,8 +179,8 @@ function request(basket) {
   fetch(serverUrl, {
     method: 'POST',
     headers: {
-    'Content-Type': 'application/json',
-    'X-CSRF-Token': csrfToken,
+      'Content-Type': 'application/json',
+      'X-CSRF-Token': csrfToken,
     },
     body: jsonData,
   })
