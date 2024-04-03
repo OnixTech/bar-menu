@@ -1,5 +1,5 @@
 class MenusController < ApplicationController
-  before_action :set_menus, only: [:show, :destroy, :update]
+  before_action :set_menus, only: %i[show destroy update]
 
   def show
     authorize @menu
@@ -23,7 +23,7 @@ class MenusController < ApplicationController
     cm_params
     @menu = Menu.find(@cm[:menu_id])
     authorize @menu
-    @menu.update(:visible => @cm[:visible])
+    @menu.update(visible: @cm[:visible])
     redirect_to companies_path(current_user)
   end
 

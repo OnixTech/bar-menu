@@ -16,24 +16,10 @@
       <%= f.text_area :description, class: "sh-input-description-#{item.id}", placeholder: "#{item.description}", label: false, rows: 2 %>
       <button  onclick="descriptionInput(<%= item.id %>); return false">X</button>
     </div>
-<%#                   ITEM OPTIONS A B C D E                        %>
-    <% @subitems.each do |subitem| %>
-      <% if subitem.item_id == item.id %>
-          <div class="sh-inputs-name-price">
-            <div class="sh-input-name">
-              <%= f.text_field :name, class: "sh-input-name-#{subitem.id}", placeholder: "#{subitem.description}", label: false %>
-              <button  onclick="nameInput(<%= subitem.id %>); return false" return false>X</button>
-            </div>
-            <div class="sh-input-price">
-              <%= f.text_field :price, type:"number", step:"0.01", class: "sh-input-price-#{subitem.id}", placeholder: "#{subitem.price}", label: false%>
-            </div>
-          </div>
-      <% end %>
-    <% end %>
-<%#                   ITEM OPTIONS A B C D E                        %>
     <div class="sh-input-btns">
       <%= f.submit "UPDATE",class:"sh-btn-set-item" %>
       <%= f.submit "RESET", type:"reset", class:"sh-btn-set-item" %>
+      <button  onclick="addSubitem(this)" data-id=<%= item.id %> class="sh-btn-set-item" type="reset">ADD SUBITEM</button>
       <button  onclick="editItem(this)" data-id=<%= item.id %> class="sh-btn-set-item" type="reset">CANCEL</button>
     </div>
   <% end %>

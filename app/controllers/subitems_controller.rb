@@ -13,7 +13,7 @@ class SubitemsController < ApplicationController
         format.js   { render :reload_page }
       end
     else
-      render :new
+      flash[:notice] = 'Error, Subitem has not been created'
     end
   end
 

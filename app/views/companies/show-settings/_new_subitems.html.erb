@@ -1,0 +1,16 @@
+<div class="sh-form-toggle-<%= subitem.id %> sh-form-inputs" style="display: none;">
+  <%= simple_form_for(subitem) do |f| %>
+    <div class="sh-inputs-name-price">
+      <div class="sh-input-name">
+        <%= f.text_field :name, class: "sh-input-name-#{subitem.id}", placeholder: "#{subitem.description}", label: false %>
+        <button  onclick="nameInput(<%= subitem.id %>); return false" return false>X</button>
+      </div>
+      <div class="sh-input-price">
+        <%= f.text_field :price, type:"number", step:"0.01", class: "sh-input-price-#{subitem.id}", placeholder: "#{subitem.price}", label: false%>
+      </div>
+      <div class="sh-input-btns">
+        <%= f.submit "CONFIRM",class:"sh-btn-set-item" %>
+      </div>
+    </div>
+  <% end %>
+</div>
