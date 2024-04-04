@@ -10,4 +10,4 @@ function addItem(element){
     }else {
       p[0].style.display = "none";
     }
-  }
+}

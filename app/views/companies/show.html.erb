@@ -25,7 +25,7 @@
               <% @items.each do |item|  %>
                 <% if item.menu_id == menu.id %>
                   <div class='sh-items-li'>
-                    <%= render partial: "companies/show-settings/item-set", locals: {item: item, subitems: @subitems} %>
+                    <%= render partial: "companies/show-settings/item-set", locals: {item: item, subitems: @subitems, subitem: @subitem} %>
                     <div class="sh-p-search">
                       <div class="sh-item-toggle-<%= item.id %>">
                         <div class="sh-items-name-price">
@@ -92,3 +92,4 @@
 <%= javascript_include_tag "packs/sh-edit-menu" %>
 <%= javascript_include_tag "packs/sh-basket" %>
 <%= javascript_include_tag "packs/sh-basket-open" %>
+<%= javascript_include_tag "packs/sh-new-subitem" %>

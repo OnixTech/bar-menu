@@ -16,5 +16,5 @@ Rails.application.routes.draw do
   post '/items/setPrices' => 'items#setPrices'
   resources :items
   post '/bsktresqto', to: 'deliveries#grequest'
-  resources :subitems, only: %i[create update destroy]
+  resources :subitems, only: %i[new create update destroy]
 end

@@ -11,7 +11,7 @@ class SubitemPolicy < ApplicationPolicy
   end
 
   def create?
-    true # user_active || authorize_master
+    true
   end
 
   def new?
@@ -19,17 +19,17 @@ class SubitemPolicy < ApplicationPolicy
   end
 
   def update?
-    user_active || authorize_master
+    true
   end
 
   def destroy?
-    authorize_user || authorize_master
+    true
   end
 
   private
 
   def authorize_user
-    true
+    @current_user.email == "pablo@puente.com" || authorize_master
   end
 
   def authorize_master

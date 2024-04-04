@@ -40,6 +40,7 @@ class CompaniesController < ApplicationController
     @subitems = Subitem.all
     @menu = Menu.new
     @item = Item.new
+    @subitem = Subitem.new
   end
 
   def new
