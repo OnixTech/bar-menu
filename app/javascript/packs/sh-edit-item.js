@@ -1,8 +1,8 @@
 
 function editItem(element){
   var id;
-  let p, input, btnEdit, btnSave, ipts, itms,btns;
-  
+  let p, input, btnEdit, ipts, itms,btns;
+
   id = element.dataset.id;
   p = document.getElementsByClassName(`sh-item-toggle-${id}`);
   input = document.getElementsByClassName(`sh-form-toggle-${id}`);
@@ -19,12 +19,12 @@ function editItem(element){
     btns = "";
   }
 
-  for (let i = 0; i < p.length; i++) {  
+  for (let i = 0; i < p.length; i++) {
     p[i].style.display = itms;
     input[i].style.display = ipts;
   }
 
-  btnEdit[0].style.display = btns;
+  btnEdit[btnEdit.length-1].style.display = btns;
   btnDelete[0].style.display = btns;
 }
 

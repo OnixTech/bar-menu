@@ -23,5 +23,19 @@
       <button  onclick="editItem(this)" data-id=<%= item.id %> class="sh-btn-set-item" type="reset">CANCEL</button>
     </div>
   <% end %>
+  <% @subitems.each do |subitem| %>
+    <% if subitem.item_id == item.id %>
+      <div class="sh-items-name-price option">
+        <div class="sh-items-input-option">
+          <div class="sh-items-option">
+            <h5><%= subitem.name %></h5>
+          </div>
+        </div>
+        <div class="sh-items-option-price">
+          <button class="sh-btn-set-item sh-btn-edit-<%= item.id %>" onclick="editItem(this)" data-id=<%= item.id %>>EDIT</button>
+        </div>
+      </div>
+    <% end %>
+  <% end %>
   <%= render partial: "companies/show-settings/new-subitems", locals: {item: item, subitem: @subitem} %>
 </div>
