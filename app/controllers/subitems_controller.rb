@@ -17,14 +17,11 @@ class SubitemsController < ApplicationController
   def update
     authorize @subitem
     @subitem.update(subitem_params)
+    redirect_to request.referrer, notice: 'Subitem was successfully created.'
   end
 
   def destroy
     @subitem.destroy
-    respond_to do |format|
-      format.html { render js: "window.location.reload();" }
-      format.js   { render :reload_page }
-    end
   end
 
   private
@@ -34,6 +31,6 @@ class SubitemsController < ApplicationController
   end
 
   def set_subitem
-    @subitem = Subitem.find(13)
+    @subitem = Subitem.find(params[:subitem][:subitem_id])
   end
 end

@@ -3,6 +3,7 @@
     <div class="sh-inputs-name-price">
       <div class="sh-input-name">
         <%= f.text_field :name, class: "sh-input-name-#{subitem.id}", placeholder: "#{subitem.name}", label: false %>
+        <%= f.hidden_field :subitem_id, value: subitem.id %>
         <button  onclick="nameInput(<%= subitem.id %>); return false" return false>X</button>
       </div>
       <div class="sh-input-price">
