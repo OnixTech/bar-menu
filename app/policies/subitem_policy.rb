@@ -14,10 +14,6 @@ class SubitemPolicy < ApplicationPolicy
     true
   end
 
-  def new?
-    create?
-  end
-
   def update?
     true
   end

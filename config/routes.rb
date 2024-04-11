@@ -14,7 +14,8 @@ Rails.application.routes.draw do
   post '/menus/cmUpdate' => 'menus#cmUpdate'
   post '/users/update' => 'users#update'
   post '/items/setPrices' => 'items#setPrices'
-  resources :items
+  resources :items do
+    resources :subitems, only: %i[new create update destroy]
+  end
   post '/bsktresqto', to: 'deliveries#grequest'
-  resources :subitems, only: %i[new create update destroy]
 end

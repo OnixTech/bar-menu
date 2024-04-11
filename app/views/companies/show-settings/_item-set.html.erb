@@ -16,7 +16,6 @@
       <%= f.text_area :description, class: "sh-input-description-#{item.id}", placeholder: "#{item.description}", label: false, rows: 2 %>
       <button  onclick="descriptionInput(<%= item.id %>); return false">X</button>
     </div>
-    <%= render partial: "companies/show-settings/new-subitems", locals: {item: item, subitem: @subitem} %>
     <div class="sh-input-btns">
       <%= f.submit "UPDATE",class:"sh-btn-set-item" %>
       <%= f.submit "RESET", type:"reset", class:"sh-btn-set-item" %>
@@ -24,4 +23,5 @@
       <button  onclick="editItem(this)" data-id=<%= item.id %> class="sh-btn-set-item" type="reset">CANCEL</button>
     </div>
   <% end %>
+  <%= render partial: "companies/show-settings/new-subitems", locals: {item: item, subitem: @subitem} %>
 </div>

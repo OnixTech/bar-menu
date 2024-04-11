@@ -266,6 +266,11 @@
       font-size: 12px;
     }
   }
+
+  .sh-form-new-subitem-label{
+    margin: 5px 0px 2px 0px;
+  }
+
   .sh-inputs-name-price{
     font-size: 12px;
     display: flex;
@@ -343,10 +348,13 @@
       border-top: 0;
     }
   }
-  
+
   .sh-input-btns{
     display: flex;
     justify-content: center;
+  }
+  .sh-spf-subitem-btn{
+    margin: 3px;
   }
   button{
     border: solid 1px lightgray;
@@ -416,4 +424,13 @@
     background-color: #ffc600;
     height: 12px;
   }
+}
+.sh-input-checkbox{
+  display: flex;
+  justify-content: space-between;
+}
+.sh-input-checkbox-form-btns{
+  width: 100px;
+  display: flex;
+  justify-content: space-around;
 }

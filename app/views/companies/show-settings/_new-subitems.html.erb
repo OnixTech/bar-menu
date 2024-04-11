@@ -1,8 +1,8 @@
 <div class="sh-form-new-subitem-toggle-<%= item.id %> sh-form-inputs" style="display: none;">
-  <div>
-    <p>new subitem:</p>
+  <div class="sh-form-new-subitem-label">
+    <p>new subitem for : <%= item.name %></p>
   </div>
-  <%= simple_form_for @subitem, url:new_subitem_path, method: :get do |f| %>
+  <%= simple_form_for @subitem, url:item_subitems_path(item), method: :post do |f| %>
     <div class="sh-inputs-name-price">
       <div class="sh-input-name">
           <%= f.text_field :name, class: "sh-new-input-name", placeholder: "name", label: false %>
@@ -16,9 +16,10 @@
     </div>
     <div class="sh-input-checkbox">
       <%= f.input :sumitem, label: "sum price"%>
-    </div>
-    <div class="sh-input-btns">
-      <%= f.submit "CONFIRM",class:"sh-btn-set-item" %>
+      <div class="sh-input-checkbox-form-btns">
+        <%= f.submit "CONFIRM",class:"sh-btn-set-item" %>
+        <%= f.submit "RESET", type:"reset", class:"sh-btn-set-item" %>
+      </div>
     </div>
   <% end %>
 </div>

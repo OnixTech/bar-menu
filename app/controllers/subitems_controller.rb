@@ -1,19 +1,12 @@
 class SubitemsController < ApplicationController
   before_action :set_subitem, only: %i[edit update destroy]
-  def new
-    @subitem = Subitem.new
-  end
 
   def create
-    @subitem = Subitem.new(subitem_params)
+    @item = Item.find(params[:item_id])
+    @subitem = @item.subitems.build(subitem_params)
+    authorize @subitem
     if @subitem.save
-      flash[:notice] = 'Post was successfully created.'
-      respond_to do |format|
-        format.html { render js: "window.location.reload();" }
-        format.js   { render :reload_page }
-      end
-    else
-      flash[:notice] = 'Error, Subitem has not been created'
+      redirect_to request.referrer, notice: 'Subitem was successfully created.'
     end
   end
 
@@ -40,7 +33,7 @@ class SubitemsController < ApplicationController
   private
 
   def subitem_params
-    params.require(:subitems).permit(:name, :description, :price, :sumitem, :item_id)
+    params.require(:subitem).permit(:name, :description, :price, :sumitem, :item_id)
   end
 
   def set_subitems
