@@ -15,11 +15,8 @@ class SubitemsController < ApplicationController
   end
 
   def update
-    if @subitem.update(subitem_params)
-      redirect_to @subitem, notice: 'Post was successfully updated.'
-    else
-      render :edit
-    end
+    authorize @subitem
+    @subitem.update(subitem_params)
   end
 
   def destroy
@@ -36,7 +33,7 @@ class SubitemsController < ApplicationController
     params.require(:subitem).permit(:name, :description, :price, :sumitem, :item_id)
   end
 
-  def set_subitems
-    @subitem = Subitem.find(params[:id])
+  def set_subitem
+    @subitem = Subitem.find(13)
   end
 end

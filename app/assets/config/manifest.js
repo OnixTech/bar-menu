@@ -8,6 +8,7 @@
 //= link packs/sh-basket.js
 //= link packs/sh-basket-open.js
 //= link packs/sh-new-subitem.js
+//= link packs/sh-edit-subitem.js
 //= require allow_numeric
 //= link application.js
  //= link packs/idx-cmp-show.js

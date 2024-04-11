@@ -25,16 +25,17 @@
   <% end %>
   <% @subitems.each do |subitem| %>
     <% if subitem.item_id == item.id %>
-      <div class="sh-items-name-price option">
+      <div class="sh-items-name-price option sh-subitem-toggle-<%= subitem.id %>">
         <div class="sh-items-input-option">
           <div class="sh-items-option">
             <h5><%= subitem.name %></h5>
           </div>
         </div>
         <div class="sh-items-option-price">
-          <button class="sh-btn-set-item sh-btn-edit-<%= item.id %>" onclick="editItem(this)" data-id=<%= item.id %>>EDIT</button>
+          <button class="sh-btn-set-item sh-subitem-btn-edit-<%= subitem.id %>" onclick="editSubitem(this)" data-id=<%= subitem.id %>>EDIT</button>
         </div>
       </div>
+      <%= render partial: "companies/show-settings/edit-subitem", locals: {item: item, subitem: subitem} %>
     <% end %>
   <% end %>
   <%= render partial: "companies/show-settings/new-subitems", locals: {item: item, subitem: @subitem} %>
