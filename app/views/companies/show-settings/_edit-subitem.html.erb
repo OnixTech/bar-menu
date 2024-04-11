@@ -2,16 +2,16 @@
   <%= simple_form_for subitem, url:item_subitem_path(item), method: :patch do |f| %>
     <div class="sh-inputs-name-price">
       <div class="sh-input-name">
-        <%= f.text_field :name, class: "sh-input-name-#{subitem.id}", placeholder: "#{subitem.name}", label: false %>
+        <%= f.text_field :name, class: "sh-subitem-input-name-#{subitem.id}", placeholder: "#{subitem.name}", label: false %>
         <%= f.hidden_field :subitem_id, value: subitem.id %>
         <button  onclick="nameInput(<%= subitem.id %>); return false" return false>X</button>
       </div>
       <div class="sh-input-price">
-        <%= f.text_field :price, type:"number", step:"0.01", class: "sh-input-price-#{subitem.id}", placeholder: "#{subitem.price}", label: false%>
+        <%= f.text_field :price, type:"number", step:"0.01", class: "sh-subitem-input-price-#{subitem.id}", placeholder: "#{subitem.price}", label: false%>
       </div>
     </div>
     <div class="sh-input-description">
-      <%= f.text_area :description, class: "sh-input-description-#{subitem.id}", placeholder: "#{subitem.description}", label: false, rows: 2 %>
+      <%= f.text_area :description, class: "sh-subitem-input-description-#{subitem.id}", placeholder: "#{subitem.description}", label: false, rows: 2 %>
       <button  onclick="descriptionInput(<%= subitem.id %>); return false">X</button>
     </div>
     <div class="sh-input-btns">

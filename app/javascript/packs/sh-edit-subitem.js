@@ -32,15 +32,15 @@ function editSubitem(element){
 
 function descriptionInput(element){
   let input;
-  input = document.getElementsByClassName(`sh-input-description-${element}`)[0].value = "";
+  input = document.getElementsByClassName(`sh-subitem-input-description-${element}`)[0].value = "";
 }
 
 function priceInput(element){
   let input;
-  input = document.getElementsByClassName(`sh-input-price-${element}`)[0].value = "";
+  input = document.getElementsByClassName(`sh-subitem-input-price-${element}`)[0].value = "";
 }
 
 function nameInput(element){
   let input;
-  input = document.getElementsByClassName(`sh-input-name-${element}`)[0].value = "";
+  input = document.getElementsByClassName(`sh-subitem-input-name-${element}`)[0].value = "";
 }
