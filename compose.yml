@@ -1,0 +1,44 @@
+version: '3'
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: ./docker/Dockerfile
+    command: sh -c "chmod +x bin/rails && bin/rails db:migrate RAILS_ENV=development && rm -f tmp/pids/server.pid && bundle exec rails s -p 3000 -b '0.0.0.0'"
+    volumes:
+      - .:/barmenu
+    environment:
+      RAILS_ENV: development
+      POSTGRES_HOST: postgresql
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: bar_menu_development
+    ports:
+      - "3000:3000"
+    networks:
+      - barmenu_network
+    depends_on:
+      - postgresql
+
+  postgresql:
+    container_name: postgres
+    image: postgres:latest
+    hostname: postgres
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: bar_menu_development
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - barmenu_network
+
+networks:
+  barmenu_network:
+    driver: bridge
+
+volumes:
+  postgres_data:
