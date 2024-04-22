@@ -1,10 +1,78 @@
-<div class="h-container">
-  <div class = "h-btns-txt">
-    <%= render partial: "welcome" %>
-    <div class = "h-btns-div">
-      <%= button_to " Login ", new_user_session_path, class: "h-btn", method: :get %>
-      <%= button_to " Sign up ", new_user_registration_path, class:"h-btn", method: :get %>
-    </div>
-  </div>
-</div>
+<section class="navbar-area navbar-nine sticky">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <nav class="navbar navbar-expand-lg">
+                    <a class="navbar-brand" href="index.html">
+                        <img src="template/images/white-logo.svg" alt="Logo" />
+                    </a>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNine"
+                        aria-controls="navbarNine" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="toggler-icon"></span>
+                        <span class="toggler-icon"></span>
+                        <span class="toggler-icon"></span>
+                    </button>
 
+                    <div class="collapse navbar-collapse sub-menu-bar" id="navbarNine">
+                        <ul class="navbar-nav me-auto">
+                        <li class="nav-item">
+                            <a class="page-scroll active" href="#hero-area">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="page-scroll" href="#product">Product</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="page-scroll" href="#pricing">Pricing</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="page-scroll" href="#contact">Contact</a>
+                        </li>
+                        </ul>
+                    </div>
+                    <div class="navbar-btn d-none d-lg-inline-block">
+                        <%= link_to "Login", new_user_session_path, class: "btn btn-primary" %>
+                        <%= link_to "Sign up", new_user_registration_path, class: "btn btn-primary" %>
+                    </div>
+                </nav>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="hero-area" class="header-area header-eight">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-6 col-md-12 col-12">
+                <div class="header-content">
+                    <h1>Barapp.</h1>
+                    <p>
+                        If you're looking for an easy and efficient way to showcase your gastronomic offer to your customers, you've come to the right place.
+                        Our service allows you to create an online menu for your restaurant, with all the dishes, drinks, and desserts you offer, along with their prices and descriptions. In addition, our system allows you to edit the menu in real time, so you can easily add new items or modify existing ones.
+                    </p>
+                    <div class="button">
+                        <a href="javascript:void(0)" class="btn primary-btn">Get Started</a>
+                        <a href="https://www.youtube.com/watch?v=r44RKWyfcFw&fbclid=IwAR21beSJORalzmzokxDRcGfkZA1AtRTE__l5N4r09HcGS5Y6vOluyouM9EM"
+                        class="glightbox video-button">
+                        <span class="btn icon-btn rounded-full">
+                            <i class="lni lni-play"></i>
+                        </span>
+                        <span class="text">Watch Intro</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6 col-md-12 col-12">
+                <div class="header-image">
+                    <img src="template/images/header/hero-image.jpg" alt="#" />
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<%= render partial: "pages/landing/about" %>
+<%= render partial: "pages/landing/services" %>
+<%= render partial: "pages/landing/pricing" %>
+<%= render partial: "pages/landing/contact" %>
+<%= render partial: "pages/landing/footer" %>
