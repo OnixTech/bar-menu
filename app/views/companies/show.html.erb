@@ -40,7 +40,7 @@
                             <div class="sh-items-name-price option">
                               <div class="sh-items-input-option">
                                 <div class="sh-items-input">
-                                  <%= check_box_tag 'check_box', 1, false, id: "a", class:"options-checkboxes-#{item.id}" %>
+                                  <%= check_box_tag 'check_box', 1, false, id: "a", class:"options-checkboxes-#{subitem.id}" %>
                                 </div>
                                 <div class="sh-items-option">
                                   <h5 class="sh-item-<%= item.id %>"><strong><%= subitem.name %></h5></strong>
@@ -48,7 +48,7 @@
                                 </div>
                               </div>
                               <div class="sh-items-option-price">
-                                <h5 class="sh-item-<%= item.id %>">€<%= '%.2f' % subitem.price %></h5>
+                                <h5 class="sh-item-<%= item.id %> options-prices-<%= item.id %>">€<%= '%.2f' % subitem.price %></h5>
                               </div>
                             </div>
                           <% end %>
@@ -62,8 +62,8 @@
                           <div class="sh-div-item-basket-quantity" id="quantityDiv<%= item.id %>">
                             <p><span id="sh-div-item-basket-quantity-number-<%= item.id %>"></span></p>
                           </div>
-                          <button class="sh-btn-basket-item" data-id="<%= item.id %>" data-item="<%= item.to_json %>" onclick="basketItems(event, this, true)" >+</button>
-                          <button class="sh-btn-basket-item" data-id="<%= item.id %>" data-item="<%= item.to_json %>" onclick="basketItems(event, this, false)" >-</button>
+                          <button class="sh-btn-basket-item" data-id="<%= item.id %>" data-item="<%= item.to_json %>" data-subitems="<%= @subitems.to_json %>" onclick="basketItems(event, this, true)" >+</button>
+                          <button class="sh-btn-basket-item" data-id="<%= item.id %>" data-item="<%= item.to_json %>" data-subitems="<%= @subitems.to_json %>" onclick="basketItems(event, this, false)" >-</button>
                         <% end %>
                         <% if current_user.present? %>
                           <% if (current_user == @company.user) || (current_user.role_id == 1) %>

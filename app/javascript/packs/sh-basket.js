@@ -9,8 +9,13 @@ const basket = {
 function basketItems(event, element, operator){
 
   event.preventDefault();
+
   const itemJson = element.getAttribute('data-item');
   const itemObject = JSON.parse(itemJson);
+
+  const subitemsJson = element.getAttribute('data-subitems');
+  const subitemsObject = JSON.parse(subitemsJson).filter(subitem => subitem.item_id === itemObject.id);
+
   const item = {
     id: itemObject.id,
     quantity: 1,
@@ -19,10 +24,14 @@ function basketItems(event, element, operator){
     station: itemObject.station
   };
   var name = "";
-  const checkboxes = [...document.getElementsByClassName("options-checkboxes-" + item.id)];
-  const prices = [...document.getElementsByClassName("options-prices-" + item.id)];
+  subitemsObject.forEach(function(subitem) {
+    var checkboxes = [...document.getElementsByClassName("options-checkboxes-" + subitem.id)];
+    subitem["checkbox"] = checkboxes[0].checked;
+    console.log(subitemsObject);
+  });
 
-  if( itemObject.price_io ){
+
+  if( subitemObject.sumitem ){
     const countTrueVal = checkboxes.filter((element) => element.checked === true);
     if (countTrueVal.length > 1){
       alert(`Only one option to add to the basket per time`)
@@ -35,7 +44,6 @@ function basketItems(event, element, operator){
         item.price = itemObject[`price_${checkbox.id}`];
       }
     });
-
   }else{
     checkboxes.forEach(function(checkbox){
       if(checkbox.checked){
@@ -46,6 +54,7 @@ function basketItems(event, element, operator){
     var stringName = "<ul>" + name.replace(/\n/g, ""); + "</ul>"
     item.name = item.name + stringName;
   }
+
   checkboxReset(checkboxes);
   acumulator(item, operator);
 }
@@ -162,7 +171,6 @@ function sendOrder(){
 
   basket.table = inputTable.value
   basket.company = companyName
-  console.log(basket.items);
   if (basket.table.length){
     request(basket)
   }else {
