@@ -1,0 +1,15 @@
+<div class="cmp-index-container clearfix">
+  <%= render partial: "companies/render-companies-index/index-navbar" %>
+  <div class="cmp-index-container-cont">
+    <div class="cmp-index-content">
+      <div class="cmp-index-cont-sides leftcontainer">
+          <%= render partial: "companies/render-companies-index/companies-index-cont-left", locals: {companies: @companies} %>
+      </div>
+    </div>
+  </div>
+  <% if current_user.role == "master" %>
+    <%= render partial: "index-users-list" %>
+  <% end %>
+</div>
+
+<%= javascript_include_tag "packs/idx-cmp-show" %>

@@ -5,6 +5,10 @@ Rails.application.routes.draw do
     get '/users/sign_out' => 'devise/sessions#destroy'
   end
 
+  resources :users do
+    get 'index' => 'users#index'
+  end
+
   resources :companies do
     get 'qr' => 'companies#qr'
     resources :stations
