@@ -1,7 +1,7 @@
 <%= render partial: "companies/show-basket/basket-paper", locals: {company: @company} %>
 <div class = "sh-container">
   <div class="sh-nav">
-    <h1> Speisekarte </h1>
+    <h1><%= t("menu") %></h1>
   </div>
   <% if @company.basket %>
     <a href="#" onclick="toggle(); return false">
@@ -14,7 +14,7 @@
     onkeyup="searchbar()" placeholder="Search">
   </div>
   <%= render partial: "companies/show-settings/new-section" %>
-  <div class = "sh-cards row" id="wrapper">
+  <div class="sh-cards row" id="wrapper">
     <hr>
     <% @menus.each do |menu|  %>
       <% if menu.visible == true %>
