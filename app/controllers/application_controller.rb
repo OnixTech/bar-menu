@@ -1,5 +1,6 @@
 class ApplicationController < ActionController::Base
   before_action :authenticate_user!, except: [:show, :index]
+  before_action :set_locale
 
   include Pundit::Authorization
 
@@ -26,5 +27,9 @@ class ApplicationController < ActionController::Base
 
   def skip_pundit?
     devise_controller? || params[:controller] =~ /(^(rails_)?admin)|(^pages$)/
+  end
+
+  def set_locale
+    I18n.locale = :en
   end
 end
