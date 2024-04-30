@@ -40,7 +40,7 @@
                             <div class="sh-items-name-price option">
                               <div class="sh-items-input-option">
                                 <div class="sh-items-input">
-                                  <%= check_box_tag 'check_box', 1, false, id: "a", class:"options-checkboxes-#{subitem.id}" %>
+                                  <%= check_box_tag 'check_box', 1, false, id: "a", class:"options-checkboxes-#{subitem.id} checkboxes-subitems-#{item.id}" %>
                                 </div>
                                 <div class="sh-items-option">
                                   <h5 class="sh-item-<%= item.id %>"><strong><%= subitem.name %></h5></strong>

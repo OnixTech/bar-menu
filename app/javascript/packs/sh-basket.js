@@ -9,76 +9,62 @@ const basket = {
 function basketItems(event, element, operator){
 
   event.preventDefault();
-
   const itemJson = element.getAttribute('data-item');
   const itemObject = JSON.parse(itemJson);
-
   const subitemsJson = element.getAttribute('data-subitems');
-  const subitemsObject = JSON.parse(subitemsJson).filter(subitem => subitem.item_id === itemObject.id);
-
-  const item = {
+  const allsubitemsObject = JSON.parse(subitemsJson);
+  let subitemsObject;
+  let checkbox = [];
+  let item = {
     id: itemObject.id,
     quantity: 1,
     name: "<strong>" + itemObject.name + "</strong>",
     price: itemObject.price,
-    station: itemObject.station
+    station: itemObject.station,
+    subitems: []
   };
-  var name = "";
-  subitemsObject.forEach(function(subitem) {
-    var checkboxes = [...document.getElementsByClassName("options-checkboxes-" + subitem.id)];
-    subitem["checkbox"] = checkboxes[0].checked;
-    console.log(subitemsObject);
-  });
 
-
-  if( subitemObject.sumitem ){
-    const countTrueVal = checkboxes.filter((element) => element.checked === true);
-    if (countTrueVal.length > 1){
-      alert(`Only one option to add to the basket per time`)
-      checkboxReset(checkboxes);
-      return;
-    }
-    checkboxes.forEach(function(checkbox) {
-      if(checkbox.checked){
-        item.name = item.name + " " + itemObject[`op_${checkbox.id}`];
-        item.price = itemObject[`price_${checkbox.id}`];
-      }
-    });
-  }else{
-    checkboxes.forEach(function(checkbox){
-      if(checkbox.checked){
-        name += "\n" + "<li style='font-size: 11px;'>" + itemObject[`op_${checkbox.id}`] + "</li>";
-        item.price += itemObject[`price_${checkbox.id}`];
-      }
-    });
-    var stringName = "<ul>" + name.replace(/\n/g, ""); + "</ul>"
-    item.name = item.name + stringName;
+  if(allsubitemsObject){
+    subitemsObject = allsubitemsObject.filter(subitem => subitem.item_id == itemObject.id);
   }
-
-  checkboxReset(checkboxes);
+  if(subitemsObject){
+    if(!doubleCheckAlert(subitemsObject)){ // In case 'subitem.sumitem == true' this function allow to check one subitem per time.
+      subitemsObject.forEach(function(subitem){
+        checkbox = [...document.getElementsByClassName("options-checkboxes-" + subitem.id)];
+        if(checkbox[0].checked){
+          item.subitems.push(subitem)
+        }
+      });
+    }else{
+      return false;
+    }
+  }
+  checkboxReset(item.id);
   acumulator(item, operator);
 }
 
 function acumulator(item, operator){
 
-  const existingItem = basket.items.find((basketItem) => basketItem.id === item.id);
+  const itemInBasket = basket.items.find((basketItem) => basketItem.id === item.id);
   if(operator === true){
     if (basket.acc[item.id] === undefined){
       basket.acc[item.id] = 1;
     }else {
       basket.acc[item.id]++;
     }
-    if (existingItem && existingItem.name == item.name){
-      existingItem.quantity += 1;
+    if(itemInBasket && itemInBasket.name === item.name && itemInBasket.subitems === item.subitems){
+      if(itemsComparator(item, itemInBasket)){
+        itemInBasket.quantity += 1;
+      }
     }else {
       basket.items.push(item);
     }
   }else{
-    if(existingItem){
-      if (existingItem.quantity > 0){
-        existingItem.quantity -= 1;
-        if (existingItem.quantity === 0){
-          let index =  basket.items.indexOf(existingItem);
+    if(itemInBasket){
+      if (itemInBasket.quantity > 0){
+        itemInBasket.quantity -= 1;
+        if (itemInBasket.quantity === 0){
+          let index =  basket.items.indexOf(itemInBasket);
           basket.items.splice(index,1);
         }
       }
@@ -93,9 +79,24 @@ function acumulator(item, operator){
 
 function CalculateTotal(){
   basket.total = 0;
-  if (basket.items){
-    basket.items.forEach(function(item) {
-      basket.total += item.price * item.quantity;
+  let acumulator = 0;
+  if(basket.items){
+    basket.items.forEach(function(item){
+
+      if(item.subitems){
+        item.subitems.forEach(function(subitem){
+          if(subitem.sumitem){// subitem sum to the item price
+            acumulator += subitem.price;
+          }
+          if(!subitem.sumitem){
+            item.price = subitem.price;
+          }
+        });
+        basket.total += (item.price + acumulator) * item.quantity;
+      }else {
+        basket.total += item.price * item.quantity;
+      }
+      acumulator = 0;
     });
   }
   basket.total =  basket.total.toLocaleString('de-DE', {
@@ -108,60 +109,22 @@ function CalculateTotal(){
 
 function updateView(item) {
   var itemsList = document.getElementById('basket-items-list');
-  var totalElement = document.getElementById('basket-total');
-  var quantityNumber = document.getElementById("sh-div-item-basket-quantity-number-" + item.id);
-  var quantityDiv = document.getElementById("quantityDiv" + item.id);
-  var itemQuantity = basket.items.find((basketItem) => basketItem.id === item.id);
   itemsList.innerHTML = '';
 
   basket.items.forEach(function(item) {
     var listItem = document.createElement('li');
-
     var itemDiv = document.createElement("div");
     itemDiv.classList.add('basket-list-item');
 
-    var quantitySpan = document.createElement('div');
-    quantitySpan.textContent = item.quantity+ 'x ';
-    quantitySpan.classList.add('box');
-    var deleteBtn = document.createElement('button');
-    deleteBtn.textContent = '-';
-    deleteBtn.classList.add('sh-btn-basket-item');
-    deleteBtn.setAttribute('data-id', `${item.id}`);
-    deleteBtn.setAttribute('data-item', JSON.stringify(item));
-    deleteBtn.setAttribute('onclick', 'basketItems(event, this, false)');
-
-    quantitySpan.appendChild(deleteBtn);
-
-    var nameSpan = document.createElement('div');
-    nameSpan.innerHTML = item.name;
-    nameSpan.classList.add('box');
-
-    var priceSpan = document.createElement('div');
-    priceSpan.textContent = item.price.toLocaleString('de-DE', {
-      style: 'currency',
-      currency: 'EUR',
-      minimumFractionDigits: 2,
-      maximumFractionDigits: 2,
-    });
-    priceSpan.classList.add('box');
-
-    itemDiv.appendChild(quantitySpan);
-    itemDiv.appendChild(nameSpan);
-    itemDiv.appendChild(priceSpan);
+    itemDiv.appendChild(quantitySpand(item));
+    itemDiv.appendChild(nameSpand(item));
+    itemDiv.appendChild(priceSpand(item));
 
     listItem.appendChild(itemDiv);
 
     itemsList.appendChild(listItem);
   });
-
-  totalElement.textContent = basket.total;
-  if(itemQuantity){
-    quantityNumber.textContent = basket.acc[item.id];
-    quantityDiv.style.backgroundColor = "red";
-  }else{
-    quantityNumber.textContent = "";
-    quantityDiv.style.backgroundColor = "white";
-  }
+  itemInBasketCounter(item.id); // Update the item's quantity been added to the basket
 }
 
 function sendOrder(){
@@ -195,13 +158,140 @@ function request(basket) {
   .then(response => {
     if (response.status === 200){
       alert("Success!");
-    } else {
+    }else {
       alert("Error!");
     }
   })
 }
 
-function checkboxReset(checkboxes){
+function doubleCheckAlert(subitemsObject){
+  let trueCheckboxes = [];
+  let checkbox = [];
+  let i = 0;
+  subitemsObject.forEach(function (subitem){
+    checkbox = [...document.getElementsByClassName("options-checkboxes-" + subitem.id)];
+    if(checkbox[0].checked && !subitem.sumitem){
+      trueCheckboxes.push(checkbox[0].checked);
+    }
+  });
+  if(trueCheckboxes.length > 1){
+    alert(`From these options you can select only one per time before add to the basket`);
+    checkboxReset(subitemsObject[0].item_id);
+    return true;
+  }else {
+    return false;
+  }
+}
+
+function itemsComparator(item, itemInBasket){
+  let equals = true;
+  if(item.subitems.length === itemInBasket.subitems.length){
+    for(let i = 0; i < item.subitems.length; i++){
+      if(itemInBasket.suitems[i].id === item.subitems[i].id){
+        equals = false;
+      }
+    }
+  }
+  return equals;
+}
+
+function itemInBasketCounter(itemId){
+  var totalElement = document.getElementById('basket-total');
+  var quantityNumber = document.getElementById("sh-div-item-basket-quantity-number-" + itemId);
+  var quantityDiv = document.getElementById("quantityDiv" + itemId);
+  var itemQuantity = basket.items.find((basketItem) => basketItem.id === itemId);
+
+  totalElement.textContent = basket.total;
+  if(itemQuantity){
+    quantityNumber.textContent = basket.acc[itemId];
+    quantityDiv.style.backgroundColor = "red";
+  }else{
+    quantityNumber.textContent = "";
+    quantityDiv.style.backgroundColor = "white";
+  }
+}
+
+function quantitySpand(item){
+  var quantitySpan = document.createElement('div');
+
+  quantitySpan.textContent = item.quantity + 'x ';
+  quantitySpan.classList.add('box');
+  quantitySpan.appendChild(createDeleteButton(item))
+
+  return quantitySpan;
+}
+
+function nameSpand(item){
+  var nameSpand = document.createElement('div');
+
+  nameSpand.innerHTML = item.name;
+  nameSpand.classList.add('box');
+  if(item.subitems){
+    item.subitems.forEach(function (subitem){
+      nameSpand.appendChild(subitemSpand(subitem))
+    });
+  }
+  return nameSpand;
+}
+
+function subitemSpand(subitem){
+  var nameSpand = document.createElement('div');
+
+  nameSpand.innerHTML = subitem.name;
+  nameSpand.classList.add('box');
+
+  return nameSpand;
+}
+
+function priceSpand(item){
+  var priceSpan = document.createElement('div');
+  priceSpan.textContent = item.price.toLocaleString('de-DE', {
+    style: 'currency',
+    currency: 'EUR',
+    minimumFractionDigits: 2,
+    maximumFractionDigits: 2,
+  });
+  priceSpan.classList.add('box');
+  if(item.subitems){
+    item.subitems.forEach(function (subitem){
+      if(subitem.sumitem){
+        priceSpan.appendChild(subitemPriceSpand(subitem));
+      }else{
+        return
+      }
+    });
+  }
+  return priceSpan;
+}
+
+function subitemPriceSpand(subitem){
+  var priceSpand = document.createElement('div');
+  priceSpand.textContent = subitem.price.toLocaleString('de-DE', {
+    style: 'currency',
+    currency: 'EUR',
+    minimumFractionDigits: 2,
+    maximumFractionDigits: 2,
+  });
+
+  priceSpand.classList.add('box');
+
+  return priceSpand;
+}
+
+function createDeleteButton(item){
+  var deleteBtn = document.createElement('button');
+
+  deleteBtn.textContent = '-';
+  deleteBtn.classList.add('sh-btn-basket-item');
+  deleteBtn.setAttribute('data-id', `${item.id}`);
+  deleteBtn.setAttribute('data-item', JSON.stringify(item));
+  deleteBtn.setAttribute('onclick', 'basketItems(event, this, false)');
+
+  return deleteBtn;
+}
+
+function checkboxReset(itemId){
+  let checkboxes = [...document.getElementsByClassName("checkboxes-subitems-" + itemId)];
   checkboxes.forEach(function(checkbox) {
     checkbox.checked = false;
   });
