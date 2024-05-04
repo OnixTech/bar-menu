@@ -12,3 +12,5 @@
 //= require allow_numeric
 //= link application.js
  //= link packs/idx-cmp-show.js
+//= link_tree ../../javascript .js
+//= link_tree ../../../vendor/javascript .js

@@ -11,7 +11,7 @@ Rails.application.routes.draw do
 
   resources :companies do
     get 'qr' => 'companies#qr'
-    resources :stations
+    resources :stations, only: %i[show create edit destroy]
   end
   post '/companies/new' => 'companies#new'
   resources :menus
