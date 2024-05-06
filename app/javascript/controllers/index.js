@@ -4,5 +4,5 @@
 
 import { application } from "./application"
 
-import HelloController from "./hello_controller"
-application.register("hello", HelloController)
+import WebsocketStationController from "./websocket_station_controller"
+application.register("websocket-station", WebsocketStationController)
