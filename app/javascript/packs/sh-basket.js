@@ -1,4 +1,5 @@
 const basket = {
+  numereference: 1,
   company: "",
   table: "",
   items: [],
@@ -145,7 +146,7 @@ function request(basket) {
   const jsonData = JSON.stringify(basket);
   const serverUrl = (railsEnvironment === 'production')
     ? "https://fillo.herokuapp.com/bsktresqto"
-    : "http://127.0.0.1:3001/bsktresqto";
+    : "http://0.0.0.0:3000/bsktresqto";
   const csrfToken = document.querySelector("meta[name='csrf-token']").getAttribute("content");
   fetch(serverUrl, {
     method: 'POST',

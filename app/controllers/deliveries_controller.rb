@@ -4,40 +4,46 @@ require 'json'
 
 class DeliveriesController < ApplicationController
   skip_before_action :authenticate_user!, only: :grequest
-
+  before_action :set_cors_headers, only: [:grequest]
   def grequest
     skip_authorization
     #------------ Domains Config -------------#
-    if Rails.env.production?
-      policy_origin = "https://fillo.herokuapp.com/bsktresqto"
-      endpoint = "https://fillo-admin-2d8ec2766e12.herokuapp.com/bsktreq"
-    else
-      policy_origin = "http://127.0.0.1:3001/bsktresqto"
-      endpoint = "http://127.0.0.1:3000/bsktreq"
-    end
-    #------------ Policy Config -------------#
-    csp_policy = "default-src 'self'; script-src 'self' 'unsafe-inline';"
-    csp_policy += "connect-src 'self' #{policy_origin};"
-    response.headers['Content-Security-Policy'] = csp_policy
+
     login
   end
 
   private
 
+  def set_cors_headers
+    headers['Access-Control-Allow-Origin'] = '*'
+    headers['Access-Control-Allow-Methods'] = 'POST, OPTIONS'
+    headers['Access-Control-Allow-Headers'] = 'Content-Type, X-CSRF-Token'
+    headers['Access-Control-Max-Age'] = '1728000' # 20 days
+  end
+
   def delivary_params
+    @orders = []
     basket_params = JSON.parse(request.body.read)
-    @order = {
-      company: basket_params["company"],
+    #basket_params["items"].each do |item|
+     # stations << item.station_id if item.station_id != stations.last
+    #end
+    order = {
       table: basket_params["table"],
-      items: basket_params["items"],
-      total: basket_params["total"]
+      numbereference: basket_params["numbereference"],
+      total: basket_params["total"],
+      station_id: 3
     }
+    #stations.each do |station|
+     # order["station_id"] = station
+      #new_order = Order.new(order)
+    order.save!
+    #end
   end
 
   def login
     user = User.find_by(email: 'pablo@puente.com')
     sign_in(user) if user&.valid_password?('Pablo24bar-menu')
-    create_order
+    delivary_params
   end
 
   def create_order

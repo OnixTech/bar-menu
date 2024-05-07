@@ -18,3 +18,4 @@ COPY --chown=developer Gemfile Gemfile.lock ./
 RUN bundle install
 
 COPY --chown=developer . .
+

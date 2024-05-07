@@ -29,9 +29,6 @@ end
 Rails.application.config.middleware.insert_before 0, Rack::Cors do
   allow do
     origins '*'
-    resource '/bsktresqto',
-      headers: ['Content-Type','X-CSRF-Token'],
-      methods: [:post, :get, :options],
-      credentials: false
+    resource '*', headers: :any, methods: %i[post get options], expose: ['X-CSRF-Token']
   end
 end
