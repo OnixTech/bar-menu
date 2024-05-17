@@ -1,4 +1,14 @@
 class OrderPolicy < ApplicationPolicy
+  class Scope < Scope
+    def resolve
+      if user.role == "master"
+        scope.all
+      else
+        scope.joins(station: :company).where(companies: { user_id: user.id })
+      end
+    end
+  end
+
   def create?
     patovica
   end

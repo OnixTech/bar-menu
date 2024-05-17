@@ -18,8 +18,15 @@ class DeliveriesController < ApplicationController
   end
 
   def delivary_params
-    order_instance = Order.new(order_params)
-    order_instance.save!
+    order = Order.new(order_params)
+    if order.save!
+      ActionCable.server.broadcast(
+        "station_#{order.station_id}",
+        {
+          action: "created"
+        }
+      )
+    end
   end
 
   def login

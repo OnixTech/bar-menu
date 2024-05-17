@@ -5,7 +5,7 @@ class StationPolicy < ApplicationPolicy
         company_ids = user.companies.pluck(:id)
         scope.where(company_id: company_ids)
       else
-        scope.none
+        scope.joins(station: :company).where(companies: { user_id: user.id })
       end
     end
   end

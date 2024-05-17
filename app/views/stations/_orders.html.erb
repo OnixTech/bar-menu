@@ -1,0 +1,15 @@
+<div class="row">
+  <% @orders.each do |order|  %>
+    <div  class="stn-show-order-list col-sm-6 col-md-4 col-xl-2">
+      <div class="stn-show-order-list-top">
+        <h5>Table #: <%= order.table %></h5>
+        <p><%= order.created_at %></p>
+      </div>
+      <hr>
+      <div class="stn-show-order-list-total">
+        <hr>
+        <p>Total : <%= order.total %></p>
+      </div>
+    </div>
+  <% end %>
+</div>
