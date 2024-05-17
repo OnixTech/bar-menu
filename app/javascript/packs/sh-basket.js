@@ -4,6 +4,7 @@ const basket = {
   table: "",
   items: [],
   total: 0,
+  station_id: 3,
   acc: []
 };
 
