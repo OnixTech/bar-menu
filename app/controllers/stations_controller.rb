@@ -7,8 +7,18 @@ class StationsController < ApplicationController
 
   def show
     authorize @station
+
     @station = Station.find(params[:id])
     @orders = Order.where(station_id: @station.id)
+
+    orders_id = @orders.map(&:id)
+    @order_items = OrderItem.where(order_id: orders_id)
+
+    items_id = @order_items.map(&:item_id)
+    @items = Item.where(id: items_id)
+
+    subitems_id = @order_items.map(&:subitem_id)
+    @subitems = Subitem.where(id: subitems_id)
   end
 
   def create
