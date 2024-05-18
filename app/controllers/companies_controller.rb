@@ -52,13 +52,14 @@ class CompaniesController < ApplicationController
 
   def create
     @company = Company.new(company_params)
+    authorize @company
     @company.user = current_user
     if @company.save
+      main_station
       redirect_to companies_path
     else
       render :new
     end
-    authorize @company
   end
 
   def edit
@@ -98,5 +99,12 @@ class CompaniesController < ApplicationController
 
   def set_companies
     @company = Company.find(params[:id])
+  end
+
+  def main_station
+    station = Station.new
+    station.name = "Main station"
+    station.company_id = @company.id
+    station.save!
   end
 end

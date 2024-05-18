@@ -20,10 +20,9 @@ function toggle(data){
       link.href = window.location.href +`/${company.id}/stations/${station.id}`;
       link.textContent = `${station.name} `;
       link.style.textDecoration = "none";
-      link.style.height = "10px";
-      link.style.border = "solid lightgrey 1px";
+      link.style.height = "18px";
       link.style.margin = "3px";
-      link.style.padding = "2px";
+      link.style.padding = "auto";
       companyStations.appendChild(link);
     }
   })
