@@ -1,5 +1,7 @@
+//const { end } = require("@popperjs/core");
+
 const basket = {
-  numereference: 1,
+  numerference: 1,
   company: "",
   table: "",
   items: [],
@@ -137,10 +139,36 @@ function sendOrder(){
   basket.table = inputTable.value
   basket.company = companyName
   if (basket.table.length){
-    request(basket)
+    requestBody(basket)
   }else {
     alert('Table field is empty.');
   }
+}
+
+function requestBody(){
+  let body = {
+    order:{
+      numerference: basket.numerference,
+      table: basket.table,
+      total: basket.total,
+      station_id: 3
+    },
+    items: [],
+    subitems: []
+  }
+  bodyData(body)
+}
+
+function bodyData(body){
+  basket.items.forEach(function (item){
+    if (item.subitems.length){
+      item.subitems.forEach(function (subitem){
+        body.subitems.push(subitem.id);
+      })
+    }
+    body.items.push({id: item.id, quantity: item.quantity});
+  })
+  console.log(body);
 }
 
 function request(basket) {
