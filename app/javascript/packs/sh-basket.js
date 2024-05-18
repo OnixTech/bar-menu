@@ -1,12 +1,10 @@
-//const { end } = require("@popperjs/core");
-
 const basket = {
   numerference: 1,
   company: "",
   table: "",
   items: [],
   total: 0,
-  station_id: 3,
+  station_id: 0,
   acc: []
 };
 
@@ -131,15 +129,16 @@ function updateView(item) {
   itemInBasketCounter(item.id); // Update the item's quantity been added to the basket
 }
 
-function sendOrder(){
+function sendOrder(station_id){
   var element = document.getElementById('table-data');
   var inputTable = element.querySelector('#table-number');
   var companyName = element.getAttribute('data');
 
   basket.table = inputTable.value
   basket.company = companyName
+  basket.station_id = station_id
   if (basket.table.length){
-    requestBody(basket)
+    requestBody()
   }else {
     alert('Table field is empty.');
   }
@@ -151,7 +150,7 @@ function requestBody(){
       numerference: basket.numerference,
       table: basket.table,
       total: basket.total,
-      station_id: 3
+      station_id: basket.station_id
     },
     items: [],
     subitems: []
@@ -168,7 +167,6 @@ function bodyData(body){
     }
     body.items.push({id: item.id, quantity: item.quantity});
   })
-  console.log(body);
 }
 
 function request(basket) {

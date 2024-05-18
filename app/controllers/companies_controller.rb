@@ -41,6 +41,7 @@ class CompaniesController < ApplicationController
     @menu = Menu.new
     @item = Item.new
     @subitem = Subitem.new
+    @station = Station.where(name: "Main station")
   end
 
   def new
