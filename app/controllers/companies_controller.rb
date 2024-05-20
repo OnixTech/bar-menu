@@ -8,18 +8,7 @@ class CompaniesController < ApplicationController
     elsif current_user.present?
       @companies = Company.where(user_id: current_user.id)
     end
-    @company.each do |company|
-      if company.qr_code
-        @qr_code = RQRCode::QRCode.new(company.qr_code)
-        @svg = @qr_code.as_svg(
-          offset: 0,
-          color: '000',
-          shape_rendering: 'crispEdges',
-          module_size: 1,
-          standalone: true
-        )
-      end
-    end
+    set_qr
 
     company_ids = current_user.companies.pluck(:id)
     @menus = Menu.where(company_id: company_ids)
@@ -33,15 +22,10 @@ class CompaniesController < ApplicationController
   def show
     authorize @company
     @companies = Company.where(user_id: current_user)
-    @menus = Menu.where(company_id: @company.id)
-    @menus = @menus.sort_by(&:position)
-    @items = Item.all
-    @items = @items.sort_by(&:position)
-    @subitems = Subitem.all
-    @menu = Menu.new
-    @item = Item.new
-    @subitem = Subitem.new
-    @station = Station.where(name: "Main station")
+    @main_station_id = Station.where(company_id: @company.id, name: "Main station").pluck(:id).first
+    set_menus
+    set_items
+    set_subitems
   end
 
   def new
@@ -101,6 +85,32 @@ class CompaniesController < ApplicationController
     @company = Company.find(params[:id])
   end
 
+  def set_menus
+    @menus = Menu.where(company_id: @company.id)
+    @menus = @menus.sort_by(&:position)
+    @menu = Menu.new
+  end
+
+  def set_items
+    @items = @company.items
+    @items = @items.sort_by(&:position)
+    @item = Item.new
+  end
+
+  def set_subitems
+    @subitems = @company.subitems
+    @subitem = Subitem.new
+  end
+
+  def set_qr
+    @company.each do |company|
+      next unless company.qr_code
+        @qr_code = RQRCode::QRCode.new(company.qr_code)
+        @svg = @qr_code.as_svg(
+          offset: 0, color: '000', shape_rendering: 'crispEdges', module_size: 1, standalone: true)
+      end
+    end
+  end
   def main_station
     station = Station.new
     station.name = "Main station"
