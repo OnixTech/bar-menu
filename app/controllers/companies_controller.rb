@@ -2,21 +2,12 @@ class CompaniesController < ApplicationController
   before_action :set_companies, only: %i[show edit update destroy indexMenuList]
   def index
     @company = policy_scope(Company)
-    if current_user.role.name == "master"
-      @users = User.all
-      @companies = Company.where(user_id: current_user.id)
-    elsif current_user.present?
-      @companies = Company.where(user_id: current_user.id)
-    end
-    set_qr
-
-    company_ids = current_user.companies.pluck(:id)
-    @menus = Menu.where(company_id: company_ids)
-    @stations = Station.where(company_id: company_ids)
-
-    @menus.sort_by(&:position)
     @company.sort_by(&:id)
-    @users = User.order(id: :desc)
+    set_master_role
+    set_qr
+    @menus = current_user.menus
+    @menus.sort_by(&:position)
+    @stations = current_user.stations
   end
 
   def show
@@ -105,12 +96,22 @@ class CompaniesController < ApplicationController
   def set_qr
     @company.each do |company|
       next unless company.qr_code
-        @qr_code = RQRCode::QRCode.new(company.qr_code)
-        @svg = @qr_code.as_svg(
-          offset: 0, color: '000', shape_rendering: 'crispEdges', module_size: 1, standalone: true)
-      end
+
+      @qr_code = RQRCode::QRCode.new(company.qr_code)
+      @svg = @qr_code.as_svg(offset: 0, color: '000', shape_rendering: 'crispEdges', module_size: 1, standalone: true)
     end
   end
+
+  def set_master_role
+    if current_user.role.name == "master"
+      @users = User.all
+      @users = User.order(id: :desc)
+      @companies = Company.where(user_id: current_user.id)
+    elsif current_user.present?
+      @companies = Company.where(user_id: current_user.id)
+    end
+  end
+
   def main_station
     station = Station.new
     station.name = "Main station"
