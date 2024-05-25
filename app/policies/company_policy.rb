@@ -19,7 +19,7 @@ class CompanyPolicy < ApplicationPolicy
   end
 
   def create?
-    true # user_active || authorize_master
+    user_active || authorize_master
   end
 
   def new?
@@ -31,7 +31,7 @@ class CompanyPolicy < ApplicationPolicy
   end
 
   def update?
-    true # user_active || authorize_master
+    user_active || authorize_master
   end
 
   def destroy?
