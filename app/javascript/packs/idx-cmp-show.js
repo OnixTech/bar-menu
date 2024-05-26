@@ -1,4 +1,6 @@
+
 function toggle(data){
+
   const companyJson = data.getAttribute('data-company');
   const menusJson = data.getAttribute('data-menus');
   const stationsJson = data.getAttribute('data-stations');
@@ -6,12 +8,14 @@ function toggle(data){
   const company = JSON.parse(companyJson);
   const menus = JSON.parse(menusJson);
   const stations = JSON.parse(stationsJson);
+
+
   document.getElementById('company-name').innerText = company.name;
   document.getElementById('company-address').innerText = `${company.street} ${company.number} ${company.post} ${company.city}`;
 
   var arrayContainer = document.getElementById('checkboxes');
   var companyStations = document.getElementById('company-stations');
-  arrayContainer.innerHTML = '';
+  arrayContainer.innerHTML = "";
   companyStations.innerHTML = "";
 
   stations.forEach(station => {
@@ -53,6 +57,28 @@ function toggle(data){
       arrayContainer.appendChild(div);
     }
 
+
+
   });
+
+  editBtn(company);
   return false
+}
+
+function editBtn(company){
+  var divEditBtn = document.getElementById("edit-button");
+  var existingBtn = divEditBtn.querySelector("a");
+
+  if(divEditBtn){
+    if(existingBtn){
+      existingBtn.href = "";
+      existingBtn.href =`companies/${company.id}/edit`;
+    } else {
+      divEditBtn.innerHTML = "";
+      var btn = document.createElement("a");
+      btn.textContent = "Edit";
+      btn.href = window.location.href +`/companies/${company.id}/edit`;
+      divEditBtn.appendChild(btn);
+    }
+  }
 }
