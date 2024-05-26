@@ -32,3 +32,5 @@
 en:
   hello: "Hello world"
   menu: "Menu"
+  messages:
+    landing_text: "If you're looking for an easy and efficient way to showcase your gastronomic offerings to your customers, you've come to the right place. Our service allows you to create an online menu for your restaurant, with a flexible system that can be adjusted to your requirements. Additionally, customers can place orders directly from your menus, making your service faster and more efficient. In addition, our system allows you to edit the menu in real time, so you can easily add new items or modify existing ones."
