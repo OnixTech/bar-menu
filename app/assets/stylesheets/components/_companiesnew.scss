@@ -1,12 +1,30 @@
+@import "/utilities/mixins";
+
 .cmp-new-container{
     height:  100%;
     background-color:white;
     font-family: $grl-font;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    @include center-flex;
     h1{
       color: black;
+    }
+    .cmp-edit-menu{
+      @include space-between-flex;
+      h5{
+        margin: 1px;
+      }
+      .cmp-edit-menu-checkbox{
+        display: inline-block;
+        margin-right: 3px;
+        .input{
+          width: 10px;
+        }
+        .cmp-edit-menu-checkbox-label{
+          width: fit-content;
+          text-align: center;
+
+        }
+      }
     }
   }
 .cmp-new-form-inputs{

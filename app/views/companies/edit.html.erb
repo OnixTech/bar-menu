@@ -1,6 +1,6 @@
 <div class="cmp-new-container">
   <div class="cmp-new-content">
-    <h1>Edit company</h1>
+    <h2>Edit company</h2>
     <%= simple_form_for(@company) do |f| %>
       <div class="form-inputs cmp-new-form-inputs">
         <%= f.input :name, class:"form-item"%>
@@ -14,11 +14,16 @@
         <%= f.submit class:"New" %>
       </div>
     <% end %>
+    <br>
+    <h3>Menus</h3>
     <div>
-      <%= @menus.each do |menu| %>
-        <div>
-          <p><%= menu.title %></p>
-          <p><%= menu.visible %></p>
+      <% @menus.each do |menu| %>
+        <div class="cmp-edit-menu">
+          <h5><%= menu.subtitle %></h5>
+          <div class="cmp-edit-menu-checkbox">
+            <label for="menu-<%= menu.id %>" class="cmp-edit-menu-checkbox-label">Visible</label>
+            <a href=""></a><input type="checkbox" id="menu-<%= menu.id %>" <%= menu.visible ? 'checked' : '' %>>
+          </div>
         </div>
       <% end %>
     </div>
