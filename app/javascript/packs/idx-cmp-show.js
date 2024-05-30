@@ -77,7 +77,7 @@ function editBtn(company){
       divEditBtn.innerHTML = "";
       var btn = document.createElement("a");
       btn.textContent = "Edit";
-      btn.href = window.location.href +`/companies/${company.id}/edit`;
+      btn.href = window.location.href +`/${company.id}/edit`;
       divEditBtn.appendChild(btn);
     }
   }
