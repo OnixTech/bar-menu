@@ -39,6 +39,7 @@ class CompaniesController < ApplicationController
 
   def edit
     authorize @company
+    @menus = Menu.where(company_id: @company)
   end
 
   def update

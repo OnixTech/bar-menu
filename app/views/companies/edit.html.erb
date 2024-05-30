@@ -14,5 +14,13 @@
         <%= f.submit class:"New" %>
       </div>
     <% end %>
+    <div>
+      <%= @menus.each do |menu| %>
+        <div>
+          <p><%= menu.title %></p>
+          <p><%= menu.visible %></p>
+        </div>
+      <% end %>
+    </div>
   </div>
 </div>
