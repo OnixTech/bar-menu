@@ -30,6 +30,10 @@
             </li>
             </ul>
           </div>
+          <div class="navbar-language-selector">
+            <%= link_to "EN", "#" %> |
+            <%= link_to "DE", "#" %>
+          </div>
           <div class="navbar-btn d-none d-lg-inline-block">
             <% unless user_signed_in? %>
               <%= link_to t('landing_page.login'), new_user_session_path, class: "btn btn-primary" %>
