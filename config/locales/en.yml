@@ -30,7 +30,24 @@
 # available at https://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
-  menu: "Menu"
-  messages:
-    landing_text: "If you're looking for an easy and efficient way to showcase your gastronomic offerings to your customers, you've come to the right place. Our service allows you to create an online menu for your restaurant, with a flexible system that can be adjusted to your requirements. Additionally, customers can place orders directly from your menus, making your service faster and more efficient. In addition, our system allows you to edit the menu in real time, so you can easily add new items or modify existing ones."
+  landing_page:
+    home: "Home"
+    product: "Product"
+    pricing: "Pricing"
+    contact: "Contact"
+    login: "Login"
+    sign_up: "Sign Up"
+    logout: "Logout"
+    pricing_and_plans: "Pricing & Plans"
+    start_free_trial: "Start free trial"
+    get_in_touch: "Get in touch"
+    name: "Name"
+    email: "Email"
+    phone: "Phone"
+    subject: "Subject"
+    type_message: "Type Message"
+    send_message: "Send Message"
+    intro_paragraph: "If you're looking for an easy and efficient way to showcase your gastronomic offerings to your customers, you've come to the right place. Our service allows you to create an online menu for your restaurant, with a flexible system that can be adjusted to your requirements. Additionally, customers can place orders directly from your menus, making your service faster and more efficient. In addition, our system allows you to edit the menu in real time, so you can easily add new items or modify existing ones."
+    who_we_are: "Who we are"
+    team_experience: "Our team comes with the experience and knowledge."
+    ready_to_get_started: "Ready to Get Started"

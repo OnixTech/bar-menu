@@ -1,4 +1,4 @@
-<%= render partial: "shared/navbar-area", locals: {button_a: "Home", button_b: "Product", button_c: "Pricing", button_d: "Contact" } %>
+<%= render partial: "shared/navbar-area", locals: {button_a: t('landing_page.home'), button_b: t('landing_page.product'), button_c: t('landing_page.pricing'), button_d: t('landing_page.contact') } %>
 
 <section id="hero-area" class="header-area header-eight">
     <div class="container">
@@ -7,17 +7,17 @@
                 <div class="header-content">
                     <h1>Barapp.</h1>
                     <p>
-                      <%=  t('messages.landing_text')  %>
+                      <%=  t('landing_page.intro_paragraph')  %>
                     </p>
                     <div class="button">
-                        <a href="javascript:void(0)" class="btn primary-btn">Get Started</a>
-                        <a href="https://www.youtube.com/watch?v=r44RKWyfcFw&fbclid=IwAR21beSJORalzmzokxDRcGfkZA1AtRTE__l5N4r09HcGS5Y6vOluyouM9EM"
+                        <%#<a href="javascript:void(0)" class="btn primary-btn">Get Started</a>%>
+                        <%#<a href="https://www.youtube.com/watch?v=r44RKWyfcFw&fbclid=IwAR21beSJORalzmzokxDRcGfkZA1AtRTE__l5N4r09HcGS5Y6vOluyouM9EM"
                         class="glightbox video-button">
                         <span class="btn icon-btn rounded-full">
                             <i class="lni lni-play"></i>
                         </span>
                         <span class="text">Watch Intro</span>
-                        </a>
+                        </a>%>
                     </div>
                 </div>
             </div>
