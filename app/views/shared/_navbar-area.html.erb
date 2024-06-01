@@ -31,8 +31,8 @@
             </ul>
           </div>
           <div class="navbar-language-selector">
-            <%= link_to "EN", root_path(locale: :en) %> |
-            <%= link_to "DE", root_path(locale: :de) %>
+            <%= link_to "EN", url_for(locale: :en) %> |
+            <%= link_to "DE", url_for(locale: :de) %>
           </div>
           <div class="navbar-btn d-none d-lg-inline-block">
             <% unless user_signed_in? %>
