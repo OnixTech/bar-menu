@@ -25,3 +25,9 @@ COPY --chown=developer Gemfile Gemfile.lock ./
 RUN bundle install
 
 COPY --chown=developer . .
+
+# Precompile assets
+RUN bundle exec rails assets:precompile
+
+# Expose port 3000
+EXPOSE 3000
