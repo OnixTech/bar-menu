@@ -21,11 +21,11 @@ WORKDIR /barmenu
 
 RUN gem install bundler:2.5.6
 
-COPY --chown=developer Gemfile .
-COPY --chown=developer Gemfile.lock .
+COPY --chown=developer ../Gemfile .
+COPY --chown=developer ../Gemfile.lock .
 RUN bundle install
 
-COPY --chown=developer . .
+COPY --chown=developer ../. .
 
 # Precompile assets
 RUN bundle exec rails assets:precompile
