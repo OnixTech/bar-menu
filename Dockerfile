@@ -18,7 +18,7 @@ RUN npm install -g heroku
 ENV PATH="/usr/local/lib/node_modules/heroku/bin:${PATH}"
 ENV PATH="$PATH:$(yarn global bin)"
 
-WORKDIR /barmenu
+WORKDIR /
 
 RUN gem install bundler:2.5.6
 
