@@ -15,7 +15,7 @@ RUN adduser -D developer
 RUN npm install -g heroku
 
 # Add Heroku CLI to PATH
-ENV PATH="/usr/local/lib/node_modules/heroku/bin:${PATH}"
+ENV PATH="/usr/local/lib/node_modules/:${PATH}"
 
 WORKDIR /barmenu
 
