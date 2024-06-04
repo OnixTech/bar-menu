@@ -24,6 +24,7 @@ RUN gem install bundler:2.5.6
 
 COPY --chown=developer . ./
 
+RUN npm install
 RUN bundle install
 
 # Precompile assets
