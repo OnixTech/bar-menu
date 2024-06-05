@@ -23,7 +23,8 @@ RUN gem install bundler:2.5.6
 COPY --chown=developer . ./
 
 # Set correct permissions for the app directory
-RUN chown -R developer:developer /app
+RUN mkdir -p /usr/local/bundle/cache/bundler/git && \
+    chown -R developer:developer /usr/local/bundle /app
 
 USER developer
 
