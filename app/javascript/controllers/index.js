@@ -4,8 +4,6 @@
 
 import { application } from "./application"
 
-import { eagerLoadControllersFrom } from "@hotwired/stimulus-loading"
-eagerLoadControllersFrom("controllers", application)
 
 import WebsocketStationController from "./websocket_station_controller"
 application.register("websocket-station", WebsocketStationController)
