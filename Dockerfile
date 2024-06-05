@@ -35,6 +35,10 @@ RUN yarn install --check-files
 # Precompile assets
 RUN bundle exec rails assets:precompile
 
+# Precompile assets
+RUN yarn run build
+RUN bundle exec rails assets:precompile
+
 # Expose port 3000
 EXPOSE 3000
 
