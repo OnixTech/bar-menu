@@ -88,6 +88,12 @@ if Station.count < 1
   )
   station.save!
 
+  station = Station.new(
+    name: "Main station",
+    company_id: 1
+  )
+  station.save!
+
 end
 
 if Menu.count < 1
