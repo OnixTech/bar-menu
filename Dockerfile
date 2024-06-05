@@ -5,6 +5,7 @@ RUN apk update \
     && apk add --virtual build-dependencies build-base \
     git \
     nodejs npm \
+    yarn \
     postgresql postgresql-contrib libpq-dev \
     && rm -rf /var/lib/apt/lists/*
 
@@ -12,7 +13,6 @@ RUN adduser -D developer
 
 RUN npm install -g yarn
 
-# Install Heroku CLI
 RUN npm install -g heroku
 
 # Add Heroku CLI to PATH
