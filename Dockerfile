@@ -1,13 +1,10 @@
 FROM ruby:3.2.2-alpine
 
 # Install required packages
-RUN apk update \
-    && apk add --virtual build-dependencies build-base \
-    git \
-    nodejs npm \
-    yarn \
-    postgresql postgresql-contrib libpq-dev \
-    && rm -rf /var/lib/apt/lists/*
+RUN apk update && \
+    apk add --virtual build-dependencies build-base && \
+    apk add git nodejs npm yarn postgresql postgresql-client postgresql-dev && \
+    rm -rf /var/lib/apt/lists/*
 
 RUN adduser -D developer
 
