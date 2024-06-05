@@ -11,21 +11,22 @@ RUN apk update \
 
 RUN adduser -D developer
 
-RUN npm install -g yarn
-
 RUN npm install -g heroku
 
 # Add Heroku CLI to PATH
 ENV PATH="/usr/local/lib/node_modules/heroku/bin:${PATH}"
-ENV PATH="$PATH:$(yarn global bin)"
 
-WORKDIR /
+WORKDIR /app
 
 RUN gem install bundler:2.5.6
 
 COPY --chown=developer . ./
 
-#RUN npm install
+# Set correct permissions for the app directory
+RUN chown -R developer:developer /app
+
+USER developer
+
 RUN bundle install
 
 RUN yarn install --check-files
@@ -35,3 +36,5 @@ RUN bundle exec rails assets:precompile
 
 # Expose port 3000
 EXPOSE 3000
+
+CMD ["bundle", "exec", "rails", "server", "-b", "0.0.0.0"]
