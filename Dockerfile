@@ -5,11 +5,12 @@ RUN apk update \
     && apk add --virtual build-dependencies build-base \
     git \
     nodejs npm \
-    yarn \
     postgresql postgresql-contrib libpq-dev \
     && rm -rf /var/lib/apt/lists/*
 
 RUN adduser -D developer
+
+RUN npm install -g yarn
 
 # Install Heroku CLI
 RUN npm install -g heroku
@@ -24,8 +25,10 @@ RUN gem install bundler:2.5.6
 
 COPY --chown=developer . ./
 
-RUN npm install
+#RUN npm install
 RUN bundle install
+
+RUN yarn install --check-files
 
 # Precompile assets
 RUN bundle exec rails assets:precompile
