@@ -17,14 +17,6 @@ class DeliveriesController < ApplicationController
     params.require(:order).permit(:numerference, :table, :total, :station_id, items: %i[id quantity], subitems: [])
   end
 
-  def order_item_params
-    params.require(:order)[:items]
-  end
-
-  def order_subitem_params
-    params.require(:order)[:subitems]
-  end
-
   def order_create
     @order = Order.new(order_params)
     return unless @order.save!
@@ -33,7 +25,7 @@ class DeliveriesController < ApplicationController
   end
 
   def order_item_create
-    items = order_item_params
+    items = params.require(:order)[:items]
     items.each do |item|
       order_item = OrderItem.new
       order_item.quantity = item["quantity"]
@@ -45,7 +37,7 @@ class DeliveriesController < ApplicationController
   end
 
   def order_subitem_create
-    subitems = order_subitem_params
+    subitems = params.require(:order)[:subitems]
     subitems.each do |subitem|
       order_subitem = OrderItem.new
       order_subitem.subitem_id = subitem
