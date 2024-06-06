@@ -14,15 +14,15 @@ class DeliveriesController < ApplicationController
   private
 
   def order_params
-    params.require(:body).require(:order).permit(:table, :numerference, :total, :station_id)
+    params.require(:order).require(:order).permit(:table, :numerference, :total, :station_id)
   end
 
   def order_item_params
-    params.require(:body).require(:items)
+    params.require(:order).require(:items)
   end
 
   def order_subitem_params
-    params.require(:body).require(:subitems)
+    params.require(:order).require(:subitems)
   end
 
   def order_create
