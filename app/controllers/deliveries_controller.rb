@@ -14,22 +14,22 @@ class DeliveriesController < ApplicationController
   private
 
   def order_params
-    params.require(:order).require(:order).permit(:table, :numerference, :total, :station_id)
+    params.require(:order).permit(:numerference, :table, :total, :station_id, items: [:id, :quantity], subitems: [])
   end
 
-  def order_item_params
-    params.require(:order).require(:items)
-  end
+  #def order_item_params
+  #  params.require(:order).require(:items)
+  #end
 
-  def order_subitem_params
-    params.require(:order).require(:subitems)
-  end
+  #def order_subitem_params
+  #  params.require(:order).require(:subitems)
+  #end
 
   def order_create
     @order = Order.new(order_params)
     return unless @order.save!
 
-    order_item_create
+    #order_item_create
   end
 
   def order_item_create
