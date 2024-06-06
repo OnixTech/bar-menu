@@ -17,6 +17,11 @@ WORKDIR /app
 
 RUN gem install bundler:2.5.6
 
+#COPY --chown=developer . ./
+COPY --chown=developer Gemfile Gemfile.lock ./
+
+RUN bundle install
+
 COPY --chown=developer . ./
 
 # Set correct permissions for the app directory
@@ -25,7 +30,6 @@ RUN mkdir -p /usr/local/bundle/cache/bundler/git && \
 
 USER developer
 
-RUN bundle install
 
 RUN yarn install --check-files
 
@@ -33,7 +37,6 @@ RUN yarn install --check-files
 RUN bundle exec rails assets:precompile
 
 # Precompile assets
-RUN yarn run build
 RUN bundle exec rails assets:precompile
 
 # Expose port 3000

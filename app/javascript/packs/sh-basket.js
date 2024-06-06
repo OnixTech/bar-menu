@@ -168,6 +168,7 @@ function bodyData(body){
     }
     body.items.push({id: item.id, quantity: item.quantity});
   })
+  request(basket);
 }
 
 function request(basket) {
