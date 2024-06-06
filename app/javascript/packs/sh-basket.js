@@ -168,11 +168,11 @@ function bodyData(body){
     }
     body.items.push({id: item.id, quantity: item.quantity});
   })
-  request(basket);
+  request(body);
 }
 
-function request(basket) {
-  const jsonData = JSON.stringify(basket);
+function request(body) {
+  const jsonData = JSON.stringify(body);
   const serverUrl = (railsEnvironment === 'production')
     ? "https://fillo.herokuapp.com/bsktresqto"
     : "http://0.0.0.0:3000/bsktresqto";
