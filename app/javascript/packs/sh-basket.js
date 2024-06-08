@@ -164,10 +164,10 @@ function bodyData(body){
   basket.items.forEach(function (item){
     if (item.subitems.length){
       item.subitems.forEach(function (subitem){
-        body.subitems.push(subitem.id);
+        body.body.subitems.push(subitem.id);
       })
     }
-    body.items.push({id: item.id, quantity: item.quantity});
+    body.body.items.push({id: item.id, quantity: item.quantity});
   })
   request(body);
 }
