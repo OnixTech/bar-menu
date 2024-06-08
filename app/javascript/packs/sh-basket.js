@@ -137,7 +137,6 @@ function sendOrder(station_id){
   basket.table = inputTable.value
   basket.company = companyName
   basket.station_id = station_id.getAttribute('data-station')
-  console.log(basket.station_id);
   if (basket.table.length){
     requestBody()
   }else {

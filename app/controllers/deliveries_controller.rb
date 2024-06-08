@@ -14,7 +14,7 @@ class DeliveriesController < ApplicationController
   private
 
   def order_params
-    params.require(:order).permit(:numerference, :table, :total, :station_id, items: %i[id quantity], subitems: [])
+    params.require(:body).require(:order).permit(:table, :numerference, :total, :station_id)
   end
 
   def order_create
@@ -25,7 +25,7 @@ class DeliveriesController < ApplicationController
   end
 
   def order_item_create
-    items = params.require(:order)[:items]
+    items = params.require(:body).require(:items)
     items.each do |item|
       order_item = OrderItem.new
       order_item.quantity = item["quantity"]
@@ -37,7 +37,7 @@ class DeliveriesController < ApplicationController
   end
 
   def order_subitem_create
-    subitems = params.require(:order)[:subitems]
+    subitems = params.require(:body).require(:subitems)
     subitems.each do |subitem|
       order_subitem = OrderItem.new
       order_subitem.subitem_id = subitem
