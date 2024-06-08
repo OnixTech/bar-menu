@@ -310,7 +310,7 @@ DEPENDENCIES
   rack-cors
   rails (~> 7.0.3)
   rails-erd
-  redis
+  redis (~> 5.1)
   rqrcode
   sassc-rails
   selenium-webdriver

@@ -3,7 +3,7 @@ FROM ruby:3.2.2-alpine
 # Install required packages
 RUN apk update && \
     apk add --virtual build-dependencies build-base && \
-    apk add git nodejs=16.20.0-r0 npm=8.19.2-r0 yarn postgresql postgresql-client postgresql-dev && \
+    apk add git nodejs npm yarn postgresql postgresql-client postgresql-dev && \
     rm -rf /var/lib/apt/lists/*
 
 RUN adduser -D developer

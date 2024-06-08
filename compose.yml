@@ -1,38 +1,38 @@
 version: '3'
 
 services:
-  app2:
+  app:
     build:
       context: .
-      dockerfile: ./Dockerfile  # Use the same Dockerfile as the first app
-    command: sh -c "chmod +x bin/rails && bin/rails db:migrate RAILS_ENV=development && rm -f tmp/pids/server.pid && bundle exec rails s -p 3001 -b '0.0.0.0'"  # Adjust port to 3001 for the second app
+      dockerfile: ./Dockerfile
+    command: sh -c "chmod +x bin/rails && bin/rails db:migrate RAILS_ENV=development && rm -f tmp/pids/server.pid && bundle exec rails s -p 3000 -b '0.0.0.0'"
     volumes:
       - .:/app
     environment:
       RAILS_ENV: development
-      POSTGRES_HOST: postgresql_app2  # Use a different hostname for the second database instance
-      POSTGRES_USER: postgres_app2    # Use a different username for the second database instance
-      POSTGRES_PASSWORD: postgres_app2    # Use a different password for the second database instance
-      POSTGRES_DB: app2_database   # Use a different database name for the second database instance
+      POSTGRES_HOST: postgresql
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: bar_menu_development
     ports:
-      - "3001:3001"  # Map container's port 3001 to host's port 3001 for the second app
+      - "3000:3000"
     networks:
       - barmenu_network
     depends_on:
-      - postgresql_app2  # Update dependency name for the second database instance
+      - postgresql
 
-  postgresql_app2:  # Define a new service for the second PostgreSQL database instance
-    container_name: postgres_app2  # Use a different container name for the second database instance
+  postgresql:
+    container_name: postgres
     image: postgres:latest
-    hostname: postgres_app2  # Use a different hostname for the second database instance
+    hostname: postgres
     environment:
-      POSTGRES_USER: postgres_app2  # Use a different username for the second database instance
-      POSTGRES_PASSWORD: postgres_app2  # Use a different password for the second database instance
-      POSTGRES_DB: app2_database  # Use a different database name for the second database instance
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: bar_menu_development
     ports:
-      - "5433:5432"  # Map container's port 5432 to host's port 5433 for the second database
+      - "5432:5432"
     volumes:
-      - postgres_data_app2:/var/lib/postgresql/data  # Use a different volume for the second database instance
+      - postgres_data:/var/lib/postgresql/data
     networks:
       - barmenu_network
 
@@ -41,4 +41,4 @@ networks:
     driver: bridge
 
 volumes:
-  postgres_data_app2:
+  postgres_data:
