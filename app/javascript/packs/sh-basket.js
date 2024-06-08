@@ -146,14 +146,16 @@ function sendOrder(station_id){
 
 function requestBody(){
   let body = {
-    order:{
-      numerference: basket.numerference,
-      table: basket.table,
-      total: basket.total,
-      station_id: basket.station_id
-    },
-    items: [],
-    subitems: []
+    body:{
+      order:{
+        numerference: basket.numerference,
+        table: basket.table,
+        total: basket.total,
+        station_id: basket.station_id
+      },
+      items: [],
+      subitems: []
+    }
   }
   bodyData(body)
 }
@@ -191,6 +193,7 @@ function request(body) {
       alert("Error!");
     }
   })
+  console.log(jsonData);
 }
 
 function doubleCheckAlert(subitemsObject){
