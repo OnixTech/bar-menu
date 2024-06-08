@@ -3,12 +3,12 @@ FROM ruby:3.2.2-alpine
 # Install required packages
 RUN apk update && \
     apk add --virtual build-dependencies build-base && \
-    apk add git nodejs npm yarn postgresql postgresql-client postgresql-dev && \
+    apk add git nodejs=16.20.0-r0 npm=8.19.2-r0 yarn postgresql postgresql-client postgresql-dev && \
     rm -rf /var/lib/apt/lists/*
 
 RUN adduser -D developer
 
-RUN npm install -g heroku
+RUN npm install -g heroku@8.11.5
 
 # Add Heroku CLI to PATH
 ENV PATH="/usr/local/lib/node_modules/heroku/bin:${PATH}"
@@ -32,9 +32,6 @@ USER developer
 
 
 RUN yarn install --check-files
-
-# Precompile assets
-RUN bundle exec rails assets:precompile
 
 # Precompile assets
 RUN bundle exec rails assets:precompile

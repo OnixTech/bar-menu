@@ -11,5 +11,8 @@
   },
   "scripts": {
     "build": "webpack --config webpack.config.js"
+  },
+  "engines": {
+    "node": "16.x"
   }
 }
