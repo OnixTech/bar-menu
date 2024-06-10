@@ -31,7 +31,7 @@ gem 'allow_numeric'
 gem "jbuilder"
 
 # Use Redis adapter to run Action Cable in production
-# gem "redis", "~> 4.0"
+ gem "redis", "~> 4.8.1"
 
 ########
 gem "pundit"
@@ -56,8 +56,6 @@ gem "bootsnap", require: false
 
 # Use Sass to process CSS
 gem "sassc-rails"
-
-gem "redis", "~> 5.1"
 
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 # gem "image_processing", "~> 1.2"
