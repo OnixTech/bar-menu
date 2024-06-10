@@ -10,8 +10,13 @@ class StationPolicy < ApplicationPolicy
     end
   end
 
+  def initialize(current_user, station)
+    @current_user = current_user
+    @station = station
+  end
+
   def show?
-    true
+    authorize_user
   end
 
   def create?
@@ -37,7 +42,7 @@ class StationPolicy < ApplicationPolicy
   private
 
   def authorize_user
-    true
+    @current_user == @station.company.user
   end
 
   def authorize_master
@@ -45,6 +50,6 @@ class StationPolicy < ApplicationPolicy
   end
 
   def user_active
-    @current_user.active?
+    @user.active?
   end
 end

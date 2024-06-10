@@ -193,7 +193,6 @@ function request(body) {
       alert("Error!");
     }
   })
-  console.log(jsonData);
 }
 
 function doubleCheckAlert(subitemsObject){
