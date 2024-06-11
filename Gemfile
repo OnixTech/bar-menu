@@ -31,8 +31,7 @@ gem 'allow_numeric'
 gem "jbuilder"
 
 # Use Redis adapter to run Action Cable in production
- gem "redis", "~> 4.0"
-
+ gem "redis"
 ########
 gem "pundit"
 ########
