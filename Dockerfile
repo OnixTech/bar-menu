@@ -8,7 +8,7 @@ RUN apk update && \
 
 RUN adduser -D developer
 
-RUN npm install -g heroku@8.11.5
+RUN npm install -g heroku
 
 # Add Heroku CLI to PATH
 ENV PATH="/usr/local/lib/node_modules/heroku/bin:${PATH}"
