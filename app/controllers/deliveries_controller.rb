@@ -44,6 +44,7 @@ class DeliveriesController < ApplicationController
       order_subitem.order_id = @order.id
       break unless order_subitem.save!
     end
+    Rails.logger.info("Before action cable")
     action_cable
   end
 
@@ -54,6 +55,7 @@ class DeliveriesController < ApplicationController
         action: "created"
       }
     )
+    Rails.logger.info("Broadcasting to station_#{@order.station_id} with action: created")
   end
 
   def login
