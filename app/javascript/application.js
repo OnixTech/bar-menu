@@ -1,7 +1,6 @@
 // Configure your import map in config/importmap.rb. Read more: https://github.com/rails/importmap-rails
-import { Application } from "@hotwired/stimulus";
-import consumer from "./cable";
+import { createConsumer } from "@rails/actioncable";
 
-const application = Application.start();
-const context = require.context("controllers", true, /\.js$/);
-application.load(definitionsFromContext(context));
+const consumer = createConsumer();
+
+export default consumer;
