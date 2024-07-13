@@ -30,7 +30,7 @@ Rails.application.configure do
 
   # Do not fallback to assets pipeline if a precompiled asset is missed.
   config.assets.compile = false
-  
+
 
   # Enable serving of images, stylesheets, and JavaScripts from an asset server.
   # config.asset_host = "http://assets.example.com"
@@ -45,7 +45,7 @@ Rails.application.configure do
   # Mount Action Cable outside main process or domain.
   # config.action_cable.mount_path = nil
   config.cache_store = :redis_cache_store, { url: ENV['REDIS_URL'] }
-  config.action_cable.url = "ws://fillo.herokuapp.com/cable"
+  config.action_cable.url = "wss://fillo.herokuapp.com/cable"
   config.action_cable.allowed_request_origins = [ "https://fillo.herokuapp.com", /https:\/\/fillo.herokuapp.com.*/]
   # Force all access to the app over SSL, use Strict-Transport-Security, and use secure cookies.
   # config.force_ssl = true
