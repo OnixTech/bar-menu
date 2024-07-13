@@ -13,4 +13,4 @@ Rails.application.config.assets.paths << Rails.root.join("node_modules")
 # Rails.application.config.assets.precompile += %w( admin.js admin.css )
 Rails.application.config.assets.paths << Rails.root.join("app", "javascript")
 
-Rails.application.config.assets.precompile += %w[*.scss]
+Rails.application.config.assets.precompile += %w[*.js *.scss *.css]
