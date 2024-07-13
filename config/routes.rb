@@ -26,5 +26,6 @@ Rails.application.routes.draw do
     end
 
     post '/bsktresqto', to: 'deliveries#grequest'
+    mount ActionCable.server => '/cable'
   end
 end
