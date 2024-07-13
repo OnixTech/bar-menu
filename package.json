@@ -12,6 +12,6 @@
   },
   "scripts": {
     "build": "webpack --config webpack.config.js",
-    "start": "node server.js"
+    "start": "node index.js"
   }
 }
