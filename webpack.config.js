@@ -19,9 +19,9 @@ module.exports = {
       '@hotwired/stimulus-webpack-helpers': path.resolve(__dirname, 'node_modules/@hotwired/stimulus-webpack-helpers')
     },
     fallback: {
+      "path": require.resolve("path-browserify"),
+      "os": require.resolve("os-browserify/browser"),
       "fs": false,
-      "path": false,
-      "os": false
     }
   },
   plugins: [
