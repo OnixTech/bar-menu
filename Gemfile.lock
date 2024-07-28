@@ -295,7 +295,7 @@ DEPENDENCIES
   faker
   font-awesome-sass (~> 6.1)
   httparty
-  importmap-rails (~> 2.0)
+  importmap-rails
   jbuilder
   jsbundling-rails
   pg (~> 1.1)
