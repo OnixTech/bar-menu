@@ -15,4 +15,3 @@ Rails.application.config.assets.paths << Rails.root.join("app", "javascript")
 
 Rails.application.config.assets.precompile += %w[*.js *.scss *.css]
 
-Rails.application.config.assets.debug = true
