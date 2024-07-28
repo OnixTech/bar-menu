@@ -24,6 +24,11 @@ module.exports = {
       "fs": false,
     }
   },
+  node: {
+    __dirname: false,
+    __filename: false,
+    global: true
+  },
   plugins: [
     new webpack.optimize.LimitChunkCountPlugin({
       maxChunks: 1
