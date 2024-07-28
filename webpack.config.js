@@ -12,6 +12,17 @@ module.exports = {
     sourceMapFilename: "[file].map",
     path: path.resolve(__dirname, "app/assets/builds"),
   },
+  resolve: {
+    extensions: ['.js', '.jsx', '.ts', '.tsx', '.json'],
+    alias: {
+      '@hotwired/stimulus-webpack-helpers': path.resolve(__dirname, 'node_modules/@hotwired/stimulus-webpack-helpers')
+    },
+    fallback: {
+      "fs": false,
+      "path": false,
+      "os": false
+    }
+  },
   plugins: [
     new webpack.optimize.LimitChunkCountPlugin({
       maxChunks: 1
