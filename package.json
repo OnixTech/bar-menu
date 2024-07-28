@@ -6,6 +6,7 @@
     "@hotwired/stimulus-webpack-helpers": "^1.0.1",
     "@hotwired/turbo-rails": "^8.0.4",
     "@popperjs/core": "^2.11.6",
+    "@rails/webpacker": "^5.4.4",
     "bootstrap": "^5.2.0"
   },
   "scripts": {
