@@ -22,12 +22,11 @@ module.exports = {
       "path": require.resolve("path-browserify"),
       "os": require.resolve("os-browserify/browser"),
       "fs": false,
+      "dgram": false,
+      "net": false,
+      "tls": false,
+      "child_process": false
     }
-  },
-  node: {
-    __dirname: false,
-    __filename: false,
-    global: true
   },
   plugins: [
     new webpack.optimize.LimitChunkCountPlugin({
