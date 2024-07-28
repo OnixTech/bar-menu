@@ -6,9 +6,9 @@
     "@hotwired/turbo-rails": "^8.0.4",
     "@popperjs/core": "^2.11.6",
     "bootstrap": "^5.2.0",
-    "stimulus": "^3.2.2",
     "webpack": "^5.74.0",
-    "webpack-cli": "^4.10.0"
+    "webpack-cli": "^4.10.0",
+    "@hotwired/stimulus-webpack-helpers": "^1.0.0" 
   },
   "scripts": {
     "build": "webpack --config webpack.config.js"
