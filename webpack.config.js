@@ -1,4 +1,4 @@
-onst path    = require("path")
+const path    = require("path")
 const webpack = require("webpack")
 
 module.exports = {
