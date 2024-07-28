@@ -15,6 +15,7 @@ module.exports = {
   resolve: {
     extensions: ['.js', '.jsx', '.ts', '.tsx', '.json'],
     alias: {
+      '@hotwired/stimulus': path.resolve(__dirname, 'node_modules/@hotwired/stimulus'),
       '@hotwired/stimulus-webpack-helpers': path.resolve(__dirname, 'node_modules/@hotwired/stimulus-webpack-helpers')
     },
     fallback: {
