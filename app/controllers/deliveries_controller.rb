@@ -44,18 +44,17 @@ class DeliveriesController < ApplicationController
       order_subitem.order_id = @order.id
       break unless order_subitem.save!
     end
-    Rails.logger.info("Before action cable")
-    action_cable
+    update_orders
   end
 
-  def action_cable
-    ActionCable.server.broadcast(
-      "station_#{@order.station_id}",
-      {
-        action: "created"
-      }
-    )
-    Rails.logger.info("Broadcasting to station_#{@order.station_id} with action: created")
+  def update_orders
+    set_orders
+    render turbo_stream:
+      turbo_stream.replace("order", partial: "stations/orders")
+  end
+
+  def set_orders
+    @orders = Order.where(station_id:)
   end
 
   def login
