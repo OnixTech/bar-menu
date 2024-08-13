@@ -1,7 +1,3 @@
-require 'httparty'
-require 'net/http'
-require 'json'
-
 class DeliveriesController < ApplicationController
   skip_before_action :authenticate_user!, only: :grequest
   skip_before_action :verify_authenticity_token, only: [:grequest]
@@ -44,18 +40,25 @@ class DeliveriesController < ApplicationController
       order_subitem.order_id = @order.id
       break unless order_subitem.save!
     end
-    Rails.logger.info("Before action cable")
-    action_cable
+    update_orders
   end
 
-  def action_cable
-    ActionCable.server.broadcast(
-      "station_#{@order.station_id}",
-      {
-        action: "created"
-      }
-    )
-    Rails.logger.info("Broadcasting to station_#{@order.station_id} with action: created")
+  def update_orders
+    set_orders
+    Turbo::StreamsChannel.broadcast_update_to("station_#{@order.station_id}",
+                                              target: "station_#{@order.station_id}",
+                                              partial: "stations/orders",
+                                              locals: { orders: @orders,
+                                                        order_items: @order_items,
+                                                        subitems: @subitems,
+                                                        items: @items })
+  end
+
+  def set_orders
+    @orders = Order.where(station_id: @order.station_id)
+    @items = Item.all
+    @order_items = OrderItem.all
+    @subitems = Subitem.all
   end
 
   def login
