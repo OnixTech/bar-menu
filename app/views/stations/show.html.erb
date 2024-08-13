@@ -3,9 +3,10 @@
   <div class="stn-sw-ctn-title">
     <h2><%= @station.name %></h2>
   </div>
-  <div class="stn-sw-orders">
-    <%= render partial: 'orders'%>
-  </div>
+    <%= turbo_stream_from "station_#{@station.id}" %>
+    <div class="stn-sw-orders" id="station_<%= @station.id %>">
+      <%= render partial: 'stations/orders', locals: { orders: @orders, order_items: @order_items, items: @items, subitems: @subitems } %>
+    </div>
   <div>
     <%= link_to "Back to index", companies_path %>
   </div>

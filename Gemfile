@@ -21,6 +21,8 @@ gem "jsbundling-rails"
 # Hotwire's SPA-like page accelerator [https://turbo.hotwired.dev]
 gem "turbo-rails"
 
+gem "stimulus-rails"
+
 gem 'allow_numeric'
 
 # Build JSON APIs with ease [https://github.com/rails/jbuilder]
