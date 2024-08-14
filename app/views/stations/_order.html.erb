@@ -1,0 +1,29 @@
+<div  class="stn-show-order-list col-sm-6 col-md-4 col-xl-2" id="<%= dom_id(order) %>" >
+  <div class="stn-show-order-list-top">
+    <h5>Table #: <%= order.table %></h5>
+    <p><%= order.created_at %></p>
+  </div>
+  <hr>
+  <div class="stn-show-order-list-content">
+    <ol>
+      <% order_items.each do |order_item|  %>
+        <% if order_item.order_id == order.id %>
+          <% items.each do |item| %>
+            <% if item.id == order_item.item_id %>
+              <li><%= item.name %></li>
+              <% subitems.each do |subitem| %>
+                <% if subitem.item_id == item.id %>
+                  <p><%= subitem.name %></p>
+                <% end %>
+              <% end %>
+            <% end %>
+          <% end %>
+        <% end %>
+      <% end %>
+    </ol>
+  </div>
+  <div class="stn-show-order-list-total">
+    <hr>
+    <p>Total : <%= order.total %></p>
+  </div>
+</div>

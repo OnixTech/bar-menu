@@ -15,50 +15,54 @@ class DeliveriesController < ApplicationController
 
   def order_create
     @order = Order.new(order_params)
-    return unless @order.save!
+    return unless @order.save
 
     order_item_create
   end
 
   def order_item_create
-    items = params.require(:body).require(:items)
-    items.each do |item|
+    @items_data = params.require(:body).require(:items)
+    @order_items = []
+    @items_data.each do |item|
       order_item = OrderItem.new
       order_item.quantity = item["quantity"]
       order_item.item_id = item["id"]
       order_item.order_id = @order.id
-      break unless order_item.save!
+      break unless order_item.save
+
+      @order_items << order_item
     end
     order_subitem_create
   end
 
   def order_subitem_create
-    subitems = params.require(:body).require(:subitems)
-    subitems.each do |subitem|
+    @subitem_ids = params.require(:body).require(:subitems)
+    @subitem_ids.each do |subitem|
       order_subitem = OrderItem.new
       order_subitem.subitem_id = subitem
       order_subitem.order_id = @order.id
-      break unless order_subitem.save!
+      break unless order_subitem.save
+
+      @order_items << order_subitem
     end
     update_orders
   end
 
   def update_orders
-    set_orders
-    Turbo::StreamsChannel.broadcast_update_to("station_#{@order.station_id}",
-                                              target: "station_#{@order.station_id}",
-                                              partial: "stations/orders",
-                                              locals: { orders: @orders,
-                                                        order_items: @order_items,
-                                                        subitems: @subitems,
-                                                        items: @items })
+    set_update
+    Turbo::StreamsChannel.broadcast_prepend_to("station_#{@order.station_id}",
+                                               target: "orders",
+                                               partial: "stations/order",
+                                               locals: { order: @order,
+                                                         order_items: @order_items,
+                                                         subitems: @subitems,
+                                                         items: @items })
   end
 
-  def set_orders
-    @orders = Order.where(station_id: @order.station_id)
-    @items = Item.all
-    @order_items = OrderItem.all
-    @subitems = Subitem.all
+  def set_update
+    items_id = @items_data.map { |item| item["id"] }
+    @items = Item.where(id: items_id)
+    @subitems = Subitem.where(id: @subitem_ids)
   end
 
   def login
