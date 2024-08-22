@@ -1,10 +1,10 @@
 const basket = {
-  numerference: 1,
+  numberference: 1,
   company: "",
   table: "",
   items: [],
   total: 0,
-  station_id: 0,
+  station_id: [],
   acc: []
 };
 
@@ -34,7 +34,9 @@ function basketItems(event, element, operator){
       subitemsObject.forEach(function(subitem){
         checkbox = [...document.getElementsByClassName("options-checkboxes-" + subitem.id)];
         if(checkbox[0].checked){
-          item.subitems.push(subitem)
+          if(subitem.item_id === item.id){
+            item.subitems.push(subitem)
+          }
         }
       });
     }else{
@@ -129,14 +131,15 @@ function updateView(item) {
   itemInBasketCounter(item.id); // Update the item's quantity been added to the basket
 }
 
-function sendOrder(station_id){
+function sendOrder(){
   var element = document.getElementById('table-data');
   var inputTable = element.querySelector('#table-number');
   var companyName = element.getAttribute('data');
 
-  basket.table = inputTable.value
-  basket.company = companyName
-  basket.station_id = station_id.getAttribute('data-station')
+  basket.table = inputTable.value;
+  basket.company = companyName;
+  stations();
+  numberReference();
   if (basket.table.length){
     requestBody()
   }else {
@@ -144,17 +147,30 @@ function sendOrder(station_id){
   }
 }
 
+function stations(){
+  basket.items.forEach(function(item){
+    basket.station_id.push(item.station)
+  });
+}
+
+function numberReference(){
+  let date = new Date();
+  let isoString = date.toISOString();
+  let dateTime = isoString.replace(/[-:T.]/g, '').slice(14, 17);
+
+  basket.numberference = parseInt(dateTime, 10);
+}
+
 function requestBody(){
   let body = {
     body:{
       order:{
-        numerference: basket.numerference,
+        numerference: basket.numberference,
         table: basket.table,
         total: basket.total,
-        station_id: basket.station_id
+        station_id: 3
       },
       items: [],
-      subitems: []
     }
   }
   bodyData(body)
@@ -162,12 +178,11 @@ function requestBody(){
 
 function bodyData(body){
   basket.items.forEach(function (item){
-    if (item.subitems.length){
-      item.subitems.forEach(function (subitem){
-        body.body.subitems.push(subitem.id);
-      })
-    }
-    body.body.items.push({id: item.id, quantity: item.quantity});
+    let subitemsIds = []
+    item.subitems.forEach(function (subitem) {
+      subitemsIds.push(subitem["id"]);
+    })
+    body.body.items.push({id: item.id, quantity: item.quantity, subitem: subitemsIds});
   })
   request(body);
 }
@@ -176,7 +191,7 @@ function request(body) {
   const jsonData = JSON.stringify(body);
   const serverUrl = (railsEnvironment === 'production')
     ? "https://fillo.herokuapp.com/bsktresqto"
-    : "http://0.0.0.0:3000/bsktresqto";
+    : "http://127.0.0.1:3000/bsktresqto";
   const csrfToken = document.querySelector("meta[name='csrf-token']").getAttribute("content");
   fetch(serverUrl, {
     method: 'POST',
@@ -187,8 +202,8 @@ function request(body) {
     body: jsonData,
   })
   .then(response => {
-    if (response.status === 200){
-      alert("Success!");
+    if (response.status === 204){
+      alert(`Success!\nYour number reference is:\n${basket.numberference}\n(You can modify the order adding this number to the field N° Ref and sending the right order again)`);
     }else {
       alert("Error!");
     }

@@ -9,7 +9,6 @@ function editSubitem(element){
   btnEdit = document.getElementsByClassName(`sh-subitem-btn-edit-${id}`);
   btnDelete = document.getElementsByClassName(`sh-btn-delete-${id}`);
 
-  console.log(input);
   if (input[0].style.display === "none"){
     itms = "none";
     ipts = "";

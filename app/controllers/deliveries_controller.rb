@@ -4,6 +4,9 @@ class DeliveriesController < ApplicationController
 
   def grequest
     skip_authorization
+    set_order_items
+    return unless check_items
+
     login
   end
 
@@ -17,35 +20,30 @@ class DeliveriesController < ApplicationController
     @order = Order.new(order_params)
     return unless @order.save
 
-    order_item_create
+    order_items
   end
 
-  def order_item_create
-    @items_data = params.require(:body).require(:items)
-    @order_items = []
+  def order_items
+    flag = true
     @items_data.each do |item|
-      order_item = OrderItem.new
-      order_item.quantity = item["quantity"]
-      order_item.item_id = item["id"]
-      order_item.order_id = @order.id
-      break unless order_item.save
-
-      @order_items << order_item
+      flag = false unless order_item_create(item)
     end
-    order_subitem_create
+    update_orders unless flag == false
   end
 
-  def order_subitem_create
-    @subitem_ids = params.require(:body).require(:subitems)
-    @subitem_ids.each do |subitem|
-      order_subitem = OrderItem.new
-      order_subitem.subitem_id = subitem
-      order_subitem.order_id = @order.id
-      break unless order_subitem.save
-
-      @order_items << order_subitem
+  def order_item_create(item)
+    order_item = OrderItem.new
+    order_item.order_id = @order.id
+    order_item.quantity = item["quantity"]
+    order_item.item_id = item["id"]
+    unless item["subitem"].blank?
+      order_item.subitem_id = item["subitem"][0]
+      @subitem_ids << item["subitem"][0]
     end
-    update_orders
+    return false unless order_item.save
+
+    @order_items << order_item
+    return true
   end
 
   def update_orders
@@ -63,6 +61,29 @@ class DeliveriesController < ApplicationController
     items_id = @items_data.map { |item| item["id"] }
     @items = Item.where(id: items_id)
     @subitems = Subitem.where(id: @subitem_ids)
+  end
+
+  def set_order_items
+    @items_data = params.require(:body).require(:items)
+    @order_items = []
+    @subitem_ids = []
+  end
+
+  def check_items
+    flag = true
+    @items_data.each do |item_data|
+      next if item_data["subitem"].blank?
+
+      item_data["subitem"].each do |item_subitem|
+        subitem = Subitem.find_by(id: item_subitem)
+        if item_data["id"] != subitem.item_id
+          flag = false
+          logger.warn "Unknwon child"
+          break
+        end
+      end
+    end
+    return flag
   end
 
   def login

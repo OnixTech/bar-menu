@@ -11,9 +11,11 @@
           <% items.each do |item| %>
             <% if item.id == order_item.item_id %>
               <li><%= item.name %></li>
-              <% subitems.each do |subitem| %>
-                <% if subitem.item_id == item.id %>
-                  <p><%= subitem.name %></p>
+              <% if order_item.subitem_id %>
+                <% subitems.each do |subitem| %>
+                  <% if subitem.id == order_item.subitem_id %>
+                    <p><%= subitem.name %></p>
+                  <% end %>
                 <% end %>
               <% end %>
             <% end %>
